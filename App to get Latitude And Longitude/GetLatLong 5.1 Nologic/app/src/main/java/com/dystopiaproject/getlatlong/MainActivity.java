@@ -26,10 +26,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtLatLong;
     private ProgressBar progressBar;
     double latak1,longak1,latbk1,longbk1,latck1,longck1,latdk1,longdk1,
-            latak10,longak10,latbk10,longbk10,latck10,longck10,latdk10,longdk10;
+            latak10,longak10,latbk10,longbk10,latck10,longck10,latdk10,longdk10, latbts1, latbts2, longbts1,longbts2;
     String posnalat, posnalong, posnaconfirm,
             posk1lat, posk1long, posk1confirm,
-            posk10lat, posk10long, posk10confirm;
+            posk10lat, posk10long, posk10confirm,
+            posaconfirm, posalat, posalong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,35 +116,15 @@ public class MainActivity extends AppCompatActivity {
         longdk1 = 110.4726675;
 
          */
-        ////////
-        ////// kursi 1//
+        latbts1 = -7.7572337;
+        latbts2 = -7.7572328;
 
-        latak1 = -7.7281523;
-        longak1 = 110.4112713;
-
-        latbk1 = -7.7280952;
-        longbk1 = 110.4112897;
-
-        latck1 = -7.7280927;
-        longck1 = 110.4112961;
-
-        latdk1 = -7.7281049;
-        longdk1 = 110.4112986;
+        longbts1 = 110.4726684;
+        longbts2 = 110.4726690;
 
 
 
-        /////// kursi 10 //
-        latak10 = -7.7283082;
-        longak10 = 110.4109395;
 
-        latbk10 = -7.7280874;
-        longbk10 = 110.4113458;
-
-        latck10 = -7.7281005;
-        longck10 = 110.4113335;
-
-        latdk10 = -7.7281972;
-        longdk10 = 110.4112845;
 
         progressBar.setVisibility(View.VISIBLE);
         final LocationRequest locationRequest = new LocationRequest();
@@ -182,33 +163,25 @@ public class MainActivity extends AppCompatActivity {
                             //////////////////// kursi 1 //////////////
                                     //NO LOGIC
                                     //logic latitude > lata && latitude < latd || longitude > longb && longitude < longa
-                                if (latitude < latak1 && latitude > latdk1 || longitude < longbk1 && longitude > longak1 ){
-                                    posk1lat = "true";
-                                    posk1long = "true";
+                                if (latitude > latbts1 && latitude < latbts2 ){
+                                    posalat = "true";
+
+                                    if (longitude > longbts1 && longitude < longbts2){
+                                        posaconfirm = "true";
+                                        posalong = "true";
+                                    }
+                                    else {
+                                        posaconfirm = "false";
+                                        posalong = "false";
+                                    }
+                                }
+                                else {
+                                    posalat = "false";
+                                    posalong = "false";
+                                    posaconfirm = "false";
                                 }
                                     //latitude > latb && latitude < latc || longitude > longc && longitude < longd
-                                else if (latitude < latbk1 && latitude > latck1 || longitude < longck1 && longitude > longdk1){
-                                    posk1lat = "true";
-                                    posk1long = "true";
-                                }
-                                else {
-                                    posk1lat = "false";
-                                    posk1long = "false";
-                                }
-                                /////////////////// kursi 10 ////////////////
-                                if (latitude < latak10 && latitude > latdk10 || longitude < longbk10 && longitude > longak10 ){
-                                    posk10lat = "true";
-                                    posk10long = "true";
-                                }
-                                //latitude > latb && latitude < latc || longitude > longc && longitude < longd
-                                else if (latitude < latbk10 && latitude > latck10 || longitude < longck10 && longitude > longdk10){
-                                    posk10lat = "true";
-                                    posk10long = "true";
-                                }
-                                else {
-                                    posk10lat = "false";
-                                    posk10long = "false";
-                                }
+
 
                                 /////////////////////////////
                                 /*
@@ -224,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
                                 */
 
                                 ////////////// confirm kursi 1 //////////////
+                            /*
                                 if (posk1lat.equals("true") && posk1long.equals("true")){
                                     posk1confirm = "true";
                                 }
@@ -238,32 +212,20 @@ public class MainActivity extends AppCompatActivity {
                                     posk10confirm = "false";
                                 }
 
+                             */
 
-                                if (posk1confirm.equals("true"))
+
+                                if (posaconfirm.equals("true"))
                                 {
                                     txtLatLong.setText(
                                             String.format(
-                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 1 \n " +
-                                                            "posk1lat : %s \n posk1long : %s \n posk1confirm : %s" ,
+                                                    "Latitude: %s\nLongitude : %s \n Location : A \n " +
+                                                            "\n pos a lat : %s \n pos a long : %s \n posaconfirm : %s" ,
                                                     latitude,
                                                     longitude,
-                                                    posk1lat,
-                                                    posk1long,
-                                                    posk1confirm
-                                            )
-                                    );
-                                }
-                                else if (posk10confirm.equals("true"))
-                                {
-                                    txtLatLong.setText(
-                                            String.format(
-                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 1 \n " +
-                                                            "posk10lat : %s \n posk10long : %s \n posk10confirm : %s" ,
-                                                    latitude,
-                                                    longitude,
-                                                    posk10lat,
-                                                    posk10long,
-                                                    posk10confirm
+                                                    posalat,
+                                                    posalong,
+                                                    posaconfirm
                                             )
                                     );
                                 }
@@ -271,12 +233,12 @@ public class MainActivity extends AppCompatActivity {
                                     txtLatLong.setText(
                                             String.format(
                                                     "Latitude: %s\nLongitude : %s \n Location Unavailable \n " +
-                                                            "pos n/a lat : %s \n pos n/a long : %s \n pos n/a confirm : %s" ,
+                                                            "\n pos a lat : %s \n pos a long : %s \n posaconfirm : %s" ,
                                                     latitude,
                                                     longitude,
-                                                    posnalat,
-                                                    posnalong,
-                                                    posnaconfirm
+                                                    posalat,
+                                                    posalong,
+                                                    posaconfirm
                                             )
                                     );
                                 }

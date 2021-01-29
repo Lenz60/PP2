@@ -24,8 +24,14 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
     private TextView txtLatLong;
     private ProgressBar progressBar;
-    double lata,longa,latb,longb,latc,longc,latd,longd;
-    String posalat, posalong, posaconfirm;
+    double lat1,lat2,lat3,lat4, lat5,
+            long1, long2, long3, long4, long5,long6;
+    String poslat1, poslat2, poslat3, poslat4, poslat5,
+            poslong1, poslong2, poslong3, poslong4, poslong5,poslong6;
+    String posk1confirm, posk2confirm, posk10confirm,
+            posk3confirm, posk6confirm, posk9confirm, posk11confirm,
+                posk4confirm, posk7confirm,posk12confirm;
+    String unavailable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,17 +72,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getCurrentLocation() {
-        lata = -7.7572305;
-        longa = 110.4726617;
+        unavailable = "Unavailable";
+        //////////////////////
+        lat1 = -7.7283160;
+        lat2 = -7.7283155;
+        lat3 = -7.7283145;
+        lat4 = -7.7283100;
 
-        latb = -7.7572311;
-        longb = 110.4726641;
+        long1 = 110.4109377;
+        long2 = 110.4109404;
+        long3 = 110.4109420;
+        long4 = 110.4109444;
+        long5 = 110.4109471;
+        //////// long kursi 1 ////////////
+        /// long kursi a = total long ///
+        // yaitu long 5 /////////////////
+        long6 = 110.4109471;
 
-        latc = -7.7572313;
-        longc = 110.4726625;
-
-        latd = -7.7572312;
-        longd = 110.4726675;
 
         progressBar.setVisibility(View.VISIBLE);
         final LocationRequest locationRequest = new LocationRequest();
@@ -111,25 +123,283 @@ public class MainActivity extends AppCompatActivity {
                             double longitude =
                                     locationResult.getLocations().get(latestLocationIndex).getLongitude();
 
-                                    //NO LOGIC
-                                    //logic latitude > lata && latitude < latd || longitude > longb && longitude < longa
-                                if (latitude > lata && latitude < latd ){
-                                    posalat = "true";
-                                    if (longitude > longb && longitude < longa){
-                                        posalong = "true";
+                                   ////// kursi 1 //////
+                                if (longitude > long1 && longitude < long6){
+                                    poslong6 = "true";
+                                    if (latitude > lat1 && latitude < lat2 ){
+                                        posk1confirm = "true";
+                                        poslat1 = "true";
+                                    }
+                                    else {
+                                        posk1confirm = "false";
+                                        poslat1 = "false";
                                     }
                                 }
-                                    //latitude > latb && latitude < latc || longitude > longc && longitude < longd
-                                else if (latitude > latb && latitude < latc ){
-                                    posalat = "true";
-                                    if(longitude > longc && longitude < longd){
-                                        posalong = "true";
+                                //////////// kursi 2 3 4 ///////////////////
+                                else if(longitude > long1 && longitude < long2) {
+                                    poslong6 = "false";
+                                    poslong2 = "true";
+                                    if (latitude > lat2 && latitude < lat3){
+                                        posk2confirm = "true";
+                                        poslat3 = "true";
+                                    }
+                                    else if (latitude > lat3 && latitude < lat4) {
+                                        posk3confirm = "true";
+                                        poslat4 = "true";
+                                    }
+                                    else if (latitude > lat4 && latitude < lat5) {
+                                        posk4confirm = "true";
+                                        poslat5 = "true";
+                                    }
+                                    else {
+                                        posk2confirm = "false";
+                                        posk3confirm = "false";
+                                        posk4confirm = "false";
+                                        poslat3 = "false";
+                                        poslat4 = "false";
+                                        poslat5 = "false";
+                                    }
+                                }
+                                /////////// kursi 6 7 ////////////
+                                else if(longitude > long2 && longitude < long3) {
+                                    poslong6 = "false";
+                                    poslong2 = "false";
+                                    poslong3 = "true";
+                                    if (latitude > lat2 && latitude < lat4){
+                                        posk6confirm = "true";
+                                        poslat4 = "true";
+                                    }
+                                    else if (latitude > lat4 && latitude < lat5) {
+                                        posk7confirm = "true";
+                                        poslat5 = "true";
+                                    }
+                                    else {
+                                        posk6confirm = "false";
+                                        posk7confirm = "false";
+                                        poslat4 = "false";
+                                        poslat5 = "false";
+                                    }
+                                }
+                                //////// kursi 9 /////////
+                                else if(longitude > long3 && longitude < long4){
+                                    poslong6 = "false";
+                                    poslong2 = "false";
+                                    poslong3 = "false";
+                                    poslong4 = "true";
+                                    if (latitude > lat2 && latitude <lat4){
+                                        posk9confirm = "true";
+                                        poslat4 = "true";
+                                    }
+                                    else {
+                                        posk9confirm = "false";
+                                        poslat4 = "false";
+                                    }
+                                }
+                                //////////// kursi 10 11 12 ///////////////////
+                                else if(longitude > long4 && longitude < long5) {
+                                    poslong6 = "false";
+                                    poslong2 = "false";
+                                    poslong3 = "false";
+                                    poslong4 = "false";
+                                    poslong5 = "true";
+                                    if (latitude > lat2 && latitude < lat3){
+                                        posk10confirm = "true";
+                                        poslat3 = "true";
+                                    }
+                                    else if (latitude > lat3 && latitude < lat4) {
+                                        posk11confirm = "true";
+                                        poslat4 = "true";
+                                    }
+                                    else if (latitude > lat4 && latitude < lat5) {
+                                        posk12confirm = "true";
+                                        poslat5 = "true";
+                                    }
+                                    else {
+                                        posk10confirm = "false";
+                                        posk11confirm = "false";
+                                        posk12confirm = "false";
+                                        poslat3 = "false";
+                                        poslat4 = "false";
+                                        poslat5 = "false";
                                     }
                                 }
                                 else {
-                                    posalat = "false";
-                                    posalong = "false";
+                                    poslong6 = "false";
+                                    poslong1 = "false";
+                                    poslong2 = "false";
+                                    poslong3 = "false";
+                                    poslong4 = "false";
+                                    poslong5 = "false";
+                                    posk1confirm = "false";
+                                    posk2confirm = "false";
+                                    posk3confirm = "false";
+                                    posk4confirm = "false";
+                                    posk6confirm = "false";
+                                    posk7confirm = "false";
+                                    posk9confirm = "false";
+                                    posk10confirm = "false";
+                                    posk11confirm = "false";
+                                    posk12confirm = "false";
+
                                 }
+
+                                if (posk1confirm.equals("true"))
+                                {
+                                    txtLatLong.setText(
+                                            String.format(
+                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 1 \n " +
+                                                            "\n pos lat1 : %s \n pos long6 : %s \n posk1confirm : %s" ,
+                                                    latitude,
+                                                    longitude,
+                                                    poslat1,
+                                                    poslong6,
+                                                    posk1confirm
+                                            )
+                                    );
+                                }
+                                else if (posk2confirm.equals("true"))
+                                {
+                                    txtLatLong.setText(
+                                            String.format(
+                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 2 \n " +
+                                                            "\n pos lat3 : %s \n pos long2 : %s \n posk2confirm : %s" ,
+                                                    latitude,
+                                                    longitude,
+                                                    poslat3,
+                                                    poslong2,
+                                                    posk2confirm
+                                            )
+                                    );
+                                }
+                                else if (posk3confirm.equals("true"))
+                                {
+                                    txtLatLong.setText(
+                                            String.format(
+                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 3 \n " +
+                                                            "\n pos lat4 : %s \n pos long2 : %s \n posk3confirm : %s" ,
+                                                    latitude,
+                                                    longitude,
+                                                    poslat4,
+                                                    poslong2,
+                                                    posk3confirm
+                                            )
+                                    );
+                                }
+                                else if (posk4confirm.equals("true"))
+                                {
+                                    txtLatLong.setText(
+                                            String.format(
+                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 4 \n " +
+                                                            "\n pos lat5 : %s \n pos long2 : %s \n posk4confirm : %s" ,
+                                                    latitude,
+                                                    longitude,
+                                                    poslat5,
+                                                    poslong2,
+                                                    posk4confirm
+                                            )
+                                    );
+                                }
+                                else if (posk6confirm.equals("true"))
+                                {
+                                    txtLatLong.setText(
+                                            String.format(
+                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 6 \n " +
+                                                            "\n pos lat4 : %s \n pos long3 : %s \n posk6confirm : %s" ,
+                                                    latitude,
+                                                    longitude,
+                                                    poslat4,
+                                                    poslong3,
+                                                    posk6confirm
+                                            )
+                                    );
+                                }
+                                else if (posk7confirm.equals("true"))
+                                {
+                                    txtLatLong.setText(
+                                            String.format(
+                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 7 \n " +
+                                                            "\n pos lat5 : %s \n pos long3 : %s \n posk7confirm : %s" ,
+                                                    latitude,
+                                                    longitude,
+                                                    poslat5,
+                                                    poslong3,
+                                                    posk7confirm
+                                            )
+                                    );
+                                }
+                                else if (posk9confirm.equals("true"))
+                                {
+                                    txtLatLong.setText(
+                                            String.format(
+                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 9 \n " +
+                                                            "\n pos lat4 : %s \n pos long4 : %s \n posk9confirm : %s" ,
+                                                    latitude,
+                                                    longitude,
+                                                    poslat4,
+                                                    poslong4,
+                                                    posk9confirm
+                                            )
+                                    );
+                                }
+                                else if (posk10confirm.equals("true"))
+                                {
+                                    txtLatLong.setText(
+                                            String.format(
+                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 10 \n " +
+                                                            "\n pos lat3 : %s \n pos long5 : %s \n posk10confirm : %s" ,
+                                                    latitude,
+                                                    longitude,
+                                                    poslat3,
+                                                    poslong5,
+                                                    posk10confirm
+                                            )
+                                    );
+                                }
+                                else if (posk11confirm.equals("true"))
+                                {
+                                    txtLatLong.setText(
+                                            String.format(
+                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 11 \n " +
+                                                            "\n pos lat4 : %s \n pos long5 : %s \n posk11confirm : %s" ,
+                                                    latitude,
+                                                    longitude,
+                                                    poslat4,
+                                                    poslong5,
+                                                    posk11confirm
+                                            )
+                                    );
+                                }
+                                else if (posk12confirm.equals("true"))
+                                {
+                                    txtLatLong.setText(
+                                            String.format(
+                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 12 \n " +
+                                                            "\n pos lat5 : %s \n pos long5 : %s \n posk12confirm : %s" ,
+                                                    latitude,
+                                                    longitude,
+                                                    poslat5,
+                                                    poslong5,
+                                                    posk12confirm
+                                            )
+                                    );
+                                }
+                                else
+                                {
+                                    txtLatLong.setText(
+                                            String.format(
+                                                    "Latitude: %s\nLongitude : %s \n Location : Unavailable \n " +
+                                                            "\n pos lat?? : %s \n pos long?? : %s \n posk??confirm : %s" ,
+                                                    latitude,
+                                                    longitude,
+                                                    unavailable,
+                                                    unavailable,
+                                                    unavailable
+                                            )
+                                    );
+                                }
+
+
+
                                 /////////////////////////////
                                 /*
                                 if (longitude > longb && longitude < longa){
@@ -144,41 +414,7 @@ public class MainActivity extends AppCompatActivity {
                                 */
 
                                 ////////////////////////////
-                                if (posalat.equals("true") && posalong.equals("true")){
-                                    posaconfirm = "true";
-                                }
-                                else {
-                                    posaconfirm = "false";
-                                }
 
-
-                                if (posaconfirm.equals("true"))
-                                {
-                                    txtLatLong.setText(
-                                            String.format(
-                                                    "Latitude: %s\nLongitude : %s \n Location A \n " +
-                                                            "posalat : %s \n posalong : %s \n posaconfirm : %s" ,
-                                                    latitude,
-                                                    longitude,
-                                                    posalat,
-                                                    posalong,
-                                                    posaconfirm
-                                            )
-                                    );
-                                }
-                                else {
-                                    txtLatLong.setText(
-                                            String.format(
-                                                    "Latitude: %s\nLongitude : %s \n Location Unavailable \n " +
-                                                            "posalat : %s \n posalong : %s \n posaconfirm : %s" ,
-                                                    latitude,
-                                                    longitude,
-                                                    posalat,
-                                                    posalong,
-                                                    posaconfirm
-                                            )
-                                    );
-                                }
 
                         }
                         progressBar.setVisibility(View.GONE);
