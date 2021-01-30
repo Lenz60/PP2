@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -26,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     double lat1,lat2,lat3,lat4, lat5,
             long1, long2, long3, long4, long5,long6;
-    String poslat1, poslat2, poslat3, poslat4, poslat5,
+    Boolean poslat1, poslat2, poslat3, poslat4, poslat5,
             poslong1, poslong2, poslong3, poslong4, poslong5,poslong6;
-    String posk1confirm, posk2confirm, posk10confirm,
+    Boolean posk1confirm, posk2confirm, posk10confirm,
             posk3confirm, posk6confirm, posk9confirm, posk11confirm,
                 posk4confirm, posk7confirm,posk12confirm;
     String unavailable;
@@ -54,6 +55,36 @@ public class MainActivity extends AppCompatActivity {
                     );
                 } else {
                     getCurrentLocation();
+                    final Handler handler = new Handler(Looper.getMainLooper());
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Do something after 100ms
+                            getCurrentLocation();
+                        }
+                    }, 1000);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Do something after 100ms
+                            getCurrentLocation();
+                        }
+                    }, 2000);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Do something after 100ms
+                            getCurrentLocation();
+                        }
+                    }, 3000);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Do something after 100ms
+                            getCurrentLocation();
+                        }
+                    }, 5000);
+
                 }
             }
         });
@@ -74,10 +105,11 @@ public class MainActivity extends AppCompatActivity {
     private void getCurrentLocation() {
         unavailable = "Unavailable";
         //////////////////////
-        lat1 = -7.7283160;
+        lat1 = -7.7283175;
         lat2 = -7.7283155;
         lat3 = -7.7283145;
-        lat4 = -7.7283100;
+        lat4 = -7.7283110;
+        lat5 = -7.7283100;
 
         long1 = 110.4109377;
         long2 = 110.4109404;
@@ -123,141 +155,151 @@ public class MainActivity extends AppCompatActivity {
                             double longitude =
                                     locationResult.getLocations().get(latestLocationIndex).getLongitude();
 
-                                   ////// kursi 1 //////
-                                if (longitude > long1 && longitude < long6){
-                                    poslong6 = "true";
-                                    if (latitude > lat1 && latitude < lat2 ){
-                                        posk1confirm = "true";
-                                        poslat1 = "true";
-                                    }
-                                    else {
-                                        posk1confirm = "false";
-                                        poslat1 = "false";
-                                    }
+                            poslong1 = false;
+                            poslong2 = false;
+                            poslong3 = false;
+                            poslong4 = false;
+                            poslong5 = false;
+                            poslong6 = false;
+                            poslat1 = false;
+                            poslat2 = false;
+                            poslat3 = false;
+                            poslat4 = false;
+                            poslat5 = false;
+                            posk1confirm = false;
+                            posk2confirm = false;
+                            posk3confirm = false;
+                            posk4confirm = false;
+                            posk6confirm = false;
+                            posk7confirm = false;
+                            posk9confirm = false;
+                            posk10confirm = false;
+                            posk11confirm = false;
+                            posk12confirm = false;
+                            ///kursi 1 //
+
+
+                            ///// kursi 2 3 4 ////
+                            if (longitude > long1 && longitude < long2){
+                                if (latitude > lat2 && latitude < lat3){
+                                    posk2confirm = true;
+                                    poslat3 = true;
                                 }
-                                //////////// kursi 2 3 4 ///////////////////
-                                else if(longitude > long1 && longitude < long2) {
-                                    poslong6 = "false";
-                                    poslong2 = "true";
-                                    if (latitude > lat2 && latitude < lat3){
-                                        posk2confirm = "true";
-                                        poslat3 = "true";
-                                    }
-                                    else if (latitude > lat3 && latitude < lat4) {
-                                        posk3confirm = "true";
-                                        poslat4 = "true";
-                                    }
-                                    else if (latitude > lat4 && latitude < lat5) {
-                                        posk4confirm = "true";
-                                        poslat5 = "true";
-                                    }
-                                    else {
-                                        posk2confirm = "false";
-                                        posk3confirm = "false";
-                                        posk4confirm = "false";
-                                        poslat3 = "false";
-                                        poslat4 = "false";
-                                        poslat5 = "false";
-                                    }
+                                else if (latitude > lat3 && latitude < lat4){
+                                    posk3confirm = true;
+                                    poslat4 = true;
                                 }
-                                /////////// kursi 6 7 ////////////
-                                else if(longitude > long2 && longitude < long3) {
-                                    poslong6 = "false";
-                                    poslong2 = "false";
-                                    poslong3 = "true";
-                                    if (latitude > lat2 && latitude < lat4){
-                                        posk6confirm = "true";
-                                        poslat4 = "true";
-                                    }
-                                    else if (latitude > lat4 && latitude < lat5) {
-                                        posk7confirm = "true";
-                                        poslat5 = "true";
-                                    }
-                                    else {
-                                        posk6confirm = "false";
-                                        posk7confirm = "false";
-                                        poslat4 = "false";
-                                        poslat5 = "false";
-                                    }
-                                }
-                                //////// kursi 9 /////////
-                                else if(longitude > long3 && longitude < long4){
-                                    poslong6 = "false";
-                                    poslong2 = "false";
-                                    poslong3 = "false";
-                                    poslong4 = "true";
-                                    if (latitude > lat2 && latitude <lat4){
-                                        posk9confirm = "true";
-                                        poslat4 = "true";
-                                    }
-                                    else {
-                                        posk9confirm = "false";
-                                        poslat4 = "false";
-                                    }
-                                }
-                                //////////// kursi 10 11 12 ///////////////////
-                                else if(longitude > long4 && longitude < long5) {
-                                    poslong6 = "false";
-                                    poslong2 = "false";
-                                    poslong3 = "false";
-                                    poslong4 = "false";
-                                    poslong5 = "true";
-                                    if (latitude > lat2 && latitude < lat3){
-                                        posk10confirm = "true";
-                                        poslat3 = "true";
-                                    }
-                                    else if (latitude > lat3 && latitude < lat4) {
-                                        posk11confirm = "true";
-                                        poslat4 = "true";
-                                    }
-                                    else if (latitude > lat4 && latitude < lat5) {
-                                        posk12confirm = "true";
-                                        poslat5 = "true";
-                                    }
-                                    else {
-                                        posk10confirm = "false";
-                                        posk11confirm = "false";
-                                        posk12confirm = "false";
-                                        poslat3 = "false";
-                                        poslat4 = "false";
-                                        poslat5 = "false";
-                                    }
+                                else if (latitude > lat4 && latitude < lat5){
+                                    posk4confirm = true;
+                                    poslat5 = true;
                                 }
                                 else {
-                                    poslong6 = "false";
-                                    poslong1 = "false";
-                                    poslong2 = "false";
-                                    poslong3 = "false";
-                                    poslong4 = "false";
-                                    poslong5 = "false";
-                                    posk1confirm = "false";
-                                    posk2confirm = "false";
-                                    posk3confirm = "false";
-                                    posk4confirm = "false";
-                                    posk6confirm = "false";
-                                    posk7confirm = "false";
-                                    posk9confirm = "false";
-                                    posk10confirm = "false";
-                                    posk11confirm = "false";
-                                    posk12confirm = "false";
-
+                                    posk2confirm = false;
+                                    posk3confirm = false;
+                                    posk4confirm = false;
+                                    poslat3 = false;
+                                    poslat4 = false;
+                                    poslat5 = false;
                                 }
+                                //poslong2 = true;
+                            }
+                            ///// kursi 6 7 ////
+                            else if (longitude > long2 && longitude < long3)  {
 
-                                if (posk1confirm.equals("true"))
-                                {
-                                    txtLatLong.setText(
-                                            String.format(
-                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 1 \n " +
-                                                            "\n pos lat1 : %s \n pos long6 : %s \n posk1confirm : %s" ,
-                                                    latitude,
-                                                    longitude,
-                                                    poslat1,
-                                                    poslong6,
-                                                    posk1confirm
-                                            )
-                                    );
+                                if (latitude > lat2 && latitude < lat4){
+                                    posk6confirm = true;
+                                    poslat4 = true;
                                 }
-                                else if (posk2confirm.equals("true"))
+                                else if (latitude > lat4 && latitude < lat5) {
+                                    posk7confirm = true;
+                                    poslat5 = true;
+                                }
+                                else {
+                                    posk6confirm = false;
+                                    posk7confirm = false;
+                                    poslat4 = false;
+                                    poslat5 = false;
+                                }
+                                poslong3 = true;
+                            }
+                            //// kursi 9 ///
+                            else if (longitude > long3 && longitude < long4){
+
+                                if (latitude > lat2 && latitude < lat4){
+                                    posk9confirm = true;
+                                    poslat4 = true;
+                                }
+                                else{
+                                    posk9confirm = false;
+                                    poslat4 = false;
+                                }
+                                poslong4 = true;
+                            }
+                            //// kursi 10 11 12 //
+                            else if (longitude > long4 && longitude < long5){
+
+                                if (latitude > lat2 && latitude < lat3){
+                                    posk10confirm = true;
+                                    poslat3 = true;
+                                }
+                                else if (latitude > lat3 && latitude < lat4){
+                                    posk11confirm = true;
+                                    poslat4 = true;
+                                }
+                                else if (latitude > lat4 && latitude < lat5){
+                                    posk12confirm = true;
+                                    poslat5 = true;
+                                }
+                                else {
+                                    posk10confirm = false;
+                                    posk11confirm = false;
+                                    posk12confirm = false;
+                                    poslat3 = false;
+                                    poslat4 = false;
+                                    poslat5 = false;
+                                }
+                                poslong5 = true;
+                            }
+                            /// kursi 1//
+
+                            else if (longitude > long2 && longitude < long4){
+                                //
+                                if (latitude > lat1 && latitude < lat2){
+                                    posk1confirm = true;
+                                    poslat1 = true;
+                                }
+                                else{
+                                    posk1confirm = false;
+                                    poslat1 = false;
+                                }
+                                poslong4 = true;
+                            }
+
+                            else {
+                                poslong1 = false;
+                                poslong2 = false;
+                                poslong3 = false;
+                                poslong4 = true;
+                                poslong5 = false;
+                                poslong6 = false;
+                                poslat1 = true;
+                                poslat2 = false;
+                                poslat3 = false;
+                                poslat4 = false;
+                                poslat5 = false;
+                                posk1confirm = true;
+                                posk2confirm = false;
+                                posk3confirm = false;
+                                posk4confirm = false;
+                                posk6confirm = false;
+                                posk7confirm = false;
+                                posk9confirm = false;
+                                posk10confirm = false;
+                                posk11confirm = false;
+                                posk12confirm = false;
+                            }
+
+                                if (posk2confirm)
                                 {
                                     txtLatLong.setText(
                                             String.format(
@@ -271,7 +313,7 @@ public class MainActivity extends AppCompatActivity {
                                             )
                                     );
                                 }
-                                else if (posk3confirm.equals("true"))
+                                else if (posk3confirm)
                                 {
                                     txtLatLong.setText(
                                             String.format(
@@ -285,7 +327,7 @@ public class MainActivity extends AppCompatActivity {
                                             )
                                     );
                                 }
-                                else if (posk4confirm.equals("true"))
+                                else if (posk4confirm)
                                 {
                                     txtLatLong.setText(
                                             String.format(
@@ -299,7 +341,7 @@ public class MainActivity extends AppCompatActivity {
                                             )
                                     );
                                 }
-                                else if (posk6confirm.equals("true"))
+                                else if (posk6confirm)
                                 {
                                     txtLatLong.setText(
                                             String.format(
@@ -313,7 +355,7 @@ public class MainActivity extends AppCompatActivity {
                                             )
                                     );
                                 }
-                                else if (posk7confirm.equals("true"))
+                                else if (posk7confirm)
                                 {
                                     txtLatLong.setText(
                                             String.format(
@@ -327,7 +369,7 @@ public class MainActivity extends AppCompatActivity {
                                             )
                                     );
                                 }
-                                else if (posk9confirm.equals("true"))
+                                else if (posk9confirm)
                                 {
                                     txtLatLong.setText(
                                             String.format(
@@ -341,7 +383,7 @@ public class MainActivity extends AppCompatActivity {
                                             )
                                     );
                                 }
-                                else if (posk10confirm.equals("true"))
+                                else if (posk10confirm)
                                 {
                                     txtLatLong.setText(
                                             String.format(
@@ -355,7 +397,7 @@ public class MainActivity extends AppCompatActivity {
                                             )
                                     );
                                 }
-                                else if (posk11confirm.equals("true"))
+                                else if (posk11confirm)
                                 {
                                     txtLatLong.setText(
                                             String.format(
@@ -369,7 +411,7 @@ public class MainActivity extends AppCompatActivity {
                                             )
                                     );
                                 }
-                                else if (posk12confirm.equals("true"))
+                                else if (posk12confirm)
                                 {
                                     txtLatLong.setText(
                                             String.format(
@@ -387,13 +429,13 @@ public class MainActivity extends AppCompatActivity {
                                 {
                                     txtLatLong.setText(
                                             String.format(
-                                                    "Latitude: %s\nLongitude : %s \n Location : Unavailable \n " +
-                                                            "\n pos lat?? : %s \n pos long?? : %s \n posk??confirm : %s" ,
+                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 1 \n " +
+                                                            "\n pos lat1 : %s \n pos long4 : %s \n posk1confirm : %s" ,
                                                     latitude,
                                                     longitude,
-                                                    unavailable,
-                                                    unavailable,
-                                                    unavailable
+                                                    poslat1,
+                                                    poslong4,
+                                                    posk1confirm
                                             )
                                     );
                                 }
