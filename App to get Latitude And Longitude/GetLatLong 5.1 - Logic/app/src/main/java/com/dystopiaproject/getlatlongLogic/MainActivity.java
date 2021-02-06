@@ -1,15 +1,21 @@
 package com.dystopiaproject.getlatlongLogic;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -23,6 +29,7 @@ import com.google.android.gms.location.LocationServices;
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
+    LocationManager locationManager;
     private TextView txtLatLong;
     private ProgressBar progressBar;
     double lat1,lat2,lat3,lat4, lat5,
@@ -41,51 +48,69 @@ public class MainActivity extends AppCompatActivity {
 
         txtLatLong = findViewById(R.id.txtLatLong);
         progressBar = findViewById(R.id.progressBar);
+        locationManager=(LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         findViewById(R.id.BtnGetCurrentLocation).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(
-                        getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(
-                            MainActivity.this,
-                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                            REQUEST_CODE_LOCATION_PERMISSION
-                    );
-                } else {
-                    getCurrentLocation();
-                    final Handler handler = new Handler(Looper.getMainLooper());
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            //Do something after 100ms
-                            getCurrentLocation();
-                        }
-                    }, 1000);
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            //Do something after 100ms
-                            getCurrentLocation();
-                        }
-                    }, 2000);
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            //Do something after 100ms
-                            getCurrentLocation();
-                        }
-                    }, 3000);
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            //Do something after 100ms
-                            getCurrentLocation();
-                        }
-                    }, 5000);
+
+                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
+                {
+
+                    //Write Function To enable gps
+
+                    OnGPS();
+                }
+                else {
+
+                    if (ContextCompat.checkSelfPermission(
+                            getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                            != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(
+                                MainActivity.this,
+                                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                                REQUEST_CODE_LOCATION_PERMISSION
+                        );
+                    }
+
+
+                    else {
+
+                        getCurrentLocation();
+                        final Handler handler = new Handler(Looper.getMainLooper());
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                //Do something after 100ms
+                                getCurrentLocation();
+                            }
+                        }, 1000);
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                //Do something after 100ms
+                                getCurrentLocation();
+                            }
+                        }, 2000);
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                //Do something after 100ms
+                                getCurrentLocation();
+                            }
+                        }, 3000);
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                //Do something after 100ms
+                                getCurrentLocation();
+                            }
+                        }, 5000);
+
+                    }
 
                 }
+
             }
         });
     }
@@ -102,17 +127,37 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void OnGPS() {
+
+        final AlertDialog.Builder builder= new AlertDialog.Builder(this);
+
+        builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            }
+        }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dialog.cancel();
+            }
+        });
+        final AlertDialog alertDialog=builder.create();
+        alertDialog.show();
+    }
+
     private void getCurrentLocation() {
         unavailable = "Unavailable";
         //////////////////////
-        lat1 = -7.7283175;
-        lat2 = -7.7283155;
+        lat1 = -7.7283180;
+        lat2 = -7.7283163;
         lat3 = -7.7283145;
         lat4 = -7.7283110;
         lat5 = -7.7283100;
 
         long1 = 110.4109377;
-        long2 = 110.4109404;
+        long2 = 110.4109390;
         long3 = 110.4109420;
         long4 = 110.4109444;
         long5 = 110.4109471;
@@ -206,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
                             ///// kursi 6 7 ////
                             else if (longitude > long2 && longitude < long3)  {
 
-                                if (latitude > lat2 && latitude < lat4){
+                                if (latitude > lat3 && latitude < lat4){
                                     posk6confirm = true;
                                     poslat4 = true;
                                 }
@@ -225,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
                             //// kursi 9 ///
                             else if (longitude > long3 && longitude < long4){
 
-                                if (latitude > lat2 && latitude < lat4){
+                                if (latitude > lat3 && latitude < lat4){
                                     posk9confirm = true;
                                     poslat4 = true;
                                 }
@@ -279,15 +324,15 @@ public class MainActivity extends AppCompatActivity {
                                 poslong1 = false;
                                 poslong2 = false;
                                 poslong3 = false;
-                                poslong4 = true;
+                                poslong4 = false;
                                 poslong5 = false;
                                 poslong6 = false;
-                                poslat1 = true;
+                                poslat1 = false;
                                 poslat2 = false;
                                 poslat3 = false;
                                 poslat4 = false;
                                 poslat5 = false;
-                                posk1confirm = true;
+                                posk1confirm = false;
                                 posk2confirm = false;
                                 posk3confirm = false;
                                 posk4confirm = false;

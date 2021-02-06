@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginForm">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="50dp">
+
+        <ImageView
+            android:id="@+id/LogoLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            tools:srcCompat="@tools:sample/avatars" />
+        <TextView
+            android:id="@+id/TvLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="50sp"
+            android:text="@string/login"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/TvNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nama"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/EdNama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/TvMeja"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/meja"
+            android:textSize="20sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Spinner
+                android:id="@+id/SpinnerMeja"
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                />
+            <Button
+                android:id="@+id/BtnRefreshMeja"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/refresh"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="30dp" />
+            <Button
+                android:id="@+id/BtnManualMeja"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/edit_manual"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/TvKodeMeja"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/kode_meja"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/EdKodeMeja"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:enabled="false"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:orientation="vertical">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/masuk"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/lihat_menu"/>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
