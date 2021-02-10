@@ -1,0 +1,47 @@
+USE db_palgading;
+
+CREATE TABLES Customer(
+    id_customer CHAR() AUTO_INCREMENT PRIMARY KEY,
+    nama_customer CHAR(15),
+    kode_meja CHAR(6)
+    FOREIGN KEY (kode_meja) REFERENCES Cus_table (kode_meja),
+),
+
+CREATE TABLES Menu(
+    id_menu CHAR() AUTO_INCREMENT PRIMARY KEY,
+    nama_makanan VARCHAR(40),
+    tipe ENUM('makanan','minuman','jajanan'),
+    deskripsi_makanan VARCHAR(100),
+    harga INT(10),
+    stok INT(2),
+    total_sold INT(10)
+),
+
+CREATE TABLES Cus_table(
+    kode_meja CHAR(6) PRIMARY KEY,
+    id_customer
+    FOREIGN KEY (id_customer) REFERENCES Customer (id_customer),
+    no_meja CHAR(2)
+),
+
+CREATE TABLES Menu_order(
+    id_menu_order CHAR() AUTO_INCREMENT PRIMARY KEY,
+    FOREIGN KEY (id_customer) REFERENCES Customer (id_customer),
+   	FOREIGN KEY (kode_meja) REFERENCES Cus_table (kode_meja),
+    FOREIGN KEY (id_menu) REFERENCES Menu (id_menu),
+    nama_topping VARCHAR(50),
+    harga_topping INT(10),
+    total_harga_topping INT(10),
+    jumlah_topping VARCHAR(2),
+    jumlah_item VARCHAR(2),
+    status ENUM('Keranjang','Menunggu konfirmasi', 'Dibuat', 'Diantar', 'Menunggu konfirmasi pembayaran') 
+),
+    
+CREATE TABLES Admin(
+    id_admin CHAR() AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(10),
+    password VARCHAR(10)
+)
+    
+    
+    
