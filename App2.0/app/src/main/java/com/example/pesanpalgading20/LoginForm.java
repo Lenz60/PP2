@@ -1,4 +1,10 @@
-package com.example.pesanpalgading;
+package com.example.pesanpalgading20;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Context;
@@ -19,12 +25,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
@@ -36,7 +36,7 @@ public class LoginForm extends AppCompatActivity {
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
     LocationManager locationManager;
-    ProgressBar ProgressBar;
+    android.widget.ProgressBar ProgressBar;
     private Button BtnRefreshMeja,BtnMasuk;
     private EditText EdKodeMeja;
     TextView TvLokasiMeja;
@@ -51,6 +51,7 @@ public class LoginForm extends AppCompatActivity {
 
     Spinner SpinnerMeja;
     String[] NomorMeja = {"1","2","3","4","5/6","7","8/9","10","11","12"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +68,6 @@ public class LoginForm extends AppCompatActivity {
         SpinnerMeja.setVisibility(View.GONE);
         SpinnerMeja.setEnabled(false);
         SpinnerMeja.setClickable(false);
-
 
     }
 
@@ -436,7 +436,6 @@ public class LoginForm extends AppCompatActivity {
         return result.toString();
     }
 
-
     public void EditSpinner(View view) {
         TvLokasiMeja.setVisibility(View.GONE);
         SpinnerMeja.setVisibility(View.VISIBLE);
@@ -451,4 +450,5 @@ public class LoginForm extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
 }
