@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,6 +26,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pesanpalgading20.view.BottomNavbar;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
@@ -68,6 +70,7 @@ public class LoginForm extends AppCompatActivity {
         SpinnerMeja.setVisibility(View.GONE);
         SpinnerMeja.setEnabled(false);
         SpinnerMeja.setClickable(false);
+        EdKodeMeja.setText(getRandomString(6));
 
     }
 
@@ -160,15 +163,13 @@ public class LoginForm extends AppCompatActivity {
     }
 
     private void getCurrentLocation() {
-        unavailable = "Unavailable";
-        //////////////////////
         lat1 = -7.7283180;
         lat2 = -7.7283163;
         lat3 = -7.7283145;
-        lat4 = -7.7283110;
-        lat5 = -7.7283100;
+        lat4 = -7.7283115;
+        lat5 = -7.7283070;
 
-        long1 = 110.4109377;
+        long1 = 110.4109377; //9377 + 10
         long2 = 110.4109390;
         long3 = 110.4109420;
         long4 = 110.4109444;
@@ -237,10 +238,14 @@ public class LoginForm extends AppCompatActivity {
                             posk12confirm = false;
                             ///kursi 1 //
 
-
-                            ///// kursi 2 3 4 ////
+                            //// kursi 1 masih belom bisa kedeteksi ///
+                            ///// kursi 1 2 3 4  ////
                             if (longitude > long1 && longitude < long2){
-                                if (latitude > lat2 && latitude < lat3){
+                                if (latitude > lat1 && latitude < lat2){
+                                    posk1confirm = true;
+                                    poslat1 = true;
+                                }
+                                else if (latitude > lat2 && latitude < lat3){
                                     posk2confirm = true;
                                     poslat3 = true;
                                 }
@@ -262,10 +267,14 @@ public class LoginForm extends AppCompatActivity {
                                 }
                                 //poslong2 = true;
                             }
-                            ///// kursi 6 7 ////
+                            ///// kursi 1 6 7 ////
                             else if (longitude > long2 && longitude < long3)  {
 
-                                if (latitude > lat3 && latitude < lat4){
+                                if (latitude > lat1 && latitude < lat2){
+                                    posk1confirm = true;
+                                    poslat1 = true;
+                                }
+                                else if (latitude > lat3 && latitude < lat4){
                                     posk6confirm = true;
                                     poslat4 = true;
                                 }
@@ -281,10 +290,14 @@ public class LoginForm extends AppCompatActivity {
                                 }
                                 poslong3 = true;
                             }
-                            //// kursi 9 ///
+                            //// kursi 1 9 ///
                             else if (longitude > long3 && longitude < long4){
 
-                                if (latitude > lat3 && latitude < lat4){
+                                if (latitude > lat1 && latitude < lat2){
+                                    posk1confirm = true;
+                                    poslat1 = true;
+                                }
+                                else if (latitude > lat3 && latitude < lat4){
                                     posk9confirm = true;
                                     poslat4 = true;
                                 }
@@ -297,7 +310,11 @@ public class LoginForm extends AppCompatActivity {
                             //// kursi 10 11 12 //
                             else if (longitude > long4 && longitude < long5){
 
-                                if (latitude > lat2 && latitude < lat3){
+                                if (latitude > lat1 && latitude < lat2){
+                                    posk1confirm = true;
+                                    poslat1 = true;
+                                }
+                                else if (latitude > lat2 && latitude < lat3){
                                     posk10confirm = true;
                                     poslat3 = true;
                                 }
@@ -320,7 +337,7 @@ public class LoginForm extends AppCompatActivity {
                                 poslong5 = true;
                             }
                             /// kursi 1//
-
+                            /*
                             else if (longitude > long2 && longitude < long4){
                                 //
                                 if (latitude > lat1 && latitude < lat2){
@@ -333,7 +350,7 @@ public class LoginForm extends AppCompatActivity {
                                 }
                                 poslong4 = true;
                             }
-
+                            */
                             else {
                                 poslong1 = false;
                                 poslong2 = false;
@@ -396,7 +413,8 @@ public class LoginForm extends AppCompatActivity {
                             }
                             else
                             {
-                                TvLokasiMeja.setText("1");
+                                TvLokasiMeja.setText("Deteksi Gagal");
+                                TvLokasiMeja.setTextColor(Color.RED);
                             }
 
 
@@ -437,6 +455,7 @@ public class LoginForm extends AppCompatActivity {
     }
 
     public void EditSpinner(View view) {
+        EdKodeMeja.setText(getRandomString(6));
         TvLokasiMeja.setVisibility(View.GONE);
         SpinnerMeja.setVisibility(View.VISIBLE);
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item,NomorMeja);
@@ -447,7 +466,7 @@ public class LoginForm extends AppCompatActivity {
     }
 
     public void masuk(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, BottomNavbar.class);
         startActivity(intent);
     }
 

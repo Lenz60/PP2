@@ -153,8 +153,8 @@ public class MainActivity extends AppCompatActivity {
         lat1 = -7.7283180;
         lat2 = -7.7283163;
         lat3 = -7.7283145;
-        lat4 = -7.7283110;
-        lat5 = -7.7283100;
+        lat4 = -7.7283115;
+        lat5 = -7.7283070;
 
         long1 = 110.4109377;
         long2 = 110.4109390;
@@ -224,9 +224,13 @@ public class MainActivity extends AppCompatActivity {
                             ///kursi 1 //
 
 
-                            ///// kursi 2 3 4 ////
+                            ///// kursi 1 2 3 4  ////
                             if (longitude > long1 && longitude < long2){
-                                if (latitude > lat2 && latitude < lat3){
+                                if (latitude > lat1 && latitude < lat2){
+                                    posk1confirm = true;
+                                    poslat1 = true;
+                                }
+                                else if (latitude > lat2 && latitude < lat3){
                                     posk2confirm = true;
                                     poslat3 = true;
                                 }
@@ -248,10 +252,14 @@ public class MainActivity extends AppCompatActivity {
                                 }
                                 //poslong2 = true;
                             }
-                            ///// kursi 6 7 ////
+                            ///// kursi 1 6 7 ////
                             else if (longitude > long2 && longitude < long3)  {
 
-                                if (latitude > lat3 && latitude < lat4){
+                                if (latitude > lat1 && latitude < lat2){
+                                    posk1confirm = true;
+                                    poslat1 = true;
+                                }
+                                else if (latitude > lat3 && latitude < lat4){
                                     posk6confirm = true;
                                     poslat4 = true;
                                 }
@@ -267,10 +275,14 @@ public class MainActivity extends AppCompatActivity {
                                 }
                                 poslong3 = true;
                             }
-                            //// kursi 9 ///
+                            //// kursi 1 9 ///
                             else if (longitude > long3 && longitude < long4){
 
-                                if (latitude > lat3 && latitude < lat4){
+                                if (latitude > lat1 && latitude < lat2){
+                                    posk1confirm = true;
+                                    poslat1 = true;
+                                }
+                                else if (latitude > lat3 && latitude < lat4){
                                     posk9confirm = true;
                                     poslat4 = true;
                                 }
@@ -283,7 +295,11 @@ public class MainActivity extends AppCompatActivity {
                             //// kursi 10 11 12 //
                             else if (longitude > long4 && longitude < long5){
 
-                                if (latitude > lat2 && latitude < lat3){
+                                if (latitude > lat1 && latitude < lat2){
+                                    posk1confirm = true;
+                                    poslat1 = true;
+                                }
+                                else if (latitude > lat2 && latitude < lat3){
                                     posk10confirm = true;
                                     poslat3 = true;
                                 }
@@ -306,7 +322,7 @@ public class MainActivity extends AppCompatActivity {
                                 poslong5 = true;
                             }
                             /// kursi 1//
-
+                            /*
                             else if (longitude > long2 && longitude < long4){
                                 //
                                 if (latitude > lat1 && latitude < lat2){
@@ -319,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                                 poslong4 = true;
                             }
-
+                            */
                             else {
                                 poslong1 = false;
                                 poslong2 = false;
@@ -474,7 +490,7 @@ public class MainActivity extends AppCompatActivity {
                                 {
                                     txtLatLong.setText(
                                             String.format(
-                                                    "Latitude: %s\nLongitude : %s \n Location : Kursi 1 \n " +
+                                                    "Latitude: %s\nLongitude : %s \n Location : Unavailable \n " +
                                                             "\n pos lat1 : %s \n pos long4 : %s \n posk1confirm : %s" ,
                                                     latitude,
                                                     longitude,
