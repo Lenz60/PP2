@@ -1,8 +1,35 @@
-telnet local host 5554
+telnet localhost 5554
 auth 6xV8ngrTAWgnf4AK
 
-110.4109462 -7.7283161
+110.4109399 -7.7283162
 
-110.4109404 -7.728310544444
+====== Latitude ============
+double tipe data selalu membulat kan 3 angka terakhir ,,
+jika angka terakhir 4, 5 , 6 dst maka akan dibulatkan keatas 
+jika angka terakhir 3, 2 , 1 dst maka akan dibulatkan kebawah
+
+
+contoh -7.7283085 akan dibulatkan menjadi -7.7283090 yang menyebabkan titik melompat menjadi -7.7283083
+lalu melompat sejauh sejauh 7 titik atau 0.0000007
+
+dan -7.7283082 akan dibulatkan menjadi -7.7283080 yang menyebabkan titik melompat menjadi -7.7283067
+lalu melompat sejauh sejauh 13 titik atau 0.0000013
+-----------------
+
+lalu hasil akhir pembulatan akan di bandingkan pada if statement
+
+
+====== Longitude ============
+double tipe data selalu membulat kan 3 angka terakhir ,, 
+jika angka terakhir 4, 5 , 6 dst maka akan dibulatkan keatas 
+jika angka terakhir 3, 2 , 1 dst maka akan dibulatkan kebawah
+
+contoh 110.4109385 akan dibulatkan menjadi 110.4109390 yang menyebabkan titik melompat menjadi 110.4109383
+lalu melompat plus sejauh 7 titik atau 0.0000007
+
+dan 110.4109380 akan dibulatkan menjadi 110.4109370 yang menyebabkan titik melompat menjadi 110.4109367
+lalu melompat minus sejauh sejauh 3 titik atau 0.0000003
+
+lalu hasil akhir pembulatan akan di bandingkan pada if statement
 
  

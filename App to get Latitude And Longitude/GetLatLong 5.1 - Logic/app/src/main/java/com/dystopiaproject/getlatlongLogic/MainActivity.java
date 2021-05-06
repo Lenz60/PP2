@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
         long1 = 110.4109377;
         long2 = 110.4109390;
-        long3 = 110.4109420;
+        long3 = 110.4109416; //9420
         long4 = 110.4109444;
         long5 = 110.4109471;
         //////// long kursi 1 ////////////
@@ -250,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
                                     poslat4 = false;
                                     poslat5 = false;
                                 }
-                                //poslong2 = true;
+                                poslong2 = true;
                             }
                             ///// kursi 1 6 7 ////
                             else if (longitude > long2 && longitude < long3)  {
@@ -360,7 +360,26 @@ public class MainActivity extends AppCompatActivity {
                                 posk12confirm = false;
                             }
 
-                                if (posk2confirm)
+                            if (posk1confirm)
+                            {
+                                txtLatLong.setText(
+                                        String.format(
+                                                "Latitude: %s\nLongitude : %s \n Location : Kursi 1 \n " +
+                                                        "\n pos lat1 : %s \n pos long1 : %s \n pos long2 : %s \n pos long3 : %s \n" +
+                                                        " pos long4 : %s \n pos long5 : %s \n posk2confirm : %s" ,
+                                                latitude,
+                                                longitude,
+                                                poslat1,
+                                                poslong1,
+                                                poslong2,
+                                                poslong3,
+                                                poslong4,
+                                                poslong5,
+                                                posk1confirm
+                                        )
+                                );
+                            }
+                                else if (posk2confirm)
                                 {
                                     txtLatLong.setText(
                                             String.format(
@@ -491,11 +510,16 @@ public class MainActivity extends AppCompatActivity {
                                     txtLatLong.setText(
                                             String.format(
                                                     "Latitude: %s\nLongitude : %s \n Location : Unavailable \n " +
-                                                            "\n pos lat1 : %s \n pos long4 : %s \n posk1confirm : %s" ,
+                                                            "\n pos lat1 : %s \n pos long1 : %s \n pos long2 : %s \n pos long3 : %s \n" +
+                                                            " pos long4 : %s \n pos long5 : %s \n posk2confirm : %s" ,
                                                     latitude,
                                                     longitude,
                                                     poslat1,
+                                                    poslong1,
+                                                    poslong2,
+                                                    poslong3,
                                                     poslong4,
+                                                    poslong5,
                                                     posk1confirm
                                             )
                                     );
