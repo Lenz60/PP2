@@ -163,15 +163,16 @@ public class LoginForm extends AppCompatActivity {
     }
 
     private void getCurrentLocation() {
+        //////////////////////
         lat1 = -7.7283180;
         lat2 = -7.7283163;
         lat3 = -7.7283145;
         lat4 = -7.7283115;
         lat5 = -7.7283070;
 
-        long1 = 110.4109377; //9377 + 10
+        long1 = 110.4109377;
         long2 = 110.4109390;
-        long3 = 110.4109420;
+        long3 = 110.4109416; //9420
         long4 = 110.4109444;
         long5 = 110.4109471;
         //////// long kursi 1 ////////////
@@ -307,7 +308,7 @@ public class LoginForm extends AppCompatActivity {
                                 }
                                 poslong4 = true;
                             }
-                            //// kursi 10 11 12 //
+                            //// kursi 1 10 11 12 //
                             else if (longitude > long4 && longitude < long5){
 
                                 if (latitude > lat1 && latitude < lat2){
@@ -375,7 +376,11 @@ public class LoginForm extends AppCompatActivity {
                                 posk12confirm = false;
                             }
 
-                            if (posk2confirm)
+                            if (posk1confirm)
+                            {
+                                TvLokasiMeja.setText("1");
+                            }
+                            else if (posk2confirm)
                             {
                                 TvLokasiMeja.setText("2");
                             }
