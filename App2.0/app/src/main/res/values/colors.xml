@@ -9,4 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="BlueButton">#0D8CE1</color>
     <color name="Gray">#888888</color>
+
+    <!--- Pallete 1 -->
+    <color name="pal1c1">#f9f7f7</color>
+    <color name="pal1c2">#dbe2ef</color>
+    <color name="pal1c3">#3f72af</color>
+    <color name="pal1c4">#112d4e</color>
+
 </resources>

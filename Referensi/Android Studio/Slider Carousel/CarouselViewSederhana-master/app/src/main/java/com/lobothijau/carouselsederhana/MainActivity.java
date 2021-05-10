@@ -31,12 +31,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        context = getApplicationContext();
+        myToast1= "gambar1";
+        myToast2= "gambar2";
+        myToast3= "gambar3";
+        duration = Toast.LENGTH_LONG;
+        toast1 = Toast.makeText(context,myToast1,duration);
+        toast2 = Toast.makeText(context,myToast2,duration);
+        toast3 = Toast.makeText(context,myToast3,duration);
+
 
         carouselView = findViewById(R.id.carouselView);
-        carouselView.setPageCount(sampleImages.length);
+        carouselView.setPageCount(5);
         carouselView.setImageListener(imageListener);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -50,10 +60,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     ImageListener imageListener = new ImageListener() {
+
+
+
+
         @Override
-        public void setImageForPosition(int position, ImageView imageView) {
+        public void setImageForPosition(final int position, ImageView imageView) {
             imageView.setImageResource(sampleImages[position]);
+
+            imageView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    if (position == 0){
+                        toast1.show();//intent this
+                    }
+                    else if (position == 1) {
+                        toast2.show();//intent this
+                    }
+                    else if (position == 2 ){
+                        toast3.show();//intent this
+                    }
+                }
+            });
+
         }
+
     };
 
 
@@ -70,28 +101,6 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        context = getApplicationContext();
-        myToast1= "gambar1";
-        myToast2= "gambar2";
-        myToast3= "gambar3";
-        duration = Toast.LENGTH_LONG;
-        toast1 = Toast.makeText(context,myToast1,duration);
-        toast2 = Toast.makeText(context,myToast2,duration);
-        toast3 = Toast.makeText(context,myToast3,duration);
-        if (id == 0){
-            toast1.show();
-        }
-        else if (id == 1 ){
-            toast2.show();
-        }
-        else if (id == 2){
-            toast3.show();
-        }
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

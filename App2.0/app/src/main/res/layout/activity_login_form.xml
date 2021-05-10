@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginForm">
+    tools:context=".LoginForm"
+    android:backgroundTint="@color/pal1c1">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -97,7 +98,7 @@
                 android:layout_marginRight="10dp"
                 android:textSize="12sp"
                 android:text="@string/refresh"
-                android:backgroundTint="@color/BlueButton"
+                android:backgroundTint="@color/pal1c3"
                 android:onClick="RandomizeCode"/>
 
 
@@ -109,7 +110,7 @@
                 android:layout_marginLeft="230dp"
                 android:textSize="12sp"
                 android:text="@string/edit_manual"
-                app:backgroundTint="@color/BlueButton"
+                app:backgroundTint="@color/pal1c3"
                 android:onClick="EditSpinner"/>
 
         </FrameLayout>
@@ -145,14 +146,14 @@
             android:id="@+id/BtnMasuk"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:backgroundTint="@color/BlueButton"
+            android:backgroundTint="@color/pal1c3"
             android:onClick="masuk"
             android:text="@string/masuk"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/BlueButton"
+            android:backgroundTint="@color/pal1c3"
             android:text="@string/lihat_menu"/>
 
 
