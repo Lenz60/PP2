@@ -21,4 +21,27 @@
 Sed semper mi erat, sed faucibus urna laoreet a. Integer nec massa libero. Donec luctus quis turpis quis lobortis. Praesent aliquam est non enim varius, at consectetur purus elementum. Duis molestie, orci vitae egestas gravida, erat mi consectetur urna, in dapibus mi ipsum et sapien. Cras diam ipsum, convallis ac maximus in, pulvinar id dui. Integer eu lorem lobortis, aliquam eros non, pretium purus. Nulla posuere aliquam mauris ac bibendum. Aenean vestibulum molestie massa. Aliquam sed justo eget urna suscipit consectetur. Quisque quis neque ex. Duis egestas magna quis enim fringilla, id cursus eros dignissim.
 
 Nullam in tempor velit. Morbi at neque lacinia, ornare est eget, auctor sapien. Praesent vel porta ligula, lacinia interdum ipsum. Curabitur auctor magna nec congue pretium. Cras at tempor dui, non maximus tellus. Etiam ullamcorper urna eleifend massa rutrum, vitae rhoncus urna faucibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis lacinia scelerisque augue et venenatis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</string>
+    <string name="toppingMieAyam">Topping Mie Ayam :</string>
+    <string name="toppingBaksoKuah">Topping Bakso :</string>
+
+    <string-array name="toppingMieAyam" >
+        <item>Extra Ayam  (Rp.3000)</item>
+        <item>Extra Tetelan Sapi  (Rp.7000)</item>
+        <item>Cakar  (Rp.4000)(2pcs)</item>
+        <item>Kepala  (Rp.4000)/pcs</item>
+        <item>Bakso Asli Sapi  (Rp.3000)/pcs</item>
+        <item>Telur Mata Sapi  (Rp.4000)</item>
+        <item>Balungan Rica Ayam  (Rp.4000)</item>
+        <item>Extra Sawi  (Rp.1000)</item>
+        <item>Extra Acar  (Rp.1000)</item>
+    </string-array>
+
+    <string-array name="toppingBaksoKuah" >
+        <item>1 Pentol Bakso Urat/Halus  (Rp.3000)</item>
+        <item>1 Pangsit Goreng/Kukus  (Rp.1500)/pcs</item>
+        <item>1 Tahu Bakso  (Rp.1500)/pcs</item>
+        <item>Tetelan Sapi  (Rp.7000)</item>
+        <item>Kuah Bakso,Mie Kuning, &amp; Mie Soon  (Rp.2000)</item>
+    </string-array>
+
 </resources>

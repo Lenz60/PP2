@@ -1,12 +1,16 @@
 package com.example.pesanpalgading20;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.material.tabs.TabLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +18,10 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class MenuFragment extends Fragment {
+
+    TabLayout tabLayout;
+    ViewPager viewPager;
+    Context context;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +66,40 @@ public class MenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View viewRoot = inflater.inflate(R.layout.fragment_menu, container, false);
+        tabLayout = (TabLayout)viewRoot.findViewById(R.id.tabLayoutView);
+        viewPager = (ViewPager)viewRoot.findViewById(R.id.containerViewPager);
+
+        context = container.getContext();
+
+        tabLayout.addTab(tabLayout.newTab().setText("Makanan"));
+        tabLayout.addTab(tabLayout.newTab().setText("Minuman"));
+        tabLayout.addTab(tabLayout.newTab().setText("Jajanan"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        final MyAdapter adapter = new MyAdapter(getActivity().getApplicationContext(),getFragmentManager(),tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false);
+        return viewRoot;
     }
 }
