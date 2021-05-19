@@ -16,15 +16,90 @@
     <string name="rekomendasi_kami">Rekomendasi Kami :</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum sed tellus eu suscipit. Cras semper leo augue, id fringilla urna vulputate ac. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam sodales posuere maximus. Maecenas at nisl condimentum, dapibus mi eget, suscipit magna. Vivamus ut diam est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut sit amet ligula eget felis dictum sollicitudin. Integer ultricies nulla eu sem consequat efficitur. Vestibulum vitae velit eleifend tortor pellentesque mattis quis nec eros.
 
-Sed semper mi erat, sed faucibus urna laoreet a. Integer nec massa libero. Donec luctus quis turpis quis lobortis. Praesent aliquam est non enim varius, at consectetur purus elementum. Duis molestie, orci vitae egestas gravida, erat mi consectetur urna, in dapibus mi ipsum et sapien. Cras diam ipsum, convallis ac maximus in, pulvinar id dui. Integer eu lorem lobortis, aliquam eros non, pretium purus. Nulla posuere aliquam mauris ac bibendum. Aenean vestibulum molestie massa. Aliquam sed justo eget urna suscipit consectetur. Quisque quis neque ex. Duis egestas magna quis enim fringilla, id cursus eros dignissim.
+    <!-- Mie Ayam -->
+    <string name="MenuMieAyam1">Mie Ayam Original </string>
+    <string name="DescMenuMieAyam1">(Kuah/Goreng)</string>
+    <string name="MenuMieAyam2">Mie Ayam Jumbo</string>
+    <string name="DescMenuMieAyam2">(Kuah/Goreng)</string>
+    <string name="MenuMieAyam3">Mie Ayam Super Jumbo Komplit</string>
+    <string name="Desc1MenuMieAyam3">(Kuah/Goreng)</string>
+    <string name="Desc2MenuMieAyam3">(Extra ayam, tetelan sapi &amp; bakso sapi)</string>
 
-Nullam in tempor velit. Morbi at neque lacinia, ornare est eget, auctor sapien. Praesent vel porta ligula, lacinia interdum ipsum. Curabitur auctor magna nec congue pretium. Cras at tempor dui, non maximus tellus. Etiam ullamcorper urna eleifend massa rutrum, vitae rhoncus urna faucibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis lacinia scelerisque augue et venenatis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</string>
+    <!-- Topping Mie Ayam -->
+    <string name="ToppingMieAyam1">Extra Ayam</string>
+    <string name="ToppingMieAyam2">Extra Tetelan Sapi</string>
+    <string name="ToppingMieAyam3">Cakar (2pcs)</string>
+    <string name="ToppingMieAyam4">Kepala (/pcs)</string>
+    <string name="ToppingMieAyam5">Bakso Asli Sapi (/pcs)</string>
+    <string name="ToppingMieAyam6">Telur Mata Sapi</string>
+    <string name="ToppingMieAyam7">Balungan Rica Ayam</string>
+    <string name="ToppingMieAyam8">Extra Sawi</string>
+    <string name="ToppingMieAyam9">Extra Acar</string>
+
+    <!-- Bakso Kuah -->
+    <string name="MenuBaksoKuah1">Bakso Hore</string>
+    <string name="Desc1MenuBaksoKuah1">(Urat/Halus/Campur)</string>
+    <string name="Desc2MenuBaksoKuah1">(3 pentol bakso sapi asli, 1 tahu bakso, 1 pangsit goreng, 1 pangsit kukus)</string>
+    <string name="MenuBaksoKuah2">Bakso Yummie</string>
+    <string name="Desc1MenuBaksoKuah2">(Urat/Halus/Campur)</string>
+    <string name="Desc2MenuBaksoKuah2">(4 pentol bakso sapi asli, 1 tahu bakso, 1 pangsit goreng, 1 pangsit kukus)</string>
+    <string name="MenuBaksoKuah3">Bakso Happy</string>
+    <string name="Desc1MenuBaksoKuah3">(Urat/Halus/Campur)</string>
+    <string name="Desc2MenuBaksoKuah3">(5 pentol bakso sapi asli, 1 tahu bakso, 1 pangsit goreng, 1 pangsit kukus)</string>
+
+
+    <!-- Topping Bakso Kuah -->
+    <string name="ToppingBaksoKuah1">1 Pentol Bakso Urat/Halus</string>
+    <string name="ToppingBaksoKuah2">1 Pangsit Goreng/Kukus</string>
+    <string name="ToppingBaksoKuah3">1 Tahu Bakso</string>
+    <string name="ToppingBaksoKuah4">Tetelan Sapi</string>
+    <string name="ToppingBaksoKuah5">Kuah Bakso, Mie Kuning &amp; Mie Soon</string>
+
+
+    <!-- Bakso jumbo -->
+    <string name="MenuBaksoJumbo1">Bakso Judez (Jumbo Pedezz)</string>
+    <string name="DescMenuBaksoJumbo1">(Bakso sapi jumbo dalamnya ada daging sapi cincang bumbu pedas)</string>
+    <string name="MenuBaksoJumbo2">Bakso Jumbo Tidak Pedas</string>
+    <string name="DescMenuBaksoJumbo2">(Bakso jumbo dengan full daging sapi asli)</string>
+    <string name="MenuBaksoJumbo3">Bakso Jumbo Isian Tetelan</string>
+    <string name="DescMenuBaksoJumbo3">(Bakso jumbo dengan isian didalamnya ada tetelan sapi asli)</string>
+    <string name="MenuBaksoJumbo4">Bakso Bagong</string>
+    <string name="DescMenuBaksoJumbo4">(Bakso super jumbo sapi asli dengan isian daging sapi cincang &amp; telur puyuh)</string>
+    <string name="NBMenuBaksoJumbo">NB : Tambahan varian kuah pedas</string>
+
+    <!-- Topping Bakso jumbo -->
+    <string name="ToppingBaksoJumbo1">Extra Tetelan Sapi</string>
+    <string name="ToppingBaksoJumbo2">Extra Pangsit</string>
+    <string name="ToppingBaksoJumbo3">Extra Tahu Bakso</string>
+
+    <!-- Bakso Bakar -->
+    <string name="MenuBaksoBakar1">Bakso Bakar Hore</string>
+    <string name="DescMenuBaksoBakar1">(Pedas/Manis)</string>
+    <string name="MenuBaksoBakar2">Bakso Bakar Yummie</string>
+    <string name="DescMenuBaksoBakar2">(Pedas/Manis)</string>
+
+
+    <!-- Tambahan Bakso jumbo -->
+    <string name="TambahanBaksoBakar1">Extra Kuah, Mie &amp; Soon</string>
+    <string name="TambahanBaksoBakar2">Extra Pangsit Goreng (/pcs)</string>
+    <string name="TambahanBaksoBakar3">Extra Tahu Bakso (/pcs)</string>
+
+    <!-- Nasi Soto -->
+    <string name="MenuSoto1">Nasi Soto Daging Sapi</string>
+    <string name="MenuSoto2">Soto Daging Sapi (Tanpa Nasi)</string>
+    <string name="MenuSoto3">Nasi Soto Ayam</string>
+    <string name="MenuSoto4">Nasi Soto (Tanpa Nasi)</string>
+
+
+    <!-- Tambahan Bakso jumbo -->
+    <string name="TambahanSoto1">Tetelan Sapi</string>
+
+
     <string name="toppingMieAyam">Topping Mie Ayam :</string>
     <string name="toppingBaksoKuah">Topping Bakso :</string>
 
-    <string-array name="toppingMieAyam" >
+    <string-array name="toppingMieAyam">
         <item>Extra Ayam  (Rp.3000)</item>
         <item>Extra Tetelan Sapi  (Rp.7000)</item>
         <item>Cakar  (Rp.4000)(2pcs)</item>
@@ -36,7 +111,7 @@ Nullam in tempor velit. Morbi at neque lacinia, ornare est eget, auctor sapien. 
         <item>Extra Acar  (Rp.1000)</item>
     </string-array>
 
-    <string-array name="toppingBaksoKuah" >
+    <string-array name="toppingBaksoKuah">
         <item>1 Pentol Bakso Urat/Halus  (Rp.3000)</item>
         <item>1 Pangsit Goreng/Kukus  (Rp.1500)/pcs</item>
         <item>1 Tahu Bakso  (Rp.1500)/pcs</item>

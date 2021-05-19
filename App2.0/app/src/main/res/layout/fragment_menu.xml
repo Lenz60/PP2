@@ -9,19 +9,26 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayoutView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/pal1c3"
-        app:tabTextColor="@color/white"/>
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayoutView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pal1c3"
+            app:tabTextColor="@color/white"
+            app:tabIndicatorColor="@color/black"
+            app:tabMode="fixed"/>
+    </com.google.android.material.appbar.AppBarLayout>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/containerViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="8dp"
-        android:layout_below="@+id/tabLayoutView"/>
+        android:layout_below="@+id/appBarLayout"/>
 </RelativeLayout>
 
 

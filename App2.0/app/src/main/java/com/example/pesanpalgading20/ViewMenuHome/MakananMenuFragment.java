@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
 import com.example.pesanpalgading20.R;
-import com.example.pesanpalgading20.ToppingAdapter.ToppingAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +25,6 @@ public class MakananMenuFragment extends Fragment {
     ExpandableListView expandableListTopping;
     List<String> listGroup;
     HashMap<String,List<String>> listItem;
-    ToppingAdapter toppingAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,44 +75,12 @@ public class MakananMenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.fragment_makanan_menu, container, false);
 
-        expandableListTopping = viewRoot.findViewById(R.id.ExpandableTopping);
-        listGroup = new ArrayList<>();
-        listItem = new HashMap<>();
 
-        toppingAdapter = new ToppingAdapter(getActivity().getApplicationContext(),listGroup,listItem);
-        expandableListTopping.setAdapter(toppingAdapter);
-        initListDataMieAyam();
 
 
         // Inflate the layout for this fragment
         return viewRoot;
 
     }
-    private void initListDataMieAyam(){
-        //list group Topping
-        listGroup.add(getResources().getString(R.string.toppingMieAyam));
-        //listGroup.add(getString(R.string.toppingBakso));
-        //add more topping based on menu ex toppingbakso,toppingsoto dll
 
-        String[] array;
-
-        //getting array from string topping
-        List<String> topping1 = new ArrayList<>();
-        array = getResources().getStringArray(R.array.toppingMieAyam);
-        for (String item : array){
-            topping1.add(item);
-        }
-//        List<String> ToppingBaksoList = new ArrayList<>();
-//        array = getResources().getStringArray(R.array.toppingBakso);
-//        for (String item : array){
-//            ToppingBaksoList.add(item);
-//        }
-        // add more array topping
-
-        //hash the array
-        listItem.put(listGroup.get(0),topping1);
-        //listItem.put(listGroup.get(1),ToppingBaksoList);
-
-        toppingAdapter.notifyDataSetChanged();
-    }
 }

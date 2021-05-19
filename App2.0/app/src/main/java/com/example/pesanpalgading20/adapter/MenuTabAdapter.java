@@ -1,4 +1,4 @@
-package com.example.pesanpalgading20;
+package com.example.pesanpalgading20.adapter;
 
 import android.content.Context;
 
@@ -10,11 +10,11 @@ import com.example.pesanpalgading20.ViewMenuHome.JajananMenuFragment;
 import com.example.pesanpalgading20.ViewMenuHome.MakananMenuFragment;
 import com.example.pesanpalgading20.ViewMenuHome.MinumanMenuFragment;
 
-public class MyAdapter extends FragmentPagerAdapter {
+public class MenuTabAdapter extends FragmentPagerAdapter {
     private Context myContext;
     int totalTabs;
 
-    public MyAdapter (Context context, FragmentManager fm, int totalTabs){
+    public MenuTabAdapter(Context context, FragmentManager fm, int totalTabs){
         super(fm);
         myContext = context;
         this.totalTabs = totalTabs;
@@ -34,7 +34,8 @@ public class MyAdapter extends FragmentPagerAdapter {
             case 2:
                 JajananMenuFragment jajananMenuFragment = new JajananMenuFragment();
                 return jajananMenuFragment;
-            default: return null;
+            default: MakananMenuFragment makananMenuFragment1 = new MakananMenuFragment();
+                return makananMenuFragment1;
         }
     }
 

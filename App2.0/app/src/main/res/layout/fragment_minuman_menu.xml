@@ -10,6 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Minuman Menu Fragment" />
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.pesanpalgading20.adapter.MenuTabAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 /**
@@ -77,7 +78,7 @@ public class MenuFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText("Jajanan"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final MyAdapter adapter = new MyAdapter(getActivity().getApplicationContext(),getFragmentManager(),tabLayout.getTabCount());
+        final MenuTabAdapter adapter = new MenuTabAdapter(getActivity(),getChildFragmentManager(),tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
