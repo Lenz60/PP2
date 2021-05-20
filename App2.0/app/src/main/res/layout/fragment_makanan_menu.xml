@@ -12,163 +12,53 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mie Ayam"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textSize="30sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="5dp"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/MenuMieAyam1"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:text="@string/DescMenuMieAyam1"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="italic"/>
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/TxtvHargaMA1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:gravity="right"
-                    android:text="Rp 10.000"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/MenuMieAyam2"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:text="@string/DescMenuMieAyam2"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="italic"/>
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/TxtvHargaMA2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:gravity="right"
-                    android:text="Rp 16.000"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/MenuMieAyam3"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:text="@string/Desc1MenuMieAyam3"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="italic"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:text="@string/Desc2MenuMieAyam3"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="italic"/>
-                </LinearLayout>
-                <TextView
-                    android:id="@+id/TxtvHargaMA3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:gravity="right"
-                    android:text="Rp 16.000"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:text="Topping Mie Ayam"
-                    android:textSize="18sp"
+                    android:text="Mie Ayam"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textSize="30sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
                     android:layout_marginStart="5dp"
                     android:orientation="horizontal">
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/ToppingMieAyam1"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/MenuMieAyam1"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="@string/DescMenuMieAyam1"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:textStyle="italic"/>
+                    </LinearLayout>
 
                     <TextView
-                        android:id="@+id/TxtvHargaToppingMA1"
+                        android:id="@+id/TxtvHargaMA1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
                         android:gravity="right"
-                        android:text="Rp 3.000"
+                        android:text="Rp 10.000"
                         android:textSize="18sp"
                         android:textColor="@color/black"/>
                 </LinearLayout>
@@ -177,20 +67,34 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="5dp"
                     android:orientation="horizontal">
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/ToppingMieAyam2"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/MenuMieAyam2"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="@string/DescMenuMieAyam2"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:textStyle="italic"/>
+                    </LinearLayout>
 
                     <TextView
-                        android:id="@+id/TxtvHargaToppingMA2"
+                        android:id="@+id/TxtvHargaMA2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
                         android:gravity="right"
-                        android:text="Rp 7.000"
+                        android:text="Rp 16.000"
                         android:textSize="18sp"
                         android:textColor="@color/black"/>
                 </LinearLayout>
@@ -199,154 +103,255 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="5dp"
                     android:orientation="horizontal">
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/ToppingMieAyam3"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/MenuMieAyam3"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="@string/Desc1MenuMieAyam3"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:textStyle="italic"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="@string/Desc2MenuMieAyam3"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:textStyle="italic"/>
+                    </LinearLayout>
                     <TextView
-                        android:id="@+id/TxtvHargaToppingMA3"
+                        android:id="@+id/TxtvHargaMA3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
                         android:gravity="right"
-                        android:text="Rp 4.000"
+                        android:text="Rp 16.000"
                         android:textSize="18sp"
                         android:textColor="@color/black"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/ToppingMieAyam4"
+                        android:layout_marginLeft="25dp"
+                        android:text="Topping Mie Ayam"
                         android:textSize="18sp"
-                        android:textColor="@color/black"/>
-
-                    <TextView
-                        android:id="@+id/TxtvHargaToppingMA4"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
-                        android:gravity="right"
-                        android:text="Rp 4.000"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ToppingMieAyam5"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ToppingMieAyam1"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
 
-                    <TextView
-                        android:id="@+id/TxtvHargaToppingMA5"
+                        <TextView
+                            android:id="@+id/TxtvHargaToppingMA1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:gravity="right"
+                            android:text="Rp 3.000"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
-                        android:gravity="right"
-                        android:text="Rp 3.000"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ToppingMieAyam6"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ToppingMieAyam2"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
 
-                    <TextView
-                        android:id="@+id/TxtvHargaToppingMA6"
+                        <TextView
+                            android:id="@+id/TxtvHargaToppingMA2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:gravity="right"
+                            android:text="Rp 7.000"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
-                        android:gravity="right"
-                        android:text="Rp 4.000"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ToppingMieAyam7"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ToppingMieAyam3"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
 
-                    <TextView
-                        android:id="@+id/TxtvHargaToppingMA7"
+                        <TextView
+                            android:id="@+id/TxtvHargaToppingMA3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:gravity="right"
+                            android:text="Rp 4.000"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
-                        android:gravity="right"
-                        android:text="Rp 4.000"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ToppingMieAyam8"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ToppingMieAyam4"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
 
-                    <TextView
-                        android:id="@+id/TxtvHargaToppingMA8"
+                        <TextView
+                            android:id="@+id/TxtvHargaToppingMA4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:gravity="right"
+                            android:text="Rp 4.000"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
-                        android:gravity="right"
-                        android:text="Rp 1.000"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ToppingMieAyam9"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ToppingMieAyam5"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
 
-                    <TextView
-                        android:id="@+id/TxtvHargaToppingMA9"
+                        <TextView
+                            android:id="@+id/TxtvHargaToppingMA5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:gravity="right"
+                            android:text="Rp 3.000"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
-                        android:gravity="right"
-                        android:text="Rp 1.000"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ToppingMieAyam6"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:id="@+id/TxtvHargaToppingMA6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:gravity="right"
+                            android:text="Rp 4.000"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ToppingMieAyam7"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:id="@+id/TxtvHargaToppingMA7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:gravity="right"
+                            android:text="Rp 4.000"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ToppingMieAyam8"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:id="@+id/TxtvHargaToppingMA8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:gravity="right"
+                            android:text="Rp 1.000"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ToppingMieAyam9"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:id="@+id/TxtvHargaToppingMA9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:gravity="right"
+                            android:text="Rp 1.000"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout

@@ -6,157 +6,163 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".LoginForm"
-    android:backgroundTint="@color/pal1c1">
+    android:backgroundTint="@color/pal1c1"
+    android:id="@+id/ContainerLogin">
 
     <LinearLayout
+        android:id="@+id/ContainerContentLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="50dp">
-
-        <ImageView
-            android:id="@+id/LogoLogin"
-            android:layout_width="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            tools:srcCompat="@tools:sample/avatars" />
-        <TextView
-            android:id="@+id/TvLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="50sp"
-            android:text="@string/login"/>
-    </LinearLayout>
+            android:orientation="vertical"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="50dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/TvNama"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/nama"
-            android:textColor="@color/black"
-            android:textSize="20sp"/>
-        <EditText
-            android:id="@+id/EdNama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/TvMeja"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/meja"
-            android:textColor="@color/black"
-            android:textSize="20sp"/>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ProgressBar
-                android:id="@+id/ProgressBar"
-                android:visibility="gone"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="120dp"/>
-            <Spinner
-                android:id="@+id/SpinnerMeja"
-                android:layout_marginTop="10dp"
-                android:visibility="gone"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                />
+            <ImageView
+                android:id="@+id/LogoLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:srcCompat="@tools:sample/avatars" />
             <TextView
-                android:id="@+id/TvLokasiMeja"
+                android:id="@+id/TvLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="50sp"
+                android:text="@string/login"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/TvNama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nama"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/EdNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/TvMeja"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/meja"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ProgressBar
+                    android:id="@+id/ProgressBar"
+                    android:visibility="gone"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="120dp"/>
+                <Spinner
+                    android:id="@+id/SpinnerMeja"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    />
+                <TextView
+                    android:id="@+id/TvLokasiMeja"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:text="1"
+                    />
+                <Button
+                    android:id="@+id/BtnRefreshMeja"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginRight="10dp"
+                    android:textSize="12sp"
+                    android:text="@string/refresh"
+                    android:backgroundTint="@color/pal1c3"
+                    android:onClick="RandomizeCode"/>
+
+
+                <Button
+                    android:id="@+id/BtnManualMeja"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="230dp"
+                    android:textSize="12sp"
+                    android:text="@string/edit_manual"
+                    app:backgroundTint="@color/pal1c3"
+                    android:onClick="EditSpinner"/>
+
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/TvKodeMeja"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/kode_meja"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/EdKodeMeja"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="15dp"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                android:text="1"
-                />
+                android:enabled="false"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:orientation="vertical">
             <Button
-                android:id="@+id/BtnRefreshMeja"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="120dp"
-                android:layout_marginRight="10dp"
-                android:textSize="12sp"
-                android:text="@string/refresh"
+                android:id="@+id/BtnMasuk"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
                 android:backgroundTint="@color/pal1c3"
-                android:onClick="RandomizeCode"/>
-
+                android:onClick="masuk"
+                android:text="@string/masuk"/>
 
             <Button
-                android:id="@+id/BtnManualMeja"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="230dp"
-                android:textSize="12sp"
-                android:text="@string/edit_manual"
-                app:backgroundTint="@color/pal1c3"
-                android:onClick="EditSpinner"/>
-
-        </FrameLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/TvKodeMeja"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/kode_meja"
-            android:textColor="@color/black"
-            android:textSize="20sp"/>
-        <EditText
-            android:id="@+id/EdKodeMeja"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:textColor="@color/black"
-            android:enabled="false"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
-        android:orientation="vertical">
-        <Button
-            android:id="@+id/BtnMasuk"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/pal1c3"
-            android:onClick="masuk"
-            android:text="@string/masuk"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/pal1c3"
-            android:text="@string/lihat_menu"/>
-
-
+                android:id="@+id/BtnLihatMenu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/pal1c3"
+                android:text="@string/lihat_menu"/>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

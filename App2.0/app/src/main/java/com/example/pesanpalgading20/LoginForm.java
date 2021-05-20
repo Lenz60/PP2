@@ -5,6 +5,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.content.Context;
@@ -17,15 +20,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pesanpalgading20.model.LoginToMenu;
 import com.example.pesanpalgading20.view.BottomNavbar;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -34,13 +40,16 @@ import com.google.android.gms.location.LocationServices;
 
 import java.util.Random;
 
+import static android.view.View.GONE;
+
 public class LoginForm extends AppCompatActivity {
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
     LocationManager locationManager;
     android.widget.ProgressBar ProgressBar;
-    private Button BtnRefreshMeja,BtnMasuk;
+    private Button BtnRefreshMeja,BtnMasuk,BtnMenu;
     private EditText EdKodeMeja;
+    LinearLayout ContainerContentLogin;
     TextView TvLokasiMeja;
     double lat1,lat2,lat3,lat4, lat5,
             long1, long2, long3, long4, long5,long6;
@@ -65,19 +74,36 @@ public class LoginForm extends AppCompatActivity {
         TvLokasiMeja = findViewById(R.id.TvLokasiMeja);
         ProgressBar = findViewById(R.id.ProgressBar);
         BtnMasuk = findViewById(R.id.BtnMasuk);
+        BtnMenu = findViewById(R.id.BtnLihatMenu);
+        ContainerContentLogin = findViewById(R.id.ContainerContentLogin);
+
         locationManager=(LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        SpinnerMeja.setVisibility(View.GONE);
+        SpinnerMeja.setVisibility(GONE);
         SpinnerMeja.setEnabled(false);
         SpinnerMeja.setClickable(false);
         EdKodeMeja.setText(getRandomString(6));
 
+        //Button LihatMenu is clicked
+        BtnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Go To Menu Fragment
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.ContainerLogin,new MenuFragment()).commit();
+                //Hide Main Container Login and be Replaced by MenuFragment
+                ContainerContentLogin.setVisibility(GONE);
+
+            }
+        });
+
     }
 
     public void RandomizeCode(View view) {
-        BtnRefreshMeja.setVisibility(View.GONE);
+        BtnRefreshMeja.setVisibility(GONE);
         TvLokasiMeja.setVisibility(View.VISIBLE);
-        SpinnerMeja.setVisibility(View.GONE);
+        SpinnerMeja.setVisibility(GONE);
         SpinnerMeja.setEnabled(false);
         SpinnerMeja.setClickable(false);
         EdKodeMeja.setText(getRandomString(6));
@@ -124,7 +150,7 @@ public class LoginForm extends AppCompatActivity {
                         getCurrentLocation();
                     }
                 }, 3000);
-                ProgressBar.setVisibility(View.GONE);
+                ProgressBar.setVisibility(GONE);
             }
         }
         BtnRefreshMeja.setVisibility(View.VISIBLE);
@@ -181,7 +207,7 @@ public class LoginForm extends AppCompatActivity {
         long6 = 110.4109471;
 
 
-        BtnRefreshMeja.setVisibility(View.GONE);
+        BtnRefreshMeja.setVisibility(GONE);
         BtnRefreshMeja.setClickable(false);
         ProgressBar.setVisibility(View.VISIBLE);
         final LocationRequest locationRequest = new LocationRequest();
@@ -441,7 +467,7 @@ public class LoginForm extends AppCompatActivity {
 
 
                         }
-                        ProgressBar.setVisibility(View.GONE);
+                        ProgressBar.setVisibility(GONE);
                         BtnRefreshMeja.setClickable(true);
                         BtnRefreshMeja.setVisibility(View.VISIBLE);
                     }
@@ -461,7 +487,7 @@ public class LoginForm extends AppCompatActivity {
 
     public void EditSpinner(View view) {
         EdKodeMeja.setText(getRandomString(6));
-        TvLokasiMeja.setVisibility(View.GONE);
+        TvLokasiMeja.setVisibility(GONE);
         SpinnerMeja.setVisibility(View.VISIBLE);
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item,NomorMeja);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -474,5 +500,50 @@ public class LoginForm extends AppCompatActivity {
         Intent intent = new Intent(this, BottomNavbar.class);
         startActivity(intent);
     }
+
+
+    //Back is Pressed
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exitByBackKey();
+
+            //moveTaskToBack(false);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    protected void exitByBackKey() {
+
+        AlertDialog alertbox = new AlertDialog.Builder(this)
+                .setTitle("Keluar")
+                .setMessage("Apakah anda ingin keluar ?")
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+
+                    // do something when the button is clicked
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        //Check if still inside Lihat Menu
+                        if (ContainerContentLogin.getVisibility() == GONE){
+                            Intent intent = new Intent(getBaseContext(), LoginForm.class);
+                            startActivity(intent);
+                        }
+                        //if in the login form
+                        else  {
+                            //close application
+                            finishAffinity();
+                        }
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+
+                    // do something when the button is clicked
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        //do nothing
+                    }
+                })
+                .show();
+
+    }
+
 
 }

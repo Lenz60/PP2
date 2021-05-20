@@ -68,6 +68,7 @@ public class MenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.fragment_menu, container, false);
+
         tabLayout = (TabLayout)viewRoot.findViewById(R.id.tabLayoutView);
         viewPager = (ViewPager)viewRoot.findViewById(R.id.containerViewPager);
 
@@ -103,4 +104,6 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         return viewRoot;
     }
+
+
 }

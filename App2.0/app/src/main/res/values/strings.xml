@@ -96,6 +96,62 @@
     <string name="TambahanSoto1">Tetelan Sapi</string>
 
 
+
+    <!-- Judul Minuman Aneka Es Original-->
+    <string name="MenuEs">Aneka Es Original</string>
+    <!-- Minuman Aneka Es Original-->
+    <string name="MenuEs1">Es Teller Palgading</string>
+    <string name="MenuEs2">Es Campur Gula Jawa</string>
+    <string name="MenuEs3">Es Pelangi</string>
+    <string name="MenuEs4">Es Manado</string>
+    <string name="MenuEs5">Es Cendol Pelangi</string>
+    <string name="MenuEs6">Es Cincau Hitam</string>
+    <string name="MenuEs7">Es Capcin (Capucino Cincau) </string>
+    <string name="MenuEs8">Es Micin (Milo Cincau) </string>
+    <string name="MenuEs9">Milkshake Oreo</string>
+    <string name="MenuEs10">Es / Hot Milo</string>
+    <string name="MenuEs11">Es / Hot Capucino</string>
+    <string name="MenuEs12">Es / Hot Chocolate</string>
+    <string name="MenuEs13">Es / Hot Teh</string>
+    <string name="MenuEs14">Es / Hot Jeruk</string>
+    <string name="MenuEs15">Es Sirup</string>
+    <string name="MenuEs16">Es Saparela</string>
+    <string name="MenuEs17">Es Soda Gembira</string>
+    <string name="MenuEs18">Kopi Hitam</string>
+
+    <!-- Judul Minuman Aneka Es Durian-->
+    <string name="MenuEsDurian">Aneka Es Durian</string>
+    <!-- Minuman Aneka Es Durian-->
+    <string name="MenuEsDurian1">Es Teller Durian</string>
+    <string name="MenuEsDurian2">Es Campur Gula Jawa Durian</string>
+    <string name="MenuEsDurian3">Es Pelangi Durian</string>
+    <string name="MenuEsDurian4">Es Degan Durian</string>
+    <string name="MenuEsDurian5">Es Alpukat Durian</string>
+    <string name="MenuEsDurian6">Es Alpukat Degan Durian</string>
+    <string name="MenuEsDurian7">Es Cincau Hitam Durian</string>
+
+    <!-- Judul Minuman Aneka Es Jus-->
+    <string name="MenuEsJus">Aneka Es Jus</string>
+    <!-- Minuman Aneka Es Jus-->
+    <string name="MenuEsJus1">Juice Melon</string>
+    <string name="MenuEsJus2">Juice Mangga</string>
+    <string name="MenuEsJus3">Juice Alpukat</string>
+    <string name="MenuEsJus4">Juice Semangka</string>
+    <string name="MenuEsJus5">Juice Jambu Merah</string>
+    <string name="MenuEsJus6">Juice Sirsat</string>
+    <string name="MenuEsJus7">Juice Durian</string>
+    <string name="MenuEsJus8">Juice Jeruk</string>
+
+    <!-- Menu Jajanan-->
+    <string name="MenuJajanan">Jajanan</string>
+    <!-- Menu Jajanan-->
+    <string name="MenuJajanan1">French Fries</string>
+    <string name="DescMenuJajanan1">(Kentang Goreng)</string>
+    <string name="MenuJajanan2">Tela-Telo</string>
+    <string name="MenuJajanan3">Batagor</string>
+
+
+
     <string name="toppingMieAyam">Topping Mie Ayam :</string>
     <string name="toppingBaksoKuah">Topping Bakso :</string>
 
