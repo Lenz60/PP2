@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +15,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
+
+    TextView TxtvNama,TxtvNomorMeja,TxtvKodeMeja;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +61,22 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View viewRoot = inflater.inflate(R.layout.fragment_profil, container, false);
+
+        TxtvNama = (TextView) viewRoot.findViewById(R.id.TxtvNamaProfile);
+        TxtvKodeMeja = (TextView) viewRoot.findViewById(R.id.TxtvKodeMejaProfile);
+        TxtvNomorMeja = (TextView) viewRoot.findViewById(R.id.TxtvLokasiMejaProfile);
+
+        String Nama = getActivity().getIntent().getExtras().getString("nama").toString();
+        String NoMeja = getActivity().getIntent().getExtras().getString("noMejaFinal").toString();
+        String KodeMeja = getActivity().getIntent().getExtras().getString("kodeMeja").toString();
+        /////////////////////////////////////////////
+        // set the TextView Nama with Passed variable //
+        TxtvNama.setText(Nama);
+        TxtvKodeMeja.setText(KodeMeja);
+        TxtvNomorMeja.setText(NoMeja);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profil, container, false);
+        return viewRoot;
     }
 }

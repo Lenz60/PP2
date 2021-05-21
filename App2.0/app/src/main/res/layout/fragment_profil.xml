@@ -3,15 +3,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".ProfileFragment"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:text="Profile" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/TxtvNamaProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Nama"
+            android:textSize="30sp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/TxtvLokasiMejaProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Nomor"
+            android:textSize="30sp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/TxtvKodeMejaProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Kode"
+            android:textSize="30sp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
 
 </FrameLayout>

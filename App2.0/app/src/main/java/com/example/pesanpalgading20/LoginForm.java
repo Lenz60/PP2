@@ -16,12 +16,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.LocationManager;
+import android.media.tv.TvContentRating;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,11 +50,11 @@ public class LoginForm extends AppCompatActivity {
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
     LocationManager locationManager;
-    android.widget.ProgressBar ProgressBar;
-    private Button BtnRefreshMeja,BtnMasuk,BtnMenu;
-    private EditText EdKodeMeja;
+    android.widget.ProgressBar ProgressBar, ProgressBar1;
+    Button BtnRefreshMeja,BtnMasuk,BtnMenu;
+    EditText EdKodeMeja,EdNama;
     LinearLayout ContainerContentLogin;
-    TextView TvLokasiMeja;
+    TextView TvLokasiMeja,TvNama;
     double lat1,lat2,lat3,lat4, lat5,
             long1, long2, long3, long4, long5,long6;
     Boolean poslat1, poslat2, poslat3, poslat4, poslat5,
@@ -59,6 +63,7 @@ public class LoginForm extends AppCompatActivity {
             posk3confirm, posk6confirm, posk9confirm, posk11confirm,
             posk4confirm, posk7confirm,posk12confirm;
     String unavailable;
+    String ProgressBarVisible;
 
     Spinner SpinnerMeja;
     String[] NomorMeja = {"1","2","3","4","5/6","7","8/9","10","11","12"};
@@ -68,14 +73,19 @@ public class LoginForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_form);
 
-        BtnRefreshMeja = findViewById(R.id.BtnRefreshMeja);
-        EdKodeMeja = findViewById(R.id.EdKodeMeja);
-        SpinnerMeja = findViewById(R.id.SpinnerMeja);
-        TvLokasiMeja = findViewById(R.id.TvLokasiMeja);
-        ProgressBar = findViewById(R.id.ProgressBar);
-        BtnMasuk = findViewById(R.id.BtnMasuk);
-        BtnMenu = findViewById(R.id.BtnLihatMenu);
+        BtnRefreshMeja = (Button) findViewById(R.id.BtnRefreshMeja);
+        EdKodeMeja = (EditText) findViewById(R.id.EdKodeMeja);
+        EdNama = (EditText) findViewById(R.id.EdNama);
+        SpinnerMeja = (Spinner) findViewById(R.id.SpinnerMeja);
+        TvLokasiMeja = (TextView) findViewById(R.id.TvLokasiMeja);
+        TvNama = (TextView) findViewById(R.id.TvNama);
+        ProgressBar = (ProgressBar) findViewById(R.id.ProgressBar);
+        ProgressBar1 = (ProgressBar) findViewById(R.id.ProgressBarMasuk);
+        BtnMasuk = (Button) findViewById(R.id.BtnMasuk);
+        BtnMenu = (Button) findViewById(R.id.BtnLihatMenu);
+
         ContainerContentLogin = findViewById(R.id.ContainerContentLogin);
+
 
         locationManager=(LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -83,6 +93,9 @@ public class LoginForm extends AppCompatActivity {
         SpinnerMeja.setEnabled(false);
         SpinnerMeja.setClickable(false);
         EdKodeMeja.setText(getRandomString(6));
+
+        //automatically detect lat long
+        getLatLong();
 
         //Button LihatMenu is clicked
         BtnMenu.setOnClickListener(new View.OnClickListener() {
@@ -100,13 +113,22 @@ public class LoginForm extends AppCompatActivity {
 
     }
 
+
+
     public void RandomizeCode(View view) {
+        getLatLong();
+    }
+
+    public void getLatLong() {
         BtnRefreshMeja.setVisibility(GONE);
+        BtnMasuk.setEnabled(false);
+        BtnMenu.setEnabled(false);
         TvLokasiMeja.setVisibility(View.VISIBLE);
         SpinnerMeja.setVisibility(GONE);
         SpinnerMeja.setEnabled(false);
         SpinnerMeja.setClickable(false);
         EdKodeMeja.setText(getRandomString(6));
+        //
         /////////////////Detect LangLong//////////////////////
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
         {
@@ -153,8 +175,8 @@ public class LoginForm extends AppCompatActivity {
                 ProgressBar.setVisibility(GONE);
             }
         }
-        BtnRefreshMeja.setVisibility(View.VISIBLE);
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -468,6 +490,8 @@ public class LoginForm extends AppCompatActivity {
 
                         }
                         ProgressBar.setVisibility(GONE);
+                        BtnMasuk.setEnabled(true);
+                        BtnMenu.setEnabled(true);
                         BtnRefreshMeja.setClickable(true);
                         BtnRefreshMeja.setVisibility(View.VISIBLE);
                     }
@@ -489,6 +513,7 @@ public class LoginForm extends AppCompatActivity {
         EdKodeMeja.setText(getRandomString(6));
         TvLokasiMeja.setVisibility(GONE);
         SpinnerMeja.setVisibility(View.VISIBLE);
+        TvLokasiMeja.setText(" ");
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item,NomorMeja);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         SpinnerMeja.setEnabled(true);
@@ -497,8 +522,38 @@ public class LoginForm extends AppCompatActivity {
     }
 
     public void masuk(View view) {
-        Intent intent = new Intent(this, BottomNavbar.class);
-        startActivity(intent);
+
+        //Check is Nama is empty
+        if(EdNama.getText().toString().isEmpty()){
+            EdNama.setError("Mohon masukkan nama terlebih dahulu");
+            EdNama.requestFocus();
+        }
+        else {
+            if(TvLokasiMeja.getText().toString() == "Deteksi Gagal"){
+                Toast errorToast = Toast.makeText(LoginForm.this, "Deteksi meja gagal, silahkan refresh ulang atau edit secara manual", Toast.LENGTH_SHORT);
+                errorToast.show();
+            }
+            else {
+                Intent intent = new Intent(this, BottomNavbar.class);
+                Bundle mbundle = new Bundle();
+                String Nama = EdNama.getText().toString();
+                String NoMejaAuto = TvLokasiMeja.getText().toString();
+                String KodeMeja = EdKodeMeja.getText().toString();
+                String NoMejaFinal;
+
+                if (NoMejaAuto.equals(" ")){
+                    NoMejaFinal = SpinnerMeja.getSelectedItem().toString();
+                }
+                else {
+                    NoMejaFinal = NoMejaAuto;
+                }
+
+                intent.putExtra("nama", Nama);
+                intent.putExtra("noMejaFinal", NoMejaFinal);
+                intent.putExtra("kodeMeja", KodeMeja);
+                startActivity(intent);
+            }
+        }
     }
 
 
@@ -506,7 +561,6 @@ public class LoginForm extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             exitByBackKey();
-
             //moveTaskToBack(false);
             return true;
         }

@@ -33,7 +33,7 @@ public class HomeFragment extends Fragment {
     CarouselView carouselView;
     Image image1,image2,image3;
     int[] sampleImages = {R.drawable.slider1, R.drawable.slider2, R.drawable.slider3};
-    TextView textView;
+    TextView TxtvNama;
     //int[] samplearray = {22,212,333};
 
     // TODO: Rename parameter arguments, choose names that match
@@ -81,7 +81,10 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.fragment_home, container, false);
 
+
+        TxtvNama = (TextView) viewRoot.findViewById(R.id.TxtvNamaHome);
         context = getContext();
+        ///////// replace with intent /////////
         myToast1= "gambar1";
         myToast2= "gambar2";
         myToast3= "gambar3";
@@ -89,6 +92,18 @@ public class HomeFragment extends Fragment {
         toast1 = Toast.makeText(context,myToast1,duration);
         toast2 = Toast.makeText(context,myToast2,duration);
         toast3 = Toast.makeText(context,myToast3,duration);
+        ///////// replace with intent /////////
+
+        /// get Variable passed from login ///
+
+        String Nama = getActivity().getIntent().getExtras().getString("nama").toString();
+//        String NoMeja = args.getString("noMejaFinal");
+//        String KodeMeja = args.getString("kodeMeja");
+        /////////////////////////////////////////////
+        // set the TextView Nama with Passed variable //
+        TxtvNama.setText(Nama);
+
+
 
         carouselView =  viewRoot.findViewById(R.id.carouselView);
         //textView = viewRoot.findViewById(R.id.TxtvHomeFragment);
