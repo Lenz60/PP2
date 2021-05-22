@@ -19,9 +19,9 @@
             android:id="@+id/tabLayoutView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/pal1c3"
+            android:background="@color/BlackGrey"
             app:tabTextColor="@color/white"
-            app:tabIndicatorColor="@color/black"
+            app:tabIndicatorColor="@color/white"
             app:tabMode="fixed"/>
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.viewpager.widget.ViewPager

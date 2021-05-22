@@ -24,7 +24,7 @@
     <string name="DescMenuMieAyam2">(Kuah/Goreng)</string>
     <string name="MenuMieAyam3">Mie Ayam Super Jumbo Komplit</string>
     <string name="Desc1MenuMieAyam3">(Kuah/Goreng)</string>
-    <string name="Desc2MenuMieAyam3">(Extra ayam, tetelan sapi &amp; bakso sapi)</string>
+    <string name="Desc2MenuMieAyam3">(Extra ayam, tetelan sapi \n &amp; bakso sapi)</string>
 
     <!-- Topping Mie Ayam -->
     <string name="ToppingMieAyam1">Extra Ayam</string>
@@ -54,7 +54,7 @@
     <string name="ToppingBaksoKuah2">1 Pangsit Goreng/Kukus</string>
     <string name="ToppingBaksoKuah3">1 Tahu Bakso</string>
     <string name="ToppingBaksoKuah4">Tetelan Sapi</string>
-    <string name="ToppingBaksoKuah5">Kuah Bakso, Mie Kuning &amp; Mie Soon</string>
+    <string name="ToppingBaksoKuah5">Kuah Bakso, Mie Kuning \n &amp; Mie Soon</string>
 
 
     <!-- Bakso jumbo -->
@@ -94,7 +94,6 @@
 
     <!-- Tambahan Bakso jumbo -->
     <string name="TambahanSoto1">Tetelan Sapi</string>
-
 
 
     <!-- Judul Minuman Aneka Es Original-->
@@ -149,7 +148,6 @@
     <string name="DescMenuJajanan1">(Kentang Goreng)</string>
     <string name="MenuJajanan2">Tela-Telo</string>
     <string name="MenuJajanan3">Batagor</string>
-
 
 
     <string name="toppingMieAyam">Topping Mie Ayam :</string>

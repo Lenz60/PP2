@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewMenuHome.MakananMenuFragment">
+    tools:context=".ViewMenuHome.MakananMenuFragment"
+    android:background="@color/black">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,8 +24,9 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:textSize="30sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/monserratmedium"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -40,16 +42,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuMieAyam1"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"/>
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
                             android:text="@string/DescMenuMieAyam1"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic"/>
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
 
                     <TextView
@@ -60,7 +64,8 @@
                         android:gravity="right"
                         android:text="Rp 10.000"
                         android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -76,16 +81,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuMieAyam2"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"/>
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
                             android:text="@string/DescMenuMieAyam2"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic"/>
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
 
                     <TextView
@@ -96,11 +103,12 @@
                         android:gravity="right"
                         android:text="Rp 16.000"
                         android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:orientation="horizontal">
                     <LinearLayout
@@ -112,23 +120,26 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuMieAyam3"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"/>
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
                             android:text="@string/Desc1MenuMieAyam3"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic"/>
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="20dp"
+                            android:layout_height="wrap_content"
                             android:text="@string/Desc2MenuMieAyam3"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic"/>
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/TxtvHargaMA3"
@@ -138,7 +149,8 @@
                         android:gravity="right"
                         android:text="Rp 16.000"
                         android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -150,10 +162,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
+                        android:layout_marginBottom="10dp"
                         android:text="Topping Mie Ayam"
                         android:textSize="18sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"/>
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/monserratmedium"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -164,7 +178,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingMieAyam1"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingMA1"
@@ -174,7 +189,8 @@
                             android:gravity="right"
                             android:text="Rp 3.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -186,7 +202,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingMieAyam2"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingMA2"
@@ -196,7 +213,8 @@
                             android:gravity="right"
                             android:text="Rp 7.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -208,7 +226,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingMieAyam3"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingMA3"
@@ -218,7 +237,8 @@
                             android:gravity="right"
                             android:text="Rp 4.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -230,7 +250,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingMieAyam4"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingMA4"
@@ -240,7 +261,8 @@
                             android:gravity="right"
                             android:text="Rp 4.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -252,7 +274,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingMieAyam5"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingMA5"
@@ -262,7 +285,8 @@
                             android:gravity="right"
                             android:text="Rp 3.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -274,7 +298,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingMieAyam6"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingMA6"
@@ -284,7 +309,8 @@
                             android:gravity="right"
                             android:text="Rp 4.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -296,7 +322,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingMieAyam7"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingMA7"
@@ -306,7 +333,8 @@
                             android:gravity="right"
                             android:text="Rp 4.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -318,7 +346,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingMieAyam8"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingMA8"
@@ -328,7 +357,8 @@
                             android:gravity="right"
                             android:text="Rp 1.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -340,7 +370,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingMieAyam9"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingMA9"
@@ -350,7 +381,8 @@
                             android:gravity="right"
                             android:text="Rp 1.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -368,12 +400,13 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:textSize="30sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/monserratmedium"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="100dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="5dp"
                     android:orientation="horizontal">
@@ -387,24 +420,27 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuBaksoKuah1"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"/>
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/Desc1MenuBaksoKuah1"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic" />
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="243dp"
                             android:layout_height="55dp"
                             android:text="@string/Desc2MenuBaksoKuah1"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic" />
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/TxtvHargaBK1"
@@ -413,12 +449,13 @@
                         android:layout_marginRight="15dp"
                         android:gravity="right"
                         android:text="Rp 12.000"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="100dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="5dp"
                     android:orientation="horizontal">
@@ -432,24 +469,27 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuBaksoKuah2"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/Desc1MenuBaksoKuah2"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic" />
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="243dp"
                             android:layout_height="52dp"
                             android:text="@string/Desc2MenuBaksoKuah2"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic" />
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/TxtvHargaBK2"
@@ -458,12 +498,13 @@
                         android:layout_marginRight="15dp"
                         android:gravity="right"
                         android:text="Rp 15.000"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="100dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
@@ -477,24 +518,27 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuBaksoKuah3"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/Desc1MenuBaksoKuah3"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic" />
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="243dp"
                             android:layout_height="52dp"
                             android:text="@string/Desc2MenuBaksoKuah3"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic" />
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/TxtvHargaBK3"
@@ -503,8 +547,9 @@
                         android:layout_marginRight="15dp"
                         android:gravity="right"
                         android:text="Rp 18.000"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -516,10 +561,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
+                        android:layout_marginBottom="10dp"
                         android:text="Topping Bakso Kuah"
                         android:textSize="18sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"/>
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/monserratmedium"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -530,7 +577,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingBaksoKuah1"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingBK1"
@@ -540,7 +588,8 @@
                             android:gravity="right"
                             android:text="Rp 3.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -552,7 +601,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingBaksoKuah2"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingBK2"
@@ -562,7 +612,8 @@
                             android:gravity="right"
                             android:text="Rp 1.500"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -574,7 +625,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingBaksoKuah3"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingBK3"
@@ -584,7 +636,8 @@
                             android:gravity="right"
                             android:text="Rp 1.500"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -596,7 +649,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingBaksoKuah4"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingBK4"
@@ -606,7 +660,8 @@
                             android:gravity="right"
                             android:text="Rp 7.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -617,8 +672,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingBaksoKuah5"
-                            android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textSize="16sp"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingBK5"
@@ -628,7 +684,8 @@
                             android:gravity="right"
                             android:text="Rp 3.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -646,12 +703,13 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:textSize="30sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/monserratmedium"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="5dp"
                     android:orientation="horizontal">
@@ -665,16 +723,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuBaksoJumbo1"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"/>
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="52dp"
                             android:text="@string/DescMenuBaksoJumbo1"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic"/>
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/TxtvHargaBJ1"
@@ -683,8 +743,9 @@
                         android:layout_marginRight="15dp"
                         android:gravity="right"
                         android:text="Rp 17.000"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -701,16 +762,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuBaksoJumbo2"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="52dp"
                             android:text="@string/DescMenuBaksoJumbo2"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic"/>
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/TxtvHargaBJ2"
@@ -719,8 +782,9 @@
                         android:layout_marginRight="15dp"
                         android:gravity="right"
                         android:text="Rp 17.000"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -737,14 +801,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuBaksoJumbo3"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="52dp"
                             android:text="@string/DescMenuBaksoJumbo3"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
                             android:textStyle="italic"/>
                     </LinearLayout>
@@ -755,12 +820,13 @@
                         android:layout_marginRight="15dp"
                         android:gravity="right"
                         android:text="Rp 20.000"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
                     android:layout_marginStart="5dp"
                     android:orientation="horizontal">
 
@@ -773,16 +839,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuBaksoJumbo4"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="52dp"
                             android:text="@string/DescMenuBaksoJumbo4"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic"/>
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/TxtvHargaBJ4"
@@ -791,8 +859,9 @@
                         android:layout_marginRight="15dp"
                         android:gravity="right"
                         android:text="Rp 35.000"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -810,9 +879,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/NBMenuBaksoJumbo"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
 
                     <TextView
@@ -822,23 +892,27 @@
                         android:layout_marginRight="15dp"
                         android:gravity="right"
                         android:text="Rp 5.000"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="20dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
-                        android:text="Topping Bakso Kuah"
+                        android:layout_marginBottom="10dp"
+                        android:text="Topping Bakso Jumbo"
                         android:textSize="18sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"/>
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/monserratmedium"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -849,7 +923,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingBaksoJumbo1"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingBJ1"
@@ -859,7 +934,8 @@
                             android:gravity="right"
                             android:text="Rp 3.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -871,7 +947,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingBaksoJumbo2"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingBJ2"
@@ -881,7 +958,8 @@
                             android:gravity="right"
                             android:text="Rp 1.500"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -893,7 +971,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ToppingBaksoJumbo3"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingBJ3"
@@ -903,7 +982,8 @@
                             android:gravity="right"
                             android:text="Rp 1.500"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -922,8 +1002,9 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:textSize="30sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/monserratmedium"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -941,16 +1022,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuBaksoBakar1"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"/>
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="52dp"
                             android:text="@string/DescMenuBaksoBakar1"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic"/>
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/TxtvHargaBB1"
@@ -959,8 +1042,9 @@
                         android:layout_marginRight="15dp"
                         android:gravity="right"
                         android:text="Rp 14.000"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -977,16 +1061,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuBaksoBakar2"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="52dp"
                             android:text="@string/DescMenuBaksoBakar2"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic"/>
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/TxtvHargaBB2"
@@ -995,22 +1081,26 @@
                         android:layout_marginRight="15dp"
                         android:gravity="right"
                         android:text="Rp 17.000"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="20dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
-                        android:text="Topping Bakso Kuah"
+                        android:layout_marginBottom="10dp"
+                        android:text="Topping Bakso Bakar"
                         android:textSize="18sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"/>
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/monserratmedium"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -1021,7 +1111,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/TambahanBaksoBakar1"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingBB1"
@@ -1031,7 +1122,8 @@
                             android:gravity="right"
                             android:text="Rp 2.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1043,7 +1135,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/TambahanBaksoBakar2"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingBB2"
@@ -1053,7 +1146,8 @@
                             android:gravity="right"
                             android:text="Rp 1.500"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1065,7 +1159,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/TambahanBaksoBakar3"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
 
                         <TextView
                             android:id="@+id/TxtvHargaToppingBB3"
@@ -1075,7 +1170,8 @@
                             android:gravity="right"
                             android:text="Rp 1.500"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -1094,8 +1190,9 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:textSize="30sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/monserratmedium"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1113,8 +1210,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuSoto1"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"/>
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/TxtvHargaSTO1"
@@ -1123,12 +1221,13 @@
                         android:layout_marginRight="15dp"
                         android:gravity="right"
                         android:text="Rp 10.000"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="5dp"
                     android:orientation="horizontal">
 
@@ -1141,8 +1240,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuSoto2"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/TxtvHargaSTO2"
@@ -1151,13 +1251,15 @@
                         android:layout_marginRight="15dp"
                         android:gravity="right"
                         android:text="Rp 10.000"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="20dp">
                     <TextView
                         android:layout_width="wrap_content"
@@ -1165,8 +1267,9 @@
                         android:layout_marginLeft="25dp"
                         android:text="Pilihan Tambahan :"
                         android:textSize="18sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"/>
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/monserratmedium"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -1177,7 +1280,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/TambahanSoto1"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                         <TextView
                             android:id="@+id/TxtvHargaToppingSTO1"
                             android:layout_width="match_parent"
@@ -1186,7 +1290,8 @@
                             android:gravity="right"
                             android:text="Rp 7.000"
                             android:textSize="18sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

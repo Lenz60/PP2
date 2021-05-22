@@ -5,19 +5,19 @@ import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
-
-import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,8 +32,10 @@ public class HomeFragment extends Fragment {
     String myToast1, myToast2, myToast3; // menyimpan teks untuk ditampilkan di toast
     CarouselView carouselView;
     Image image1,image2,image3;
+    ImageView ImgBtnMakanan, ImgBtnMinuman, ImgBtnJajanan, ImgBtnPromo;
     int[] sampleImages = {R.drawable.slider1, R.drawable.slider2, R.drawable.slider3};
     TextView TxtvNama;
+    ScrollView ContainerContentHome;
     //int[] samplearray = {22,212,333};
 
     // TODO: Rename parameter arguments, choose names that match
@@ -79,10 +81,15 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View viewRoot = inflater.inflate(R.layout.fragment_home, container, false);
+        final View viewRoot = inflater.inflate(R.layout.fragment_home, container, false);
 
 
-        TxtvNama = (TextView) viewRoot.findViewById(R.id.TxtvNamaHome);
+        TxtvNama = viewRoot.findViewById(R.id.TxtvNamaHome);
+        ImgBtnMakanan = viewRoot.findViewById(R.id.ImageViewMakanan);
+        ImgBtnMinuman = viewRoot.findViewById(R.id.ImageViewMinuman);
+        ImgBtnJajanan = viewRoot.findViewById(R.id.ImageViewJajanan);
+        ImgBtnPromo = viewRoot.findViewById(R.id.ImageViewPromo);
+        ContainerContentHome = viewRoot.findViewById(R.id.ContainerContentHome);
         context = getContext();
         ///////// replace with intent /////////
         myToast1= "gambar1";
@@ -112,6 +119,84 @@ public class HomeFragment extends Fragment {
         carouselView.setImageListener(imageListener);
         carouselView.setPageCount(sampleImages.length);
         // Inflate the layout for this fragment
+
+        //if button makanan clicked
+        ImgBtnMakanan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ContainerContentHome.setVisibility(View.GONE);
+                // Create new fragment and transaction
+                Fragment FragmentHomeMakanan = new HomeMakananFragment();
+                // consider using Java coding conventions (upper first char class names!!!)
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack
+                transaction.replace(R.id.ContainerHome, FragmentHomeMakanan);
+                transaction.addToBackStack(null);
+                // Commit the transaction
+                transaction.commit();
+            }
+        });
+
+        //if Button Minuman clicked
+        ImgBtnMinuman.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ContainerContentHome.setVisibility(View.GONE);
+                // Create new fragment and transaction
+                Fragment FragmentHomeMinuman = new HomeMinumanFragment();
+                // consider using Java coding conventions (upper first char class names!!!)
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack
+                transaction.replace(R.id.ContainerHome, FragmentHomeMinuman);
+                transaction.addToBackStack(null);
+                // Commit the transaction
+                transaction.commit();
+            }
+        });
+
+        //if button jajanan clicked
+        ImgBtnJajanan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ContainerContentHome.setVisibility(View.GONE);
+                // Create new fragment and transaction
+                Fragment FragmentHomeJajanan = new HomeJajananFragment();
+                // consider using Java coding conventions (upper first char class names!!!)
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack
+                transaction.replace(R.id.ContainerHome, FragmentHomeJajanan);
+                transaction.addToBackStack(null);
+                // Commit the transaction
+                transaction.commit();
+            }
+        });
+
+        //if button Promo clicked
+        ImgBtnPromo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ContainerContentHome.setVisibility(View.GONE);
+                // Create new fragment and transaction
+                Fragment FragmentHomePromo = new HomePromoFragment();
+                // consider using Java coding conventions (upper first char class names!!!)
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack
+                transaction.replace(R.id.ContainerHome, FragmentHomePromo);
+                transaction.addToBackStack(null);
+                // Commit the transaction
+                transaction.commit();
+            }
+        });
+
+
 
 
         return viewRoot;

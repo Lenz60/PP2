@@ -26,6 +26,7 @@ import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,16 +74,16 @@ public class LoginForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_form);
 
-        BtnRefreshMeja = (Button) findViewById(R.id.BtnRefreshMeja);
-        EdKodeMeja = (EditText) findViewById(R.id.EdKodeMeja);
-        EdNama = (EditText) findViewById(R.id.EdNama);
-        SpinnerMeja = (Spinner) findViewById(R.id.SpinnerMeja);
-        TvLokasiMeja = (TextView) findViewById(R.id.TvLokasiMeja);
-        TvNama = (TextView) findViewById(R.id.TvNama);
-        ProgressBar = (ProgressBar) findViewById(R.id.ProgressBar);
-        ProgressBar1 = (ProgressBar) findViewById(R.id.ProgressBarMasuk);
-        BtnMasuk = (Button) findViewById(R.id.BtnMasuk);
-        BtnMenu = (Button) findViewById(R.id.BtnLihatMenu);
+        BtnRefreshMeja = findViewById(R.id.BtnRefreshMeja);
+        EdKodeMeja = findViewById(R.id.EdKodeMeja);
+        EdNama = findViewById(R.id.EdNama);
+        SpinnerMeja = findViewById(R.id.SpinnerMeja);
+        TvLokasiMeja = findViewById(R.id.TvLokasiMeja);
+        TvNama = findViewById(R.id.TvNama);
+        ProgressBar = findViewById(R.id.ProgressBar);
+        ProgressBar1 = findViewById(R.id.ProgressBarMasuk);
+        BtnMasuk = findViewById(R.id.BtnMasuk);
+        BtnMenu = findViewById(R.id.BtnLihatMenu);
 
         ContainerContentLogin = findViewById(R.id.ContainerContentLogin);
 
@@ -93,6 +94,23 @@ public class LoginForm extends AppCompatActivity {
         SpinnerMeja.setEnabled(false);
         SpinnerMeja.setClickable(false);
         EdKodeMeja.setText(getRandomString(6));
+
+        SpinnerMeja.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                TextView selectedText = (TextView) parent.getChildAt(0);
+                if (selectedText != null) {
+                    selectedText.setTextColor(Color.WHITE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
 
         //automatically detect lat long
         getLatLong();
@@ -202,7 +220,10 @@ public class LoginForm extends AppCompatActivity {
         }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                TvLokasiMeja.setText("Deteksi Gagal");
+                TvLokasiMeja.setTextColor(Color.RED);
+                BtnRefreshMeja.setClickable(true);
+                BtnRefreshMeja.setVisibility(View.VISIBLE);
                 dialog.cancel();
             }
         });
@@ -511,6 +532,9 @@ public class LoginForm extends AppCompatActivity {
 
     public void EditSpinner(View view) {
         EdKodeMeja.setText(getRandomString(6));
+        BtnMenu.setEnabled(true);
+        BtnMasuk.setEnabled(true);
+        BtnRefreshMeja.setVisibility(View.VISIBLE);
         TvLokasiMeja.setVisibility(GONE);
         SpinnerMeja.setVisibility(View.VISIBLE);
         TvLokasiMeja.setText(" ");
@@ -519,7 +543,9 @@ public class LoginForm extends AppCompatActivity {
         SpinnerMeja.setEnabled(true);
         SpinnerMeja.setClickable(true);
         SpinnerMeja.setAdapter(aa);
+
     }
+
 
     public void masuk(View view) {
 

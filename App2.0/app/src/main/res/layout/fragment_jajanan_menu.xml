@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewMenuHome.JajananMenuFragment">
+    tools:context=".ViewMenuHome.JajananMenuFragment"
+    android:background="@color/black">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/black">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,8 +27,9 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:textSize="30sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/monserratmedium"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -42,15 +45,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuJajanan1"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"/>
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
                             android:text="@string/DescMenuJajanan1"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="italic"/>
+                            android:textStyle="italic"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/TxtvHargaJajanan1"
@@ -60,7 +65,8 @@
                         android:gravity="right"
                         android:text="Rp 10.000"
                         android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -76,8 +82,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuJajanan2"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"/>
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
 
                     <TextView
@@ -88,7 +95,8 @@
                         android:gravity="right"
                         android:text="Rp 10.000"
                         android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -104,8 +112,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/MenuJajanan3"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"/>
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/monserratmedium"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/TxtvHargaJajanan3"
@@ -115,7 +124,8 @@
                         android:gravity="right"
                         android:text="Rp 10.000"
                         android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/monserratmedium"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
