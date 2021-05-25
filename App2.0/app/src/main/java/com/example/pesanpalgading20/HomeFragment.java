@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -126,13 +125,13 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 ContainerContentHome.setVisibility(View.GONE);
                 // Create new fragment and transaction
-                Fragment FragmentHomeMakanan = new HomeMakananFragment();
+                Fragment FragmentHomeMakananPilihan = new HomeMakananPilihanFragment();
                 // consider using Java coding conventions (upper first char class names!!!)
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
                 // Replace whatever is in the fragment_container view with this fragment,
                 // and add the transaction to the back stack
-                transaction.replace(R.id.ContainerHome, FragmentHomeMakanan);
+                transaction.replace(R.id.ContainerHome, FragmentHomeMakananPilihan);
                 transaction.addToBackStack(null);
                 // Commit the transaction
                 transaction.commit();

@@ -7,16 +7,23 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.pesanpalgading20.Makanan.MieAyam;
+import com.example.pesanpalgading20.adapter.MieAyamAdapter;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HomeMakananFragment#newInstance} factory method to
+ * Use the {@link HomeMakananMieayamFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeMakananFragment extends Fragment {
+public class HomeMakananMieayamFragment extends Fragment {
 
-    TextView TxtvMakananHome;
+    TextView TxtvMakananHomeMieayam;
+    ListView ListViewMenuMieAyam;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +34,7 @@ public class HomeMakananFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public HomeMakananFragment() {
+    public HomeMakananMieayamFragment() {
         // Required empty public constructor
     }
 
@@ -40,8 +47,8 @@ public class HomeMakananFragment extends Fragment {
      * @return A new instance of fragment HomeMakanan.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomeMakananFragment newInstance(String param1, String param2) {
-        HomeMakananFragment fragment = new HomeMakananFragment();
+    public static HomeMakananMieayamFragment newInstance(String param1, String param2) {
+        HomeMakananMieayamFragment fragment = new HomeMakananMieayamFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,8 +68,19 @@ public class HomeMakananFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View viewRoot = inflater.inflate(R.layout.fragment_home_makanan, container, false);
-        TxtvMakananHome = viewRoot.findViewById(R.id.TxtvMakananHome);
+        View viewRoot = inflater.inflate(R.layout.fragment_home_makanan_mieayam, container, false);
+        TxtvMakananHomeMieayam = viewRoot.findViewById(R.id.TxtvMakananHomeMieayam);
+
+        ArrayList<MieAyam> mieAyam = new ArrayList<MieAyam>();
+        mieAyam.add (new MieAyam("Mie Ayam Original", 10000 ,R.drawable.ic_launcher_background));
+        mieAyam.add (new MieAyam("Mie Ayam Jumbo", 20000 ,R.drawable.ic_launcher_background));
+        mieAyam.add (new MieAyam("Mie Ayam Super Jumbo Komplit", 30000 ,R.drawable.ic_launcher_background));
+        mieAyam.add (new MieAyam("Mie Ayam Original", 40000 ,R.drawable.ic_launcher_background));
+
+        MieAyamAdapter mieAyamAdapter = new MieAyamAdapter(getActivity(), mieAyam);
+
+        ListViewMenuMieAyam = viewRoot.findViewById(R.id.ListViewMenuMieAyam);
+        ListViewMenuMieAyam.setAdapter(mieAyamAdapter);
 
         /// get Variable passed from login ///
 
