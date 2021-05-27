@@ -1,13 +1,18 @@
 package com.example.pesanpalgading20;
 
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toolbar;
 
 import com.example.pesanpalgading20.Makanan.Bakso;
 import com.example.pesanpalgading20.adapter.BaksoAdapter;
@@ -22,6 +27,8 @@ import java.util.ArrayList;
 public class HomeMakananBaksoFragment extends Fragment {
 
     ListView ListViewMenuBakso;
+    Toolbar toolbarBakso;
+    LinearLayout ContainerContentBakso;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,10 +70,13 @@ public class HomeMakananBaksoFragment extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.fragment_home_makanan_bakso, container, false);
+
+        ContainerContentBakso = viewRoot.findViewById(R.id.ContainerContentBakso);
 
         ArrayList<Bakso> bakso = new ArrayList<Bakso>();
         bakso.add (new Bakso("Bakso Hore", 10000 ,R.drawable.ic_launcher_background));
@@ -81,6 +91,25 @@ public class HomeMakananBaksoFragment extends Fragment {
 
         ListViewMenuBakso = viewRoot.findViewById(R.id.ListViewMenuBakso);
         ListViewMenuBakso.setAdapter(baksoAdapter);
+
+        toolbarBakso = viewRoot.findViewById(R.id.ToolbarBakso);
+        toolbarBakso.setNavigationIcon(R.drawable.arrowbackicon);
+        toolbarBakso.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ContainerContentBakso.setVisibility(View.GONE);
+                // Create new fragment and transaction
+                Fragment FragmentMenuPilihan = new HomeMakananPilihanFragment();
+                // consider using Java coding conventions (upper first char class names!!!)
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack
+                transaction.replace(R.id.ContainerBakso, FragmentMenuPilihan);
+                transaction.addToBackStack(null);
+                // Commit the transaction
+                transaction.commit();
+            }
+        });
 
         // Inflate the layout for this fragment
         return viewRoot;

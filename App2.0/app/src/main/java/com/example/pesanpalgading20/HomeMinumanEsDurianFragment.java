@@ -14,23 +14,23 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toolbar;
 
-import com.example.pesanpalgading20.Makanan.MieAyam;
-import com.example.pesanpalgading20.Makanan.Soto;
-import com.example.pesanpalgading20.adapter.MieAyamAdapter;
-import com.example.pesanpalgading20.adapter.SotoAdapter;
+import com.example.pesanpalgading20.Minuman.EsDurian;
+import com.example.pesanpalgading20.Minuman.EsOri;
+import com.example.pesanpalgading20.adapter.EsDurianAdapter;
+import com.example.pesanpalgading20.adapter.EsOriAdapter;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HomeMakananSotoFragment#newInstance} factory method to
+ * Use the {@link HomeMinumanEsDurianFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeMakananSotoFragment extends Fragment {
+public class HomeMinumanEsDurianFragment extends Fragment {
 
-    ListView ListViewMenuSoto;
-    Toolbar toolbarSoto;
-    LinearLayout ContainerContentSoto;
+    ListView ListViewMenuEsDurian;
+    Toolbar toolbarEsDurian;
+    LinearLayout ContainerContentEsDurian;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,7 +41,7 @@ public class HomeMakananSotoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public HomeMakananSotoFragment() {
+    public HomeMinumanEsDurianFragment() {
         // Required empty public constructor
     }
 
@@ -51,11 +51,11 @@ public class HomeMakananSotoFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeMakananSotoFragment.
+     * @return A new instance of fragment HomeMinumanEsDurianFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomeMakananSotoFragment newInstance(String param1, String param2) {
-        HomeMakananSotoFragment fragment = new HomeMakananSotoFragment();
+    public static HomeMinumanEsDurianFragment newInstance(String param1, String param2) {
+        HomeMinumanEsDurianFragment fragment = new HomeMinumanEsDurianFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -76,34 +76,37 @@ public class HomeMakananSotoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View viewRoot = inflater.inflate(R.layout.fragment_home_makanan_soto, container, false);
+        View viewRoot = inflater.inflate(R.layout.fragment_home_minuman_es_durian, container, false);
+        ContainerContentEsDurian = viewRoot.findViewById(R.id.ContainerContentEsDurian);
 
-        ContainerContentSoto = viewRoot.findViewById(R.id.ContainerContentSoto);
 
-        ArrayList<Soto> soto = new ArrayList<Soto>();
-        soto.add (new Soto("Nasi Soto Daging Sapi", 10000 ,R.drawable.ic_launcher_background));
-        soto.add (new Soto("Soto Daging Sapi (Tanpa Nasi)", 20000 ,R.drawable.ic_launcher_background));
-        soto.add (new Soto("Nasi Soto Ayam", 30000 ,R.drawable.ic_launcher_background));
-        soto.add (new Soto("Nasi Soto (Tanpa Nasi)", 40000 ,R.drawable.ic_launcher_background));
+        ArrayList<EsDurian> esDurian = new ArrayList<EsDurian>();
+        esDurian.add (new EsDurian("Es Teller Durian", 10000 ,R.drawable.ic_launcher_background));
+        esDurian.add (new EsDurian("Es Campur Gula Jawa Durian", 20000 ,R.drawable.ic_launcher_background));
+        esDurian.add (new EsDurian("Es Pelangi Durian", 30000 ,R.drawable.ic_launcher_background));
+        esDurian.add (new EsDurian("Es Degan Durian", 40000 ,R.drawable.ic_launcher_background));
+        esDurian.add (new EsDurian("Es Alpukat Durian", 40000 ,R.drawable.ic_launcher_background));
+        esDurian.add (new EsDurian("Es Alpukat Degan Durian", 40000 ,R.drawable.ic_launcher_background));
+        esDurian.add (new EsDurian("Es Cincau Hitam Durian", 40000 ,R.drawable.ic_launcher_background));
 
-        SotoAdapter sotoAdapter = new SotoAdapter(getActivity(), soto);
+        EsDurianAdapter esDurianAdapter = new EsDurianAdapter(getActivity(), esDurian);
 
-        ListViewMenuSoto = viewRoot.findViewById(R.id.ListViewMenuSoto);
-        ListViewMenuSoto.setAdapter(sotoAdapter);
+        ListViewMenuEsDurian = viewRoot.findViewById(R.id.ListViewMenuEsDurian);
+        ListViewMenuEsDurian.setAdapter(esDurianAdapter);
 
-        toolbarSoto = viewRoot.findViewById(R.id.ToolbarSoto);
-        toolbarSoto.setNavigationIcon(R.drawable.arrowbackicon);
-        toolbarSoto.setNavigationOnClickListener(new View.OnClickListener() {
+        toolbarEsDurian = viewRoot.findViewById(R.id.ToolbarEsDurian);
+        toolbarEsDurian.setNavigationIcon(R.drawable.arrowbackicon);
+        toolbarEsDurian.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ContainerContentSoto.setVisibility(View.GONE);
+                ContainerContentEsDurian.setVisibility(View.GONE);
                 // Create new fragment and transaction
-                Fragment FragmentMenuPilihan = new HomeMakananPilihanFragment();
+                Fragment FragmentMinumanPilihan = new HomeMinumanPilihanFragment();
                 // consider using Java coding conventions (upper first char class names!!!)
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 // Replace whatever is in the fragment_container view with this fragment,
                 // and add the transaction to the back stack
-                transaction.replace(R.id.ContainerSoto, FragmentMenuPilihan);
+                transaction.replace(R.id.ContainerEsDurian, FragmentMinumanPilihan);
                 transaction.addToBackStack(null);
                 // Commit the transaction
                 transaction.commit();

@@ -1,14 +1,19 @@
 package com.example.pesanpalgading20;
 
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.example.pesanpalgading20.Makanan.MieAyam;
 import com.example.pesanpalgading20.adapter.MieAyamAdapter;
@@ -24,6 +29,8 @@ public class HomeMakananMieayamFragment extends Fragment {
 
     TextView TxtvMakananHomeMieayam;
     ListView ListViewMenuMieAyam;
+    Toolbar toolbarMieAyam;
+    LinearLayout ContainerContentMieAyam;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,11 +72,13 @@ public class HomeMakananMieayamFragment extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.fragment_home_makanan_mieayam, container, false);
         TxtvMakananHomeMieayam = viewRoot.findViewById(R.id.TxtvMakananHomeMieayam);
+        ContainerContentMieAyam = viewRoot.findViewById(R.id.ContainerContentMieAyam);
 
         ArrayList<MieAyam> mieAyam = new ArrayList<MieAyam>();
         mieAyam.add (new MieAyam("Mie Ayam Original", 10000 ,R.drawable.ic_launcher_background));
@@ -81,6 +90,25 @@ public class HomeMakananMieayamFragment extends Fragment {
 
         ListViewMenuMieAyam = viewRoot.findViewById(R.id.ListViewMenuMieAyam);
         ListViewMenuMieAyam.setAdapter(mieAyamAdapter);
+
+        toolbarMieAyam = viewRoot.findViewById(R.id.ToolbarMieAyam);
+        toolbarMieAyam.setNavigationIcon(R.drawable.arrowbackicon);
+        toolbarMieAyam.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ContainerContentMieAyam.setVisibility(View.GONE);
+                // Create new fragment and transaction
+                Fragment FragmentMenuPilihan = new HomeMakananPilihanFragment();
+                // consider using Java coding conventions (upper first char class names!!!)
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack
+                transaction.replace(R.id.ContainerMieAyam, FragmentMenuPilihan);
+                transaction.addToBackStack(null);
+                // Commit the transaction
+                transaction.commit();
+            }
+        });
 
         /// get Variable passed from login ///
 

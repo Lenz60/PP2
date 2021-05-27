@@ -4,18 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeMakananBaksoFragment"
-    android:id="@+id/ContainerBakso">
+    tools:context=".HomeMinumanEsJusFragment"
+    android:id="@+id/ContainerEsJus">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:id="@+id/ContainerContentBakso"
+        android:id="@+id/ContainerContentEsJus"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <android.widget.Toolbar
-            android:id="@+id/ToolbarBakso"
+            android:id="@+id/ToolbarEsJus"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/pal4c3"
@@ -27,11 +26,9 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:text="Menu Bakso"/>
+                android:text="Menu Aneka Es Jus"/>
         </android.widget.Toolbar>
-
         <ScrollView
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/black">
@@ -45,20 +42,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="60dp">
                     <TextView
-                        android:id="@+id/TxtvMakananHomeBakso"
+                        android:id="@+id/TxtvMakananHomeEsJus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:textSize="30sp"
                         android:textColor="@color/white"
-                        android:text="Menu Bakso" />
+                        android:text="Menu Aneka Es Jus" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <ListView
-                        android:id="@+id/ListViewMenuBakso"
+                        android:id="@+id/ListViewMenuEsJus"
                         android:layout_width="match_parent"
                         android:layout_height="700dp"
                         android:paddingLeft="10dp"

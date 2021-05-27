@@ -15,7 +15,7 @@ import com.example.pesanpalgading20.R;
 import java.util.ArrayList;
 
 public class SotoAdapter extends ArrayAdapter<Soto> {
-    private static final String LOG_TAG = MieAyamAdapter.class.getSimpleName();
+    private static final String LOG_TAG = SotoAdapter.class.getSimpleName();
     /**
      * This is our own custom constructor (it doesn't mirror a superclass constructor).
      * The context is used to inflate the layout file, and the list is the data we want
