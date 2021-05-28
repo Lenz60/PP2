@@ -101,7 +101,7 @@ public class HomeMakananPilihanFragment extends Fragment {
         ImageViewPilihanMieayam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //ContainerContentPilihanMenuMakanan.setVisibility(View.GONE);
+                ContainerContentPilihanMenuMakanan.setVisibility(View.GONE);
                 // Create new fragment and transaction
                 Fragment FragmentMakananMieayam = new HomeMakananMieayamFragment();
                 // consider using Java coding conventions (upper first char class names!!!)

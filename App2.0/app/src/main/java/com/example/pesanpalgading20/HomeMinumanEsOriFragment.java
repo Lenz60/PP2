@@ -80,7 +80,7 @@ public class HomeMinumanEsOriFragment extends Fragment {
                              Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.fragment_home_minuman_es_ori, container, false);
 
-        ContainerContentEsOri = viewRoot.findViewById(R.id.ContainerrContentEsOri);
+        ContainerContentEsOri = viewRoot.findViewById(R.id.ContainerContentEsOri);
 
         ArrayList<EsOri> esOri = new ArrayList<EsOri>();
         esOri.add (new EsOri("Es Teller Palgading", 10000 ,R.drawable.ic_launcher_background));

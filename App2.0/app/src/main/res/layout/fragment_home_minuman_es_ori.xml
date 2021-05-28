@@ -8,11 +8,10 @@
     android:id="@+id/ContainerEsOri">
 
     <LinearLayout
-        android:id="@+id/ContainerrContentEsOri"
+        android:id="@+id/ContainerContentEsOri"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <android.widget.Toolbar
             android:id="@+id/ToolbarEsOri"
             android:layout_width="match_parent"

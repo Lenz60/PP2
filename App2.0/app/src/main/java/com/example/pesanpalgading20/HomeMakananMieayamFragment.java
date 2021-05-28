@@ -1,5 +1,6 @@
 package com.example.pesanpalgading20;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -80,11 +82,10 @@ public class HomeMakananMieayamFragment extends Fragment {
         TxtvMakananHomeMieayam = viewRoot.findViewById(R.id.TxtvMakananHomeMieayam);
         ContainerContentMieAyam = viewRoot.findViewById(R.id.ContainerContentMieAyam);
 
-        ArrayList<MieAyam> mieAyam = new ArrayList<MieAyam>();
+        final ArrayList<MieAyam> mieAyam = new ArrayList<MieAyam>();
         mieAyam.add (new MieAyam("Mie Ayam Original", 10000 ,R.drawable.ic_launcher_background));
-        mieAyam.add (new MieAyam("Mie Ayam Jumbo", 20000 ,R.drawable.ic_launcher_background));
-        mieAyam.add (new MieAyam("Mie Ayam Super Jumbo Komplit", 30000 ,R.drawable.ic_launcher_background));
-        mieAyam.add (new MieAyam("Mie Ayam Original", 40000 ,R.drawable.ic_launcher_background));
+        mieAyam.add (new MieAyam("Mie Ayam Jumbo", 16000 ,R.drawable.ic_launcher_background));
+        mieAyam.add (new MieAyam("Mie Ayam Super Jumbo Komplit", 16000 ,R.drawable.ic_launcher_background));
 
         MieAyamAdapter mieAyamAdapter = new MieAyamAdapter(getActivity(), mieAyam);
 
@@ -107,6 +108,91 @@ public class HomeMakananMieayamFragment extends Fragment {
                 transaction.addToBackStack(null);
                 // Commit the transaction
                 transaction.commit();
+            }
+        });
+
+
+
+        ListViewMenuMieAyam.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id ) {
+                switch (position) {
+                    case 0 :
+                        ContainerContentMieAyam.setVisibility(View.GONE);
+                        //set getter to be called based on position
+                        MieAyam mieAyamGeter1 = (MieAyam)ListViewMenuMieAyam.getItemAtPosition(position);
+                        //declare new code
+                        String FoodCode1 = "MA1";
+                        //get MakananName using getter
+                        String FoodName1 = mieAyamGeter1.getmMakananName();
+                        //get MakananPrice using getter
+                        int FoodPrice1 = mieAyamGeter1.getmMakananHarga();
+                        //set the MakananPrice to String to passed to intent
+                        String Price1 = String.valueOf(FoodPrice1);
+                        //Pass the variables
+                        Bundle bundle1 = new Bundle();
+                        bundle1.putString("FoodCode", FoodCode1);
+                        bundle1.putString("FoodName", FoodName1);
+                        bundle1.putString("FoodPrice", Price1);
+
+                        Fragment fragment1 = new FragmentOrdertoCart();
+                        // consider using Java coding conventions (upper first char class names!!!)
+                        FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
+                        // Replace whatever is in the fragment_container view with this fragment,
+                        // and add the transaction to the back stack
+                        transaction1.replace(R.id.ContainerMieAyam, fragment1);
+                        fragment1.setArguments(bundle1);
+                        transaction1.addToBackStack(null);
+                        // Commit the transaction
+                        transaction1.commit();
+                        break;
+                    case 1:
+                        ContainerContentMieAyam.setVisibility(View.GONE);
+                        MieAyam mieAyamGeter2 = (MieAyam)ListViewMenuMieAyam.getItemAtPosition(position);
+                        String FoodCode2 = "MA2";
+                        String FoodName2 = mieAyamGeter2.getmMakananName();
+                        int FoodPrice2 = mieAyamGeter2.getmMakananHarga();
+                        String Price2 = String.valueOf(FoodPrice2);
+                        Bundle bundle2 = new Bundle();
+                        bundle2.putString("FoodCode", FoodCode2);
+                        bundle2.putString("FoodName", FoodName2);
+                        bundle2.putString("FoodPrice", Price2);
+
+                        Fragment fragment2 = new FragmentOrdertoCart();
+                        // consider using Java coding conventions (upper first char class names!!!)
+                        FragmentTransaction transaction2 = getFragmentManager().beginTransaction();
+                        // Replace whatever is in the fragment_container view with this fragment,
+                        // and add the transaction to the back stack
+                        transaction2.replace(R.id.ContainerMieAyam, fragment2);
+                        fragment2.setArguments(bundle2);
+                        transaction2.addToBackStack(null);
+                        // Commit the transaction
+                        transaction2.commit();
+                        break;
+                    case 2:
+                        ContainerContentMieAyam.setVisibility(View.GONE);
+                        MieAyam mieAyamGeter3 = (MieAyam)ListViewMenuMieAyam.getItemAtPosition(position);
+                        String FoodCode3 = "MA3";
+                        String FoodName3 = mieAyamGeter3.getmMakananName();
+                        int FoodPrice3 = mieAyamGeter3.getmMakananHarga();
+                        String Price3 = String.valueOf(FoodPrice3);
+                        Bundle bundle3 = new Bundle();
+                        bundle3.putString("FoodCode", FoodCode3);
+                        bundle3.putString("FoodName", FoodName3);
+                        bundle3.putString("FoodPrice", Price3);
+
+                        Fragment fragment3 = new FragmentOrdertoCart();
+                        // consider using Java coding conventions (upper first char class names!!!)
+                        FragmentTransaction transaction3 = getFragmentManager().beginTransaction();
+                        // Replace whatever is in the fragment_container view with this fragment,
+                        // and add the transaction to the back stack
+                        transaction3.replace(R.id.ContainerMieAyam, fragment3);
+                        fragment3.setArguments(bundle3);
+                        transaction3.addToBackStack(null);
+                        // Commit the transaction
+                        transaction3.commit();
+                        break;
+                }
             }
         });
 

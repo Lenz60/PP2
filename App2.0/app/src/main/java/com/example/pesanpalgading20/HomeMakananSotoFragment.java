@@ -10,10 +10,12 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toolbar;
 
+import com.example.pesanpalgading20.Makanan.Bakso;
 import com.example.pesanpalgading20.Makanan.MieAyam;
 import com.example.pesanpalgading20.Makanan.Soto;
 import com.example.pesanpalgading20.adapter.MieAyamAdapter;
@@ -107,6 +109,132 @@ public class HomeMakananSotoFragment extends Fragment {
                 transaction.addToBackStack(null);
                 // Commit the transaction
                 transaction.commit();
+            }
+        });
+
+        ListViewMenuSoto.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id ) {
+                switch (position) {
+                    case 0 :
+                        ContainerContentSoto.setVisibility(View.GONE);
+                        //set getter to be called based on position
+                        Soto sotoGeter1 = (Soto) ListViewMenuSoto.getItemAtPosition(position);
+                        //declare new code
+                        String FoodCode1 = "ST1";
+                        //get MakananName using getter
+                        String FoodName1 = sotoGeter1.getmMakananName();
+                        //get MakananPrice using getter
+                        int FoodPrice1 = sotoGeter1.getmMakananHarga();
+                        //set the MakananPrice to String to passed to intent
+                        String Price1 = String.valueOf(FoodPrice1);
+                        //Pass the variables
+                        Bundle bundle1 = new Bundle();
+                        bundle1.putString("FoodCode", FoodCode1);
+                        bundle1.putString("FoodName", FoodName1);
+                        bundle1.putString("FoodPrice", Price1);
+
+                        Fragment fragment1 = new FragmentOrdertoCart();
+                        // consider using Java coding conventions (upper first char class names!!!)
+                        FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
+                        // Replace whatever is in the fragment_container view with this fragment,
+                        // and add the transaction to the back stack
+                        transaction1.replace(R.id.ContainerSoto, fragment1);
+                        fragment1.setArguments(bundle1);
+                        transaction1.addToBackStack(null);
+                        // Commit the transaction
+                        transaction1.commit();
+                        break;
+                    case 1:
+                        ContainerContentSoto.setVisibility(View.GONE);
+                        //set getter to be called based on position
+                        Soto sotoGeter2 = (Soto) ListViewMenuSoto.getItemAtPosition(position);
+                        //declare new code
+                        String FoodCode2 = "ST2";
+                        //get MakananName using getter
+                        String FoodName2 = sotoGeter2.getmMakananName();
+                        //get MakananPrice using getter
+                        int FoodPrice2 = sotoGeter2.getmMakananHarga();
+                        //set the MakananPrice to String to passed to intent
+                        String Price2 = String.valueOf(FoodPrice2);
+                        //Pass the variables
+                        Bundle bundle2 = new Bundle();
+                        bundle2.putString("FoodCode", FoodCode2);
+                        bundle2.putString("FoodName", FoodName2);
+                        bundle2.putString("FoodPrice", Price2);
+
+                        Fragment fragment2 = new FragmentOrdertoCart();
+                        // consider using Java coding conventions (upper first char class names!!!)
+                        FragmentTransaction transaction2 = getFragmentManager().beginTransaction();
+                        // Replace whatever is in the fragment_container view with this fragment,
+                        // and add the transaction to the back stack
+                        transaction2.replace(R.id.ContainerSoto, fragment2);
+                        fragment2.setArguments(bundle2);
+                        transaction2.addToBackStack(null);
+                        // Commit the transaction
+                        transaction2.commit();
+                        break;
+                    case 2:
+                        ContainerContentSoto.setVisibility(View.GONE);
+                        //set getter to be called based on position
+                        Soto sotoGeter3 = (Soto) ListViewMenuSoto.getItemAtPosition(position);
+                        //declare new code
+                        String FoodCode3 = "ST3";
+                        //get MakananName using getter
+                        String FoodName3 = sotoGeter3.getmMakananName();
+                        //get MakananPrice using getter
+                        int FoodPrice3 = sotoGeter3.getmMakananHarga();
+                        //set the MakananPrice to String to passed to intent
+                        String Price3 = String.valueOf(FoodPrice3);
+                        //Pass the variables
+                        Bundle bundle3 = new Bundle();
+                        bundle3.putString("FoodCode", FoodCode3);
+                        bundle3.putString("FoodName", FoodName3);
+                        bundle3.putString("FoodPrice", Price3);
+
+                        Fragment fragment3 = new FragmentOrdertoCart();
+                        // consider using Java coding conventions (upper first char class names!!!)
+                        FragmentTransaction transaction3 = getFragmentManager().beginTransaction();
+                        // Replace whatever is in the fragment_container view with this fragment,
+                        // and add the transaction to the back stack
+                        transaction3.replace(R.id.ContainerSoto, fragment3);
+                        fragment3.setArguments(bundle3);
+                        transaction3.addToBackStack(null);
+                        // Commit the transaction
+                        transaction3.commit();
+                        break;
+
+                    case 3:
+                        ContainerContentSoto.setVisibility(View.GONE);
+                        //set getter to be called based on position
+                        Soto sotoGeter4 = (Soto) ListViewMenuSoto.getItemAtPosition(position);
+                        //declare new code
+                        String FoodCode4 = "ST4";
+                        //get MakananName using getter
+                        String FoodName4 = sotoGeter4.getmMakananName();
+                        //get MakananPrice using getter
+                        int FoodPrice4 = sotoGeter4.getmMakananHarga();
+                        //set the MakananPrice to String to passed to intent
+                        String Price4 = String.valueOf(FoodPrice4);
+                        //Pass the variables
+                        Bundle bundle4 = new Bundle();
+                        bundle4.putString("FoodCode", FoodCode4);
+                        bundle4.putString("FoodName", FoodName4);
+                        bundle4.putString("FoodPrice", Price4);
+
+                        Fragment fragment4 = new FragmentOrdertoCart();
+                        // consider using Java coding conventions (upper first char class names!!!)
+                        FragmentTransaction transaction4 = getFragmentManager().beginTransaction();
+                        // Replace whatever is in the fragment_container view with this fragment,
+                        // and add the transaction to the back stack
+                        transaction4.replace(R.id.ContainerSoto, fragment4);
+                        fragment4.setArguments(bundle4);
+                        transaction4.addToBackStack(null);
+                        // Commit the transaction
+                        transaction4.commit();
+                        break;
+
+                }
             }
         });
 

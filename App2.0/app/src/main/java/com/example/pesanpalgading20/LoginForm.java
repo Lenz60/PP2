@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
@@ -29,6 +30,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pesanpalgading20.Makanan.MieAyam;
 import com.example.pesanpalgading20.view.BottomNavbar;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -57,6 +59,7 @@ public class LoginForm extends AppCompatActivity {
             posk4confirm, posk7confirm,posk12confirm;
     String unavailable;
     String ProgressBarVisible;
+    String Nama, NoMejaAuto, KodeMeja, NoMejaFinal;
 
     Spinner SpinnerMeja;
     String[] NomorMeja = {"1","2","3","4","5/6","7","8/9","10","11","12"};
@@ -539,6 +542,8 @@ public class LoginForm extends AppCompatActivity {
     }
 
 
+
+
     public void masuk(View view) {
 
         //Check is Nama is empty
@@ -553,11 +558,9 @@ public class LoginForm extends AppCompatActivity {
             }
             else {
                 Intent intent = new Intent(this, BottomNavbar.class);
-                Bundle mbundle = new Bundle();
-                String Nama = EdNama.getText().toString();
-                String NoMejaAuto = TvLokasiMeja.getText().toString();
-                String KodeMeja = EdKodeMeja.getText().toString();
-                String NoMejaFinal;
+                 Nama = EdNama.getText().toString();
+                 NoMejaAuto = TvLokasiMeja.getText().toString();
+                 KodeMeja = EdKodeMeja.getText().toString();
 
                 if (NoMejaAuto.equals(" ")){
                     NoMejaFinal = SpinnerMeja.getSelectedItem().toString();
@@ -566,6 +569,11 @@ public class LoginForm extends AppCompatActivity {
                     NoMejaFinal = NoMejaAuto;
                 }
 
+//                User user = new User(
+//                        (Nama),
+//                        (KodeMeja),
+//                        (NoMejaFinal)
+//                );
                 intent.putExtra("nama", Nama);
                 intent.putExtra("noMejaFinal", NoMejaFinal);
                 intent.putExtra("kodeMeja", KodeMeja);
@@ -573,6 +581,7 @@ public class LoginForm extends AppCompatActivity {
             }
         }
     }
+
 
 
     //Back is Pressed

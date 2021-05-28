@@ -101,8 +101,10 @@ public class HomeFragment extends Fragment {
         ///////// replace with intent /////////
 
         /// get Variable passed from login ///
+        String Nama = getActivity().getIntent().getExtras().getString("nama");
 
-        String Nama = getActivity().getIntent().getExtras().getString("nama").toString();
+
+//
 //        String NoMeja = args.getString("noMejaFinal");
 //        String KodeMeja = args.getString("kodeMeja");
         /////////////////////////////////////////////

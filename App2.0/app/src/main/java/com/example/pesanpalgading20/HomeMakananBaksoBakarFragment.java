@@ -10,10 +10,12 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toolbar;
 
+import com.example.pesanpalgading20.Makanan.Bakso;
 import com.example.pesanpalgading20.Makanan.BaksoBakar;
 import com.example.pesanpalgading20.adapter.BaksoBakarAdapter;
 
@@ -102,6 +104,66 @@ public class HomeMakananBaksoBakarFragment extends Fragment {
                 transaction.addToBackStack(null);
                 // Commit the transaction
                 transaction.commit();
+            }
+        });
+
+        ListViewMenuBaksoBakar.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id ) {
+                switch (position) {
+                    case 0 :
+                        ContainerContentBaksoBakar.setVisibility(View.GONE);
+                        //set getter to be called based on position
+                        BaksoBakar baksoGeter1 = (BaksoBakar) ListViewMenuBaksoBakar.getItemAtPosition(position);
+                        //declare new code
+                        String FoodCode1 = "BB1";
+                        //get MakananName using getter
+                        String FoodName1 = baksoGeter1.getmMakananName();
+                        //get MakananPrice using getter
+                        int FoodPrice1 = baksoGeter1.getmMakananHarga();
+                        //set the MakananPrice to String to passed to intent
+                        String Price1 = String.valueOf(FoodPrice1);
+                        //Pass the variables
+                        Bundle bundle1 = new Bundle();
+                        bundle1.putString("FoodCode", FoodCode1);
+                        bundle1.putString("FoodName", FoodName1);
+                        bundle1.putString("FoodPrice", Price1);
+
+                        Fragment fragment1 = new FragmentOrdertoCart();
+                        // consider using Java coding conventions (upper first char class names!!!)
+                        FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
+                        // Replace whatever is in the fragment_container view with this fragment,
+                        // and add the transaction to the back stack
+                        transaction1.replace(R.id.ContainerBaksoBakar, fragment1);
+                        fragment1.setArguments(bundle1);
+                        transaction1.addToBackStack(null);
+                        // Commit the transaction
+                        transaction1.commit();
+                        break;
+                    case 1:
+                        ContainerContentBaksoBakar.setVisibility(View.GONE);
+                        BaksoBakar baksoGeter2 = (BaksoBakar) ListViewMenuBaksoBakar.getItemAtPosition(position);
+                        String FoodCode2 = "BB2";
+                        String FoodName2 = baksoGeter2.getmMakananName();
+                        int FoodPrice2 = baksoGeter2.getmMakananHarga();
+                        String Price2 = String.valueOf(FoodPrice2);
+                        Bundle bundle2 = new Bundle();
+                        bundle2.putString("FoodCode", FoodCode2);
+                        bundle2.putString("FoodName", FoodName2);
+                        bundle2.putString("FoodPrice", Price2);
+
+                        Fragment fragment2 = new FragmentOrdertoCart();
+                        // consider using Java coding conventions (upper first char class names!!!)
+                        FragmentTransaction transaction2 = getFragmentManager().beginTransaction();
+                        // Replace whatever is in the fragment_container view with this fragment,
+                        // and add the transaction to the back stack
+                        transaction2.replace(R.id.ContainerBaksoBakar, fragment2);
+                        fragment2.setArguments(bundle2);
+                        transaction2.addToBackStack(null);
+                        // Commit the transaction
+                        transaction2.commit();
+                        break;
+                }
             }
         });
 
