@@ -14,6 +14,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.example.pesanpalgading20.Model.Menu.Jajanan.HomeJajananFragment;
+import com.example.pesanpalgading20.Model.Menu.Makanan.HomeMakananBaksoBakarFragment;
+import com.example.pesanpalgading20.Model.Menu.Makanan.HomeMakananBaksoFragment;
+import com.example.pesanpalgading20.Model.Menu.Makanan.HomeMakananMieayamFragment;
+import com.example.pesanpalgading20.Model.Menu.Makanan.HomeMakananSotoFragment;
+import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsDurianFragment;
+import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsJusFragment;
+import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsOriFragment;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FragmentOrdertoCart#newInstance} factory method to

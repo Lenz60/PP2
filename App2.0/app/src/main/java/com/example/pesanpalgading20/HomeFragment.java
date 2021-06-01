@@ -15,6 +15,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pesanpalgading20.Model.Menu.Jajanan.HomeJajananFragment;
+import com.example.pesanpalgading20.Model.PilihanMenu.HomeMakananPilihanFragment;
+import com.example.pesanpalgading20.Model.PilihanMenu.HomeMinumanPilihanFragment;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 

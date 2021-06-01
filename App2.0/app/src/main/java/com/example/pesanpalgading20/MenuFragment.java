@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.pesanpalgading20.adapter.MenuTabAdapter;
+import com.example.pesanpalgading20.Adapter.MenuTabAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 /**
