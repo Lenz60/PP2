@@ -7,56 +7,578 @@
     tools:context=".FragmentOrdertoCart"
     android:id="@+id/ContainerOrdertoCart">
 
-    <LinearLayout
-        android:id="@+id/ContainerContentOrdertoCart"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/black">
-        <android.widget.Toolbar
-            android:id="@+id/ToolbarOrdertoCart"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/pal4c3"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:text="Detail Menu"/>
-        </android.widget.Toolbar>
-
+        android:layout_height="wrap_content">
         <LinearLayout
+            android:id="@+id/ContainerContentOrdertoCart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/black">
+            <android.widget.Toolbar
+                android:id="@+id/ToolbarOrdertoCart"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/pal4c3"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="Detail Menu"/>
+            </android.widget.Toolbar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="50dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_launcher_background"/>
+                    <TextView
+                        android:id="@+id/TxtvOrdertoCartCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kode Makanan"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Stok : "
+                            android:textColor="@color/white"
+                            android:textSize="20sp"/>
+                        <TextView
+                            android:id="@+id/TxtvOrdertoCartStock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="xx"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/TxtvOrdertoCartName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Makanan"
+                        android:textColor="@color/white"
+                        android:textSize="25sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="end">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. "
+                            android:textColor="@color/white"
+                            android:textSize="20sp"/>
+                        <TextView
+                            android:id="@+id/TxtvOrdertoCartPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Harga Makanan"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <RadioGroup
+                        android:id="@+id/RadioChoiceFood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:outlineSpotShadowColor="@color/white"
+                        android:outlineAmbientShadowColor="@color/white">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Kuah"
+                            android:textSize="20dp"
+                            android:textColor="@color/white"
+                            android:buttonTint="@color/white"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Goreng"
+                            android:textSize="20dp"
+                            android:textColor="@color/white"
+                            android:buttonTint="@color/white"/>
+                    </RadioGroup>
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="Topping :"
+                    android:textSize="30sp"
+                    android:textColor="@color/white"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/CheckboxTopping1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="topping 1"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:textSize="19sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="end">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. "
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:id="@+id/TxtvOrdertoCartToppingPrice1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Harga Topping"
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/CheckboxTopping2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="topping 2"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:textSize="19sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="end">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. "
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:id="@+id/TxtvOrdertoCartToppingPrice2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Harga Topping"
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/CheckboxTopping3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="topping 3"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:textSize="19sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="end">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. "
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:id="@+id/TxtvOrdertoCartToppingPrice3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Harga Topping"
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/CheckboxTopping4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="topping 4"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:textSize="19sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="end">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. "
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:id="@+id/TxtvOrdertoCartToppingPrice4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Harga Topping"
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/CheckboxTopping5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="topping 5"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:textSize="19sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="end">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. "
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:id="@+id/TxtvOrdertoCartToppingPrice5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Harga Topping"
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/CheckboxTopping6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="topping 6"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:textSize="19sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="end">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. "
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:id="@+id/TxtvOrdertoCartToppingPrice6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Harga Topping"
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/CheckboxTopping7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="topping 7"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:textSize="19sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="end">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. "
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:id="@+id/TxtvOrdertoCartToppingPrice7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Harga Topping"
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/CheckboxTopping8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="topping 8"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:textSize="19sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="end">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. "
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:id="@+id/TxtvOrdertoCartToppingPrice8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Harga Topping"
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/CheckboxToppin9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="topping 9"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:textSize="19sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="end">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. "
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:id="@+id/TxtvOrdertoCartToppingPrice9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Harga Topping"
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/CheckboxTopping10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="topping 10"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:textSize="19sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="end">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. "
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:id="@+id/TxtvOrdertoCartToppingPrice10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Harga Topping"
+                            android:textColor="@color/white"
+                            android:textSize="19sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:text="Total Harga : "/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="end">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp. "
+                        android:textColor="@color/Green2"
+                        android:textSize="29sp"/>
+                    <TextView
+                        android:id="@+id/TxtvOrdertoCartTotalPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Harga Total"
+                        android:textColor="@color/Green2"
+                        android:textSize="29sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            <!-- filler -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="50dp">
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:gravity="center">
-            <TextView
-                android:id="@+id/TxtvOrdertoCartCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kode Makanan"
-                android:textColor="@color/white"
-                android:textSize="30sp"/>
-            <TextView
-                android:id="@+id/TxtvOrdertoCartName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nama Makanan"
-                android:textColor="@color/white"
-                android:textSize="30sp"/>
-            <TextView
-                android:id="@+id/TxtvOrdertoCartPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Harga Makanan"
-                android:textColor="@color/white"
-                android:textSize="30sp"/>
-        </LinearLayout>
+            android:text="Order"
+            android:textColor="@color/white"
+            android:background="@color/Green"/>
     </LinearLayout>
+
 
 </FrameLayout>
