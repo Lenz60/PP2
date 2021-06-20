@@ -177,12 +177,6 @@
                         android:layout_gravity="center"
                         android:gravity="end">
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp. "
-                            android:textColor="@color/white"
-                            android:textSize="19sp"/>
-                        <TextView
                             android:id="@+id/TxtvOrdertoCartToppingPrice1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -213,12 +207,7 @@
                         android:orientation="horizontal"
                         android:layout_gravity="center"
                         android:gravity="end">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp. "
-                            android:textColor="@color/white"
-                            android:textSize="19sp"/>
+
                         <TextView
                             android:id="@+id/TxtvOrdertoCartToppingPrice2"
                             android:layout_width="wrap_content"
@@ -250,12 +239,7 @@
                         android:orientation="horizontal"
                         android:layout_gravity="center"
                         android:gravity="end">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp. "
-                            android:textColor="@color/white"
-                            android:textSize="19sp"/>
+
                         <TextView
                             android:id="@+id/TxtvOrdertoCartToppingPrice3"
                             android:layout_width="wrap_content"
@@ -287,12 +271,7 @@
                         android:orientation="horizontal"
                         android:layout_gravity="center"
                         android:gravity="end">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp. "
-                            android:textColor="@color/white"
-                            android:textSize="19sp"/>
+
                         <TextView
                             android:id="@+id/TxtvOrdertoCartToppingPrice4"
                             android:layout_width="wrap_content"
@@ -324,12 +303,7 @@
                         android:orientation="horizontal"
                         android:layout_gravity="center"
                         android:gravity="end">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp. "
-                            android:textColor="@color/white"
-                            android:textSize="19sp"/>
+
                         <TextView
                             android:id="@+id/TxtvOrdertoCartToppingPrice5"
                             android:layout_width="wrap_content"
@@ -361,12 +335,7 @@
                         android:orientation="horizontal"
                         android:layout_gravity="center"
                         android:gravity="end">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp. "
-                            android:textColor="@color/white"
-                            android:textSize="19sp"/>
+
                         <TextView
                             android:id="@+id/TxtvOrdertoCartToppingPrice6"
                             android:layout_width="wrap_content"
@@ -398,12 +367,7 @@
                         android:orientation="horizontal"
                         android:layout_gravity="center"
                         android:gravity="end">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp. "
-                            android:textColor="@color/white"
-                            android:textSize="19sp"/>
+
                         <TextView
                             android:id="@+id/TxtvOrdertoCartToppingPrice7"
                             android:layout_width="wrap_content"
@@ -435,12 +399,7 @@
                         android:orientation="horizontal"
                         android:layout_gravity="center"
                         android:gravity="end">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp. "
-                            android:textColor="@color/white"
-                            android:textSize="19sp"/>
+
                         <TextView
                             android:id="@+id/TxtvOrdertoCartToppingPrice8"
                             android:layout_width="wrap_content"
@@ -458,7 +417,7 @@
                     android:orientation="horizontal">
 
                     <CheckBox
-                        android:id="@+id/CheckboxToppin9"
+                        android:id="@+id/CheckboxTopping9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="topping 9"
@@ -472,12 +431,7 @@
                         android:orientation="horizontal"
                         android:layout_gravity="center"
                         android:gravity="end">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp. "
-                            android:textColor="@color/white"
-                            android:textSize="19sp"/>
+
                         <TextView
                             android:id="@+id/TxtvOrdertoCartToppingPrice9"
                             android:layout_width="wrap_content"
@@ -509,12 +463,7 @@
                         android:orientation="horizontal"
                         android:layout_gravity="center"
                         android:gravity="end">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp. "
-                            android:textColor="@color/white"
-                            android:textSize="19sp"/>
+
                         <TextView
                             android:id="@+id/TxtvOrdertoCartToppingPrice10"
                             android:layout_width="wrap_content"
@@ -558,9 +507,11 @@
                         android:text="Harga Total"
                         android:textColor="@color/Green2"
                         android:textSize="29sp"/>
+
                 </LinearLayout>
 
             </LinearLayout>
+
             <!-- filler -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -575,7 +526,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Order"
+            android:text="Tambah ke Keranjang"
             android:textColor="@color/white"
             android:background="@color/Green"/>
     </LinearLayout>

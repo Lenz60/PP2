@@ -5,13 +5,17 @@ import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.pesanpalgading20.Model.Menu.Jajanan.HomeJajananFragment;
@@ -44,6 +48,34 @@ public class FragmentOrdertoCart extends Fragment {
     String inJajanan;
     //
     String Code,Name,Price;
+    //Topping
+    CheckBox CBTopping1,CBTopping2,CBTopping3,
+            CBTopping4,CBTopping5,CBTopping6,
+            CBTopping7,CBTopping8,CBTopping9,
+            CBTopping10;
+    TextView TxtvToppingPrice1,TxtvToppingPrice2,TxtvToppingPrice3,
+            TxtvToppingPrice4,TxtvToppingPrice5,TxtvToppingPrice6,
+            TxtvToppingPrice7,TxtvToppingPrice8,TxtvToppingPrice9,
+            TxtvToppingPrice10;
+    Integer Price1,Price2,Price3,
+            Price4,Price5,Price6,
+            Price7,Price8,Price9,
+            Price10;
+    Integer FinalPrice1,FinalPrice2,FinalPrice3,
+            FinalPrice4,FinalPrice5,FinalPrice6,
+            FinalPrice7,FinalPrice8,FinalPrice9,
+            FinalPrice10;
+    Integer TotalFinalPrice;
+
+    String Check1,Check2,Check3,
+            Check4,Check5,Check6,
+            Check7,Check8,Check9,
+            Check10;
+
+
+    Integer FoodPrice1;
+    //Total
+    TextView TxtvTotalHarga;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -96,6 +128,33 @@ public class FragmentOrdertoCart extends Fragment {
         TxtvOrdertoCartPrice = viewRoot.findViewById(R.id.TxtvOrdertoCartPrice);
         ContainerContentOrdertoCart = viewRoot.findViewById(R.id.ContainerContentOrdertoCart);
 
+        //Topping
+        CBTopping1 = viewRoot.findViewById(R.id.CheckboxTopping1);
+        CBTopping2 = viewRoot.findViewById(R.id.CheckboxTopping2);
+        CBTopping3 = viewRoot.findViewById(R.id.CheckboxTopping3);
+        CBTopping4 = viewRoot.findViewById(R.id.CheckboxTopping4);
+        CBTopping5 = viewRoot.findViewById(R.id.CheckboxTopping5);
+        CBTopping6 = viewRoot.findViewById(R.id.CheckboxTopping6);
+        CBTopping7 = viewRoot.findViewById(R.id.CheckboxTopping7);
+        CBTopping8 = viewRoot.findViewById(R.id.CheckboxTopping8);
+        CBTopping9 = viewRoot.findViewById(R.id.CheckboxTopping9);
+        CBTopping10 = viewRoot.findViewById(R.id.CheckboxTopping10);
+
+        //Topping Price
+        TxtvToppingPrice1 = viewRoot.findViewById(R.id.TxtvOrdertoCartToppingPrice1);
+        TxtvToppingPrice2 = viewRoot.findViewById(R.id.TxtvOrdertoCartToppingPrice2);
+        TxtvToppingPrice3 = viewRoot.findViewById(R.id.TxtvOrdertoCartToppingPrice3);
+        TxtvToppingPrice4 = viewRoot.findViewById(R.id.TxtvOrdertoCartToppingPrice4);
+        TxtvToppingPrice5 = viewRoot.findViewById(R.id.TxtvOrdertoCartToppingPrice5);
+        TxtvToppingPrice6 = viewRoot.findViewById(R.id.TxtvOrdertoCartToppingPrice6);
+        TxtvToppingPrice7 = viewRoot.findViewById(R.id.TxtvOrdertoCartToppingPrice7);
+        TxtvToppingPrice8 = viewRoot.findViewById(R.id.TxtvOrdertoCartToppingPrice8);
+        TxtvToppingPrice9 = viewRoot.findViewById(R.id.TxtvOrdertoCartToppingPrice9);
+        TxtvToppingPrice10 = viewRoot.findViewById(R.id.TxtvOrdertoCartToppingPrice10);
+
+        TxtvTotalHarga = viewRoot.findViewById(R.id.TxtvOrdertoCartTotalPrice);
+
+
         Bundle bundle = this.getArguments();
         Code = bundle.getString("FoodCode");
         Name = bundle.getString("FoodName");
@@ -104,6 +163,7 @@ public class FragmentOrdertoCart extends Fragment {
         TxtvOrdertoCartCode.setText(Code);
         TxtvOrdertoCartName.setText(Name);
         TxtvOrdertoCartPrice.setText(Price);
+
 
 
 
@@ -124,22 +184,473 @@ public class FragmentOrdertoCart extends Fragment {
         inJajanan = "JJ.*";
 
 
-
+        //Back based where the position is
         toolbarOrdertoCart = viewRoot.findViewById(R.id.ToolbarOrdertoCart);
         toolbarOrdertoCart.setNavigationIcon(R.drawable.arrowbackicon);
         toolbarOrdertoCart.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ContainerContentOrdertoCart.setVisibility(View.GONE);
+                FragmentOrdertoCart fragmentOrdertoCart = new FragmentOrdertoCart();
+                FragmentManager manager = getFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                manager.getBackStackEntryCount();
+                transaction.remove(fragmentOrdertoCart);
+                transaction.commit();
                 CheckWhere();
+
             }
         });
 
 
 
-
+        ChangeValueTopping();
         // Inflate the layout for this fragment
         return viewRoot;
+    }
+
+    public void ChangeValueTopping(){
+        if (Code.toUpperCase().matches((inMieAyam.toUpperCase()))){
+
+            //set text topping
+            CBTopping1.setText("Extra Ayam");
+            CBTopping2.setText("Extra Tetelan Sapi");
+            CBTopping3.setText("Cakar (2 pcs)");
+            CBTopping4.setText("Kepala");
+            CBTopping5.setText("Bakso Sapi");
+            CBTopping6.setText("Telur Mata Sapi");
+            CBTopping7.setText("Balungan Rica Ayam");
+            CBTopping8.setText("Extra Sawi");
+            CBTopping9.setText("Extra Acar");
+
+            //hide remaining topping CB
+            CBTopping10.setVisibility(View.GONE);
+
+            //set price to variable
+            Price1 = 3000;
+            Price2 = 7000;
+            Price3 = 4000;
+            Price4 = 4000;
+            Price5 = 3000;
+            Price6 = 4000;
+            Price7 = 4000;
+            Price8 = 1000;
+            Price9 = 1000;
+            Price10 = 0;
+
+            //set price topping
+            TxtvToppingPrice1.setText("Rp."+Price1);
+            TxtvToppingPrice2.setText("Rp."+Price2);
+            TxtvToppingPrice3.setText("Rp."+Price3);
+            TxtvToppingPrice4.setText("Rp."+Price4);
+            TxtvToppingPrice5.setText("Rp."+Price5);
+            TxtvToppingPrice6.setText("Rp."+Price6);
+            TxtvToppingPrice7.setText("Rp."+Price7);
+            TxtvToppingPrice8.setText("Rp."+Price8);
+            TxtvToppingPrice9.setText("Rp."+Price9);
+
+
+            //hide remaining topping price Txtv
+            TxtvToppingPrice10.setVisibility(View.GONE);
+
+            FinalPrice1 = 0;
+            FinalPrice2 = 0;
+            FinalPrice3 = 0;
+            FinalPrice4 = 0;
+            FinalPrice5 = 0;
+            FinalPrice6 = 0;
+            FinalPrice7 = 0;
+            FinalPrice8 = 0;
+            FinalPrice9 = 0;
+            FinalPrice10 = 0;
+
+            CBTopping1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        FinalPrice1 = Price1;
+                        TxtvTotalHarga.invalidate();
+                    }
+                    else {
+                        FinalPrice1 = 0;
+                        TxtvTotalHarga.invalidate();
+                    }
+                }
+            });
+
+            CBTopping2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        FinalPrice2 = Price2;
+                        TxtvTotalHarga.invalidate();
+                    }
+                    else {
+                        FinalPrice2 = 0;
+                        TxtvTotalHarga.invalidate();
+                    }
+                }
+            });
+
+            CBTopping3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        FinalPrice3 = Price3;
+                        TxtvTotalHarga.invalidate();
+                    }
+                    else {
+                        FinalPrice3 = 0;
+                        TxtvTotalHarga.invalidate();
+                    }
+                }
+            });
+
+            CBTopping4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        FinalPrice4 = Price4;
+                        TxtvTotalHarga.invalidate();
+                    }
+                    else {
+                        FinalPrice4 = 0;
+                        TxtvTotalHarga.invalidate();
+                    }
+                }
+            });
+
+            CBTopping5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        FinalPrice5 = Price5;
+                        TxtvTotalHarga.invalidate();
+                    }
+                    else {
+                        FinalPrice5 = 0;
+                        TxtvTotalHarga.invalidate();
+                    }
+                }
+            });
+
+            CBTopping6.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        FinalPrice6 = Price6;
+                        TxtvTotalHarga.invalidate();
+                    }
+                    else {
+                        FinalPrice6 = 0;
+                        TxtvTotalHarga.invalidate();
+                    }
+                }
+            });
+
+            CBTopping7.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        FinalPrice7 = Price7;
+                        TxtvTotalHarga.invalidate();
+                    }
+                    else {
+                        FinalPrice7 = 0;
+                        TxtvTotalHarga.invalidate();
+                    }
+                }
+            });
+
+            CBTopping8.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        FinalPrice8 = Price8;
+                        TxtvTotalHarga.invalidate();
+                    }
+                    else {
+                        FinalPrice8 = 0;
+                        TxtvTotalHarga.invalidate();
+                    }
+                }
+            });
+
+            CBTopping9.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        FinalPrice9 = Price9;
+                        TxtvTotalHarga.invalidate();
+                    }
+                    else {
+                        FinalPrice9 = 0;
+                        TxtvTotalHarga.invalidate();
+                    }
+                }
+            });
+
+            FoodPrice1 = Integer.parseInt(Price);
+
+            TotalFinalPrice = FoodPrice1 + FinalPrice1 + FinalPrice2 + FinalPrice3 +
+                    FinalPrice4 + FinalPrice5 + FinalPrice6 +
+                    FinalPrice7 + FinalPrice8 + FinalPrice9 ;
+
+            TxtvTotalHarga.setText(Integer.toString(TotalFinalPrice));
+            TxtvTotalHarga.invalidate();
+
+        }
+        else if (Code.toUpperCase().matches((inBakso.toUpperCase()))){
+            //set text topping
+            CBTopping1.setText("1 Pentol Bakso Urat/Halus");
+            CBTopping2.setText("1 Pangist Goreng/Kukus (/pcs)");
+            CBTopping3.setText("1 Tahu Bakso (/pcs)");
+            CBTopping4.setText("Tetelan Sapi");
+            CBTopping5.setText("Kuah Bakso, Mie Kuning & Mie Soon");
+
+
+            //hide remaining topping CB
+            CBTopping6.setVisibility(View.GONE);
+            CBTopping7.setVisibility(View.GONE);
+            CBTopping8.setVisibility(View.GONE);
+            CBTopping9.setVisibility(View.GONE);
+            CBTopping10.setVisibility(View.GONE);
+
+            //set price to variable
+            Price1 = 3000;
+            Price2 = 1500;
+            Price3 = 1500;
+            Price4 = 7000;
+            Price5 = 2000;
+            Price6 = 0;
+            Price7 = 0;
+            Price8 = 0;
+            Price9 = 0;
+            Price10 = 0;
+
+            //set price topping
+            TxtvToppingPrice1.setText("Rp."+Price1);
+            TxtvToppingPrice2.setText("Rp."+Price2);
+            TxtvToppingPrice3.setText("Rp."+Price3);
+            TxtvToppingPrice4.setText("Rp."+Price4);
+            TxtvToppingPrice5.setText("Rp."+Price5);
+
+            //hide remaining topping price Txtv
+            TxtvToppingPrice6.setVisibility(View.GONE);
+            TxtvToppingPrice7.setVisibility(View.GONE);
+            TxtvToppingPrice8.setVisibility(View.GONE);
+            TxtvToppingPrice9.setVisibility(View.GONE);
+            TxtvToppingPrice10.setVisibility(View.GONE);
+
+
+
+            if(CBTopping1.isChecked()){
+                FinalPrice1 = 1000;
+            }
+            else if(!CBTopping1.isChecked()){
+                FinalPrice1 = 0;
+            }
+            //
+            else if (CBTopping2.isChecked()){
+                FinalPrice2 = 20000;
+            }
+            else if(!CBTopping2.isChecked()){
+                FinalPrice2 = 0;
+            }
+            //
+            else if (CBTopping3.isChecked()){
+                FinalPrice3 = 4000;
+            }
+            else if(!CBTopping3.isChecked()){
+                FinalPrice3 = 0;
+            }
+            //
+            else if (CBTopping4.isChecked()){
+                FinalPrice4 = 50000;
+            }
+            else if(!CBTopping4.isChecked()){
+                FinalPrice4 = 0;
+            }
+            //
+            else if (CBTopping5.isChecked()) {
+                FinalPrice5 = 4000;
+            }
+            else if(!CBTopping5.isChecked()){
+                FinalPrice5 = 0;
+            }
+
+            TotalFinalPrice =
+                    FinalPrice1 + FinalPrice2 + FinalPrice3 +
+                            FinalPrice4 + FinalPrice5;
+
+            TxtvTotalHarga.setText(String.valueOf("kosong"));
+        }
+        else if (Code.toUpperCase().matches((inBaksoBakar.toUpperCase()))){
+            //set text topping
+            CBTopping1.setText("Extra Kuah, Mie & Soon");
+            CBTopping2.setText("Extra Pangsit Goreng");
+            CBTopping3.setText("Extra Tahu Bakso");
+
+            //hide remaining topping CB
+            CBTopping4.setVisibility(View.GONE);
+            CBTopping5.setVisibility(View.GONE);
+            CBTopping6.setVisibility(View.GONE);
+            CBTopping7.setVisibility(View.GONE);
+            CBTopping8.setVisibility(View.GONE);
+            CBTopping9.setVisibility(View.GONE);
+            CBTopping10.setVisibility(View.GONE);
+
+            //set price to variable
+            Price1 = 2000;
+            Price2 = 1500;
+            Price3 = 1500;
+            Price4 = 0;
+            Price5 = 0;
+            Price6 = 0;
+            Price7 = 0;
+            Price8 = 0;
+            Price9 = 0;
+            Price10 = 0;
+
+            //set price topping
+            TxtvToppingPrice1.setText("Rp."+Price1);
+            TxtvToppingPrice2.setText("Rp."+Price2);
+            TxtvToppingPrice3.setText("Rp."+Price3);
+
+            //hide remaining topping price Txtv
+            TxtvToppingPrice4.setVisibility(View.GONE);
+            TxtvToppingPrice5.setVisibility(View.GONE);
+            TxtvToppingPrice6.setVisibility(View.GONE);
+            TxtvToppingPrice7.setVisibility(View.GONE);
+            TxtvToppingPrice8.setVisibility(View.GONE);
+            TxtvToppingPrice9.setVisibility(View.GONE);
+            TxtvToppingPrice10.setVisibility(View.GONE);
+
+
+            if(CBTopping1.isChecked()){
+                FinalPrice1 = Price1;
+            }
+            else if(!CBTopping1.isChecked()){
+                FinalPrice1 = 0;
+            }
+            //
+            else if (CBTopping2.isChecked()){
+                FinalPrice2 = Price2;
+            }
+            else if(!CBTopping2.isChecked()){
+                FinalPrice2 = 0;
+            }
+            //
+            else if (CBTopping3.isChecked()){
+                FinalPrice3 = Price3;
+            }
+            else if(!CBTopping3.isChecked()){
+                FinalPrice3 = 0;
+            }
+            //
+
+            TotalFinalPrice =
+                    FinalPrice1 + FinalPrice2 + FinalPrice3;
+
+            TxtvTotalHarga.setText(String.valueOf(TotalFinalPrice + Price));
+        }
+        else if (Code.toUpperCase().matches((inSoto.toUpperCase()))){
+            //set text topping
+            CBTopping1.setText("Tetelan Sapi");
+
+            //hide remaining topping CB
+            CBTopping2.setVisibility(View.GONE);
+            CBTopping3.setVisibility(View.GONE);
+            CBTopping4.setVisibility(View.GONE);
+            CBTopping5.setVisibility(View.GONE);
+            CBTopping6.setVisibility(View.GONE);
+            CBTopping7.setVisibility(View.GONE);
+            CBTopping8.setVisibility(View.GONE);
+            CBTopping9.setVisibility(View.GONE);
+            CBTopping10.setVisibility(View.GONE);
+
+            //set price to variable
+            Price1 = 7000;
+            Price2 = 0;
+            Price3 = 0;
+            Price4 = 0;
+            Price5 = 0;
+            Price6 = 0;
+            Price7 = 0;
+            Price8 = 0;
+            Price9 = 0;
+            Price10 = 0;
+
+            //set price topping
+            TxtvToppingPrice1.setText("Rp."+Price1);
+
+            //hide remaining topping price Txtv
+            TxtvToppingPrice2.setVisibility(View.GONE);
+            TxtvToppingPrice3.setVisibility(View.GONE);
+            TxtvToppingPrice4.setVisibility(View.GONE);
+            TxtvToppingPrice5.setVisibility(View.GONE);
+            TxtvToppingPrice6.setVisibility(View.GONE);
+            TxtvToppingPrice7.setVisibility(View.GONE);
+            TxtvToppingPrice8.setVisibility(View.GONE);
+            TxtvToppingPrice9.setVisibility(View.GONE);
+            TxtvToppingPrice10.setVisibility(View.GONE);
+
+
+            if(CBTopping1.isChecked()){
+                FinalPrice1 = Price1;
+            }
+            else {
+                FinalPrice1 = 0;
+            }
+
+            TotalFinalPrice =
+                    FinalPrice1;
+
+            TxtvTotalHarga.setText(String.valueOf(TotalFinalPrice + Price));
+        }
+        else {
+
+            //hide remaining topping CB
+            CBTopping1.setVisibility(View.GONE);
+            CBTopping2.setVisibility(View.GONE);
+            CBTopping3.setVisibility(View.GONE);
+            CBTopping4.setVisibility(View.GONE);
+            CBTopping5.setVisibility(View.GONE);
+            CBTopping6.setVisibility(View.GONE);
+            CBTopping7.setVisibility(View.GONE);
+            CBTopping8.setVisibility(View.GONE);
+            CBTopping9.setVisibility(View.GONE);
+            CBTopping10.setVisibility(View.GONE);
+
+            //set price to variable
+            Price1 = 0;
+            Price2 = 0;
+            Price3 = 0;
+            Price4 = 0;
+            Price5 = 0;
+            Price6 = 0;
+            Price7 = 0;
+            Price8 = 0;
+            Price9 = 0;
+            Price10 = 0;
+
+
+            //hide remaining topping price Txtv
+            TxtvToppingPrice1.setVisibility(View.GONE);
+            TxtvToppingPrice2.setVisibility(View.GONE);
+            TxtvToppingPrice3.setVisibility(View.GONE);
+            TxtvToppingPrice4.setVisibility(View.GONE);
+            TxtvToppingPrice5.setVisibility(View.GONE);
+            TxtvToppingPrice6.setVisibility(View.GONE);
+            TxtvToppingPrice7.setVisibility(View.GONE);
+            TxtvToppingPrice8.setVisibility(View.GONE);
+            TxtvToppingPrice9.setVisibility(View.GONE);
+            TxtvToppingPrice10.setVisibility(View.GONE);
+
+            TxtvTotalHarga.setText(String.valueOf(Price));
+        }
+
+
     }
 
     //Check where user in
