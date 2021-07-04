@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -26,6 +27,8 @@ import com.example.pesanpalgading20.Model.Menu.Makanan.HomeMakananSotoFragment;
 import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsDurianFragment;
 import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsJusFragment;
 import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsOriFragment;
+
+import static android.view.View.GONE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,12 +68,44 @@ public class FragmentOrdertoCart extends Fragment {
             FinalPrice4,FinalPrice5,FinalPrice6,
             FinalPrice7,FinalPrice8,FinalPrice9,
             FinalPrice10;
+
+    Integer SelectedPrice1,SelectedPrice2,SelectedPrice3,
+            SelectedPrice4,SelectedPrice5,SelectedPrice6,
+            SelectedPrice7,SelectedPrice8,SelectedPrice9,
+            SelectedPrice10;
+
+    String StringSelectedPrice1,StringSelectedPrice2,StringSelectedPrice3,
+            StringSelectedPrice4,StringSelectedPrice5,StringSelectedPrice6,
+            StringSelectedPrice7,StringSelectedPrice8,StringSelectedPrice9,
+            StringSelectedPrice10;
     Integer TotalFinalPrice;
+
 
     String Check1,Check2,Check3,
             Check4,Check5,Check6,
             Check7,Check8,Check9,
             Check10;
+
+    Button BtnAddtoCart,BtnConfirmationPayment;
+
+    String GetTotalHarga, GetCurrentToppingPrice;
+
+    TextView TxtvSelectedToppName1, TxtvSelectedToppName2, TxtvSelectedToppName3,
+            TxtvSelectedToppName4, TxtvSelectedToppName5, TxtvSelectedToppName6,
+            TxtvSelectedToppName7, TxtvSelectedToppName8, TxtvSelectedToppName9,
+            TxtvSelectedToppName10;
+
+    TextView TxtvSelectedToppPrice1,TxtvSelectedToppPrice2,TxtvSelectedToppPrice3,
+            TxtvSelectedToppPrice4,TxtvSelectedToppPrice5,TxtvSelectedToppPrice6,
+            TxtvSelectedToppPrice7,TxtvSelectedToppPrice8,TxtvSelectedToppPrice9,
+            TxtvSelectedToppPrice10;
+
+    TextView TxtvRp1,TxtvRp2,TxtvRp3,
+            TxtvRp4,TxtvRp5,TxtvRp6,
+            TxtvRp7,TxtvRp8,TxtvRp9,
+            TxtvRp10;
+
+    TextView TxtvSelectedFoodName, TxtvSelectedFoodPrice;
 
 
     Integer FoodPrice1;
@@ -154,6 +189,52 @@ public class FragmentOrdertoCart extends Fragment {
 
         TxtvTotalHarga = viewRoot.findViewById(R.id.TxtvOrdertoCartTotalPrice);
 
+        //Selected Topping Name
+        TxtvSelectedToppName1 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppName1);
+        TxtvSelectedToppName2 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppName2);
+        TxtvSelectedToppName3 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppName3);
+        TxtvSelectedToppName4 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppName4);
+        TxtvSelectedToppName5 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppName5);
+        TxtvSelectedToppName6 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppName6);
+        TxtvSelectedToppName7 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppName7);
+        TxtvSelectedToppName8 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppName8);
+        TxtvSelectedToppName9 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppName9);
+        TxtvSelectedToppName10 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppName10);
+
+        //Selected Topping Price
+        TxtvSelectedToppPrice1 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppPrice1);
+        TxtvSelectedToppPrice2 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppPrice2);
+        TxtvSelectedToppPrice3 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppPrice3);
+        TxtvSelectedToppPrice4 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppPrice4);
+        TxtvSelectedToppPrice5 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppPrice5);
+        TxtvSelectedToppPrice6 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppPrice6);
+        TxtvSelectedToppPrice7 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppPrice7);
+        TxtvSelectedToppPrice8 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppPrice8);
+        TxtvSelectedToppPrice9 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppPrice9);
+        TxtvSelectedToppPrice10 = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedToppPrice10);
+
+        //Rp Selected Topping
+        TxtvRp1 = viewRoot.findViewById(R.id.OrdertoCartRp1);
+        TxtvRp2 = viewRoot.findViewById(R.id.OrdertoCartRp2);
+        TxtvRp3 = viewRoot.findViewById(R.id.OrdertoCartRp3);
+        TxtvRp4 = viewRoot.findViewById(R.id.OrdertoCartRp4);
+        TxtvRp5 = viewRoot.findViewById(R.id.OrdertoCartRp5);
+        TxtvRp6 = viewRoot.findViewById(R.id.OrdertoCartRp6);
+        TxtvRp7 = viewRoot.findViewById(R.id.OrdertoCartRp7);
+        TxtvRp8 = viewRoot.findViewById(R.id.OrdertoCartRp8);
+        TxtvRp9 = viewRoot.findViewById(R.id.OrdertoCartRp9);
+        TxtvRp10 = viewRoot.findViewById(R.id.OrdertoCartRp10);
+
+        //Button AddtoCart
+        BtnAddtoCart = viewRoot.findViewById(R.id.BtnOrdertoCartAddtoCart);
+
+        //Button Confirmation
+        BtnConfirmationPayment = viewRoot.findViewById(R.id.BtnOrdertoCartConfirm);
+
+        //Selected Food Name & Price
+        TxtvSelectedFoodName = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedFoodName);
+        TxtvSelectedFoodPrice = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedFoodPrice);
+
 
         Bundle bundle = this.getArguments();
         Code = bundle.getString("FoodCode");
@@ -190,7 +271,7 @@ public class FragmentOrdertoCart extends Fragment {
         toolbarOrdertoCart.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ContainerContentOrdertoCart.setVisibility(View.GONE);
+                ContainerContentOrdertoCart.setVisibility(GONE);
                 FragmentOrdertoCart fragmentOrdertoCart = new FragmentOrdertoCart();
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
@@ -202,12 +283,78 @@ public class FragmentOrdertoCart extends Fragment {
             }
         });
 
+        FinalPrice1 = 0;
+        FinalPrice2 = 0;
+        FinalPrice3 = 0;
+        FinalPrice4 = 0;
+        FinalPrice5 = 0;
+        FinalPrice6 = 0;
+        FinalPrice7 = 0;
+        FinalPrice8 = 0;
+        FinalPrice9 = 0;
+        FinalPrice10 = 0;
+
+        //Set Value of Selected Food
+        TxtvSelectedFoodName.setText(Name);
+        TxtvSelectedFoodPrice.setText("Rp." + Price);
 
 
         ChangeValueTopping();
+        ConfirmationPayment();
+        BtnAddtoCart.setVisibility(GONE);
         // Inflate the layout for this fragment
         return viewRoot;
     }
+
+    private void ConfirmationPayment() {
+
+
+
+
+        BtnConfirmationPayment.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                StringSelectedPrice1 = TxtvSelectedToppPrice1.getText().toString();
+                SelectedPrice1 = Integer.parseInt(StringSelectedPrice1);
+
+                StringSelectedPrice2 = TxtvSelectedToppPrice2.getText().toString();
+                SelectedPrice2 = Integer.parseInt(StringSelectedPrice2);
+
+                StringSelectedPrice3 = TxtvSelectedToppPrice3.getText().toString();
+                SelectedPrice3 = Integer.parseInt(StringSelectedPrice3);
+
+                StringSelectedPrice4 = TxtvSelectedToppPrice4.getText().toString();
+                SelectedPrice4 = Integer.parseInt(StringSelectedPrice4);
+
+                StringSelectedPrice5 = TxtvSelectedToppPrice5.getText().toString();
+                SelectedPrice5 = Integer.parseInt(StringSelectedPrice5);
+
+                StringSelectedPrice6 = TxtvSelectedToppPrice6.getText().toString();
+                SelectedPrice6 = Integer.parseInt(StringSelectedPrice6);
+
+                StringSelectedPrice7 = TxtvSelectedToppPrice7.getText().toString();
+                SelectedPrice7 = Integer.parseInt(StringSelectedPrice7);
+
+                StringSelectedPrice8 = TxtvSelectedToppPrice8.getText().toString();
+                SelectedPrice8 = Integer.parseInt(StringSelectedPrice8);
+
+                StringSelectedPrice9 = TxtvSelectedToppPrice9.getText().toString();
+                SelectedPrice9 = Integer.parseInt(StringSelectedPrice9);
+
+                StringSelectedPrice10 = TxtvSelectedToppPrice10.getText().toString();
+                SelectedPrice10 = Integer.parseInt(StringSelectedPrice10);
+
+                TotalFinalPrice = Integer.parseInt(Price) + SelectedPrice1 + SelectedPrice2 +
+                        SelectedPrice3 + SelectedPrice4 + SelectedPrice5 +
+                        SelectedPrice6 + SelectedPrice7 + SelectedPrice8 +
+                        SelectedPrice9 + SelectedPrice10;
+                TxtvTotalHarga.setText(String.valueOf(TotalFinalPrice));
+                BtnAddtoCart.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
 
     public void ChangeValueTopping(){
         if (Code.toUpperCase().matches((inMieAyam.toUpperCase()))){
@@ -224,7 +371,7 @@ public class FragmentOrdertoCart extends Fragment {
             CBTopping9.setText("Extra Acar");
 
             //hide remaining topping CB
-            CBTopping10.setVisibility(View.GONE);
+            CBTopping10.setVisibility(GONE);
 
             //set price to variable
             Price1 = 3000;
@@ -251,29 +398,70 @@ public class FragmentOrdertoCart extends Fragment {
 
 
             //hide remaining topping price Txtv
-            TxtvToppingPrice10.setVisibility(View.GONE);
+            TxtvToppingPrice10.setVisibility(GONE);
 
-            FinalPrice1 = 0;
-            FinalPrice2 = 0;
-            FinalPrice3 = 0;
-            FinalPrice4 = 0;
-            FinalPrice5 = 0;
-            FinalPrice6 = 0;
-            FinalPrice7 = 0;
-            FinalPrice8 = 0;
-            FinalPrice9 = 0;
-            FinalPrice10 = 0;
+            //hide all selected topping
+            TxtvSelectedToppName1.setVisibility(GONE);
+            TxtvRp1.setVisibility(GONE);
+            TxtvSelectedToppPrice1.setVisibility(GONE);
+
+            TxtvSelectedToppName2.setVisibility(GONE);
+            TxtvRp2.setVisibility(GONE);
+            TxtvSelectedToppPrice2.setVisibility(GONE);
+
+            TxtvSelectedToppName3.setVisibility(GONE);
+            TxtvRp3.setVisibility(GONE);
+            TxtvSelectedToppPrice3.setVisibility(GONE);
+
+            TxtvSelectedToppName4.setVisibility(GONE);
+            TxtvRp4.setVisibility(GONE);
+            TxtvSelectedToppPrice4.setVisibility(GONE);
+
+            TxtvSelectedToppName5.setVisibility(GONE);
+            TxtvRp5.setVisibility(GONE);
+            TxtvSelectedToppPrice5.setVisibility(GONE);
+
+            TxtvSelectedToppName6.setVisibility(GONE);
+            TxtvRp6.setVisibility(GONE);
+            TxtvSelectedToppPrice6.setVisibility(GONE);
+
+            TxtvSelectedToppName7.setVisibility(GONE);
+            TxtvRp7.setVisibility(GONE);
+            TxtvSelectedToppPrice7.setVisibility(GONE);
+
+            TxtvSelectedToppName8.setVisibility(GONE);
+            TxtvRp8.setVisibility(GONE);
+            TxtvSelectedToppPrice8.setVisibility(GONE);
+
+            TxtvSelectedToppName9.setVisibility(GONE);
+            TxtvRp9.setVisibility(GONE);
+            TxtvSelectedToppPrice9.setVisibility(GONE);
+
+            TxtvSelectedToppName10.setVisibility(GONE);
+            TxtvRp10.setVisibility(GONE);
+            TxtvSelectedToppPrice10.setVisibility(GONE);
+
 
             CBTopping1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice1 = Price1;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName1.setVisibility(View.VISIBLE);
+                        TxtvRp1.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice1.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName1.setText(CBTopping1.getText().toString());
+                        TxtvSelectedToppPrice1.setText(String.valueOf(FinalPrice1));
                     }
                     else {
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice1 = 0;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName1.setVisibility(GONE);
+                        TxtvRp1.setVisibility(GONE);
+                        TxtvSelectedToppPrice1.setVisibility(GONE);
+                        TxtvSelectedToppName1.setText("null");
+                        TxtvSelectedToppPrice1.setText("0");
                     }
                 }
             });
@@ -282,12 +470,22 @@ public class FragmentOrdertoCart extends Fragment {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice2 = Price2;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName2.setVisibility(View.VISIBLE);
+                        TxtvRp2.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice2.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName2.setText(CBTopping2.getText());
+                        TxtvSelectedToppPrice2.setText(String.valueOf(FinalPrice2));
                     }
                     else {
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice2 = 0;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName2.setVisibility(GONE);
+                        TxtvRp2.setVisibility(GONE);
+                        TxtvSelectedToppPrice2.setVisibility(GONE);
+                        TxtvSelectedToppName2.setText("null");
+                        TxtvSelectedToppPrice2.setText("0");
                     }
                 }
             });
@@ -296,12 +494,22 @@ public class FragmentOrdertoCart extends Fragment {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice3 = Price3;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName3.setVisibility(View.VISIBLE);
+                        TxtvRp3.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice3.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName3.setText(CBTopping3.getText());
+                        TxtvSelectedToppPrice3.setText(String.valueOf(FinalPrice3));
                     }
                     else {
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice3 = 0;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName3.setVisibility(GONE);
+                        TxtvRp3.setVisibility(GONE);
+                        TxtvSelectedToppPrice3.setVisibility(GONE);
+                        TxtvSelectedToppName3.setText("null");
+                        TxtvSelectedToppPrice3.setText("0");
                     }
                 }
             });
@@ -310,12 +518,22 @@ public class FragmentOrdertoCart extends Fragment {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice4 = Price4;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName4.setVisibility(View.VISIBLE);
+                        TxtvRp4.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice4.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName4.setText(CBTopping2.getText());
+                        TxtvSelectedToppPrice4.setText(String.valueOf(FinalPrice4));
                     }
                     else {
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice4 = 0;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName4.setVisibility(GONE);
+                        TxtvRp4.setVisibility(GONE);
+                        TxtvSelectedToppPrice4.setVisibility(GONE);
+                        TxtvSelectedToppName4.setText("null");
+                        TxtvSelectedToppPrice4.setText("0");
                     }
                 }
             });
@@ -324,12 +542,22 @@ public class FragmentOrdertoCart extends Fragment {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice5 = Price5;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName5.setVisibility(View.VISIBLE);
+                        TxtvRp5.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice5.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName5.setText(CBTopping5.getText());
+                        TxtvSelectedToppPrice5.setText(String.valueOf(FinalPrice5));
                     }
                     else {
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice5 = 0;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName5.setVisibility(GONE);
+                        TxtvRp5.setVisibility(GONE);
+                        TxtvSelectedToppPrice5.setVisibility(GONE);
+                        TxtvSelectedToppName5.setText("null");
+                        TxtvSelectedToppPrice5.setText("0");
                     }
                 }
             });
@@ -338,12 +566,22 @@ public class FragmentOrdertoCart extends Fragment {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice6 = Price6;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName6.setVisibility(View.VISIBLE);
+                        TxtvRp6.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice6.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName6.setText(CBTopping6.getText());
+                        TxtvSelectedToppPrice6.setText(String.valueOf(FinalPrice6));
                     }
                     else {
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice6 = 0;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName6.setVisibility(GONE);
+                        TxtvRp6.setVisibility(GONE);
+                        TxtvSelectedToppPrice6.setVisibility(GONE);
+                        TxtvSelectedToppName6.setText("null");
+                        TxtvSelectedToppPrice6.setText("0");
                     }
                 }
             });
@@ -352,12 +590,22 @@ public class FragmentOrdertoCart extends Fragment {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice7 = Price7;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName7.setVisibility(View.VISIBLE);
+                        TxtvRp7.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice7.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName7.setText(CBTopping7.getText());
+                        TxtvSelectedToppPrice7.setText(String.valueOf(FinalPrice7));
                     }
                     else {
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice7 = 0;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName7.setVisibility(GONE);
+                        TxtvRp7.setVisibility(GONE);
+                        TxtvSelectedToppPrice7.setVisibility(GONE);
+                        TxtvSelectedToppName7.setText("null");
+                        TxtvSelectedToppPrice7.setText("0");
                     }
                 }
             });
@@ -366,12 +614,22 @@ public class FragmentOrdertoCart extends Fragment {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice8 = Price8;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName8.setVisibility(View.VISIBLE);
+                        TxtvRp8.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice8.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName8.setText(CBTopping8.getText());
+                        TxtvSelectedToppPrice8.setText(String.valueOf(FinalPrice8));
                     }
                     else {
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice8 = 0;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName8.setVisibility(GONE);
+                        TxtvRp8.setVisibility(GONE);
+                        TxtvSelectedToppPrice8.setVisibility(GONE);
+                        TxtvSelectedToppName8.setText("null");
+                        TxtvSelectedToppPrice8.setText("0");
                     }
                 }
             });
@@ -380,23 +638,31 @@ public class FragmentOrdertoCart extends Fragment {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice9 = Price9;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName9.setVisibility(View.VISIBLE);
+                        TxtvRp9.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice9.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName9.setText(CBTopping2.getText());
+                        TxtvSelectedToppPrice9.setText(String.valueOf(FinalPrice9));
                     }
                     else {
+                        BtnAddtoCart.setVisibility(GONE);
                         FinalPrice9 = 0;
-                        TxtvTotalHarga.invalidate();
+                        TxtvSelectedToppName9.setVisibility(GONE);
+                        TxtvRp9.setVisibility(GONE);
+                        TxtvSelectedToppPrice9.setVisibility(GONE);
+                        TxtvSelectedToppName9.setText("null");
+                        TxtvSelectedToppPrice9.setText("0");
                     }
                 }
             });
 
-            FoodPrice1 = Integer.parseInt(Price);
 
-            TotalFinalPrice = FoodPrice1 + FinalPrice1 + FinalPrice2 + FinalPrice3 +
-                    FinalPrice4 + FinalPrice5 + FinalPrice6 +
-                    FinalPrice7 + FinalPrice8 + FinalPrice9 ;
 
-            TxtvTotalHarga.setText(Integer.toString(TotalFinalPrice));
+
+
+//            TxtvTotalHarga.setText(Integer.toString(TotalFinalPrice));
             TxtvTotalHarga.invalidate();
 
         }
@@ -410,11 +676,11 @@ public class FragmentOrdertoCart extends Fragment {
 
 
             //hide remaining topping CB
-            CBTopping6.setVisibility(View.GONE);
-            CBTopping7.setVisibility(View.GONE);
-            CBTopping8.setVisibility(View.GONE);
-            CBTopping9.setVisibility(View.GONE);
-            CBTopping10.setVisibility(View.GONE);
+            CBTopping6.setVisibility(GONE);
+            CBTopping7.setVisibility(GONE);
+            CBTopping8.setVisibility(GONE);
+            CBTopping9.setVisibility(GONE);
+            CBTopping10.setVisibility(GONE);
 
             //set price to variable
             Price1 = 3000;
@@ -436,54 +702,174 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvToppingPrice5.setText("Rp."+Price5);
 
             //hide remaining topping price Txtv
-            TxtvToppingPrice6.setVisibility(View.GONE);
-            TxtvToppingPrice7.setVisibility(View.GONE);
-            TxtvToppingPrice8.setVisibility(View.GONE);
-            TxtvToppingPrice9.setVisibility(View.GONE);
-            TxtvToppingPrice10.setVisibility(View.GONE);
+            TxtvToppingPrice6.setVisibility(GONE);
+            TxtvToppingPrice7.setVisibility(GONE);
+            TxtvToppingPrice8.setVisibility(GONE);
+            TxtvToppingPrice9.setVisibility(GONE);
+            TxtvToppingPrice10.setVisibility(GONE);
+
+            //hide all selected topping
+            TxtvSelectedToppName1.setVisibility(GONE);
+            TxtvRp1.setVisibility(GONE);
+            TxtvSelectedToppPrice1.setVisibility(GONE);
+
+            TxtvSelectedToppName2.setVisibility(GONE);
+            TxtvRp2.setVisibility(GONE);
+            TxtvSelectedToppPrice2.setVisibility(GONE);
+
+            TxtvSelectedToppName3.setVisibility(GONE);
+            TxtvRp3.setVisibility(GONE);
+            TxtvSelectedToppPrice3.setVisibility(GONE);
+
+            TxtvSelectedToppName4.setVisibility(GONE);
+            TxtvRp4.setVisibility(GONE);
+            TxtvSelectedToppPrice4.setVisibility(GONE);
+
+            TxtvSelectedToppName5.setVisibility(GONE);
+            TxtvRp5.setVisibility(GONE);
+            TxtvSelectedToppPrice5.setVisibility(GONE);
+
+            TxtvSelectedToppName6.setVisibility(GONE);
+            TxtvRp6.setVisibility(GONE);
+            TxtvSelectedToppPrice6.setVisibility(GONE);
+
+            TxtvSelectedToppName7.setVisibility(GONE);
+            TxtvRp7.setVisibility(GONE);
+            TxtvSelectedToppPrice7.setVisibility(GONE);
+
+            TxtvSelectedToppName8.setVisibility(GONE);
+            TxtvRp8.setVisibility(GONE);
+            TxtvSelectedToppPrice8.setVisibility(GONE);
+
+            TxtvSelectedToppName9.setVisibility(GONE);
+            TxtvRp9.setVisibility(GONE);
+            TxtvSelectedToppPrice9.setVisibility(GONE);
+
+            TxtvSelectedToppName10.setVisibility(GONE);
+            TxtvRp10.setVisibility(GONE);
+            TxtvSelectedToppPrice10.setVisibility(GONE);
 
 
 
-            if(CBTopping1.isChecked()){
-                FinalPrice1 = 1000;
-            }
-            else if(!CBTopping1.isChecked()){
-                FinalPrice1 = 0;
-            }
-            //
-            else if (CBTopping2.isChecked()){
-                FinalPrice2 = 20000;
-            }
-            else if(!CBTopping2.isChecked()){
-                FinalPrice2 = 0;
-            }
-            //
-            else if (CBTopping3.isChecked()){
-                FinalPrice3 = 4000;
-            }
-            else if(!CBTopping3.isChecked()){
-                FinalPrice3 = 0;
-            }
-            //
-            else if (CBTopping4.isChecked()){
-                FinalPrice4 = 50000;
-            }
-            else if(!CBTopping4.isChecked()){
-                FinalPrice4 = 0;
-            }
-            //
-            else if (CBTopping5.isChecked()) {
-                FinalPrice5 = 4000;
-            }
-            else if(!CBTopping5.isChecked()){
-                FinalPrice5 = 0;
-            }
+            CBTopping1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice1 = Price1;
+                        TxtvSelectedToppName1.setVisibility(View.VISIBLE);
+                        TxtvRp1.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice1.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName1.setText(CBTopping1.getText().toString());
+                        TxtvSelectedToppPrice1.setText(String.valueOf(FinalPrice1));
+                    }
+                    else {
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice1 = 0;
+                        TxtvSelectedToppName1.setVisibility(GONE);
+                        TxtvRp1.setVisibility(GONE);
+                        TxtvSelectedToppPrice1.setVisibility(GONE);
+                        TxtvSelectedToppName1.setText("null");
+                        TxtvSelectedToppPrice1.setText("0");
+                    }
+                }
+            });
 
-            TotalFinalPrice =
-                    FinalPrice1 + FinalPrice2 + FinalPrice3 +
-                            FinalPrice4 + FinalPrice5;
+            CBTopping2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice2 = Price2;
+                        TxtvSelectedToppName2.setVisibility(View.VISIBLE);
+                        TxtvRp2.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice2.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName2.setText(CBTopping2.getText());
+                        TxtvSelectedToppPrice2.setText(String.valueOf(FinalPrice2));
+                    }
+                    else {
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice2 = 0;
+                        TxtvSelectedToppName2.setVisibility(GONE);
+                        TxtvRp2.setVisibility(GONE);
+                        TxtvSelectedToppPrice2.setVisibility(GONE);
+                        TxtvSelectedToppName2.setText("null");
+                        TxtvSelectedToppPrice2.setText("0");
+                    }
+                }
+            });
 
-            TxtvTotalHarga.setText(String.valueOf("kosong"));
+            CBTopping3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice3 = Price3;
+                        TxtvSelectedToppName3.setVisibility(View.VISIBLE);
+                        TxtvRp3.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice3.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName3.setText(CBTopping3.getText());
+                        TxtvSelectedToppPrice3.setText(String.valueOf(FinalPrice3));
+                    }
+                    else {
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice3 = 0;
+                        TxtvSelectedToppName3.setVisibility(GONE);
+                        TxtvRp3.setVisibility(GONE);
+                        TxtvSelectedToppPrice3.setVisibility(GONE);
+                        TxtvSelectedToppName3.setText("null");
+                        TxtvSelectedToppPrice3.setText("0");
+                    }
+                }
+            });
+
+            CBTopping4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice4 = Price4;
+                        TxtvSelectedToppName4.setVisibility(View.VISIBLE);
+                        TxtvRp4.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice4.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName4.setText(CBTopping2.getText());
+                        TxtvSelectedToppPrice4.setText(String.valueOf(FinalPrice4));
+                    }
+                    else {
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice4 = 0;
+                        TxtvSelectedToppName4.setVisibility(GONE);
+                        TxtvRp4.setVisibility(GONE);
+                        TxtvSelectedToppPrice4.setVisibility(GONE);
+                        TxtvSelectedToppName4.setText("null");
+                        TxtvSelectedToppPrice4.setText("0");
+                    }
+                }
+            });
+
+            CBTopping5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice5 = Price5;
+                        TxtvSelectedToppName5.setVisibility(View.VISIBLE);
+                        TxtvRp5.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice5.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName5.setText(CBTopping5.getText());
+                        TxtvSelectedToppPrice5.setText(String.valueOf(FinalPrice5));
+                    }
+                    else {
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice5 = 0;
+                        TxtvSelectedToppName5.setVisibility(GONE);
+                        TxtvRp5.setVisibility(GONE);
+                        TxtvSelectedToppPrice5.setVisibility(GONE);
+                        TxtvSelectedToppName5.setText("null");
+                        TxtvSelectedToppPrice5.setText("0");
+                    }
+                }
+            });
         }
         else if (Code.toUpperCase().matches((inBaksoBakar.toUpperCase()))){
             //set text topping
@@ -492,13 +878,13 @@ public class FragmentOrdertoCart extends Fragment {
             CBTopping3.setText("Extra Tahu Bakso");
 
             //hide remaining topping CB
-            CBTopping4.setVisibility(View.GONE);
-            CBTopping5.setVisibility(View.GONE);
-            CBTopping6.setVisibility(View.GONE);
-            CBTopping7.setVisibility(View.GONE);
-            CBTopping8.setVisibility(View.GONE);
-            CBTopping9.setVisibility(View.GONE);
-            CBTopping10.setVisibility(View.GONE);
+            CBTopping4.setVisibility(GONE);
+            CBTopping5.setVisibility(GONE);
+            CBTopping6.setVisibility(GONE);
+            CBTopping7.setVisibility(GONE);
+            CBTopping8.setVisibility(GONE);
+            CBTopping9.setVisibility(GONE);
+            CBTopping10.setVisibility(GONE);
 
             //set price to variable
             Price1 = 2000;
@@ -518,56 +904,142 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvToppingPrice3.setText("Rp."+Price3);
 
             //hide remaining topping price Txtv
-            TxtvToppingPrice4.setVisibility(View.GONE);
-            TxtvToppingPrice5.setVisibility(View.GONE);
-            TxtvToppingPrice6.setVisibility(View.GONE);
-            TxtvToppingPrice7.setVisibility(View.GONE);
-            TxtvToppingPrice8.setVisibility(View.GONE);
-            TxtvToppingPrice9.setVisibility(View.GONE);
-            TxtvToppingPrice10.setVisibility(View.GONE);
+            TxtvToppingPrice4.setVisibility(GONE);
+            TxtvToppingPrice5.setVisibility(GONE);
+            TxtvToppingPrice6.setVisibility(GONE);
+            TxtvToppingPrice7.setVisibility(GONE);
+            TxtvToppingPrice8.setVisibility(GONE);
+            TxtvToppingPrice9.setVisibility(GONE);
+            TxtvToppingPrice10.setVisibility(GONE);
+
+            //hide all selected topping
+            TxtvSelectedToppName1.setVisibility(GONE);
+            TxtvRp1.setVisibility(GONE);
+            TxtvSelectedToppPrice1.setVisibility(GONE);
+
+            TxtvSelectedToppName2.setVisibility(GONE);
+            TxtvRp2.setVisibility(GONE);
+            TxtvSelectedToppPrice2.setVisibility(GONE);
+
+            TxtvSelectedToppName3.setVisibility(GONE);
+            TxtvRp3.setVisibility(GONE);
+            TxtvSelectedToppPrice3.setVisibility(GONE);
+
+            TxtvSelectedToppName4.setVisibility(GONE);
+            TxtvRp4.setVisibility(GONE);
+            TxtvSelectedToppPrice4.setVisibility(GONE);
+
+            TxtvSelectedToppName5.setVisibility(GONE);
+            TxtvRp5.setVisibility(GONE);
+            TxtvSelectedToppPrice5.setVisibility(GONE);
+
+            TxtvSelectedToppName6.setVisibility(GONE);
+            TxtvRp6.setVisibility(GONE);
+            TxtvSelectedToppPrice6.setVisibility(GONE);
+
+            TxtvSelectedToppName7.setVisibility(GONE);
+            TxtvRp7.setVisibility(GONE);
+            TxtvSelectedToppPrice7.setVisibility(GONE);
+
+            TxtvSelectedToppName8.setVisibility(GONE);
+            TxtvRp8.setVisibility(GONE);
+            TxtvSelectedToppPrice8.setVisibility(GONE);
+
+            TxtvSelectedToppName9.setVisibility(GONE);
+            TxtvRp9.setVisibility(GONE);
+            TxtvSelectedToppPrice9.setVisibility(GONE);
+
+            TxtvSelectedToppName10.setVisibility(GONE);
+            TxtvRp10.setVisibility(GONE);
+            TxtvSelectedToppPrice10.setVisibility(GONE);
 
 
-            if(CBTopping1.isChecked()){
-                FinalPrice1 = Price1;
-            }
-            else if(!CBTopping1.isChecked()){
-                FinalPrice1 = 0;
-            }
-            //
-            else if (CBTopping2.isChecked()){
-                FinalPrice2 = Price2;
-            }
-            else if(!CBTopping2.isChecked()){
-                FinalPrice2 = 0;
-            }
-            //
-            else if (CBTopping3.isChecked()){
-                FinalPrice3 = Price3;
-            }
-            else if(!CBTopping3.isChecked()){
-                FinalPrice3 = 0;
-            }
-            //
+            CBTopping1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice1 = Price1;
+                        TxtvSelectedToppName1.setVisibility(View.VISIBLE);
+                        TxtvRp1.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice1.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName1.setText(CBTopping1.getText().toString());
+                        TxtvSelectedToppPrice1.setText(String.valueOf(FinalPrice1));
+                    }
+                    else {
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice1 = 0;
+                        TxtvSelectedToppName1.setVisibility(GONE);
+                        TxtvRp1.setVisibility(GONE);
+                        TxtvSelectedToppPrice1.setVisibility(GONE);
+                        TxtvSelectedToppName1.setText("null");
+                        TxtvSelectedToppPrice1.setText("0");
+                    }
+                }
+            });
 
-            TotalFinalPrice =
-                    FinalPrice1 + FinalPrice2 + FinalPrice3;
+            CBTopping2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice2 = Price2;
+                        TxtvSelectedToppName2.setVisibility(View.VISIBLE);
+                        TxtvRp2.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice2.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName2.setText(CBTopping2.getText());
+                        TxtvSelectedToppPrice2.setText(String.valueOf(FinalPrice2));
+                    }
+                    else {
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice2 = 0;
+                        TxtvSelectedToppName2.setVisibility(GONE);
+                        TxtvRp2.setVisibility(GONE);
+                        TxtvSelectedToppPrice2.setVisibility(GONE);
+                        TxtvSelectedToppName2.setText("null");
+                        TxtvSelectedToppPrice2.setText("0");
+                    }
+                }
+            });
 
-            TxtvTotalHarga.setText(String.valueOf(TotalFinalPrice + Price));
+            CBTopping3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice3 = Price3;
+                        TxtvSelectedToppName3.setVisibility(View.VISIBLE);
+                        TxtvRp3.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice3.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName3.setText(CBTopping3.getText());
+                        TxtvSelectedToppPrice3.setText(String.valueOf(FinalPrice3));
+                    }
+                    else {
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice3 = 0;
+                        TxtvSelectedToppName3.setVisibility(GONE);
+                        TxtvRp3.setVisibility(GONE);
+                        TxtvSelectedToppPrice3.setVisibility(GONE);
+                        TxtvSelectedToppName3.setText("null");
+                        TxtvSelectedToppPrice3.setText("0");
+                    }
+                }
+            });
         }
         else if (Code.toUpperCase().matches((inSoto.toUpperCase()))){
             //set text topping
             CBTopping1.setText("Tetelan Sapi");
 
             //hide remaining topping CB
-            CBTopping2.setVisibility(View.GONE);
-            CBTopping3.setVisibility(View.GONE);
-            CBTopping4.setVisibility(View.GONE);
-            CBTopping5.setVisibility(View.GONE);
-            CBTopping6.setVisibility(View.GONE);
-            CBTopping7.setVisibility(View.GONE);
-            CBTopping8.setVisibility(View.GONE);
-            CBTopping9.setVisibility(View.GONE);
-            CBTopping10.setVisibility(View.GONE);
+            CBTopping2.setVisibility(GONE);
+            CBTopping3.setVisibility(GONE);
+            CBTopping4.setVisibility(GONE);
+            CBTopping5.setVisibility(GONE);
+            CBTopping6.setVisibility(GONE);
+            CBTopping7.setVisibility(GONE);
+            CBTopping8.setVisibility(GONE);
+            CBTopping9.setVisibility(GONE);
+            CBTopping10.setVisibility(GONE);
 
             //set price to variable
             Price1 = 7000;
@@ -585,42 +1057,104 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvToppingPrice1.setText("Rp."+Price1);
 
             //hide remaining topping price Txtv
-            TxtvToppingPrice2.setVisibility(View.GONE);
-            TxtvToppingPrice3.setVisibility(View.GONE);
-            TxtvToppingPrice4.setVisibility(View.GONE);
-            TxtvToppingPrice5.setVisibility(View.GONE);
-            TxtvToppingPrice6.setVisibility(View.GONE);
-            TxtvToppingPrice7.setVisibility(View.GONE);
-            TxtvToppingPrice8.setVisibility(View.GONE);
-            TxtvToppingPrice9.setVisibility(View.GONE);
-            TxtvToppingPrice10.setVisibility(View.GONE);
+            TxtvToppingPrice2.setVisibility(GONE);
+            TxtvToppingPrice3.setVisibility(GONE);
+            TxtvToppingPrice4.setVisibility(GONE);
+            TxtvToppingPrice5.setVisibility(GONE);
+            TxtvToppingPrice6.setVisibility(GONE);
+            TxtvToppingPrice7.setVisibility(GONE);
+            TxtvToppingPrice8.setVisibility(GONE);
+            TxtvToppingPrice9.setVisibility(GONE);
+            TxtvToppingPrice10.setVisibility(GONE);
+
+            //hide remaining topping price Txtv
+            TxtvToppingPrice4.setVisibility(GONE);
+            TxtvToppingPrice5.setVisibility(GONE);
+            TxtvToppingPrice6.setVisibility(GONE);
+            TxtvToppingPrice7.setVisibility(GONE);
+            TxtvToppingPrice8.setVisibility(GONE);
+            TxtvToppingPrice9.setVisibility(GONE);
+            TxtvToppingPrice10.setVisibility(GONE);
+
+            //hide all selected topping
+            TxtvSelectedToppName1.setVisibility(GONE);
+            TxtvRp1.setVisibility(GONE);
+            TxtvSelectedToppPrice1.setVisibility(GONE);
+
+            TxtvSelectedToppName2.setVisibility(GONE);
+            TxtvRp2.setVisibility(GONE);
+            TxtvSelectedToppPrice2.setVisibility(GONE);
+
+            TxtvSelectedToppName3.setVisibility(GONE);
+            TxtvRp3.setVisibility(GONE);
+            TxtvSelectedToppPrice3.setVisibility(GONE);
+
+            TxtvSelectedToppName4.setVisibility(GONE);
+            TxtvRp4.setVisibility(GONE);
+            TxtvSelectedToppPrice4.setVisibility(GONE);
+
+            TxtvSelectedToppName5.setVisibility(GONE);
+            TxtvRp5.setVisibility(GONE);
+            TxtvSelectedToppPrice5.setVisibility(GONE);
+
+            TxtvSelectedToppName6.setVisibility(GONE);
+            TxtvRp6.setVisibility(GONE);
+            TxtvSelectedToppPrice6.setVisibility(GONE);
+
+            TxtvSelectedToppName7.setVisibility(GONE);
+            TxtvRp7.setVisibility(GONE);
+            TxtvSelectedToppPrice7.setVisibility(GONE);
+
+            TxtvSelectedToppName8.setVisibility(GONE);
+            TxtvRp8.setVisibility(GONE);
+            TxtvSelectedToppPrice8.setVisibility(GONE);
+
+            TxtvSelectedToppName9.setVisibility(GONE);
+            TxtvRp9.setVisibility(GONE);
+            TxtvSelectedToppPrice9.setVisibility(GONE);
+
+            TxtvSelectedToppName10.setVisibility(GONE);
+            TxtvRp10.setVisibility(GONE);
+            TxtvSelectedToppPrice10.setVisibility(GONE);
 
 
-            if(CBTopping1.isChecked()){
-                FinalPrice1 = Price1;
-            }
-            else {
-                FinalPrice1 = 0;
-            }
-
-            TotalFinalPrice =
-                    FinalPrice1;
-
-            TxtvTotalHarga.setText(String.valueOf(TotalFinalPrice + Price));
+            CBTopping1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice1 = Price1;
+                        TxtvSelectedToppName1.setVisibility(View.VISIBLE);
+                        TxtvRp1.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppPrice1.setVisibility(View.VISIBLE);
+                        TxtvSelectedToppName1.setText(CBTopping1.getText().toString());
+                        TxtvSelectedToppPrice1.setText(String.valueOf(FinalPrice1));
+                    }
+                    else {
+                        BtnAddtoCart.setVisibility(GONE);
+                        FinalPrice1 = 0;
+                        TxtvSelectedToppName1.setVisibility(GONE);
+                        TxtvRp1.setVisibility(GONE);
+                        TxtvSelectedToppPrice1.setVisibility(GONE);
+                        TxtvSelectedToppName1.setText("null");
+                        TxtvSelectedToppPrice1.setText("0");
+                    }
+                }
+            });
         }
         else {
 
             //hide remaining topping CB
-            CBTopping1.setVisibility(View.GONE);
-            CBTopping2.setVisibility(View.GONE);
-            CBTopping3.setVisibility(View.GONE);
-            CBTopping4.setVisibility(View.GONE);
-            CBTopping5.setVisibility(View.GONE);
-            CBTopping6.setVisibility(View.GONE);
-            CBTopping7.setVisibility(View.GONE);
-            CBTopping8.setVisibility(View.GONE);
-            CBTopping9.setVisibility(View.GONE);
-            CBTopping10.setVisibility(View.GONE);
+            CBTopping1.setVisibility(GONE);
+            CBTopping2.setVisibility(GONE);
+            CBTopping3.setVisibility(GONE);
+            CBTopping4.setVisibility(GONE);
+            CBTopping5.setVisibility(GONE);
+            CBTopping6.setVisibility(GONE);
+            CBTopping7.setVisibility(GONE);
+            CBTopping8.setVisibility(GONE);
+            CBTopping9.setVisibility(GONE);
+            CBTopping10.setVisibility(GONE);
 
             //set price to variable
             Price1 = 0;
@@ -636,16 +1170,16 @@ public class FragmentOrdertoCart extends Fragment {
 
 
             //hide remaining topping price Txtv
-            TxtvToppingPrice1.setVisibility(View.GONE);
-            TxtvToppingPrice2.setVisibility(View.GONE);
-            TxtvToppingPrice3.setVisibility(View.GONE);
-            TxtvToppingPrice4.setVisibility(View.GONE);
-            TxtvToppingPrice5.setVisibility(View.GONE);
-            TxtvToppingPrice6.setVisibility(View.GONE);
-            TxtvToppingPrice7.setVisibility(View.GONE);
-            TxtvToppingPrice8.setVisibility(View.GONE);
-            TxtvToppingPrice9.setVisibility(View.GONE);
-            TxtvToppingPrice10.setVisibility(View.GONE);
+            TxtvToppingPrice1.setVisibility(GONE);
+            TxtvToppingPrice2.setVisibility(GONE);
+            TxtvToppingPrice3.setVisibility(GONE);
+            TxtvToppingPrice4.setVisibility(GONE);
+            TxtvToppingPrice5.setVisibility(GONE);
+            TxtvToppingPrice6.setVisibility(GONE);
+            TxtvToppingPrice7.setVisibility(GONE);
+            TxtvToppingPrice8.setVisibility(GONE);
+            TxtvToppingPrice9.setVisibility(GONE);
+            TxtvToppingPrice10.setVisibility(GONE);
 
             TxtvTotalHarga.setText(String.valueOf(Price));
         }
