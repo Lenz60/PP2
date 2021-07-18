@@ -8,13 +8,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.renderscript.Sampler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -29,6 +33,7 @@ import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsJusFragment;
 import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsOriFragment;
 
 import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -86,7 +91,9 @@ public class FragmentOrdertoCart extends Fragment {
             Check7,Check8,Check9,
             Check10;
 
-    Button BtnAddtoCart,BtnConfirmationPayment;
+    Button BtnAddtoCart,BtnConfirmationPayment, BtnAddItem, BtnReduceItem;
+
+    EditText EdFoodCount;
 
     String GetTotalHarga, GetCurrentToppingPrice;
 
@@ -105,12 +112,25 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvRp7,TxtvRp8,TxtvRp9,
             TxtvRp10;
 
-    TextView TxtvSelectedFoodName, TxtvSelectedFoodPrice;
+    //Radio Button
+    RadioGroup RgTipeFood;
+    RadioButton RbChoice1, RbChoice2, RbChoice3;
+    RadioButton RbSelectedChoice;
 
+    TextView TxtvSelectedFoodCount, TxtvSelectedFoodName, TxtvSelectedFoodPrice;
+
+    String ValueTotalSelectedFoodPrice;
+
+    //Count Total FoodCount
+    Integer TotalFoodCount;
+    Integer IntegerSelectedFoodPrice;
 
     Integer FoodPrice1;
     //Total
     TextView TxtvTotalHarga;
+
+    //Tipe Food
+    TextView TxtvSelectedFoodType;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -156,7 +176,7 @@ public class FragmentOrdertoCart extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View viewRoot = inflater.inflate(R.layout.fragment_orderto_cart, container, false);
+        final View viewRoot = inflater.inflate(R.layout.fragment_orderto_cart, container, false);
 
         TxtvOrdertoCartCode = viewRoot.findViewById(R.id.TxtvOrdertoCartCode);
         TxtvOrdertoCartName = viewRoot.findViewById(R.id.TxtvOrdertoCartName);
@@ -231,9 +251,22 @@ public class FragmentOrdertoCart extends Fragment {
         //Button Confirmation
         BtnConfirmationPayment = viewRoot.findViewById(R.id.BtnOrdertoCartConfirm);
 
-        //Selected Food Name & Price
+        //Selected Food Name, Count & Price
+        TxtvSelectedFoodCount = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedFoodCount);
         TxtvSelectedFoodName = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedFoodName);
         TxtvSelectedFoodPrice = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedFoodPrice);
+        TxtvSelectedFoodType = viewRoot.findViewById(R.id.TxtvOrdertoCartSelectedFoodTipe);
+
+        //Add And Reduce Food Item
+        BtnAddItem = viewRoot.findViewById(R.id.BtnOrdertoCartAddItem);
+        BtnReduceItem = viewRoot.findViewById(R.id.BtnOrdertoCartReduceItem);
+        EdFoodCount = viewRoot.findViewById(R.id.EdOrdertoCartFoodCount);
+
+        //Radio Group & Radio Button Tipe Makanan
+        RgTipeFood = viewRoot.findViewById(R.id.RadioChoiceFood);
+        RbChoice1 = viewRoot.findViewById(R.id.RbChoice1);
+        RbChoice2 = viewRoot.findViewById(R.id.RbChoice2);
+        RbChoice3 = viewRoot.findViewById(R.id.RbChoice3);
 
 
         Bundle bundle = this.getArguments();
@@ -244,9 +277,6 @@ public class FragmentOrdertoCart extends Fragment {
         TxtvOrdertoCartCode.setText(Code);
         TxtvOrdertoCartName.setText(Name);
         TxtvOrdertoCartPrice.setText(Price);
-
-
-
 
 
 
@@ -294,63 +324,189 @@ public class FragmentOrdertoCart extends Fragment {
         FinalPrice9 = 0;
         FinalPrice10 = 0;
 
+        RgTipeFood.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int selectedIdRg = RgTipeFood.getCheckedRadioButtonId();
+                RbSelectedChoice = (RadioButton) viewRoot.findViewById(selectedIdRg);
+                TxtvSelectedFoodType.setText(RbSelectedChoice.getText().toString());
+            }
+        });
+
         //Set Value of Selected Food
         TxtvSelectedFoodName.setText(Name);
-        TxtvSelectedFoodPrice.setText("Rp." + Price);
+        TxtvSelectedFoodPrice.setText(Price);
+        TxtvSelectedFoodType.setText(" ");
 
 
         ChangeValueTopping();
         ConfirmationPayment();
         BtnAddtoCart.setVisibility(GONE);
+        //set Foodcount
+        EdFoodCount.setEnabled(false);
+        EdFoodCount.setText("1");
+        TxtvSelectedFoodCount.setText("1");
+        CalculateFoodCount();
+        AddtoCart();
         // Inflate the layout for this fragment
         return viewRoot;
     }
 
-    private void ConfirmationPayment() {
-
-
-
-
-        BtnConfirmationPayment.setOnClickListener(new View.OnClickListener() {
-
+    private void AddtoCart() {
+        BtnAddtoCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StringSelectedPrice1 = TxtvSelectedToppPrice1.getText().toString();
-                SelectedPrice1 = Integer.parseInt(StringSelectedPrice1);
+                if(RgTipeFood.getVisibility() == VISIBLE) {
+                    if (RgTipeFood.getCheckedRadioButtonId() == -1) {
+                        Toast errorTipeFood = Toast.makeText(getActivity(), "Silahkan Pilih Tipe Makanan Terlebih Dahulu", Toast.LENGTH_SHORT);
+                        errorTipeFood.show();
+                    }
+                    else {
+                        //Pass to cart function here 
+                    }
+                }
+                else {
+                    //Pass to Cart function here
+                }
+            }
+        });
+    }
 
-                StringSelectedPrice2 = TxtvSelectedToppPrice2.getText().toString();
-                SelectedPrice2 = Integer.parseInt(StringSelectedPrice2);
+    private void CalculateFoodCount() {
+        BtnAddItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BtnAddtoCart.setVisibility(GONE);
+                int a = Integer.parseInt(EdFoodCount.getText().toString());
+                int b = a+1;
 
-                StringSelectedPrice3 = TxtvSelectedToppPrice3.getText().toString();
-                SelectedPrice3 = Integer.parseInt(StringSelectedPrice3);
+                //set default count to 1
+                if (b <= 0){
+                    b = 1;
+                }
 
-                StringSelectedPrice4 = TxtvSelectedToppPrice4.getText().toString();
-                SelectedPrice4 = Integer.parseInt(StringSelectedPrice4);
+                EdFoodCount.setText(new Integer(b).toString());
+                String ValueEdFoodCount = EdFoodCount.getText().toString();
+                TotalFoodCount = Integer.valueOf(Integer.valueOf(ValueEdFoodCount) * Integer.valueOf(Price));
+                TxtvOrdertoCartPrice.setText(String.valueOf(TotalFoodCount));
+                TxtvSelectedFoodCount.setText(ValueEdFoodCount);
+                TxtvSelectedFoodPrice.setText(String.valueOf(TotalFoodCount));
+            }
+        });
+        BtnReduceItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BtnAddtoCart.setVisibility(GONE);
+                int a = Integer.parseInt(EdFoodCount.getText().toString());
+                int b = a-1;
 
-                StringSelectedPrice5 = TxtvSelectedToppPrice5.getText().toString();
-                SelectedPrice5 = Integer.parseInt(StringSelectedPrice5);
+                //set default count to 1
+                if (b <= 0){
+                    b = 1;
+                }
 
-                StringSelectedPrice6 = TxtvSelectedToppPrice6.getText().toString();
-                SelectedPrice6 = Integer.parseInt(StringSelectedPrice6);
+                EdFoodCount.setText(new Integer(b).toString());
+                String ValueEdFoodCount = EdFoodCount.getText().toString();
+                TotalFoodCount = Integer.valueOf(Integer.valueOf(ValueEdFoodCount) * Integer.valueOf(Price));
+                TxtvOrdertoCartPrice.setText(String.valueOf(TotalFoodCount));
+                TxtvSelectedFoodCount.setText(ValueEdFoodCount);
+                TxtvSelectedFoodPrice.setText(String.valueOf(TotalFoodCount));
+            }
+        });
+    }
 
-                StringSelectedPrice7 = TxtvSelectedToppPrice7.getText().toString();
-                SelectedPrice7 = Integer.parseInt(StringSelectedPrice7);
+    public void ConfirmationPayment() {
+        final String codefood = Code;
+        BtnConfirmationPayment.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(RgTipeFood.getVisibility() == VISIBLE){
+                    if (RgTipeFood.getCheckedRadioButtonId() == -1 ){
+                        Toast errorTipeFood = Toast.makeText(getActivity(), "Silahkan Pilih Tipe Makanan Terlebih Dahulu", Toast.LENGTH_SHORT);
+                        errorTipeFood.show();
+                    }
+                    else {
+                        StringSelectedPrice1 = TxtvSelectedToppPrice1.getText().toString();
+                        SelectedPrice1 = Integer.parseInt(StringSelectedPrice1);
 
-                StringSelectedPrice8 = TxtvSelectedToppPrice8.getText().toString();
-                SelectedPrice8 = Integer.parseInt(StringSelectedPrice8);
+                        StringSelectedPrice2 = TxtvSelectedToppPrice2.getText().toString();
+                        SelectedPrice2 = Integer.parseInt(StringSelectedPrice2);
 
-                StringSelectedPrice9 = TxtvSelectedToppPrice9.getText().toString();
-                SelectedPrice9 = Integer.parseInt(StringSelectedPrice9);
+                        StringSelectedPrice3 = TxtvSelectedToppPrice3.getText().toString();
+                        SelectedPrice3 = Integer.parseInt(StringSelectedPrice3);
 
-                StringSelectedPrice10 = TxtvSelectedToppPrice10.getText().toString();
-                SelectedPrice10 = Integer.parseInt(StringSelectedPrice10);
+                        StringSelectedPrice4 = TxtvSelectedToppPrice4.getText().toString();
+                        SelectedPrice4 = Integer.parseInt(StringSelectedPrice4);
 
-                TotalFinalPrice = Integer.parseInt(Price) + SelectedPrice1 + SelectedPrice2 +
-                        SelectedPrice3 + SelectedPrice4 + SelectedPrice5 +
-                        SelectedPrice6 + SelectedPrice7 + SelectedPrice8 +
-                        SelectedPrice9 + SelectedPrice10;
-                TxtvTotalHarga.setText(String.valueOf(TotalFinalPrice));
-                BtnAddtoCart.setVisibility(View.VISIBLE);
+                        StringSelectedPrice5 = TxtvSelectedToppPrice5.getText().toString();
+                        SelectedPrice5 = Integer.parseInt(StringSelectedPrice5);
+
+                        StringSelectedPrice6 = TxtvSelectedToppPrice6.getText().toString();
+                        SelectedPrice6 = Integer.parseInt(StringSelectedPrice6);
+
+                        StringSelectedPrice7 = TxtvSelectedToppPrice7.getText().toString();
+                        SelectedPrice7 = Integer.parseInt(StringSelectedPrice7);
+
+                        StringSelectedPrice8 = TxtvSelectedToppPrice8.getText().toString();
+                        SelectedPrice8 = Integer.parseInt(StringSelectedPrice8);
+
+                        StringSelectedPrice9 = TxtvSelectedToppPrice9.getText().toString();
+                        SelectedPrice9 = Integer.parseInt(StringSelectedPrice9);
+
+                        StringSelectedPrice10 = TxtvSelectedToppPrice10.getText().toString();
+                        SelectedPrice10 = Integer.parseInt(StringSelectedPrice10);
+
+                        ValueTotalSelectedFoodPrice = TxtvSelectedFoodPrice.getText().toString();
+                        IntegerSelectedFoodPrice = Integer.valueOf(ValueTotalSelectedFoodPrice);
+
+                        TotalFinalPrice = IntegerSelectedFoodPrice + SelectedPrice1 + SelectedPrice2 +
+                                SelectedPrice3 + SelectedPrice4 + SelectedPrice5 +
+                                SelectedPrice6 + SelectedPrice7 + SelectedPrice8 +
+                                SelectedPrice9 + SelectedPrice10;
+                        TxtvTotalHarga.setText(String.valueOf(TotalFinalPrice));
+                        BtnAddtoCart.setVisibility(View.VISIBLE);
+                    }
+                }
+                else {
+                    StringSelectedPrice1 = TxtvSelectedToppPrice1.getText().toString();
+                    SelectedPrice1 = Integer.parseInt(StringSelectedPrice1);
+
+                    StringSelectedPrice2 = TxtvSelectedToppPrice2.getText().toString();
+                    SelectedPrice2 = Integer.parseInt(StringSelectedPrice2);
+
+                    StringSelectedPrice3 = TxtvSelectedToppPrice3.getText().toString();
+                    SelectedPrice3 = Integer.parseInt(StringSelectedPrice3);
+
+                    StringSelectedPrice4 = TxtvSelectedToppPrice4.getText().toString();
+                    SelectedPrice4 = Integer.parseInt(StringSelectedPrice4);
+
+                    StringSelectedPrice5 = TxtvSelectedToppPrice5.getText().toString();
+                    SelectedPrice5 = Integer.parseInt(StringSelectedPrice5);
+
+                    StringSelectedPrice6 = TxtvSelectedToppPrice6.getText().toString();
+                    SelectedPrice6 = Integer.parseInt(StringSelectedPrice6);
+
+                    StringSelectedPrice7 = TxtvSelectedToppPrice7.getText().toString();
+                    SelectedPrice7 = Integer.parseInt(StringSelectedPrice7);
+
+                    StringSelectedPrice8 = TxtvSelectedToppPrice8.getText().toString();
+                    SelectedPrice8 = Integer.parseInt(StringSelectedPrice8);
+
+                    StringSelectedPrice9 = TxtvSelectedToppPrice9.getText().toString();
+                    SelectedPrice9 = Integer.parseInt(StringSelectedPrice9);
+
+                    StringSelectedPrice10 = TxtvSelectedToppPrice10.getText().toString();
+                    SelectedPrice10 = Integer.parseInt(StringSelectedPrice10);
+
+                    ValueTotalSelectedFoodPrice = TxtvSelectedFoodPrice.getText().toString();
+                    IntegerSelectedFoodPrice = Integer.valueOf(ValueTotalSelectedFoodPrice);
+
+                    TotalFinalPrice = IntegerSelectedFoodPrice + SelectedPrice1 + SelectedPrice2 +
+                            SelectedPrice3 + SelectedPrice4 + SelectedPrice5 +
+                            SelectedPrice6 + SelectedPrice7 + SelectedPrice8 +
+                            SelectedPrice9 + SelectedPrice10;
+                    TxtvTotalHarga.setText(String.valueOf(TotalFinalPrice));
+                    BtnAddtoCart.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
@@ -369,6 +525,13 @@ public class FragmentOrdertoCart extends Fragment {
             CBTopping7.setText("Balungan Rica Ayam");
             CBTopping8.setText("Extra Sawi");
             CBTopping9.setText("Extra Acar");
+
+            //set text tipe
+            RbChoice1.setText("Kuah");
+            RbChoice2.setText("Goreng");
+
+            //hide remaining tipe
+            RbChoice3.setVisibility(GONE);
 
             //hide remaining topping CB
             CBTopping10.setVisibility(GONE);
@@ -674,6 +837,25 @@ public class FragmentOrdertoCart extends Fragment {
             CBTopping4.setText("Tetelan Sapi");
             CBTopping5.setText("Kuah Bakso, Mie Kuning & Mie Soon");
 
+            if (Code == "BK5"){
+                //set text tipe
+                RbChoice1.setText("Urat");
+                RbChoice2.setText("Halus");
+                //hide remaining tipe
+                RbChoice3.setVisibility(GONE);
+            }
+            else if (Code == "BK4"&&Code == "BK6"&&Code == "BK7"){
+                //hide remaining tipe
+                RbChoice1.setVisibility(GONE);
+                RbChoice2.setVisibility(GONE);
+                RbChoice3.setVisibility(GONE);
+            }
+            else {
+                //set text tipe
+                RbChoice1.setText("Urat");
+                RbChoice2.setText("Halus");
+                RbChoice3.setText("Campur");
+            }
 
             //hide remaining topping CB
             CBTopping6.setVisibility(GONE);
@@ -886,6 +1068,12 @@ public class FragmentOrdertoCart extends Fragment {
             CBTopping9.setVisibility(GONE);
             CBTopping10.setVisibility(GONE);
 
+            //set text tipe
+            RbChoice1.setText("Pedas");
+            RbChoice2.setText("Manis");
+            //hide remaining tipe
+            RbChoice3.setVisibility(GONE);
+
             //set price to variable
             Price1 = 2000;
             Price2 = 1500;
@@ -1041,6 +1229,13 @@ public class FragmentOrdertoCart extends Fragment {
             CBTopping9.setVisibility(GONE);
             CBTopping10.setVisibility(GONE);
 
+
+            //hide remaining tipe
+            RgTipeFood.setVisibility(GONE);
+            RbChoice1.setVisibility(GONE);
+            RbChoice2.setVisibility(GONE);
+            RbChoice3.setVisibility(GONE);
+
             //set price to variable
             Price1 = 7000;
             Price2 = 0;
@@ -1155,6 +1350,50 @@ public class FragmentOrdertoCart extends Fragment {
             CBTopping8.setVisibility(GONE);
             CBTopping9.setVisibility(GONE);
             CBTopping10.setVisibility(GONE);
+
+            //hide remaining Topping
+            //hide all selected topping
+            TxtvSelectedToppName1.setVisibility(GONE);
+            TxtvRp1.setVisibility(GONE);
+            TxtvSelectedToppPrice1.setVisibility(GONE);
+
+            TxtvSelectedToppName2.setVisibility(GONE);
+            TxtvRp2.setVisibility(GONE);
+            TxtvSelectedToppPrice2.setVisibility(GONE);
+
+            TxtvSelectedToppName3.setVisibility(GONE);
+            TxtvRp3.setVisibility(GONE);
+            TxtvSelectedToppPrice3.setVisibility(GONE);
+
+            TxtvSelectedToppName4.setVisibility(GONE);
+            TxtvRp4.setVisibility(GONE);
+            TxtvSelectedToppPrice4.setVisibility(GONE);
+
+            TxtvSelectedToppName5.setVisibility(GONE);
+            TxtvRp5.setVisibility(GONE);
+            TxtvSelectedToppPrice5.setVisibility(GONE);
+
+            TxtvSelectedToppName6.setVisibility(GONE);
+            TxtvRp6.setVisibility(GONE);
+            TxtvSelectedToppPrice6.setVisibility(GONE);
+
+            TxtvSelectedToppName7.setVisibility(GONE);
+            TxtvRp7.setVisibility(GONE);
+            TxtvSelectedToppPrice7.setVisibility(GONE);
+
+            TxtvSelectedToppName8.setVisibility(GONE);
+            TxtvRp8.setVisibility(GONE);
+            TxtvSelectedToppPrice8.setVisibility(GONE);
+
+            TxtvSelectedToppName9.setVisibility(GONE);
+            TxtvRp9.setVisibility(GONE);
+            TxtvSelectedToppPrice9.setVisibility(GONE);
+
+            TxtvSelectedToppName10.setVisibility(GONE);
+            TxtvRp10.setVisibility(GONE);
+            TxtvSelectedToppPrice10.setVisibility(GONE);
+
+            RgTipeFood.setVisibility(GONE);
 
             //set price to variable
             Price1 = 0;
