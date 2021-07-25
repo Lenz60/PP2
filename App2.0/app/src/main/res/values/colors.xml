@@ -15,6 +15,9 @@
 
     <color name="my_spinner_text_color">#FFFFFF</color>
 
+    <color name="shapeblack">#1B1B1B</color>
+    <color name="shapestroke">#3A4151</color>
+
 
 
     <!--- Pallete 1 -->

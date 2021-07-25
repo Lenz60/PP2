@@ -85,7 +85,7 @@
                     android:layout_marginLeft="20dp"
                     android:textSize="16sp"
                     android:text="Nomor Meja :"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/white"/>
                 <TextView
                     android:id="@+id/TxtvLokasiMejaProfile"
                     android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
                     android:layout_marginLeft="30dp"
                     android:text="Nomor"
                     android:textSize="16sp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/white"/>
             </LinearLayout>
 
             <LinearLayout
@@ -107,7 +107,7 @@
                     android:layout_marginLeft="20dp"
                     android:textSize="16sp"
                     android:text="Kode Meja :"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/white"/>
                 <TextView
                     android:id="@+id/TxtvKodeMejaProfile"
                     android:layout_width="wrap_content"
@@ -115,7 +115,7 @@
                     android:layout_marginLeft="30dp"
                     android:text="Kode"
                     android:textSize="16sp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/white"/>
             </LinearLayout>
         </LinearLayout>
 
