@@ -78,24 +78,38 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
                     <TextView
                         android:id="@+id/TxtvCart1FoodQuantity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:maxEms="7"
+                        android:singleLine="false"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="xx"
-                        android:textSize="17sp"
+                        android:textSize="15sp"
                         android:textColor="@color/white"/>
                     <TextView
                         android:id="@+id/TxtvCart1FoodName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:maxEms="7"
+                        android:singleLine="false"
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="10dp"
                         android:text="Nama Makanan"
-                        android:textSize="17sp"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:id="@+id/TxtvCart1FoodType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Kuah/Goreng"
+                        android:textSize="15sp"
                         android:textColor="@color/white"/>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -109,7 +123,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="10dp"
                             android:text="Rp "
-                            android:textSize="17sp"
+                            android:textSize="15sp"
                             android:textColor="@color/white"/>
 
                         <TextView
@@ -119,7 +133,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="10dp"
                             android:text="harga"
-                            android:textSize="17sp"
+                            android:textSize="15sp"
                             android:textColor="@color/white"/>
                     </LinearLayout>
 
@@ -159,10 +173,12 @@
                                 android:id="@+id/TxtvCart1Topping1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping1"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -175,7 +191,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart1ToppingPrice1"
                                     android:layout_width="wrap_content"
@@ -183,7 +199,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping1 -->
@@ -196,10 +212,12 @@
                                 android:id="@+id/TxtvCart1Topping2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping2"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -212,7 +230,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart1ToppingPrice2"
                                     android:layout_width="wrap_content"
@@ -220,7 +238,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping2 -->
@@ -233,10 +251,12 @@
                                 android:id="@+id/TxtvCart1Topping3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping3"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -249,7 +269,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart1ToppingPrice3"
                                     android:layout_width="wrap_content"
@@ -257,7 +277,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping3 -->
@@ -270,10 +290,12 @@
                                 android:id="@+id/TxtvCart1Topping4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping4"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -286,7 +308,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart1ToppingPrice4"
                                     android:layout_width="wrap_content"
@@ -294,7 +316,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping4 -->
@@ -307,10 +329,12 @@
                                 android:id="@+id/TxtvCart1Topping5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping5"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -323,7 +347,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart1ToppingPrice5"
                                     android:layout_width="wrap_content"
@@ -331,7 +355,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping5 -->
@@ -351,10 +375,12 @@
                                 android:id="@+id/TxtvCart1Topping6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping6"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -367,7 +393,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart1ToppingPrice6"
                                     android:layout_width="wrap_content"
@@ -375,7 +401,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping6 -->
@@ -388,10 +414,12 @@
                                 android:id="@+id/TxtvCart1Topping7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping7"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -404,7 +432,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart1ToppingPrice7"
                                     android:layout_width="wrap_content"
@@ -412,7 +440,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping7 -->
@@ -425,10 +453,12 @@
                                 android:id="@+id/TxtvCart1Topping8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping8"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -441,7 +471,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart1ToppingPrice8"
                                     android:layout_width="wrap_content"
@@ -449,7 +479,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping8 -->
@@ -462,10 +492,12 @@
                                 android:id="@+id/TxtvCart1Topping9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping9"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -478,7 +510,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart1ToppingPrice9"
                                     android:layout_width="wrap_content"
@@ -486,7 +518,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping9 -->
@@ -499,10 +531,12 @@
                                 android:id="@+id/TxtvCart1Topping10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping10"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -515,7 +549,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart1ToppingPrice10"
                                     android:layout_width="wrap_content"
@@ -523,7 +557,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping5 -->
@@ -605,7 +639,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
                     <TextView
                         android:id="@+id/TxtvCart2FoodQuantity"
                         android:layout_width="wrap_content"
@@ -613,16 +648,27 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="xx"
-                        android:textSize="17sp"
+                        android:textSize="15sp"
                         android:textColor="@color/white"/>
                     <TextView
                         android:id="@+id/TxtvCart2FoodName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:maxEms="7"
+                        android:singleLine="false"
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="10dp"
                         android:text="Nama Makanan"
-                        android:textSize="17sp"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:id="@+id/TxtvCart2FoodType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Kuah/Goreng"
+                        android:textSize="15sp"
                         android:textColor="@color/white"/>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -636,7 +682,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="10dp"
                             android:text="Rp"
-                            android:textSize="17sp"
+                            android:textSize="15sp"
                             android:textColor="@color/white"/>
 
                         <TextView
@@ -646,7 +692,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="10dp"
                             android:text="harga"
-                            android:textSize="17sp"
+                            android:textSize="15sp"
                             android:textColor="@color/white"/>
                     </LinearLayout>
 
@@ -686,10 +732,12 @@
                                 android:id="@+id/TxtvCart2Topping1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping1"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -702,7 +750,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart2ToppingPrice1"
                                     android:layout_width="wrap_content"
@@ -710,7 +758,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping1 -->
@@ -723,10 +771,12 @@
                                 android:id="@+id/TxtvCart2Topping2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping2"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -739,7 +789,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart2ToppingPrice2"
                                     android:layout_width="wrap_content"
@@ -747,7 +797,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping2 -->
@@ -760,10 +810,12 @@
                                 android:id="@+id/TxtvCart2Topping3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping3"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -776,7 +828,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart2ToppingPrice3"
                                     android:layout_width="wrap_content"
@@ -784,7 +836,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping3 -->
@@ -797,10 +849,12 @@
                                 android:id="@+id/TxtvCart2Topping4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping4"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -813,7 +867,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart2ToppingPrice4"
                                     android:layout_width="wrap_content"
@@ -821,7 +875,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping4 -->
@@ -834,10 +888,12 @@
                                 android:id="@+id/TxtvCart2Topping5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping5"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -850,7 +906,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart2ToppingPrice5"
                                     android:layout_width="wrap_content"
@@ -858,7 +914,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping5 -->
@@ -877,10 +933,12 @@
                                 android:id="@+id/TxtvCart2Topping6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping6"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -893,7 +951,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart2ToppingPrice6"
                                     android:layout_width="wrap_content"
@@ -901,7 +959,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping6 -->
@@ -914,10 +972,12 @@
                                 android:id="@+id/TxtvCart2Topping7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping7"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -930,7 +990,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart2ToppingPrice7"
                                     android:layout_width="wrap_content"
@@ -938,7 +998,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping7 -->
@@ -951,10 +1011,12 @@
                                 android:id="@+id/TxtvCart2Topping8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping8"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -967,7 +1029,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart2ToppingPrice8"
                                     android:layout_width="wrap_content"
@@ -975,7 +1037,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping8 -->
@@ -988,10 +1050,12 @@
                                 android:id="@+id/TxtvCart2Topping9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping9"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -1004,7 +1068,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart2ToppingPrice9"
                                     android:layout_width="wrap_content"
@@ -1012,7 +1076,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping9 -->
@@ -1025,10 +1089,12 @@
                                 android:id="@+id/TxtvCart2Topping10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxEms="7"
+                                android:singleLine="false"
                                 android:layout_marginLeft="5dp"
                                 android:text="Topping10"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="12sp"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -1041,7 +1107,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Rp"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                                 <TextView
                                     android:id="@+id/TxtvCart2ToppingPrice10"
                                     android:layout_width="wrap_content"
@@ -1049,7 +1115,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="xx"
                                     android:textColor="@color/white"
-                                    android:textSize="14sp"/>
+                                    android:textSize="12sp"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!--End of Topping5 -->

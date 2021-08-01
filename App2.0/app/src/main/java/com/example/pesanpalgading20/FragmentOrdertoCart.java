@@ -79,23 +79,26 @@ public class FragmentOrdertoCart extends Fragment {
             SelectedPrice7,SelectedPrice8,SelectedPrice9,
             SelectedPrice10;
 
+    Integer SelectedName1,SelectedName2,SelectedName3,
+            SelectedName4,SelectedName5,SelectedName6,
+            SelectedName7,SelectedName8,SelectedName9,
+            SelectedName10;
+
     String StringSelectedPrice1,StringSelectedPrice2,StringSelectedPrice3,
             StringSelectedPrice4,StringSelectedPrice5,StringSelectedPrice6,
             StringSelectedPrice7,StringSelectedPrice8,StringSelectedPrice9,
             StringSelectedPrice10;
+
+    String StringSelectedName1,StringSelectedName2,StringSelectedName3,
+            StringSelectedName4,StringSelectedName5,StringSelectedName6,
+            StringSelectedName7,StringSelectedName8,StringSelectedName9,
+            StringSelectedName10;
+
     Integer TotalFinalPrice;
-
-
-    String Check1,Check2,Check3,
-            Check4,Check5,Check6,
-            Check7,Check8,Check9,
-            Check10;
 
     Button BtnAddtoCart,BtnConfirmationPayment, BtnAddItem, BtnReduceItem;
 
     EditText EdFoodCount;
-
-    String GetTotalHarga, GetCurrentToppingPrice;
 
     TextView TxtvSelectedToppName1, TxtvSelectedToppName2, TxtvSelectedToppName3,
             TxtvSelectedToppName4, TxtvSelectedToppName5, TxtvSelectedToppName6,
@@ -112,18 +115,26 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvRp7,TxtvRp8,TxtvRp9,
             TxtvRp10;
 
+    //Tipe Food
     //Radio Button
     RadioGroup RgTipeFood;
     RadioButton RbChoice1, RbChoice2, RbChoice3;
     RadioButton RbSelectedChoice;
+    //String
+    String StringRbSelectedChoice;
 
     TextView TxtvSelectedFoodCount, TxtvSelectedFoodName, TxtvSelectedFoodPrice;
 
     String ValueTotalSelectedFoodPrice;
+    String StringTotalPrice;
+
+    //String Food
+    String StringFoodCode, StringFoodName;
 
     //Count Total FoodCount
     Integer TotalFoodCount;
-    Integer IntegerSelectedFoodPrice;
+    Integer IntegerSelectedFoodPrice,IntegerSelectedFoodName;
+    String StringSelectedFoodCount;
 
     Integer FoodPrice1;
     //Total
@@ -131,6 +142,7 @@ public class FragmentOrdertoCart extends Fragment {
 
     //Tipe Food
     TextView TxtvSelectedFoodType;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -356,17 +368,167 @@ public class FragmentOrdertoCart extends Fragment {
         BtnAddtoCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Check if Food have Tipe Food
+                //if have Tipe Food
                 if(RgTipeFood.getVisibility() == VISIBLE) {
                     if (RgTipeFood.getCheckedRadioButtonId() == -1) {
                         Toast errorTipeFood = Toast.makeText(getActivity(), "Silahkan Pilih Tipe Makanan Terlebih Dahulu", Toast.LENGTH_SHORT);
                         errorTipeFood.show();
                     }
                     else {
-                        //Pass to cart function here 
+                        //Pass to cart function here
+                        //Declare Code Food and Food Name
+                        StringFoodCode = Code;
+                        StringFoodName = Name;
+                        //Declare Food Count
+                        StringSelectedFoodCount = TxtvSelectedFoodCount.getText().toString();
+                        //Declare Name of Selected Topping Name
+                        StringSelectedName1 = TxtvSelectedToppName1.getText().toString();
+                        StringSelectedName2 = TxtvSelectedToppName2.getText().toString();
+                        StringSelectedName3 = TxtvSelectedToppName3.getText().toString();
+                        StringSelectedName4 = TxtvSelectedToppName4.getText().toString();
+                        StringSelectedName5 = TxtvSelectedToppName5.getText().toString();
+                        StringSelectedName6 = TxtvSelectedToppName6.getText().toString();
+                        StringSelectedName7 = TxtvSelectedToppName7.getText().toString();
+                        StringSelectedName8 = TxtvSelectedToppName8.getText().toString();
+                        StringSelectedName9 = TxtvSelectedToppName9.getText().toString();
+                        StringSelectedName10 = TxtvSelectedToppName10.getText().toString();
+                        //Declare Name of Selected Topping Price
+                        StringSelectedPrice1 = TxtvSelectedToppPrice1.getText().toString();
+                        StringSelectedPrice2 = TxtvSelectedToppPrice2.getText().toString();
+                        StringSelectedPrice3 = TxtvSelectedToppPrice3.getText().toString();
+                        StringSelectedPrice4 = TxtvSelectedToppPrice4.getText().toString();
+                        StringSelectedPrice5 = TxtvSelectedToppPrice5.getText().toString();
+                        StringSelectedPrice6 = TxtvSelectedToppPrice6.getText().toString();
+                        StringSelectedPrice7 = TxtvSelectedToppPrice7.getText().toString();
+                        StringSelectedPrice8 = TxtvSelectedToppPrice8.getText().toString();
+                        StringSelectedPrice9 = TxtvSelectedToppPrice9.getText().toString();
+                        StringSelectedPrice10 = TxtvSelectedToppPrice10.getText().toString();
+
+                        ValueTotalSelectedFoodPrice = TxtvSelectedFoodPrice.getText().toString();
+                        //Total Price
+                        StringTotalPrice = TxtvTotalHarga.getText().toString();
+
+                        //Selected Choice of Tipe Food
+                        StringRbSelectedChoice = TxtvSelectedFoodType.getText().toString();
+                        //Pass the variables using Bundle
+                        Bundle PasstoCartBundle = new Bundle();
+                        //Food
+                        PasstoCartBundle.putString("CartFoodCode", StringFoodCode);
+                        PasstoCartBundle.putString("CartFoodName", StringFoodName);
+                        PasstoCartBundle.putString("CartFoodCount", StringSelectedFoodCount);
+                        PasstoCartBundle.putString("CartFoodTotalPrice", ValueTotalSelectedFoodPrice);
+                        PasstoCartBundle.putString("CartFoodType", StringRbSelectedChoice);
+                        //Topping Name
+                        PasstoCartBundle.putString("CartToppingName1", StringSelectedName1);
+                        PasstoCartBundle.putString("CartToppingName2", StringSelectedName2);
+                        PasstoCartBundle.putString("CartToppingName3", StringSelectedName3);
+                        PasstoCartBundle.putString("CartToppingName4", StringSelectedName4);
+                        PasstoCartBundle.putString("CartToppingName5", StringSelectedName5);
+                        PasstoCartBundle.putString("CartToppingName6", StringSelectedName6);
+                        PasstoCartBundle.putString("CartToppingName7", StringSelectedName7);
+                        PasstoCartBundle.putString("CartToppingName8", StringSelectedName8);
+                        PasstoCartBundle.putString("CartToppingName9", StringSelectedName9);
+                        PasstoCartBundle.putString("CartToppingName10", StringSelectedName10);
+                        //Topping Price
+                        PasstoCartBundle.putString("CartToppingPrice1", StringSelectedPrice1);
+                        PasstoCartBundle.putString("CartToppingPrice2", StringSelectedPrice2);
+                        PasstoCartBundle.putString("CartToppingPrice3", StringSelectedPrice3);
+                        PasstoCartBundle.putString("CartToppingPrice4", StringSelectedPrice4);
+                        PasstoCartBundle.putString("CartToppingPrice5", StringSelectedPrice5);
+                        PasstoCartBundle.putString("CartToppingPrice6", StringSelectedPrice6);
+                        PasstoCartBundle.putString("CartToppingPrice7", StringSelectedPrice7);
+                        PasstoCartBundle.putString("CartToppingPrice8", StringSelectedPrice8);
+                        PasstoCartBundle.putString("CartToppingPrice9", StringSelectedPrice9);
+                        PasstoCartBundle.putString("CartToppingPrice10", StringSelectedPrice10);
+                        //Total
+                        PasstoCartBundle.putString("CartTotalPrice", StringTotalPrice);
+
+                        Fragment fragmentCart = new CartFragment();
+                        FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
+                        transaction1.replace(R.id.ContainerOrdertoCart, fragmentCart);
+                        fragmentCart.setArguments(PasstoCartBundle);
+                        transaction1.addToBackStack(null);
+                        transaction1.commit();
                     }
                 }
+                //if doesn't have Tipe Food
                 else {
                     //Pass to Cart function here
+                    //Pass to cart function here
+                    //Declare Code Food and Food Name
+                    StringFoodCode = Code;
+                    StringFoodName = Name;
+                    //Declare Food Count
+                    StringSelectedFoodCount = TxtvSelectedFoodCount.getText().toString();
+                    //Declare Name of Selected Topping Name
+                    StringSelectedName1 = TxtvSelectedToppName1.getText().toString();
+                    StringSelectedName2 = TxtvSelectedToppName2.getText().toString();
+                    StringSelectedName3 = TxtvSelectedToppName3.getText().toString();
+                    StringSelectedName4 = TxtvSelectedToppName4.getText().toString();
+                    StringSelectedName5 = TxtvSelectedToppName5.getText().toString();
+                    StringSelectedName6 = TxtvSelectedToppName6.getText().toString();
+                    StringSelectedName7 = TxtvSelectedToppName7.getText().toString();
+                    StringSelectedName8 = TxtvSelectedToppName8.getText().toString();
+                    StringSelectedName9 = TxtvSelectedToppName9.getText().toString();
+                    StringSelectedName10 = TxtvSelectedToppName10.getText().toString();
+
+                    //Declare Name of Selected Topping Price
+                    StringSelectedPrice1 = TxtvSelectedToppPrice1.getText().toString();
+                    StringSelectedPrice2 = TxtvSelectedToppPrice2.getText().toString();
+                    StringSelectedPrice3 = TxtvSelectedToppPrice3.getText().toString();
+                    StringSelectedPrice4 = TxtvSelectedToppPrice4.getText().toString();
+                    StringSelectedPrice5 = TxtvSelectedToppPrice5.getText().toString();
+                    StringSelectedPrice6 = TxtvSelectedToppPrice6.getText().toString();
+                    StringSelectedPrice7 = TxtvSelectedToppPrice7.getText().toString();
+                    StringSelectedPrice8 = TxtvSelectedToppPrice8.getText().toString();
+                    StringSelectedPrice9 = TxtvSelectedToppPrice9.getText().toString();
+                    StringSelectedPrice10 = TxtvSelectedToppPrice10.getText().toString();
+
+                    ValueTotalSelectedFoodPrice = TxtvSelectedFoodPrice.getText().toString();
+                    //Total Price
+                    StringTotalPrice = TxtvTotalHarga.getText().toString();
+
+                    //Selected Choice of Tipe Food
+                    StringRbSelectedChoice = TxtvSelectedFoodType.getText().toString();
+                    //Pass the variables using Bundle
+                    Bundle PasstoCartBundle = new Bundle();
+                    //Food
+                    PasstoCartBundle.putString("CartFoodCode", StringFoodCode);
+                    PasstoCartBundle.putString("CartFoodName", StringFoodName);
+                    PasstoCartBundle.putString("CartFoodCount", StringSelectedFoodCount);
+                    PasstoCartBundle.putString("CartFoodTotalPrice", ValueTotalSelectedFoodPrice);
+                    //Topping Name
+                    PasstoCartBundle.putString("CartToppingName1", StringSelectedName1);
+                    PasstoCartBundle.putString("CartToppingName2", StringSelectedName2);
+                    PasstoCartBundle.putString("CartToppingName3", StringSelectedName3);
+                    PasstoCartBundle.putString("CartToppingName4", StringSelectedName4);
+                    PasstoCartBundle.putString("CartToppingName5", StringSelectedName5);
+                    PasstoCartBundle.putString("CartToppingName6", StringSelectedName6);
+                    PasstoCartBundle.putString("CartToppingName7", StringSelectedName7);
+                    PasstoCartBundle.putString("CartToppingName8", StringSelectedName8);
+                    PasstoCartBundle.putString("CartToppingName9", StringSelectedName9);
+                    PasstoCartBundle.putString("CartToppingName10", StringSelectedName10);
+                    //Topping Price
+                    PasstoCartBundle.putString("CartToppingPrice1", StringSelectedPrice1);
+                    PasstoCartBundle.putString("CartToppingPrice2", StringSelectedPrice2);
+                    PasstoCartBundle.putString("CartToppingPrice3", StringSelectedPrice3);
+                    PasstoCartBundle.putString("CartToppingPrice4", StringSelectedPrice4);
+                    PasstoCartBundle.putString("CartToppingPrice5", StringSelectedPrice5);
+                    PasstoCartBundle.putString("CartToppingPrice6", StringSelectedPrice6);
+                    PasstoCartBundle.putString("CartToppingPrice7", StringSelectedPrice7);
+                    PasstoCartBundle.putString("CartToppingPrice8", StringSelectedPrice8);
+                    PasstoCartBundle.putString("CartToppingPrice9", StringSelectedPrice9);
+                    PasstoCartBundle.putString("CartToppingPrice10", StringSelectedPrice10);
+                    //Total
+                    PasstoCartBundle.putString("CartTotalPrice", StringTotalPrice);
+
+                    Fragment fragmentCart = new CartFragment();
+                    FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
+                    transaction1.replace(R.id.ContainerOrdertoCart, fragmentCart);
+                    fragmentCart.setArguments(PasstoCartBundle);
+                    transaction1.addToBackStack(null);
+                    transaction1.commit();
                 }
             }
         });
@@ -419,7 +581,9 @@ public class FragmentOrdertoCart extends Fragment {
         final String codefood = Code;
         BtnConfirmationPayment.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                //Check if there is Tipe Food
                 if(RgTipeFood.getVisibility() == VISIBLE){
+                    //Check if Tipe Food is Checked
                     if (RgTipeFood.getCheckedRadioButtonId() == -1 ){
                         Toast errorTipeFood = Toast.makeText(getActivity(), "Silahkan Pilih Tipe Makanan Terlebih Dahulu", Toast.LENGTH_SHORT);
                         errorTipeFood.show();
@@ -466,6 +630,7 @@ public class FragmentOrdertoCart extends Fragment {
                         BtnAddtoCart.setVisibility(View.VISIBLE);
                     }
                 }
+                //For Minuman And Jajanan that have no Tipe Food
                 else {
                     StringSelectedPrice1 = TxtvSelectedToppPrice1.getText().toString();
                     SelectedPrice1 = Integer.parseInt(StringSelectedPrice1);

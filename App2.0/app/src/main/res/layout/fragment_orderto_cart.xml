@@ -870,6 +870,8 @@
                         android:id="@+id/TxtvOrdertoCartSelectedFoodName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:maxEms="7"
+                        android:singleLine="false"
                         android:layout_marginLeft="5dp"
                         android:text="Nama Makanan"
                         android:textColor="@color/white"
