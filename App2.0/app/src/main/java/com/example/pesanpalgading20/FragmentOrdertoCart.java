@@ -1,5 +1,7 @@
 package com.example.pesanpalgading20;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -31,6 +33,9 @@ import com.example.pesanpalgading20.Model.Menu.Makanan.HomeMakananSotoFragment;
 import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsDurianFragment;
 import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsJusFragment;
 import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsOriFragment;
+import com.example.pesanpalgading20.Model.OrderSetterGetter.Order1;
+import com.example.pesanpalgading20.Model.OrderSetterGetter.Order2;
+import com.example.pesanpalgading20.Model.SharedPrefManager.SharedPrefmanager;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -115,6 +120,14 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvRp7,TxtvRp8,TxtvRp9,
             TxtvRp10;
 
+
+    //SetterGetter
+    Order1 morder1;
+    Order2 morder2;
+
+    //SharedPrefManager
+    SharedPrefmanager sharedPrefmanager;
+
     //Tipe Food
     //Radio Button
     RadioGroup RgTipeFood;
@@ -139,6 +152,8 @@ public class FragmentOrdertoCart extends Fragment {
     Integer FoodPrice1;
     //Total
     TextView TxtvTotalHarga;
+    //String
+    String Cart1Status;
 
     //Tipe Food
     TextView TxtvSelectedFoodType;
@@ -280,6 +295,8 @@ public class FragmentOrdertoCart extends Fragment {
         RbChoice2 = viewRoot.findViewById(R.id.RbChoice2);
         RbChoice3 = viewRoot.findViewById(R.id.RbChoice3);
 
+        //Sharedpreference
+
 
         Bundle bundle = this.getArguments();
         Code = bundle.getString("FoodCode");
@@ -411,43 +428,78 @@ public class FragmentOrdertoCart extends Fragment {
 
                         //Selected Choice of Tipe Food
                         StringRbSelectedChoice = TxtvSelectedFoodType.getText().toString();
-                        //Pass the variables using Bundle
-                        Bundle PasstoCartBundle = new Bundle();
-                        //Food
-                        PasstoCartBundle.putString("CartFoodCode", StringFoodCode);
-                        PasstoCartBundle.putString("CartFoodName", StringFoodName);
-                        PasstoCartBundle.putString("CartFoodCount", StringSelectedFoodCount);
-                        PasstoCartBundle.putString("CartFoodTotalPrice", ValueTotalSelectedFoodPrice);
-                        PasstoCartBundle.putString("CartFoodType", StringRbSelectedChoice);
-                        //Topping Name
-                        PasstoCartBundle.putString("CartToppingName1", StringSelectedName1);
-                        PasstoCartBundle.putString("CartToppingName2", StringSelectedName2);
-                        PasstoCartBundle.putString("CartToppingName3", StringSelectedName3);
-                        PasstoCartBundle.putString("CartToppingName4", StringSelectedName4);
-                        PasstoCartBundle.putString("CartToppingName5", StringSelectedName5);
-                        PasstoCartBundle.putString("CartToppingName6", StringSelectedName6);
-                        PasstoCartBundle.putString("CartToppingName7", StringSelectedName7);
-                        PasstoCartBundle.putString("CartToppingName8", StringSelectedName8);
-                        PasstoCartBundle.putString("CartToppingName9", StringSelectedName9);
-                        PasstoCartBundle.putString("CartToppingName10", StringSelectedName10);
-                        //Topping Price
-                        PasstoCartBundle.putString("CartToppingPrice1", StringSelectedPrice1);
-                        PasstoCartBundle.putString("CartToppingPrice2", StringSelectedPrice2);
-                        PasstoCartBundle.putString("CartToppingPrice3", StringSelectedPrice3);
-                        PasstoCartBundle.putString("CartToppingPrice4", StringSelectedPrice4);
-                        PasstoCartBundle.putString("CartToppingPrice5", StringSelectedPrice5);
-                        PasstoCartBundle.putString("CartToppingPrice6", StringSelectedPrice6);
-                        PasstoCartBundle.putString("CartToppingPrice7", StringSelectedPrice7);
-                        PasstoCartBundle.putString("CartToppingPrice8", StringSelectedPrice8);
-                        PasstoCartBundle.putString("CartToppingPrice9", StringSelectedPrice9);
-                        PasstoCartBundle.putString("CartToppingPrice10", StringSelectedPrice10);
-                        //Total
-                        PasstoCartBundle.putString("CartTotalPrice", StringTotalPrice);
 
+                        Order1 order1 = sharedPrefmanager.getInstance(getActivity()).GetOrder1();
+                        Cart1Status ="False";
+
+                        if(Cart1Status == "False"){
+                            Order1 storeOrder1 = new Order1(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,StringRbSelectedChoice,
+                                    StringSelectedName1,StringSelectedName2,StringSelectedName3,
+                                    StringSelectedName4,StringSelectedName5,StringSelectedName6,
+                                    StringSelectedName7,StringSelectedName8,StringSelectedName9,StringSelectedName10,
+                                    StringSelectedPrice1,StringSelectedPrice2,StringSelectedPrice3,
+                                    StringSelectedPrice4,StringSelectedPrice5,StringSelectedPrice6,
+                                    StringSelectedPrice7,StringSelectedPrice8,StringSelectedPrice9,
+                                    StringSelectedPrice10,
+                                    StringTotalPrice);
+                            sharedPrefmanager.getInstance(getContext()).Order1(storeOrder1);
+                            Cart1Status = "True";
+                        }
+                        else if (Cart1Status == "True"){
+                            Order2 storeOrder2 = new Order2(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,StringRbSelectedChoice,
+                                    StringSelectedName1,StringSelectedName2,StringSelectedName3,
+                                    StringSelectedName4,StringSelectedName5,StringSelectedName6,
+                                    StringSelectedName7,StringSelectedName8,StringSelectedName9,StringSelectedName10,
+                                    StringSelectedPrice1,StringSelectedPrice2,StringSelectedPrice3,
+                                    StringSelectedPrice4,StringSelectedPrice5,StringSelectedPrice6,
+                                    StringSelectedPrice7,StringSelectedPrice8,StringSelectedPrice9,
+                                    StringSelectedPrice10,
+                                    StringTotalPrice);
+                            sharedPrefmanager.getInstance(getContext()).Order2(storeOrder2);
+                            Cart1Status = "Full";
+                        }
+                        else {
+                            //Toast Error
+                            Toast CartFull = Toast.makeText(getActivity(), "Cart penuh, silahkan kosongkan terlebih dahulu", Toast.LENGTH_SHORT);
+                            CartFull.show();
+                        }
+//                        //Pass the variables using Bundle
+//                        Bundle PasstoCartBundle = new Bundle();
+//                        //Food
+//                        PasstoCartBundle.putString("CartFoodCode", StringFoodCode);
+//                        PasstoCartBundle.putString("CartFoodName", StringFoodName);
+//                        PasstoCartBundle.putString("CartFoodCount", StringSelectedFoodCount);
+//                        PasstoCartBundle.putString("CartFoodTotalPrice", ValueTotalSelectedFoodPrice);
+//                        PasstoCartBundle.putString("CartFoodType", StringRbSelectedChoice);
+//                        //Topping Name
+//                        PasstoCartBundle.putString("CartToppingName1", StringSelectedName1);
+//                        PasstoCartBundle.putString("CartToppingName2", StringSelectedName2);
+//                        PasstoCartBundle.putString("CartToppingName3", StringSelectedName3);
+//                        PasstoCartBundle.putString("CartToppingName4", StringSelectedName4);
+//                        PasstoCartBundle.putString("CartToppingName5", StringSelectedName5);
+//                        PasstoCartBundle.putString("CartToppingName6", StringSelectedName6);
+//                        PasstoCartBundle.putString("CartToppingName7", StringSelectedName7);
+//                        PasstoCartBundle.putString("CartToppingName8", StringSelectedName8);
+//                        PasstoCartBundle.putString("CartToppingName9", StringSelectedName9);
+//                        PasstoCartBundle.putString("CartToppingName10", StringSelectedName10);
+//                        //Topping Price
+//                        PasstoCartBundle.putString("CartToppingPrice1", StringSelectedPrice1);
+//                        PasstoCartBundle.putString("CartToppingPrice2", StringSelectedPrice2);
+//                        PasstoCartBundle.putString("CartToppingPrice3", StringSelectedPrice3);
+//                        PasstoCartBundle.putString("CartToppingPrice4", StringSelectedPrice4);
+//                        PasstoCartBundle.putString("CartToppingPrice5", StringSelectedPrice5);
+//                        PasstoCartBundle.putString("CartToppingPrice6", StringSelectedPrice6);
+//                        PasstoCartBundle.putString("CartToppingPrice7", StringSelectedPrice7);
+//                        PasstoCartBundle.putString("CartToppingPrice8", StringSelectedPrice8);
+//                        PasstoCartBundle.putString("CartToppingPrice9", StringSelectedPrice9);
+//                        PasstoCartBundle.putString("CartToppingPrice10", StringSelectedPrice10);
+//                        //Total
+//                        PasstoCartBundle.putString("CartTotalPrice", StringTotalPrice);
+//
                         Fragment fragmentCart = new CartFragment();
                         FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
                         transaction1.replace(R.id.ContainerOrdertoCart, fragmentCart);
-                        fragmentCart.setArguments(PasstoCartBundle);
+//                        fragmentCart.setArguments(PasstoCartBundle);
                         transaction1.addToBackStack(null);
                         transaction1.commit();
                     }
@@ -491,42 +543,80 @@ public class FragmentOrdertoCart extends Fragment {
 
                     //Selected Choice of Tipe Food
                     StringRbSelectedChoice = TxtvSelectedFoodType.getText().toString();
-                    //Pass the variables using Bundle
-                    Bundle PasstoCartBundle = new Bundle();
-                    //Food
-                    PasstoCartBundle.putString("CartFoodCode", StringFoodCode);
-                    PasstoCartBundle.putString("CartFoodName", StringFoodName);
-                    PasstoCartBundle.putString("CartFoodCount", StringSelectedFoodCount);
-                    PasstoCartBundle.putString("CartFoodTotalPrice", ValueTotalSelectedFoodPrice);
-                    //Topping Name
-                    PasstoCartBundle.putString("CartToppingName1", StringSelectedName1);
-                    PasstoCartBundle.putString("CartToppingName2", StringSelectedName2);
-                    PasstoCartBundle.putString("CartToppingName3", StringSelectedName3);
-                    PasstoCartBundle.putString("CartToppingName4", StringSelectedName4);
-                    PasstoCartBundle.putString("CartToppingName5", StringSelectedName5);
-                    PasstoCartBundle.putString("CartToppingName6", StringSelectedName6);
-                    PasstoCartBundle.putString("CartToppingName7", StringSelectedName7);
-                    PasstoCartBundle.putString("CartToppingName8", StringSelectedName8);
-                    PasstoCartBundle.putString("CartToppingName9", StringSelectedName9);
-                    PasstoCartBundle.putString("CartToppingName10", StringSelectedName10);
-                    //Topping Price
-                    PasstoCartBundle.putString("CartToppingPrice1", StringSelectedPrice1);
-                    PasstoCartBundle.putString("CartToppingPrice2", StringSelectedPrice2);
-                    PasstoCartBundle.putString("CartToppingPrice3", StringSelectedPrice3);
-                    PasstoCartBundle.putString("CartToppingPrice4", StringSelectedPrice4);
-                    PasstoCartBundle.putString("CartToppingPrice5", StringSelectedPrice5);
-                    PasstoCartBundle.putString("CartToppingPrice6", StringSelectedPrice6);
-                    PasstoCartBundle.putString("CartToppingPrice7", StringSelectedPrice7);
-                    PasstoCartBundle.putString("CartToppingPrice8", StringSelectedPrice8);
-                    PasstoCartBundle.putString("CartToppingPrice9", StringSelectedPrice9);
-                    PasstoCartBundle.putString("CartToppingPrice10", StringSelectedPrice10);
-                    //Total
-                    PasstoCartBundle.putString("CartTotalPrice", StringTotalPrice);
 
+                    Order1 order1 = sharedPrefmanager.getInstance(getActivity()).GetOrder1();
+
+                    Cart1Status = "False";
+                    if(Cart1Status == "False"){
+                        Order1 storeOrder1 = new Order1(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,
+                                "null",
+                                StringSelectedName1,StringSelectedName2,StringSelectedName3,
+                                StringSelectedName4,StringSelectedName5,StringSelectedName6,
+                                StringSelectedName7,StringSelectedName8,StringSelectedName9,StringSelectedName10,
+                                StringSelectedPrice1,StringSelectedPrice2,StringSelectedPrice3,
+                                StringSelectedPrice4,StringSelectedPrice5,StringSelectedPrice6,
+                                StringSelectedPrice7,StringSelectedPrice8,StringSelectedPrice9,
+                                StringSelectedPrice10,
+                                StringTotalPrice);
+                        sharedPrefmanager.getInstance(getContext()).Order1(storeOrder1);
+                        Cart1Status = "True";
+                    }
+                    else if (Cart1Status == "True"){
+                        Order2 storeOrder2 = new Order2(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,
+                                "null",
+                                StringSelectedName1,StringSelectedName2,StringSelectedName3,
+                                StringSelectedName4,StringSelectedName5,StringSelectedName6,
+                                StringSelectedName7,StringSelectedName8,StringSelectedName9,StringSelectedName10,
+                                StringSelectedPrice1,StringSelectedPrice2,StringSelectedPrice3,
+                                StringSelectedPrice4,StringSelectedPrice5,StringSelectedPrice6,
+                                StringSelectedPrice7,StringSelectedPrice8,StringSelectedPrice9,
+                                StringSelectedPrice10,
+                                StringTotalPrice);
+                        sharedPrefmanager.getInstance(getContext()).Order2(storeOrder2);
+                        Cart1Status = "Full";
+                    }
+                    else {
+                        //Toast Error
+                        Toast CartFull = Toast.makeText(getActivity(), "Cart penuh, silahkan kosongkan terlebih dahulu", Toast.LENGTH_SHORT);
+                        CartFull.show();
+                    }
+
+//                    //Pass the variables using Bundle
+//                    Bundle PasstoCartBundle = new Bundle();
+//                    //Food
+//                    PasstoCartBundle.putString("CartFoodCode", StringFoodCode);
+//                    PasstoCartBundle.putString("CartFoodName", StringFoodName);
+//                    PasstoCartBundle.putString("CartFoodCount", StringSelectedFoodCount);
+//                    PasstoCartBundle.putString("CartFoodTotalPrice", ValueTotalSelectedFoodPrice);
+//                    //Topping Name
+//                    PasstoCartBundle.putString("CartToppingName1", StringSelectedName1);
+//                    PasstoCartBundle.putString("CartToppingName2", StringSelectedName2);
+//                    PasstoCartBundle.putString("CartToppingName3", StringSelectedName3);
+//                    PasstoCartBundle.putString("CartToppingName4", StringSelectedName4);
+//                    PasstoCartBundle.putString("CartToppingName5", StringSelectedName5);
+//                    PasstoCartBundle.putString("CartToppingName6", StringSelectedName6);
+//                    PasstoCartBundle.putString("CartToppingName7", StringSelectedName7);
+//                    PasstoCartBundle.putString("CartToppingName8", StringSelectedName8);
+//                    PasstoCartBundle.putString("CartToppingName9", StringSelectedName9);
+//                    PasstoCartBundle.putString("CartToppingName10", StringSelectedName10);
+//                    //Topping Price
+//                    PasstoCartBundle.putString("CartToppingPrice1", StringSelectedPrice1);
+//                    PasstoCartBundle.putString("CartToppingPrice2", StringSelectedPrice2);
+//                    PasstoCartBundle.putString("CartToppingPrice3", StringSelectedPrice3);
+//                    PasstoCartBundle.putString("CartToppingPrice4", StringSelectedPrice4);
+//                    PasstoCartBundle.putString("CartToppingPrice5", StringSelectedPrice5);
+//                    PasstoCartBundle.putString("CartToppingPrice6", StringSelectedPrice6);
+//                    PasstoCartBundle.putString("CartToppingPrice7", StringSelectedPrice7);
+//                    PasstoCartBundle.putString("CartToppingPrice8", StringSelectedPrice8);
+//                    PasstoCartBundle.putString("CartToppingPrice9", StringSelectedPrice9);
+//                    PasstoCartBundle.putString("CartToppingPrice10", StringSelectedPrice10);
+//                    //Total
+//                    PasstoCartBundle.putString("CartTotalPrice", StringTotalPrice);
+//
                     Fragment fragmentCart = new CartFragment();
                     FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
                     transaction1.replace(R.id.ContainerOrdertoCart, fragmentCart);
-                    fragmentCart.setArguments(PasstoCartBundle);
+//                    fragmentCart.setArguments(PasstoCartBundle);
                     transaction1.addToBackStack(null);
                     transaction1.commit();
                 }

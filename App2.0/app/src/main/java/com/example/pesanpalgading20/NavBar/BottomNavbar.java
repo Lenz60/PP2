@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import com.example.pesanpalgading20.CartFragment;
 import com.example.pesanpalgading20.HomeFragment;
 import com.example.pesanpalgading20.LoginForm;
 import com.example.pesanpalgading20.MenuFragment;
+import com.example.pesanpalgading20.Model.SharedPrefManager.SharedPrefmanager;
 import com.example.pesanpalgading20.ProfileFragment;
 import com.example.pesanpalgading20.R;
 import com.example.pesanpalgading20.StatusFragment;
@@ -22,6 +24,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BottomNavbar extends AppCompatActivity {
     //Declaration
+    SharedPrefmanager sharedPrefmanager;
     BottomNavigationView navigation;
 
     @Override
@@ -101,6 +104,7 @@ public class BottomNavbar extends AppCompatActivity {
                     public void onClick(DialogInterface arg0, int arg1) {
 
                         Intent intent = new Intent(getBaseContext(), LoginForm.class);
+                        sharedPrefmanager.getInstance(BottomNavbar.this).logout();
                         startActivity(intent);
                         //close();
 
