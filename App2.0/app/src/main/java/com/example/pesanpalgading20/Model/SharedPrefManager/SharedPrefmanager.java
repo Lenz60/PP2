@@ -38,6 +38,37 @@ public class SharedPrefmanager {
     //Total Price
     private static final String KEY_TotalPrice = "keytotalprice";
 
+    //order2
+    private static final String KEY2_FoodCode = "key2foodcode";
+    private static final String KEY2_FoodName = "key2foodname";
+    private static final String KEY2_FoodCount = "key2foodcount";
+    private static final String KEY2_FoodTotalPrice = "key2foodtotalprice";
+    private static final String KEY2_FoodType = "key2foodtype";
+    //topping name
+    private static final String KEY2_ToppingName1 = "key2toppingname1";
+    private static final String KEY2_ToppingName2 = "key2toppingname2";
+    private static final String KEY2_ToppingName3 = "key2toppingname3";
+    private static final String KEY2_ToppingName4 = "key2toppingname4";
+    private static final String KEY2_ToppingName5 = "key2toppingname5";
+    private static final String KEY2_ToppingName6 = "key2toppingname6";
+    private static final String KEY2_ToppingName7 = "key2toppingname7";
+    private static final String KEY2_ToppingName8 = "key2toppingname8";
+    private static final String KEY2_ToppingName9 = "key2toppingname9";
+    private static final String KEY2_ToppingName10 = "key2toppingname10";
+    //topping price
+    private static final String KEY2_ToppingPrice1 = "key2toppingprice1";
+    private static final String KEY2_ToppingPrice2 = "key2toppingprice2";
+    private static final String KEY2_ToppingPrice3 = "key2toppingprice3";
+    private static final String KEY2_ToppingPrice4 = "key2toppingprice4";
+    private static final String KEY2_ToppingPrice5 = "key2toppingprice5";
+    private static final String KEY2_ToppingPrice6 = "key2toppingprice6";
+    private static final String KEY2_ToppingPrice7 = "key2toppingprice7";
+    private static final String KEY2_ToppingPrice8 = "key2toppingprice8";
+    private static final String KEY2_ToppingPrice9 = "key2toppingprice9";
+    private static final String KEY2_ToppingPrice10 = "key2toppingprice10";
+    //Total Price
+    private static final String KEY2_TotalPrice = "key2totalprice";
+
     private static SharedPrefmanager mInstance;
     private static Context mcontext;
 
@@ -89,35 +120,35 @@ public class SharedPrefmanager {
     public void Order2 (Order2 order2){
         SharedPreferences sharedPreferences = mcontext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(KEY_FoodCode, order2.getFoodCode());
-        editor.putString(KEY_FoodName,order2.getFoodName());
-        editor.putString(KEY_FoodCount,order2.getFoodCount());
-        editor.putString(KEY_FoodTotalPrice,order2.getFoodTotalPrice());
-        editor.putString(KEY_FoodType, order2.getFoodType());
+        editor.putString(KEY2_FoodCode, order2.getFoodCode());
+        editor.putString(KEY2_FoodName,order2.getFoodName());
+        editor.putString(KEY2_FoodCount,order2.getFoodCount());
+        editor.putString(KEY2_FoodTotalPrice,order2.getFoodTotalPrice());
+        editor.putString(KEY2_FoodType, order2.getFoodType());
         //topping name
-        editor.putString(KEY_ToppingName1,order2.getToppingName1());
-        editor.putString(KEY_ToppingName2,order2.getToppingName2());
-        editor.putString(KEY_ToppingName3,order2.getToppingName3());
-        editor.putString(KEY_ToppingName4,order2.getToppingName4());
-        editor.putString(KEY_ToppingName5,order2.getToppingName5());
-        editor.putString(KEY_ToppingName6,order2.getToppingName6());
-        editor.putString(KEY_ToppingName7,order2.getToppingName7());
-        editor.putString(KEY_ToppingName8,order2.getToppingName8());
-        editor.putString(KEY_ToppingName9,order2.getToppingName9());
-        editor.putString(KEY_ToppingName10,order2.getToppingName10());
+        editor.putString(KEY2_ToppingName1,order2.getToppingName1());
+        editor.putString(KEY2_ToppingName2,order2.getToppingName2());
+        editor.putString(KEY2_ToppingName3,order2.getToppingName3());
+        editor.putString(KEY2_ToppingName4,order2.getToppingName4());
+        editor.putString(KEY2_ToppingName5,order2.getToppingName5());
+        editor.putString(KEY2_ToppingName6,order2.getToppingName6());
+        editor.putString(KEY2_ToppingName7,order2.getToppingName7());
+        editor.putString(KEY2_ToppingName8,order2.getToppingName8());
+        editor.putString(KEY2_ToppingName9,order2.getToppingName9());
+        editor.putString(KEY2_ToppingName10,order2.getToppingName10());
         //topping price
-        editor.putString(KEY_ToppingPrice1,order2.getToppingPrice1());
-        editor.putString(KEY_ToppingPrice2,order2.getToppingPrice2());
-        editor.putString(KEY_ToppingPrice3,order2.getToppingPrice3());
-        editor.putString(KEY_ToppingPrice4,order2.getToppingPrice4());
-        editor.putString(KEY_ToppingPrice5,order2.getToppingPrice5());
-        editor.putString(KEY_ToppingPrice6,order2.getToppingPrice6());
-        editor.putString(KEY_ToppingPrice7,order2.getToppingPrice7());
-        editor.putString(KEY_ToppingPrice8,order2.getToppingPrice8());
-        editor.putString(KEY_ToppingPrice9,order2.getToppingPrice9());
-        editor.putString(KEY_ToppingPrice10,order2.getToppingPrice10());
+        editor.putString(KEY2_ToppingPrice1,order2.getToppingPrice1());
+        editor.putString(KEY2_ToppingPrice2,order2.getToppingPrice2());
+        editor.putString(KEY2_ToppingPrice3,order2.getToppingPrice3());
+        editor.putString(KEY2_ToppingPrice4,order2.getToppingPrice4());
+        editor.putString(KEY2_ToppingPrice5,order2.getToppingPrice5());
+        editor.putString(KEY2_ToppingPrice6,order2.getToppingPrice6());
+        editor.putString(KEY2_ToppingPrice7,order2.getToppingPrice7());
+        editor.putString(KEY2_ToppingPrice8,order2.getToppingPrice8());
+        editor.putString(KEY2_ToppingPrice9,order2.getToppingPrice9());
+        editor.putString(KEY2_ToppingPrice10,order2.getToppingPrice10());
         //total
-        editor.putString(KEY_TotalPrice,order2.getTotalPrice());
+        editor.putString(KEY2_TotalPrice,order2.getTotalPrice());
         editor.apply();
     }
 
@@ -159,35 +190,35 @@ public class SharedPrefmanager {
     public Order2 GetOrder2() {
         SharedPreferences sharedPreferences = mcontext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return new Order2(
-                sharedPreferences.getString(KEY_FoodCode,"null"),
-                sharedPreferences.getString(KEY_FoodName,"null"),
-                sharedPreferences.getString(KEY_FoodCount, null),
-                sharedPreferences.getString(KEY_FoodTotalPrice, null),
-                sharedPreferences.getString(KEY_FoodType, "null"),
+                sharedPreferences.getString(KEY2_FoodCode,"null"),
+                sharedPreferences.getString(KEY2_FoodName,"null"),
+                sharedPreferences.getString(KEY2_FoodCount, null),
+                sharedPreferences.getString(KEY2_FoodTotalPrice, null),
+                sharedPreferences.getString(KEY2_FoodType, "null"),
                 //topping name
-                sharedPreferences.getString(KEY_ToppingName1,"null"),
-                sharedPreferences.getString(KEY_ToppingName2,"null"),
-                sharedPreferences.getString(KEY_ToppingName3,"null"),
-                sharedPreferences.getString(KEY_ToppingName4,"null"),
-                sharedPreferences.getString(KEY_ToppingName5,"null"),
-                sharedPreferences.getString(KEY_ToppingName6,"null"),
-                sharedPreferences.getString(KEY_ToppingName7,"null"),
-                sharedPreferences.getString(KEY_ToppingName8,"null"),
-                sharedPreferences.getString(KEY_ToppingName9,"null"),
-                sharedPreferences.getString(KEY_ToppingName10,"null"),
+                sharedPreferences.getString(KEY2_ToppingName1,"null"),
+                sharedPreferences.getString(KEY2_ToppingName2,"null"),
+                sharedPreferences.getString(KEY2_ToppingName3,"null"),
+                sharedPreferences.getString(KEY2_ToppingName4,"null"),
+                sharedPreferences.getString(KEY2_ToppingName5,"null"),
+                sharedPreferences.getString(KEY2_ToppingName6,"null"),
+                sharedPreferences.getString(KEY2_ToppingName7,"null"),
+                sharedPreferences.getString(KEY2_ToppingName8,"null"),
+                sharedPreferences.getString(KEY2_ToppingName9,"null"),
+                sharedPreferences.getString(KEY2_ToppingName10,"null"),
                 //topping price
-                sharedPreferences.getString(KEY_ToppingPrice1,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice2,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice3,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice4,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice5,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice6,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice7,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice8,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice9,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice10,"null"),
+                sharedPreferences.getString(KEY2_ToppingPrice1,"null"),
+                sharedPreferences.getString(KEY2_ToppingPrice2,"null"),
+                sharedPreferences.getString(KEY2_ToppingPrice3,"null"),
+                sharedPreferences.getString(KEY2_ToppingPrice4,"null"),
+                sharedPreferences.getString(KEY2_ToppingPrice5,"null"),
+                sharedPreferences.getString(KEY2_ToppingPrice6,"null"),
+                sharedPreferences.getString(KEY2_ToppingPrice7,"null"),
+                sharedPreferences.getString(KEY2_ToppingPrice8,"null"),
+                sharedPreferences.getString(KEY2_ToppingPrice9,"null"),
+                sharedPreferences.getString(KEY2_ToppingPrice10,"null"),
                 //total price
-                sharedPreferences.getString(KEY_TotalPrice,null)
+                sharedPreferences.getString(KEY2_TotalPrice,null)
         );
     }
 
