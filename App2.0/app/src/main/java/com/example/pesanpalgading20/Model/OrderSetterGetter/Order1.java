@@ -55,110 +55,110 @@ public class Order1 {
         TotalPrice = totalPrice;
     }
 
-    //Setter
-    public void setFoodCode(String foodCode) {
-        FoodCode = foodCode;
-    }
-
-    public void setFoodName(String foodName) {
-        FoodName = foodName;
-    }
-
-    public void setFoodCount(String foodCount) {
-        FoodCount = foodCount;
-    }
-
-    public void setFoodTotalPrice(String foodTotalPrice) {
-        FoodTotalPrice = foodTotalPrice;
-    }
-
-    public void setFoodType(String foodType) {
-        FoodType = foodType;
-    }
-
-    public void setToppingName1(String toppingName1) {
-        ToppingName1 = toppingName1;
-    }
-
-    public void setToppingName2(String toppingName2) {
-        ToppingName2 = toppingName2;
-    }
-
-    public void setToppingName3(String toppingName3) {
-        ToppingName3 = toppingName3;
-    }
-
-    public void setToppingName4(String toppingName4) {
-        ToppingName4 = toppingName4;
-    }
-
-    public void setToppingName5(String toppingName5) {
-        ToppingName5 = toppingName5;
-    }
-
-    public void setToppingName6(String toppingName6) {
-        ToppingName6 = toppingName6;
-    }
-
-    public void setToppingName7(String toppingName7) {
-        ToppingName7 = toppingName7;
-    }
-
-    public void setToppingName8(String toppingName8) {
-        ToppingName8 = toppingName8;
-    }
-
-    public void setToppingName9(String toppingName9) {
-        ToppingName9 = toppingName9;
-    }
-
-    public void setToppingName10(String toppingName10) {
-        ToppingName10 = toppingName10;
-    }
-
-    public void setToppingPrice1(String toppingPrice1) {
-        ToppingPrice1 = toppingPrice1;
-    }
-
-    public void setToppingPrice2(String toppingPrice2) {
-        ToppingPrice2 = toppingPrice2;
-    }
-
-    public void setToppingPrice3(String toppingPrice3) {
-        ToppingPrice3 = toppingPrice3;
-    }
-
-    public void setToppingPrice4(String toppingPrice4) {
-        ToppingPrice4 = toppingPrice4;
-    }
-
-    public void setToppingPrice5(String toppingPrice5) {
-        ToppingPrice5 = toppingPrice5;
-    }
-
-    public void setToppingPrice6(String toppingPrice6) {
-        ToppingPrice6 = toppingPrice6;
-    }
-
-    public void setToppingPrice7(String toppingPrice7) {
-        ToppingPrice7 = toppingPrice7;
-    }
-
-    public void setToppingPrice8(String toppingPrice8) {
-        ToppingPrice8 = toppingPrice8;
-    }
-
-    public void setToppingPrice9(String toppingPrice9) {
-        ToppingPrice9 = toppingPrice9;
-    }
-
-    public void setToppingPrice10(String toppingPrice10) {
-        ToppingPrice10 = toppingPrice10;
-    }
-
-    public void setTotalPrice(String totalPrice) {
-        TotalPrice = totalPrice;
-    }
+//    //Setter
+//    public void setFoodCode(String foodCode) {
+//        FoodCode = foodCode;
+//    }
+//
+//    public void setFoodName(String foodName) {
+//        FoodName = foodName;
+//    }
+//
+//    public void setFoodCount(String foodCount) {
+//        FoodCount = foodCount;
+//    }
+//
+//    public void setFoodTotalPrice(String foodTotalPrice) {
+//        FoodTotalPrice = foodTotalPrice;
+//    }
+//
+//    public void setFoodType(String foodType) {
+//        FoodType = foodType;
+//    }
+//
+//    public void setToppingName1(String toppingName1) {
+//        ToppingName1 = toppingName1;
+//    }
+//
+//    public void setToppingName2(String toppingName2) {
+//        ToppingName2 = toppingName2;
+//    }
+//
+//    public void setToppingName3(String toppingName3) {
+//        ToppingName3 = toppingName3;
+//    }
+//
+//    public void setToppingName4(String toppingName4) {
+//        ToppingName4 = toppingName4;
+//    }
+//
+//    public void setToppingName5(String toppingName5) {
+//        ToppingName5 = toppingName5;
+//    }
+//
+//    public void setToppingName6(String toppingName6) {
+//        ToppingName6 = toppingName6;
+//    }
+//
+//    public void setToppingName7(String toppingName7) {
+//        ToppingName7 = toppingName7;
+//    }
+//
+//    public void setToppingName8(String toppingName8) {
+//        ToppingName8 = toppingName8;
+//    }
+//
+//    public void setToppingName9(String toppingName9) {
+//        ToppingName9 = toppingName9;
+//    }
+//
+//    public void setToppingName10(String toppingName10) {
+//        ToppingName10 = toppingName10;
+//    }
+//
+//    public void setToppingPrice1(String toppingPrice1) {
+//        ToppingPrice1 = toppingPrice1;
+//    }
+//
+//    public void setToppingPrice2(String toppingPrice2) {
+//        ToppingPrice2 = toppingPrice2;
+//    }
+//
+//    public void setToppingPrice3(String toppingPrice3) {
+//        ToppingPrice3 = toppingPrice3;
+//    }
+//
+//    public void setToppingPrice4(String toppingPrice4) {
+//        ToppingPrice4 = toppingPrice4;
+//    }
+//
+//    public void setToppingPrice5(String toppingPrice5) {
+//        ToppingPrice5 = toppingPrice5;
+//    }
+//
+//    public void setToppingPrice6(String toppingPrice6) {
+//        ToppingPrice6 = toppingPrice6;
+//    }
+//
+//    public void setToppingPrice7(String toppingPrice7) {
+//        ToppingPrice7 = toppingPrice7;
+//    }
+//
+//    public void setToppingPrice8(String toppingPrice8) {
+//        ToppingPrice8 = toppingPrice8;
+//    }
+//
+//    public void setToppingPrice9(String toppingPrice9) {
+//        ToppingPrice9 = toppingPrice9;
+//    }
+//
+//    public void setToppingPrice10(String toppingPrice10) {
+//        ToppingPrice10 = toppingPrice10;
+//    }
+//
+//    public void setTotalPrice(String totalPrice) {
+//        TotalPrice = totalPrice;
+//    }
 
     //Getter
     public String getFoodCode() {

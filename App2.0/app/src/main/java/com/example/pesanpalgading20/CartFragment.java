@@ -12,11 +12,13 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.pesanpalgading20.Model.OrderSetterGetter.CartStatus;
 import com.example.pesanpalgading20.Model.OrderSetterGetter.Order1;
 import com.example.pesanpalgading20.Model.OrderSetterGetter.Order2;
 import com.example.pesanpalgading20.Model.SharedPrefManager.SharedPrefmanager;
 
 import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,6 +58,9 @@ public class CartFragment extends Fragment {
             TxtvCart2ToppingPrice4,TxtvCart2ToppingPrice5,TxtvCart2ToppingPrice6,
             TxtvCart2ToppingPrice7,TxtvCart2ToppingPrice8,TxtvCart2ToppingPrice9,
             TxtvCart2ToppingPrice10;
+
+    //Cart1 Status
+    String Cart1Status, Cart2Status;
     //TotalPrices
     TextView TxtvCart1TotalPrice,TxtvCart2TotalPrice;
 
@@ -218,8 +223,8 @@ public class CartFragment extends Fragment {
         RefreshButton = viewRoot.findViewById(R.id.BtnCartRefresh);
 
         //default hide the cart
-        LinearLayoutCartOrder1.setVisibility(GONE);
-        LinearLayoutCartOrder2.setVisibility(GONE);
+        LinearLayoutCartOrder1.setVisibility(VISIBLE);
+        LinearLayoutCartOrder2.setVisibility(VISIBLE);
 
          bundle = this.getArguments();
         //Position
@@ -230,6 +235,12 @@ public class CartFragment extends Fragment {
 
         TxtvCartTableCode.setText(TableCode);
         TxtvCartTableNumber.setText(TableNumber);
+
+        CartStatus CheckCartStats = sharedPrefmanager.getInstance(getActivity()).GetCartStatus();
+        Order2 order2 = sharedPrefmanager.getInstance(getActivity()).GetOrder2();
+//        TxtvCart2FoodName.setText(CheckCartStats.getCart1Status().toString());
+//        TxtvCart2FoodType.setText(CheckCartStats.getCart2Status().toString());
+
 
         RefreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -246,12 +257,15 @@ public class CartFragment extends Fragment {
 
     private void CheckChart() {
         Order1 order1 = sharedPrefmanager.getInstance(getActivity()).GetOrder1();
-        if (order1.getFoodName() == "null"){
-            LinearLayoutCartOrder1.setVisibility(GONE);
+        Order2 order2 = sharedPrefmanager.getInstance(getActivity()).GetOrder2();
+        CartStatus CheckCartStats = sharedPrefmanager.getInstance(getActivity()).GetCartStatus();
+        if (order2.getC2FoodName() == "null"){
+            LinearLayoutCartOrder1.setVisibility(VISIBLE);
         }
         else {
-            if (LinearLayoutCartOrder1.getVisibility() == GONE){
+            if (LinearLayoutCartOrder1.getVisibility() == VISIBLE){
                 LinearLayoutCartOrder1.setVisibility(View.VISIBLE);
+                Cart1Status = "full";
                 //Fill the cart 1
                  order1 = sharedPrefmanager.getInstance(getActivity()).GetOrder1();
                 //Food
@@ -350,40 +364,40 @@ public class CartFragment extends Fragment {
                     TxtvCart1TotalPrice.setText(TotalPrice);
                 }
             }
-            else if (order1.getFoodName()!= "null"){
+            else if (CheckCartStats.getCart2Status() == "Available"){
                 LinearLayoutCartOrder2.setVisibility(View.VISIBLE);
+                order2 = sharedPrefmanager.getInstance(getActivity()).GetOrder2();
                 //Fill the cart 2
-                Order2 order2 = sharedPrefmanager.getInstance(getActivity()).GetOrder2();
                 //Food
-                FoodCodeC2 = order2.getFoodCode();
-                FoodNameC2 = order2.getFoodName();
-                FoodCountC2 = order2.getFoodCount();
-                FoodTotalPriceC2 = order2.getFoodTotalPrice();
-                FoodTypeC2 = order2.getFoodType();
+                FoodCodeC2 = order2.getC2FoodCode();
+                FoodNameC2 = order2.getC2FoodName();
+                FoodCountC2 = order2.getC2FoodCount();
+                FoodTotalPriceC2 = order2.getC2FoodTotalPrice();
+                FoodTypeC2 = order2.getC2FoodType();
                 //Topping Name
-                ToppingName1C2 = order2.getToppingName1();
-                ToppingName2C2 = order2.getToppingName2();
-                ToppingName3C2 = order2.getToppingName3();
-                ToppingName4C2 = order2.getToppingName4();
-                ToppingName5C2 = order2.getToppingName5();
-                ToppingName6C2 = order2.getToppingName6();
-                ToppingName7C2 = order2.getToppingName7();
-                ToppingName8C2 = order2.getToppingName8();
-                ToppingName9C2 = order2.getToppingName9();
-                ToppingName10C2 = order2.getToppingName10();
+                ToppingName1C2 = order2.getC2ToppingName1();
+                ToppingName2C2 = order2.getC2ToppingName2();
+                ToppingName3C2 = order2.getC2ToppingName3();
+                ToppingName4C2 = order2.getC2ToppingName4();
+                ToppingName5C2 = order2.getC2ToppingName5();
+                ToppingName6C2 = order2.getC2ToppingName6();
+                ToppingName7C2 = order2.getC2ToppingName7();
+                ToppingName8C2 = order2.getC2ToppingName8();
+                ToppingName9C2 = order2.getC2ToppingName9();
+                ToppingName10C2 = order2.getC2ToppingName10();
                 //Topping Price
-                ToppingPrice1C2 = order2.getToppingPrice1();
-                ToppingPrice2C2 = order2.getToppingPrice2();
-                ToppingPrice3C2 = order2.getToppingPrice3();
-                ToppingPrice4C2 = order2.getToppingPrice4();
-                ToppingPrice5C2 = order2.getToppingPrice5();
-                ToppingPrice6C2 = order2.getToppingPrice6();
-                ToppingPrice7C2 = order2.getToppingPrice7();
-                ToppingPrice8C2 = order2.getToppingPrice8();
-                ToppingPrice9C2 = order2.getToppingPrice9();
-                ToppingPrice10C2 = order2.getToppingPrice10();
+                ToppingPrice1C2 = order2.getC2ToppingPrice1();
+                ToppingPrice2C2 = order2.getC2ToppingPrice2();
+                ToppingPrice3C2 = order2.getC2ToppingPrice3();
+                ToppingPrice4C2 = order2.getC2ToppingPrice4();
+                ToppingPrice5C2 = order2.getC2ToppingPrice5();
+                ToppingPrice6C2 = order2.getC2ToppingPrice6();
+                ToppingPrice7C2 = order2.getC2ToppingPrice7();
+                ToppingPrice8C2 = order2.getC2ToppingPrice8();
+                ToppingPrice9C2 = order2.getC2ToppingPrice9();
+                ToppingPrice10C2 = order2.getC2ToppingPrice10();
                 //Total Price
-                TotalPriceC2 = order2.getTotalPrice();
+                TotalPriceC2 = order2.getC2TotalPrice();
 
                 //If the food is without type then Visibility to food type is gone
                 if (FoodType == "null"){

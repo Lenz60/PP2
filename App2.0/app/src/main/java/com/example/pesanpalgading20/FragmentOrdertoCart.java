@@ -33,6 +33,7 @@ import com.example.pesanpalgading20.Model.Menu.Makanan.HomeMakananSotoFragment;
 import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsDurianFragment;
 import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsJusFragment;
 import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsOriFragment;
+import com.example.pesanpalgading20.Model.OrderSetterGetter.CartStatus;
 import com.example.pesanpalgading20.Model.OrderSetterGetter.Order1;
 import com.example.pesanpalgading20.Model.OrderSetterGetter.Order2;
 import com.example.pesanpalgading20.Model.SharedPrefManager.SharedPrefmanager;
@@ -430,9 +431,10 @@ public class FragmentOrdertoCart extends Fragment {
                         StringRbSelectedChoice = TxtvSelectedFoodType.getText().toString();
 
                         Order1 order1 = sharedPrefmanager.getInstance(getActivity()).GetOrder1();
-                        Cart1Status ="False";
 
-                        if(Cart1Status == "False"){
+                        CartStatus CheckCartStats = sharedPrefmanager.getInstance(getActivity()).GetCartStatus();
+
+                        if(CheckCartStats.getCart1Status() == "Available"){
                             Order1 storeOrder1 = new Order1(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,StringRbSelectedChoice,
                                     StringSelectedName1,StringSelectedName2,StringSelectedName3,
                                     StringSelectedName4,StringSelectedName5,StringSelectedName6,
@@ -443,9 +445,18 @@ public class FragmentOrdertoCart extends Fragment {
                                     StringSelectedPrice10,
                                     StringTotalPrice);
                             sharedPrefmanager.getInstance(getContext()).Order1(storeOrder1);
-                            Cart1Status = "True";
+
+                            CartStatus CartStats = new CartStatus("Full","Available");
+                            sharedPrefmanager.getInstance(getContext()).CartStatus(CartStats);
+
+                            Fragment fragmentCart = new CartFragment();
+                            FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
+                            transaction1.replace(R.id.ContainerOrdertoCart, fragmentCart);
+//                        fragmentCart.setArguments(PasstoCartBundle);
+                            transaction1.addToBackStack(null);
+                            transaction1.commit();
                         }
-                        else if (Cart1Status == "True"){
+                        else if (CheckCartStats.getCart2Status() == "Available") {
                             Order2 storeOrder2 = new Order2(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,StringRbSelectedChoice,
                                     StringSelectedName1,StringSelectedName2,StringSelectedName3,
                                     StringSelectedName4,StringSelectedName5,StringSelectedName6,
@@ -455,8 +466,19 @@ public class FragmentOrdertoCart extends Fragment {
                                     StringSelectedPrice7,StringSelectedPrice8,StringSelectedPrice9,
                                     StringSelectedPrice10,
                                     StringTotalPrice);
+
                             sharedPrefmanager.getInstance(getContext()).Order2(storeOrder2);
-                            Cart1Status = "Full";
+
+                            CartStatus CartStats = new CartStatus("Full","Full");
+                            sharedPrefmanager.getInstance(getContext()).CartStatus(CartStats);
+
+
+                            Fragment fragmentCart = new CartFragment();
+                            FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
+                            transaction1.replace(R.id.ContainerOrdertoCart, fragmentCart);
+//                        fragmentCart.setArguments(PasstoCartBundle);
+                            transaction1.addToBackStack(null);
+                            transaction1.commit();
                         }
                         else {
                             //Toast Error
@@ -496,12 +518,7 @@ public class FragmentOrdertoCart extends Fragment {
 //                        //Total
 //                        PasstoCartBundle.putString("CartTotalPrice", StringTotalPrice);
 //
-                        Fragment fragmentCart = new CartFragment();
-                        FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
-                        transaction1.replace(R.id.ContainerOrdertoCart, fragmentCart);
-//                        fragmentCart.setArguments(PasstoCartBundle);
-                        transaction1.addToBackStack(null);
-                        transaction1.commit();
+
                     }
                 }
                 //if doesn't have Tipe Food
@@ -547,9 +564,11 @@ public class FragmentOrdertoCart extends Fragment {
                     Order1 order1 = sharedPrefmanager.getInstance(getActivity()).GetOrder1();
 
                     Cart1Status = "False";
-                    if(Cart1Status == "False"){
-                        Order1 storeOrder1 = new Order1(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,
-                                "null",
+
+                    CartStatus CheckCartStats = sharedPrefmanager.getInstance(getActivity()).GetCartStatus();
+
+                    if(CheckCartStats.getCart1Status() == "Available"){
+                        Order1 storeOrder1 = new Order1(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,StringRbSelectedChoice,
                                 StringSelectedName1,StringSelectedName2,StringSelectedName3,
                                 StringSelectedName4,StringSelectedName5,StringSelectedName6,
                                 StringSelectedName7,StringSelectedName8,StringSelectedName9,StringSelectedName10,
@@ -559,11 +578,12 @@ public class FragmentOrdertoCart extends Fragment {
                                 StringSelectedPrice10,
                                 StringTotalPrice);
                         sharedPrefmanager.getInstance(getContext()).Order1(storeOrder1);
-                        Cart1Status = "True";
+
+                        CartStatus CartStats = new CartStatus("Full","Available");
+                        sharedPrefmanager.getInstance(getContext()).CartStatus(CartStats);
                     }
-                    else if (Cart1Status == "True"){
-                        Order2 storeOrder2 = new Order2(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,
-                                "null",
+                    else if (CheckCartStats.getCart2Status() == "Available"){
+                        Order2 storeOrder2 = new Order2(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,StringRbSelectedChoice,
                                 StringSelectedName1,StringSelectedName2,StringSelectedName3,
                                 StringSelectedName4,StringSelectedName5,StringSelectedName6,
                                 StringSelectedName7,StringSelectedName8,StringSelectedName9,StringSelectedName10,
@@ -573,9 +593,12 @@ public class FragmentOrdertoCart extends Fragment {
                                 StringSelectedPrice10,
                                 StringTotalPrice);
                         sharedPrefmanager.getInstance(getContext()).Order2(storeOrder2);
+                        CartStatus CartStats = new CartStatus("Full","Full");
+                        sharedPrefmanager.getInstance(getContext()).CartStatus(CartStats);
+
                         Cart1Status = "Full";
                     }
-                    else {
+                    else if (CheckCartStats.getCart1Status() == "Full" && CheckCartStats.getCart2Status() == "Full") {
                         //Toast Error
                         Toast CartFull = Toast.makeText(getActivity(), "Cart penuh, silahkan kosongkan terlebih dahulu", Toast.LENGTH_SHORT);
                         CartFull.show();

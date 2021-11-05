@@ -3,6 +3,7 @@ package com.example.pesanpalgading20.Model.SharedPrefManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.pesanpalgading20.Model.OrderSetterGetter.CartStatus;
 import com.example.pesanpalgading20.Model.OrderSetterGetter.Order1;
 import com.example.pesanpalgading20.Model.OrderSetterGetter.Order2;
 
@@ -69,6 +70,9 @@ public class SharedPrefmanager {
     //Total Price
     private static final String KEY2_TotalPrice = "key2totalprice";
 
+    private static final String CART1STATUS = "cart1status";
+    private static final String CART2STATUS = "cart2status";
+
     private static SharedPrefmanager mInstance;
     private static Context mcontext;
 
@@ -80,6 +84,23 @@ public class SharedPrefmanager {
             mInstance = new SharedPrefmanager(context);
         }
         return mInstance;
+    }
+
+    public void CartStatus (CartStatus cartStats){
+        SharedPreferences sharedPreferences = mcontext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editorStats = sharedPreferences.edit();
+        editorStats.putString(CART1STATUS, cartStats.getCart1Status());
+        editorStats.putString(CART2STATUS, cartStats.getCart2Status());
+        editorStats.apply();
+
+    }
+
+    public CartStatus GetCartStatus() {
+        SharedPreferences sharedPreferences = mcontext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return new CartStatus(
+                sharedPreferences.getString(CART1STATUS, "Available"),
+                sharedPreferences.getString(CART2STATUS, "Available")
+        );
     }
 
     public void Order1 (Order1 order1){
@@ -117,39 +138,40 @@ public class SharedPrefmanager {
         editor.apply();
     }
 
-    public void Order2 (Order2 order2){
+    public void Order2 (Order2 order2) {
         SharedPreferences sharedPreferences = mcontext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(KEY2_FoodCode, order2.getFoodCode());
-        editor.putString(KEY2_FoodName,order2.getFoodName());
-        editor.putString(KEY2_FoodCount,order2.getFoodCount());
-        editor.putString(KEY2_FoodTotalPrice,order2.getFoodTotalPrice());
-        editor.putString(KEY2_FoodType, order2.getFoodType());
+        SharedPreferences.Editor editor2 = sharedPreferences.edit();
+
+        editor2.putString(KEY2_FoodCode, order2.getC2FoodCode());
+        editor2.putString(KEY2_FoodName,order2.getC2FoodName());
+        editor2.putString(KEY2_FoodCount,order2.getC2FoodCount());
+        editor2.putString(KEY2_FoodTotalPrice,order2.getC2FoodTotalPrice());
+        editor2.putString(KEY2_FoodType, order2.getC2FoodType());
         //topping name
-        editor.putString(KEY2_ToppingName1,order2.getToppingName1());
-        editor.putString(KEY2_ToppingName2,order2.getToppingName2());
-        editor.putString(KEY2_ToppingName3,order2.getToppingName3());
-        editor.putString(KEY2_ToppingName4,order2.getToppingName4());
-        editor.putString(KEY2_ToppingName5,order2.getToppingName5());
-        editor.putString(KEY2_ToppingName6,order2.getToppingName6());
-        editor.putString(KEY2_ToppingName7,order2.getToppingName7());
-        editor.putString(KEY2_ToppingName8,order2.getToppingName8());
-        editor.putString(KEY2_ToppingName9,order2.getToppingName9());
-        editor.putString(KEY2_ToppingName10,order2.getToppingName10());
+        editor2.putString(KEY2_ToppingName1,order2.getC2ToppingName1());
+        editor2.putString(KEY2_ToppingName2,order2.getC2ToppingName2());
+        editor2.putString(KEY2_ToppingName3,order2.getC2ToppingName3());
+        editor2.putString(KEY2_ToppingName4,order2.getC2ToppingName4());
+        editor2.putString(KEY2_ToppingName5,order2.getC2ToppingName5());
+        editor2.putString(KEY2_ToppingName6,order2.getC2ToppingName6());
+        editor2.putString(KEY2_ToppingName7,order2.getC2ToppingName7());
+        editor2.putString(KEY2_ToppingName8,order2.getC2ToppingName8());
+        editor2.putString(KEY2_ToppingName9,order2.getC2ToppingName9());
+        editor2.putString(KEY2_ToppingName10,order2.getC2ToppingName10());
         //topping price
-        editor.putString(KEY2_ToppingPrice1,order2.getToppingPrice1());
-        editor.putString(KEY2_ToppingPrice2,order2.getToppingPrice2());
-        editor.putString(KEY2_ToppingPrice3,order2.getToppingPrice3());
-        editor.putString(KEY2_ToppingPrice4,order2.getToppingPrice4());
-        editor.putString(KEY2_ToppingPrice5,order2.getToppingPrice5());
-        editor.putString(KEY2_ToppingPrice6,order2.getToppingPrice6());
-        editor.putString(KEY2_ToppingPrice7,order2.getToppingPrice7());
-        editor.putString(KEY2_ToppingPrice8,order2.getToppingPrice8());
-        editor.putString(KEY2_ToppingPrice9,order2.getToppingPrice9());
-        editor.putString(KEY2_ToppingPrice10,order2.getToppingPrice10());
+        editor2.putString(KEY2_ToppingPrice1,order2.getC2ToppingPrice1());
+        editor2.putString(KEY2_ToppingPrice2,order2.getC2ToppingPrice2());
+        editor2.putString(KEY2_ToppingPrice3,order2.getC2ToppingPrice3());
+        editor2.putString(KEY2_ToppingPrice4,order2.getC2ToppingPrice4());
+        editor2.putString(KEY2_ToppingPrice5,order2.getC2ToppingPrice5());
+        editor2.putString(KEY2_ToppingPrice6,order2.getC2ToppingPrice6());
+        editor2.putString(KEY2_ToppingPrice7,order2.getC2ToppingPrice7());
+        editor2.putString(KEY2_ToppingPrice8,order2.getC2ToppingPrice8());
+        editor2.putString(KEY2_ToppingPrice9,order2.getC2ToppingPrice9());
+        editor2.putString(KEY2_ToppingPrice10,order2.getC2ToppingPrice10());
         //total
-        editor.putString(KEY2_TotalPrice,order2.getTotalPrice());
-        editor.apply();
+        editor2.putString(KEY2_TotalPrice,order2.getC2TotalPrice());
+        editor2.apply();
     }
 
     public Order1 GetOrder1() {
@@ -189,8 +211,8 @@ public class SharedPrefmanager {
 
     public Order2 GetOrder2() {
         SharedPreferences sharedPreferences = mcontext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return new Order2(
-                sharedPreferences.getString(KEY2_FoodCode,"null"),
+        return new Order2 (
+                sharedPreferences.getString(KEY2_FoodCode, "null"),
                 sharedPreferences.getString(KEY2_FoodName,"null"),
                 sharedPreferences.getString(KEY2_FoodCount, null),
                 sharedPreferences.getString(KEY2_FoodTotalPrice, null),

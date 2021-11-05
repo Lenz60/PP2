@@ -1,267 +1,255 @@
 package com.example.pesanpalgading20.Model.OrderSetterGetter;
 
 public class Order2 {
-    private String FoodCode, FoodName, FoodCount
-            ,FoodTotalPrice,FoodType;
+    private String C2FoodCode, C2FoodName, C2FoodCount
+            ,C2FoodTotalPrice,C2FoodType;
     //Topping Name
-    private String ToppingName1,ToppingName2,ToppingName3
-            ,ToppingName4,ToppingName5,ToppingName6
-            ,ToppingName7,ToppingName8,ToppingName9
-            ,ToppingName10;
+    private String C2ToppingName1,C2ToppingName2,C2ToppingName3
+            ,C2ToppingName4,C2ToppingName5,C2ToppingName6
+            ,C2ToppingName7,C2ToppingName8,C2ToppingName9
+            ,C2ToppingName10;
     //Topping Price
-    private String ToppingPrice1,ToppingPrice2,ToppingPrice3
-            ,ToppingPrice4,ToppingPrice5,ToppingPrice6
-            ,ToppingPrice7,ToppingPrice8,ToppingPrice9
-            ,ToppingPrice10;
+    private String C2ToppingPrice1,C2ToppingPrice2,C2ToppingPrice3
+            ,C2ToppingPrice4,C2ToppingPrice5,C2ToppingPrice6
+            ,C2ToppingPrice7,C2ToppingPrice8,C2ToppingPrice9
+            ,C2ToppingPrice10;
     //Total Price
-    private String TotalPrice;
+    private String C2TotalPrice;
 
-    //Constructor
-    public Order2(String foodCode, String foodName, String foodCount, String foodTotalPrice, String foodType,
-                  String toppingName1, String toppingName2, String toppingName3,
-                  String toppingName4, String toppingName5, String toppingName6,
-                  String toppingName7, String toppingName8, String toppingName9,
-                  String toppingName10,
-                  String toppingPrice1, String toppingPrice2, String toppingPrice3,
-                  String toppingPrice4, String toppingPrice5, String toppingPrice6,
-                  String toppingPrice7, String toppingPrice8, String toppingPrice9,
-                  String toppingPrice10,
-                  String totalPrice) {
-        FoodCode = foodCode;
-        FoodName = foodName;
-        FoodCount = foodCount;
-        FoodTotalPrice = foodTotalPrice;
-        FoodType = foodType;
-        ToppingName1 = toppingName1;
-        ToppingName2 = toppingName2;
-        ToppingName3 = toppingName3;
-        ToppingName4 = toppingName4;
-        ToppingName5 = toppingName5;
-        ToppingName6 = toppingName6;
-        ToppingName7 = toppingName7;
-        ToppingName8 = toppingName8;
-        ToppingName9 = toppingName9;
-        ToppingName10 = toppingName10;
-        ToppingPrice1 = toppingPrice1;
-        ToppingPrice2 = toppingPrice2;
-        ToppingPrice3 = toppingPrice3;
-        ToppingPrice4 = toppingPrice4;
-        ToppingPrice5 = toppingPrice5;
-        ToppingPrice6 = toppingPrice6;
-        ToppingPrice7 = toppingPrice7;
-        ToppingPrice8 = toppingPrice8;
-        ToppingPrice9 = toppingPrice9;
-        ToppingPrice10 = toppingPrice10;
-        TotalPrice = totalPrice;
+//    public void setC2FoodCode(String c2FoodCode) {
+//        C2FoodCode = c2FoodCode;
+//    }
+//
+//    public void setC2FoodName(String c2FoodName) {
+//        C2FoodName = c2FoodName;
+//    }
+//
+//    public void setC2FoodCount(String c2FoodCount) {
+//        C2FoodCount = c2FoodCount;
+//    }
+//
+//    public void setC2FoodTotalPrice(String c2FoodTotalPrice) {
+//        C2FoodTotalPrice = c2FoodTotalPrice;
+//    }
+//
+//    public void setC2FoodType(String c2FoodType) {
+//        C2FoodType = c2FoodType;
+//    }
+//
+//    public void setC2ToppingName1(String c2ToppingName1) {
+//        C2ToppingName1 = c2ToppingName1;
+//    }
+//
+//    public void setC2ToppingName2(String c2ToppingName2) {
+//        C2ToppingName2 = c2ToppingName2;
+//    }
+//
+//    public void setC2ToppingName3(String c2ToppingName3) {
+//        C2ToppingName3 = c2ToppingName3;
+//    }
+//
+//    public void setC2ToppingName4(String c2ToppingName4) {
+//        C2ToppingName4 = c2ToppingName4;
+//    }
+//
+//    public void setC2ToppingName5(String c2ToppingName5) {
+//        C2ToppingName5 = c2ToppingName5;
+//    }
+//
+//    public void setC2ToppingName6(String c2ToppingName6) {
+//        C2ToppingName6 = c2ToppingName6;
+//    }
+//
+//    public void setC2ToppingName7(String c2ToppingName7) {
+//        C2ToppingName7 = c2ToppingName7;
+//    }
+//
+//    public void setC2ToppingName8(String c2ToppingName8) {
+//        C2ToppingName8 = c2ToppingName8;
+//    }
+//
+//    public void setC2ToppingName9(String c2ToppingName9) {
+//        C2ToppingName9 = c2ToppingName9;
+//    }
+//
+//    public void setC2ToppingName10(String c2ToppingName10) {
+//        C2ToppingName10 = c2ToppingName10;
+//    }
+//
+//    public void setC2ToppingPrice1(String c2ToppingPrice1) {
+//        C2ToppingPrice1 = c2ToppingPrice1;
+//    }
+//
+//    public void setC2ToppingPrice2(String c2ToppingPrice2) {
+//        C2ToppingPrice2 = c2ToppingPrice2;
+//    }
+//
+//    public void setC2ToppingPrice3(String c2ToppingPrice3) {
+//        C2ToppingPrice3 = c2ToppingPrice3;
+//    }
+//
+//    public void setC2ToppingPrice4(String c2ToppingPrice4) {
+//        C2ToppingPrice4 = c2ToppingPrice4;
+//    }
+//
+//    public void setC2ToppingPrice5(String c2ToppingPrice5) {
+//        C2ToppingPrice5 = c2ToppingPrice5;
+//    }
+//
+//    public void setC2ToppingPrice6(String c2ToppingPrice6) {
+//        C2ToppingPrice6 = c2ToppingPrice6;
+//    }
+//
+//    public void setC2ToppingPrice7(String c2ToppingPrice7) {
+//        C2ToppingPrice7 = c2ToppingPrice7;
+//    }
+//
+//    public void setC2ToppingPrice8(String c2ToppingPrice8) {
+//        C2ToppingPrice8 = c2ToppingPrice8;
+//    }
+//
+//    public void setC2ToppingPrice9(String c2ToppingPrice9) {
+//        C2ToppingPrice9 = c2ToppingPrice9;
+//    }
+//
+//    public void setC2ToppingPrice10(String c2ToppingPrice10) {
+//        C2ToppingPrice10 = c2ToppingPrice10;
+//    }
+//
+//    public void setC2TotalPrice(String c2TotalPrice) {
+//        C2TotalPrice = c2TotalPrice;
+//    }
+
+    public String getC2FoodCode() {
+        return C2FoodCode;
     }
 
-    //Setter
-    public void setFoodCode(String foodCode) {
-        FoodCode = foodCode;
+    public String getC2FoodName() {
+        return C2FoodName;
     }
 
-    public void setFoodName(String foodName) {
-        FoodName = foodName;
+    public String getC2FoodCount() {
+        return C2FoodCount;
     }
 
-    public void setFoodCount(String foodCount) {
-        FoodCount = foodCount;
+    public String getC2FoodTotalPrice() {
+        return C2FoodTotalPrice;
     }
 
-    public void setFoodTotalPrice(String foodTotalPrice) {
-        FoodTotalPrice = foodTotalPrice;
+    public String getC2FoodType() {
+        return C2FoodType;
     }
 
-    public void setFoodType(String foodType) {
-        FoodType = foodType;
+    public String getC2ToppingName1() {
+        return C2ToppingName1;
     }
 
-    public void setToppingName1(String toppingName1) {
-        ToppingName1 = toppingName1;
+    public String getC2ToppingName2() {
+        return C2ToppingName2;
     }
 
-    public void setToppingName2(String toppingName2) {
-        ToppingName2 = toppingName2;
+    public String getC2ToppingName3() {
+        return C2ToppingName3;
     }
 
-    public void setToppingName3(String toppingName3) {
-        ToppingName3 = toppingName3;
+    public String getC2ToppingName4() {
+        return C2ToppingName4;
     }
 
-    public void setToppingName4(String toppingName4) {
-        ToppingName4 = toppingName4;
+    public String getC2ToppingName5() {
+        return C2ToppingName5;
     }
 
-    public void setToppingName5(String toppingName5) {
-        ToppingName5 = toppingName5;
+    public String getC2ToppingName6() {
+        return C2ToppingName6;
     }
 
-    public void setToppingName6(String toppingName6) {
-        ToppingName6 = toppingName6;
+    public String getC2ToppingName7() {
+        return C2ToppingName7;
     }
 
-    public void setToppingName7(String toppingName7) {
-        ToppingName7 = toppingName7;
+    public String getC2ToppingName8() {
+        return C2ToppingName8;
     }
 
-    public void setToppingName8(String toppingName8) {
-        ToppingName8 = toppingName8;
+    public String getC2ToppingName9() {
+        return C2ToppingName9;
     }
 
-    public void setToppingName9(String toppingName9) {
-        ToppingName9 = toppingName9;
+    public String getC2ToppingName10() {
+        return C2ToppingName10;
     }
 
-    public void setToppingName10(String toppingName10) {
-        ToppingName10 = toppingName10;
+    public String getC2ToppingPrice1() {
+        return C2ToppingPrice1;
     }
 
-    public void setToppingPrice1(String toppingPrice1) {
-        ToppingPrice1 = toppingPrice1;
+    public String getC2ToppingPrice2() {
+        return C2ToppingPrice2;
     }
 
-    public void setToppingPrice2(String toppingPrice2) {
-        ToppingPrice2 = toppingPrice2;
+    public String getC2ToppingPrice3() {
+        return C2ToppingPrice3;
     }
 
-    public void setToppingPrice3(String toppingPrice3) {
-        ToppingPrice3 = toppingPrice3;
+    public String getC2ToppingPrice4() {
+        return C2ToppingPrice4;
     }
 
-    public void setToppingPrice4(String toppingPrice4) {
-        ToppingPrice4 = toppingPrice4;
+    public String getC2ToppingPrice5() {
+        return C2ToppingPrice5;
     }
 
-    public void setToppingPrice5(String toppingPrice5) {
-        ToppingPrice5 = toppingPrice5;
+    public String getC2ToppingPrice6() {
+        return C2ToppingPrice6;
     }
 
-    public void setToppingPrice6(String toppingPrice6) {
-        ToppingPrice6 = toppingPrice6;
+    public String getC2ToppingPrice7() {
+        return C2ToppingPrice7;
     }
 
-    public void setToppingPrice7(String toppingPrice7) {
-        ToppingPrice7 = toppingPrice7;
+    public String getC2ToppingPrice8() {
+        return C2ToppingPrice8;
     }
 
-    public void setToppingPrice8(String toppingPrice8) {
-        ToppingPrice8 = toppingPrice8;
+    public String getC2ToppingPrice9() {
+        return C2ToppingPrice9;
     }
 
-    public void setToppingPrice9(String toppingPrice9) {
-        ToppingPrice9 = toppingPrice9;
+    public String getC2ToppingPrice10() {
+        return C2ToppingPrice10;
     }
 
-    public void setToppingPrice10(String toppingPrice10) {
-        ToppingPrice10 = toppingPrice10;
+    public String getC2TotalPrice() {
+        return C2TotalPrice;
     }
 
-    public void setTotalPrice(String totalPrice) {
-        TotalPrice = totalPrice;
-    }
-
-    //Getter
-    public String getFoodCode() {
-        return FoodCode;
-    }
-
-    public String getFoodName() {
-        return FoodName;
-    }
-
-    public String getFoodCount() {
-        return FoodCount;
-    }
-
-    public String getFoodTotalPrice() {
-        return FoodTotalPrice;
-    }
-
-    public String getFoodType() {
-        return FoodType;
-    }
-
-    public String getToppingName1() {
-        return ToppingName1;
-    }
-
-    public String getToppingName2() {
-        return ToppingName2;
-    }
-
-    public String getToppingName3() {
-        return ToppingName3;
-    }
-
-    public String getToppingName4() {
-        return ToppingName4;
-    }
-
-    public String getToppingName5() {
-        return ToppingName5;
-    }
-
-    public String getToppingName6() {
-        return ToppingName6;
-    }
-
-    public String getToppingName7() {
-        return ToppingName7;
-    }
-
-    public String getToppingName8() {
-        return ToppingName8;
-    }
-
-    public String getToppingName9() {
-        return ToppingName9;
-    }
-
-    public String getToppingName10() {
-        return ToppingName10;
-    }
-
-    public String getToppingPrice1() {
-        return ToppingPrice1;
-    }
-
-    public String getToppingPrice2() {
-        return ToppingPrice2;
-    }
-
-    public String getToppingPrice3() {
-        return ToppingPrice3;
-    }
-
-    public String getToppingPrice4() {
-        return ToppingPrice4;
-    }
-
-    public String getToppingPrice5() {
-        return ToppingPrice5;
-    }
-
-    public String getToppingPrice6() {
-        return ToppingPrice6;
-    }
-
-    public String getToppingPrice7() {
-        return ToppingPrice7;
-    }
-
-    public String getToppingPrice8() {
-        return ToppingPrice8;
-    }
-
-    public String getToppingPrice9() {
-        return ToppingPrice9;
-    }
-
-    public String getToppingPrice10() {
-        return ToppingPrice10;
-    }
-
-    public String getTotalPrice() {
-        return TotalPrice;
+    public Order2(String c2FoodCode, String c2FoodName, String c2FoodCount, String c2FoodTotalPrice, String c2FoodType, String c2ToppingName1, String c2ToppingName2, String c2ToppingName3, String c2ToppingName4, String c2ToppingName5, String c2ToppingName6, String c2ToppingName7, String c2ToppingName8, String c2ToppingName9, String c2ToppingName10, String c2ToppingPrice1, String c2ToppingPrice2, String c2ToppingPrice3, String c2ToppingPrice4, String c2ToppingPrice5, String c2ToppingPrice6, String c2ToppingPrice7, String c2ToppingPrice8, String c2ToppingPrice9, String c2ToppingPrice10, String c2TotalPrice) {
+        C2FoodCode = c2FoodCode;
+        C2FoodName = c2FoodName;
+        C2FoodCount = c2FoodCount;
+        C2FoodTotalPrice = c2FoodTotalPrice;
+        C2FoodType = c2FoodType;
+        C2ToppingName1 = c2ToppingName1;
+        C2ToppingName2 = c2ToppingName2;
+        C2ToppingName3 = c2ToppingName3;
+        C2ToppingName4 = c2ToppingName4;
+        C2ToppingName5 = c2ToppingName5;
+        C2ToppingName6 = c2ToppingName6;
+        C2ToppingName7 = c2ToppingName7;
+        C2ToppingName8 = c2ToppingName8;
+        C2ToppingName9 = c2ToppingName9;
+        C2ToppingName10 = c2ToppingName10;
+        C2ToppingPrice1 = c2ToppingPrice1;
+        C2ToppingPrice2 = c2ToppingPrice2;
+        C2ToppingPrice3 = c2ToppingPrice3;
+        C2ToppingPrice4 = c2ToppingPrice4;
+        C2ToppingPrice5 = c2ToppingPrice5;
+        C2ToppingPrice6 = c2ToppingPrice6;
+        C2ToppingPrice7 = c2ToppingPrice7;
+        C2ToppingPrice8 = c2ToppingPrice8;
+        C2ToppingPrice9 = c2ToppingPrice9;
+        C2ToppingPrice10 = c2ToppingPrice10;
+        C2TotalPrice = c2TotalPrice;
     }
 }
