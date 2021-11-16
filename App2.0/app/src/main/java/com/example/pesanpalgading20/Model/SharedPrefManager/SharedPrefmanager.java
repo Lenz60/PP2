@@ -2,6 +2,7 @@ package com.example.pesanpalgading20.Model.SharedPrefManager;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.opengl.Visibility;
 
 import com.example.pesanpalgading20.Model.OrderSetterGetter.CartStatus;
 import com.example.pesanpalgading20.Model.OrderSetterGetter.Order1;
@@ -183,7 +184,7 @@ public class SharedPrefmanager {
                 sharedPreferences.getString(KEY_FoodTotalPrice, null),
                 sharedPreferences.getString(KEY_FoodType, "null"),
                 //topping name
-                sharedPreferences.getString(KEY_ToppingName1,"null"),
+                sharedPreferences.getString(KEY_ToppingName1, "null"),
                 sharedPreferences.getString(KEY_ToppingName2,"null"),
                 sharedPreferences.getString(KEY_ToppingName3,"null"),
                 sharedPreferences.getString(KEY_ToppingName4,"null"),

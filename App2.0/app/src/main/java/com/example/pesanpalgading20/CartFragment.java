@@ -1,14 +1,18 @@
 package com.example.pesanpalgading20;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -64,7 +68,10 @@ public class CartFragment extends Fragment {
     //TotalPrices
     TextView TxtvCart1TotalPrice,TxtvCart2TotalPrice;
 
-    //Bundle
+    //Delete Cart1
+    ImageView ImgDeleteCart1;
+
+    //Set the Passed variables to local Variables
     String TableCode, TableNumber,
             FoodCode,FoodName, FoodPrice, FoodCount, FoodType, FoodTotalPrice,
             FoodCodeC2,FoodNameC2, FoodPriceC2, FoodCountC2, FoodTypeC2, FoodTotalPriceC2,
@@ -161,6 +168,8 @@ public class CartFragment extends Fragment {
         TxtvCart1FoodName = viewRoot.findViewById(R.id.TxtvCart1FoodName);
         TxtvCart1FoodPrice = viewRoot.findViewById(R.id.TxtvCart1FoodPrice);
         TxtvCart1FoodType =  viewRoot.findViewById(R.id.TxtvCart1FoodType);
+        //Delete Cart1
+        ImgDeleteCart1 = viewRoot.findViewById(R.id.ImgCart1Delete);
         //Food Cart2
         TxtvCart2FoodCount = viewRoot.findViewById(R.id.TxtvCart2FoodQuantity);
         TxtvCart2FoodName = viewRoot.findViewById(R.id.TxtvCart2FoodName);
@@ -223,8 +232,8 @@ public class CartFragment extends Fragment {
         RefreshButton = viewRoot.findViewById(R.id.BtnCartRefresh);
 
         //default hide the cart
-        LinearLayoutCartOrder1.setVisibility(VISIBLE);
-        LinearLayoutCartOrder2.setVisibility(VISIBLE);
+        LinearLayoutCartOrder1.setVisibility(GONE);
+        LinearLayoutCartOrder2.setVisibility(GONE);
 
          bundle = this.getArguments();
         //Position
@@ -242,16 +251,153 @@ public class CartFragment extends Fragment {
 //        TxtvCart2FoodType.setText(CheckCartStats.getCart2Status().toString());
 
 
-        RefreshButton.setOnClickListener(new View.OnClickListener() {
+        ImgDeleteCart1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //Clear All Shared Pref Manager Stored Variables
+                sharedPrefmanager.getInstance(getActivity()).logout();
+                // Go To Cart
+                Fragment fragmentCart = new CartFragment();
+                FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
+                transaction1.replace(R.id.CartFragment, fragmentCart);
+//                    fragmentCart.setArguments(PasstoCartBundle);
+                transaction1.addToBackStack(null);
+                transaction1.commit();
             }
         });
 
+
+        RemoveViewForUnusedTopping();
         CheckChart();
+        RemoveViewForUnusedTopping();
         //FillNextCart();
         return viewRoot;
+    }
+
+    private void RemoveViewForUnusedTopping() {
+        //Make Unused View Topping Dissapear
+        //Topping 1
+        if (TxtvCart1Topping1.getText().toString() == "null"){
+            TxtvCart1Topping1.setVisibility(View.INVISIBLE);
+        }
+        else if(TxtvCart1ToppingPrice1.getText() == "null"){
+            TxtvCart1ToppingPrice1.setVisibility(View.INVISIBLE);
+        }
+        else {
+            TxtvCart1Topping1.setVisibility(VISIBLE);
+            TxtvCart1ToppingPrice1.setVisibility(VISIBLE);
+        }
+
+        //Topping 2
+        if (TxtvCart1Topping2.getText() == "null"){
+            TxtvCart1Topping2.setVisibility(GONE);
+        }
+        else if(TxtvCart1ToppingPrice2.getText() == "null"){
+            TxtvCart1ToppingPrice2.setVisibility(GONE);
+        }
+        else {
+            TxtvCart1Topping2.setVisibility(VISIBLE);
+            TxtvCart1ToppingPrice2.setVisibility(VISIBLE);
+        }
+
+        //Topping 3
+        if (TxtvCart1Topping3.getText() == "null"){
+            TxtvCart1Topping3.setVisibility(GONE);
+        }
+        else if(TxtvCart1ToppingPrice3.getText() == "null"){
+            TxtvCart1ToppingPrice3.setVisibility(GONE);
+        }
+        else {
+            TxtvCart1Topping3.setVisibility(VISIBLE);
+            TxtvCart1ToppingPrice3.setVisibility(VISIBLE);
+        }
+
+
+        //Topping 4
+        if (TxtvCart1Topping4.getText() == "null"){
+            TxtvCart1Topping4.setVisibility(GONE);
+        }
+        else if(TxtvCart1ToppingPrice4.getText() == "null"){
+            TxtvCart1ToppingPrice4.setVisibility(GONE);
+        }
+        else {
+            TxtvCart1Topping4.setVisibility(VISIBLE);
+            TxtvCart1ToppingPrice4.setVisibility(VISIBLE);
+        }
+
+        //Topping 5
+        if (TxtvCart1Topping5.getText() == "null"){
+            TxtvCart1Topping5.setVisibility(GONE);
+        }
+        else if(TxtvCart1ToppingPrice5.getText() == "null"){
+            TxtvCart1ToppingPrice5.setVisibility(GONE);
+        }
+        else {
+            TxtvCart1Topping5.setVisibility(VISIBLE);
+            TxtvCart1ToppingPrice5.setVisibility(VISIBLE);
+        }
+
+        //Topping 6
+        if (TxtvCart1Topping6.getText() == "null"){
+            TxtvCart1Topping6.setVisibility(GONE);
+        }
+        else if(TxtvCart1ToppingPrice6.getText() == "null"){
+            TxtvCart1ToppingPrice6.setVisibility(GONE);
+        }
+        else {
+            TxtvCart1Topping6.setVisibility(VISIBLE);
+            TxtvCart1ToppingPrice6.setVisibility(VISIBLE);
+        }
+
+        //Topping 7
+        if (TxtvCart1Topping7.getText() == "null"){
+            TxtvCart1Topping7.setVisibility(GONE);
+        }
+        else if(TxtvCart1ToppingPrice7.getText() == "null"){
+            TxtvCart1ToppingPrice7.setVisibility(GONE);
+        }
+        else {
+            TxtvCart1Topping7.setVisibility(VISIBLE);
+            TxtvCart1ToppingPrice7.setVisibility(VISIBLE);
+        }
+
+        //Topping 8
+        if (TxtvCart1Topping8.getText() == "null"){
+            TxtvCart1Topping8.setVisibility(GONE);
+        }
+        else if(TxtvCart1ToppingPrice8.getText() == "null"){
+            TxtvCart1ToppingPrice8.setVisibility(GONE);
+        }
+        else {
+            TxtvCart1Topping8.setVisibility(VISIBLE);
+            TxtvCart1ToppingPrice8.setVisibility(VISIBLE);
+        }
+
+
+        //Topping 9
+        if (TxtvCart1Topping9.getText() == "null"){
+            TxtvCart1Topping9.setVisibility(GONE);
+        }
+        else if(TxtvCart1ToppingPrice9.getText() == "null"){
+            TxtvCart1ToppingPrice9.setVisibility(GONE);
+        }
+        else {
+            TxtvCart1Topping9.setVisibility(VISIBLE);
+            TxtvCart1ToppingPrice9.setVisibility(VISIBLE);
+        }
+
+        //Topping 10
+        if (TxtvCart1Topping10.getText() == "null"){
+            TxtvCart1Topping10.setVisibility(GONE);
+        }
+        else if(TxtvCart1ToppingPrice10.getText() == "null"){
+            TxtvCart1ToppingPrice10.setVisibility(GONE);
+        }
+        else {
+            TxtvCart1Topping10.setVisibility(VISIBLE);
+            TxtvCart1ToppingPrice10.setVisibility(VISIBLE);
+        }
+
     }
 
 
@@ -259,13 +405,14 @@ public class CartFragment extends Fragment {
         Order1 order1 = sharedPrefmanager.getInstance(getActivity()).GetOrder1();
         Order2 order2 = sharedPrefmanager.getInstance(getActivity()).GetOrder2();
         CartStatus CheckCartStats = sharedPrefmanager.getInstance(getActivity()).GetCartStatus();
-        if (order2.getC2FoodName() == "null"){
-            LinearLayoutCartOrder1.setVisibility(VISIBLE);
+        if (order1.getFoodName() == "null"){
+            LinearLayoutCartOrder1.setVisibility(GONE);
         }
         else {
-            if (LinearLayoutCartOrder1.getVisibility() == VISIBLE){
+            if (CheckCartStats.getCart1Status() == "Full"){
+                //Check the if else here if want to fix the Order 2 bug
                 LinearLayoutCartOrder1.setVisibility(View.VISIBLE);
-                Cart1Status = "full";
+//                Cart1Status = "full";
                 //Fill the cart 1
                  order1 = sharedPrefmanager.getInstance(getActivity()).GetOrder1();
                 //Food
@@ -300,7 +447,6 @@ public class CartFragment extends Fragment {
                 TotalPrice = order1.getTotalPrice();
 
                 //If the food is without type then Visibility to food type is gone
-
                 if (FoodType == "null"){
                     TxtvCart1FoodCount.setText(FoodCount);
                     TxtvCart1FoodName.setText(FoodName);
@@ -362,107 +508,110 @@ public class CartFragment extends Fragment {
                     TxtvCart1ToppingPrice10.setText(ToppingPrice10);
 
                     TxtvCart1TotalPrice.setText(TotalPrice);
+
+
                 }
             }
-            else if (CheckCartStats.getCart2Status() == "Available"){
-                LinearLayoutCartOrder2.setVisibility(View.VISIBLE);
-                order2 = sharedPrefmanager.getInstance(getActivity()).GetOrder2();
-                //Fill the cart 2
-                //Food
-                FoodCodeC2 = order2.getC2FoodCode();
-                FoodNameC2 = order2.getC2FoodName();
-                FoodCountC2 = order2.getC2FoodCount();
-                FoodTotalPriceC2 = order2.getC2FoodTotalPrice();
-                FoodTypeC2 = order2.getC2FoodType();
-                //Topping Name
-                ToppingName1C2 = order2.getC2ToppingName1();
-                ToppingName2C2 = order2.getC2ToppingName2();
-                ToppingName3C2 = order2.getC2ToppingName3();
-                ToppingName4C2 = order2.getC2ToppingName4();
-                ToppingName5C2 = order2.getC2ToppingName5();
-                ToppingName6C2 = order2.getC2ToppingName6();
-                ToppingName7C2 = order2.getC2ToppingName7();
-                ToppingName8C2 = order2.getC2ToppingName8();
-                ToppingName9C2 = order2.getC2ToppingName9();
-                ToppingName10C2 = order2.getC2ToppingName10();
-                //Topping Price
-                ToppingPrice1C2 = order2.getC2ToppingPrice1();
-                ToppingPrice2C2 = order2.getC2ToppingPrice2();
-                ToppingPrice3C2 = order2.getC2ToppingPrice3();
-                ToppingPrice4C2 = order2.getC2ToppingPrice4();
-                ToppingPrice5C2 = order2.getC2ToppingPrice5();
-                ToppingPrice6C2 = order2.getC2ToppingPrice6();
-                ToppingPrice7C2 = order2.getC2ToppingPrice7();
-                ToppingPrice8C2 = order2.getC2ToppingPrice8();
-                ToppingPrice9C2 = order2.getC2ToppingPrice9();
-                ToppingPrice10C2 = order2.getC2ToppingPrice10();
-                //Total Price
-                TotalPriceC2 = order2.getC2TotalPrice();
-
-                //If the food is without type then Visibility to food type is gone
-                if (FoodType == "null"){
-                    TxtvCart2FoodCount.setText(FoodCountC2);
-                    TxtvCart2FoodName.setText(FoodNameC2);
-                    TxtvCart2FoodPrice.setText(FoodTotalPriceC2);
-                    TxtvCart2FoodType.setText(FoodTypeC2);
-                    TxtvCart2FoodType.setVisibility(GONE);
-
-                    TxtvCart2Topping1.setText(ToppingName1C2);
-                    TxtvCart2Topping2.setText(ToppingName2C2);
-                    TxtvCart2Topping3.setText(ToppingName3C2);
-                    TxtvCart2Topping4.setText(ToppingName4C2);
-                    TxtvCart2Topping5.setText(ToppingName5C2);
-                    TxtvCart2Topping6.setText(ToppingName6C2);
-                    TxtvCart2Topping7.setText(ToppingName7C2);
-                    TxtvCart2Topping8.setText(ToppingName8C2);
-                    TxtvCart2Topping9.setText(ToppingName9C2);
-                    TxtvCart2Topping10.setText(ToppingName10C2);
-
-                    TxtvCart2ToppingPrice1.setText(ToppingPrice1C2);
-                    TxtvCart2ToppingPrice2.setText(ToppingPrice2C2);
-                    TxtvCart2ToppingPrice3.setText(ToppingPrice3C2);
-                    TxtvCart2ToppingPrice4.setText(ToppingPrice4C2);
-                    TxtvCart2ToppingPrice5.setText(ToppingPrice5C2);
-                    TxtvCart2ToppingPrice6.setText(ToppingPrice6C2);
-                    TxtvCart2ToppingPrice7.setText(ToppingPrice7C2);
-                    TxtvCart2ToppingPrice8.setText(ToppingPrice8C2);
-                    TxtvCart2ToppingPrice9.setText(ToppingPrice9C2);
-                    TxtvCart2ToppingPrice10.setText(ToppingPrice10C2);
-
-                    TxtvCart2TotalPrice.setText(TotalPriceC2);
-                }
-                else {
-                    TxtvCart2FoodCount.setText(FoodCountC2);
-                    TxtvCart2FoodName.setText(FoodNameC2);
-                    TxtvCart2FoodPrice.setText(FoodTotalPriceC2);
-                    TxtvCart2FoodType.setText(FoodTypeC2);
-
-                    TxtvCart2Topping1.setText(ToppingName1C2);
-                    TxtvCart2Topping2.setText(ToppingName2C2);
-                    TxtvCart2Topping3.setText(ToppingName3C2);
-                    TxtvCart2Topping4.setText(ToppingName4C2);
-                    TxtvCart2Topping5.setText(ToppingName5C2);
-                    TxtvCart2Topping6.setText(ToppingName6C2);
-                    TxtvCart2Topping7.setText(ToppingName7C2);
-                    TxtvCart2Topping8.setText(ToppingName8C2);
-                    TxtvCart2Topping9.setText(ToppingName9C2);
-                    TxtvCart2Topping10.setText(ToppingName10C2);
-
-                    TxtvCart2ToppingPrice1.setText(ToppingPrice1C2);
-                    TxtvCart2ToppingPrice2.setText(ToppingPrice2C2);
-                    TxtvCart2ToppingPrice3.setText(ToppingPrice3C2);
-                    TxtvCart2ToppingPrice4.setText(ToppingPrice4C2);
-                    TxtvCart2ToppingPrice5.setText(ToppingPrice5C2);
-                    TxtvCart2ToppingPrice6.setText(ToppingPrice6C2);
-                    TxtvCart2ToppingPrice7.setText(ToppingPrice7C2);
-                    TxtvCart2ToppingPrice8.setText(ToppingPrice8C2);
-                    TxtvCart2ToppingPrice9.setText(ToppingPrice9C2);
-                    TxtvCart2ToppingPrice10.setText(ToppingPrice10C2);
-
-                    TxtvCart2TotalPrice.setText(TotalPriceC2);
-                }
-
-            }
+            //Cart 2 is Commented because of Error and Bug
+//            else if (CheckCartStats.getCart2Status() == "Available"){
+//                LinearLayoutCartOrder2.setVisibility(View.VISIBLE);
+//                order2 = sharedPrefmanager.getInstance(getActivity()).GetOrder2();
+//                //Fill the cart 2
+//                //Food
+//                FoodCodeC2 = order2.getC2FoodCode();
+//                FoodNameC2 = order2.getC2FoodName();
+//                FoodCountC2 = order2.getC2FoodCount();
+//                FoodTotalPriceC2 = order2.getC2FoodTotalPrice();
+//                FoodTypeC2 = order2.getC2FoodType();
+//                //Topping Name
+//                ToppingName1C2 = order2.getC2ToppingName1();
+//                ToppingName2C2 = order2.getC2ToppingName2();
+//                ToppingName3C2 = order2.getC2ToppingName3();
+//                ToppingName4C2 = order2.getC2ToppingName4();
+//                ToppingName5C2 = order2.getC2ToppingName5();
+//                ToppingName6C2 = order2.getC2ToppingName6();
+//                ToppingName7C2 = order2.getC2ToppingName7();
+//                ToppingName8C2 = order2.getC2ToppingName8();
+//                ToppingName9C2 = order2.getC2ToppingName9();
+//                ToppingName10C2 = order2.getC2ToppingName10();
+//                //Topping Price
+//                ToppingPrice1C2 = order2.getC2ToppingPrice1();
+//                ToppingPrice2C2 = order2.getC2ToppingPrice2();
+//                ToppingPrice3C2 = order2.getC2ToppingPrice3();
+//                ToppingPrice4C2 = order2.getC2ToppingPrice4();
+//                ToppingPrice5C2 = order2.getC2ToppingPrice5();
+//                ToppingPrice6C2 = order2.getC2ToppingPrice6();
+//                ToppingPrice7C2 = order2.getC2ToppingPrice7();
+//                ToppingPrice8C2 = order2.getC2ToppingPrice8();
+//                ToppingPrice9C2 = order2.getC2ToppingPrice9();
+//                ToppingPrice10C2 = order2.getC2ToppingPrice10();
+//                //Total Price
+//                TotalPriceC2 = order2.getC2TotalPrice();
+//
+//                //If the food is without type then Visibility to food type is gone
+//                if (FoodType == "null"){
+//                    TxtvCart2FoodCount.setText(FoodCountC2);
+//                    TxtvCart2FoodName.setText(FoodNameC2);
+//                    TxtvCart2FoodPrice.setText(FoodTotalPriceC2);
+//                    TxtvCart2FoodType.setText(FoodTypeC2);
+//                    TxtvCart2FoodType.setVisibility(GONE);
+//
+//                    TxtvCart2Topping1.setText(ToppingName1C2);
+//                    TxtvCart2Topping2.setText(ToppingName2C2);
+//                    TxtvCart2Topping3.setText(ToppingName3C2);
+//                    TxtvCart2Topping4.setText(ToppingName4C2);
+//                    TxtvCart2Topping5.setText(ToppingName5C2);
+//                    TxtvCart2Topping6.setText(ToppingName6C2);
+//                    TxtvCart2Topping7.setText(ToppingName7C2);
+//                    TxtvCart2Topping8.setText(ToppingName8C2);
+//                    TxtvCart2Topping9.setText(ToppingName9C2);
+//                    TxtvCart2Topping10.setText(ToppingName10C2);
+//
+//                    TxtvCart2ToppingPrice1.setText(ToppingPrice1C2);
+//                    TxtvCart2ToppingPrice2.setText(ToppingPrice2C2);
+//                    TxtvCart2ToppingPrice3.setText(ToppingPrice3C2);
+//                    TxtvCart2ToppingPrice4.setText(ToppingPrice4C2);
+//                    TxtvCart2ToppingPrice5.setText(ToppingPrice5C2);
+//                    TxtvCart2ToppingPrice6.setText(ToppingPrice6C2);
+//                    TxtvCart2ToppingPrice7.setText(ToppingPrice7C2);
+//                    TxtvCart2ToppingPrice8.setText(ToppingPrice8C2);
+//                    TxtvCart2ToppingPrice9.setText(ToppingPrice9C2);
+//                    TxtvCart2ToppingPrice10.setText(ToppingPrice10C2);
+//
+//                    TxtvCart2TotalPrice.setText(TotalPriceC2);
+//                }
+//                else {
+//                    TxtvCart2FoodCount.setText(FoodCountC2);
+//                    TxtvCart2FoodName.setText(FoodNameC2);
+//                    TxtvCart2FoodPrice.setText(FoodTotalPriceC2);
+//                    TxtvCart2FoodType.setText(FoodTypeC2);
+//
+//                    TxtvCart2Topping1.setText(ToppingName1C2);
+//                    TxtvCart2Topping2.setText(ToppingName2C2);
+//                    TxtvCart2Topping3.setText(ToppingName3C2);
+//                    TxtvCart2Topping4.setText(ToppingName4C2);
+//                    TxtvCart2Topping5.setText(ToppingName5C2);
+//                    TxtvCart2Topping6.setText(ToppingName6C2);
+//                    TxtvCart2Topping7.setText(ToppingName7C2);
+//                    TxtvCart2Topping8.setText(ToppingName8C2);
+//                    TxtvCart2Topping9.setText(ToppingName9C2);
+//                    TxtvCart2Topping10.setText(ToppingName10C2);
+//
+//                    TxtvCart2ToppingPrice1.setText(ToppingPrice1C2);
+//                    TxtvCart2ToppingPrice2.setText(ToppingPrice2C2);
+//                    TxtvCart2ToppingPrice3.setText(ToppingPrice3C2);
+//                    TxtvCart2ToppingPrice4.setText(ToppingPrice4C2);
+//                    TxtvCart2ToppingPrice5.setText(ToppingPrice5C2);
+//                    TxtvCart2ToppingPrice6.setText(ToppingPrice6C2);
+//                    TxtvCart2ToppingPrice7.setText(ToppingPrice7C2);
+//                    TxtvCart2ToppingPrice8.setText(ToppingPrice8C2);
+//                    TxtvCart2ToppingPrice9.setText(ToppingPrice9C2);
+//                    TxtvCart2ToppingPrice10.setText(ToppingPrice10C2);
+//
+//                    TxtvCart2TotalPrice.setText(TotalPriceC2);
+//                }
+//
+//            }
         }
     }
 }
