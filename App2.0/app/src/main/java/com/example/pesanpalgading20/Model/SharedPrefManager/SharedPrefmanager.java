@@ -184,66 +184,66 @@ public class SharedPrefmanager {
                 sharedPreferences.getString(KEY_FoodTotalPrice, null),
                 sharedPreferences.getString(KEY_FoodType, "null"),
                 //topping name
-                sharedPreferences.getString(KEY_ToppingName1, "null"),
-                sharedPreferences.getString(KEY_ToppingName2,"null"),
-                sharedPreferences.getString(KEY_ToppingName3,"null"),
-                sharedPreferences.getString(KEY_ToppingName4,"null"),
-                sharedPreferences.getString(KEY_ToppingName5,"null"),
-                sharedPreferences.getString(KEY_ToppingName6,"null"),
-                sharedPreferences.getString(KEY_ToppingName7,"null"),
-                sharedPreferences.getString(KEY_ToppingName8,"null"),
-                sharedPreferences.getString(KEY_ToppingName9,"null"),
-                sharedPreferences.getString(KEY_ToppingName10,"null"),
+                sharedPreferences.getString(KEY_ToppingName1, "none"),
+                sharedPreferences.getString(KEY_ToppingName2,"none"),
+                sharedPreferences.getString(KEY_ToppingName3,"none"),
+                sharedPreferences.getString(KEY_ToppingName4,"none"),
+                sharedPreferences.getString(KEY_ToppingName5,"none"),
+                sharedPreferences.getString(KEY_ToppingName6,"none"),
+                sharedPreferences.getString(KEY_ToppingName7,"none"),
+                sharedPreferences.getString(KEY_ToppingName8,"none"),
+                sharedPreferences.getString(KEY_ToppingName9,"none"),
+                sharedPreferences.getString(KEY_ToppingName10,"none"),
                 //topping price
-                sharedPreferences.getString(KEY_ToppingPrice1,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice2,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice3,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice4,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice5,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice6,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice7,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice8,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice9,"null"),
-                sharedPreferences.getString(KEY_ToppingPrice10,"null"),
+                sharedPreferences.getString(KEY_ToppingPrice1,"none"),
+                sharedPreferences.getString(KEY_ToppingPrice2,"none"),
+                sharedPreferences.getString(KEY_ToppingPrice3,"none"),
+                sharedPreferences.getString(KEY_ToppingPrice4,"none"),
+                sharedPreferences.getString(KEY_ToppingPrice5,"none"),
+                sharedPreferences.getString(KEY_ToppingPrice6,"none"),
+                sharedPreferences.getString(KEY_ToppingPrice7,"none"),
+                sharedPreferences.getString(KEY_ToppingPrice8,"none"),
+                sharedPreferences.getString(KEY_ToppingPrice9,"none"),
+                sharedPreferences.getString(KEY_ToppingPrice10,"none"),
                 //total price
                 sharedPreferences.getString(KEY_TotalPrice,null)
         );
     }
 
-    public Order2 GetOrder2() {
-        SharedPreferences sharedPreferences = mcontext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return new Order2 (
-                sharedPreferences.getString(KEY2_FoodCode, "null"),
-                sharedPreferences.getString(KEY2_FoodName,"null"),
-                sharedPreferences.getString(KEY2_FoodCount, null),
-                sharedPreferences.getString(KEY2_FoodTotalPrice, null),
-                sharedPreferences.getString(KEY2_FoodType, "null"),
-                //topping name
-                sharedPreferences.getString(KEY2_ToppingName1,"null"),
-                sharedPreferences.getString(KEY2_ToppingName2,"null"),
-                sharedPreferences.getString(KEY2_ToppingName3,"null"),
-                sharedPreferences.getString(KEY2_ToppingName4,"null"),
-                sharedPreferences.getString(KEY2_ToppingName5,"null"),
-                sharedPreferences.getString(KEY2_ToppingName6,"null"),
-                sharedPreferences.getString(KEY2_ToppingName7,"null"),
-                sharedPreferences.getString(KEY2_ToppingName8,"null"),
-                sharedPreferences.getString(KEY2_ToppingName9,"null"),
-                sharedPreferences.getString(KEY2_ToppingName10,"null"),
-                //topping price
-                sharedPreferences.getString(KEY2_ToppingPrice1,"null"),
-                sharedPreferences.getString(KEY2_ToppingPrice2,"null"),
-                sharedPreferences.getString(KEY2_ToppingPrice3,"null"),
-                sharedPreferences.getString(KEY2_ToppingPrice4,"null"),
-                sharedPreferences.getString(KEY2_ToppingPrice5,"null"),
-                sharedPreferences.getString(KEY2_ToppingPrice6,"null"),
-                sharedPreferences.getString(KEY2_ToppingPrice7,"null"),
-                sharedPreferences.getString(KEY2_ToppingPrice8,"null"),
-                sharedPreferences.getString(KEY2_ToppingPrice9,"null"),
-                sharedPreferences.getString(KEY2_ToppingPrice10,"null"),
-                //total price
-                sharedPreferences.getString(KEY2_TotalPrice,null)
-        );
-    }
+//    public Order2 GetOrder2() {
+//        SharedPreferences sharedPreferences = mcontext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+//        return new Order2 (
+//                sharedPreferences.getString(KEY2_FoodCode, "null"),
+//                sharedPreferences.getString(KEY2_FoodName,"null"),
+//                sharedPreferences.getString(KEY2_FoodCount, null),
+//                sharedPreferences.getString(KEY2_FoodTotalPrice, null),
+//                sharedPreferences.getString(KEY2_FoodType, "null"),
+//                //topping name
+//                sharedPreferences.getString(KEY2_ToppingName1,"null"),
+//                sharedPreferences.getString(KEY2_ToppingName2,"null"),
+//                sharedPreferences.getString(KEY2_ToppingName3,"null"),
+//                sharedPreferences.getString(KEY2_ToppingName4,"null"),
+//                sharedPreferences.getString(KEY2_ToppingName5,"null"),
+//                sharedPreferences.getString(KEY2_ToppingName6,"null"),
+//                sharedPreferences.getString(KEY2_ToppingName7,"null"),
+//                sharedPreferences.getString(KEY2_ToppingName8,"null"),
+//                sharedPreferences.getString(KEY2_ToppingName9,"null"),
+//                sharedPreferences.getString(KEY2_ToppingName10,"null"),
+//                //topping price
+//                sharedPreferences.getString(KEY2_ToppingPrice1,"null"),
+//                sharedPreferences.getString(KEY2_ToppingPrice2,"null"),
+//                sharedPreferences.getString(KEY2_ToppingPrice3,"null"),
+//                sharedPreferences.getString(KEY2_ToppingPrice4,"null"),
+//                sharedPreferences.getString(KEY2_ToppingPrice5,"null"),
+//                sharedPreferences.getString(KEY2_ToppingPrice6,"null"),
+//                sharedPreferences.getString(KEY2_ToppingPrice7,"null"),
+//                sharedPreferences.getString(KEY2_ToppingPrice8,"null"),
+//                sharedPreferences.getString(KEY2_ToppingPrice9,"null"),
+//                sharedPreferences.getString(KEY2_ToppingPrice10,"null"),
+//                //total price
+//                sharedPreferences.getString(KEY2_TotalPrice,null)
+//        );
+//    }
 
     public void logout() {
         SharedPreferences sharedPreferences = mcontext.getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
