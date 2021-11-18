@@ -542,7 +542,7 @@
                         android:id="@+id/TxtvOrdertoCartSelectedToppName1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null"
+                        android:text="none"
                         android:textColor="@color/white"
                         android:textSize="19sp"/>
                     <LinearLayout
@@ -574,7 +574,7 @@
                         android:id="@+id/TxtvOrdertoCartSelectedToppName2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null"
+                        android:text="none"
                         android:textColor="@color/white"
                         android:textSize="19sp"/>
                     <LinearLayout
@@ -606,7 +606,7 @@
                         android:id="@+id/TxtvOrdertoCartSelectedToppName3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null"
+                        android:text="none"
                         android:textColor="@color/white"
                         android:textSize="19sp"/>
                     <LinearLayout
@@ -638,7 +638,7 @@
                         android:id="@+id/TxtvOrdertoCartSelectedToppName4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null"
+                        android:text="none"
                         android:textColor="@color/white"
                         android:textSize="19sp"/>
                     <LinearLayout
@@ -670,7 +670,7 @@
                         android:id="@+id/TxtvOrdertoCartSelectedToppName5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null"
+                        android:text="none"
                         android:textColor="@color/white"
                         android:textSize="19sp"/>
                     <LinearLayout
@@ -702,7 +702,7 @@
                         android:id="@+id/TxtvOrdertoCartSelectedToppName6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null"
+                        android:text="none"
                         android:textColor="@color/white"
                         android:textSize="19sp"/>
                     <LinearLayout
@@ -734,7 +734,7 @@
                         android:id="@+id/TxtvOrdertoCartSelectedToppName7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null"
+                        android:text="none"
                         android:textColor="@color/white"
                         android:textSize="19sp"/>
                     <LinearLayout
@@ -766,7 +766,7 @@
                         android:id="@+id/TxtvOrdertoCartSelectedToppName8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null"
+                        android:text="none"
                         android:textColor="@color/white"
                         android:textSize="19sp"/>
                     <LinearLayout
@@ -798,7 +798,7 @@
                         android:id="@+id/TxtvOrdertoCartSelectedToppName9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null"
+                        android:text="none"
                         android:textColor="@color/white"
                         android:textSize="19sp"/>
                     <LinearLayout
@@ -830,7 +830,7 @@
                         android:id="@+id/TxtvOrdertoCartSelectedToppName10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null"
+                        android:text="none"
                         android:textColor="@color/white"
                         android:textSize="19sp"/>
                     <LinearLayout

@@ -289,10 +289,11 @@ public class CartFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 RemoveViewForUnusedTopping();
-                Toast.makeText(getActivity(), TxtvCart1Topping1.getText().toString(),
+                Toast.makeText(getActivity(), TxtvCart1Topping6.getText().toString(),
                         Toast.LENGTH_LONG).show();
             }
         });
+        RefreshButton.setVisibility(GONE);
 
         CheckChart();
         RemoveViewForUnusedTopping();
@@ -304,117 +305,123 @@ public class CartFragment extends Fragment {
         Order1 order1 = sharedPrefmanager.getInstance(getActivity()).GetOrder1();
         //Make Unused View Topping Dissapear
         //Topping 1
-        if (TxtvCart1Topping1.getText().equals("null  ")){
+        if (TxtvCart1Topping1.getText().equals("none")){
             TxtvCart1Topping1.setVisibility(GONE);
             TxtvCart1ToppingPrice1.setVisibility(GONE);
             TxtvRp1.setVisibility(GONE);
         }
-        else if(!TxtvCart1Topping1.getText().equals("null  ")){
+        else{
             //Topping 1
             TxtvCart1Topping1.setVisibility(VISIBLE);
             TxtvCart1ToppingPrice1.setVisibility(VISIBLE);
             TxtvRp1.setVisibility(VISIBLE);
         }
-        else if(TxtvCart1Topping2.getText().equals("null  ")){
+
+        if(TxtvCart1Topping2.getText().equals("none")){
             TxtvCart1Topping2.setVisibility(GONE);
             TxtvCart1ToppingPrice2.setVisibility(GONE);
             TxtvRp2.setVisibility(GONE);
         }
-        else if(!TxtvCart1Topping2.getText().equals("null  ")){
+        else{
             //Topping 2
             TxtvCart1Topping2.setVisibility(VISIBLE);
             TxtvCart1ToppingPrice2.setVisibility(VISIBLE);
             TxtvRp2.setVisibility(VISIBLE);
         }
-        else if(TxtvCart1Topping3.getText().equals("null  ")){
+
+        if(TxtvCart1Topping3.getText().equals("none")){
             TxtvCart1Topping3.setVisibility(GONE);
             TxtvCart1ToppingPrice3.setVisibility(GONE);
             TxtvRp3.setVisibility(GONE);
         }
-        else if(!TxtvCart1Topping3.getText().equals("null  ")){
+        else{
             //Topping 3
             TxtvCart1Topping3.setVisibility(VISIBLE);
             TxtvCart1ToppingPrice3.setVisibility(VISIBLE);
             TxtvRp3.setVisibility(VISIBLE);
         }
-        else if(TxtvCart1Topping4.getText().equals("null  ")){
+
+        if(TxtvCart1Topping4.getText().equals("none")){
             TxtvCart1Topping4.setVisibility(GONE);
             TxtvCart1ToppingPrice4.setVisibility(GONE);
             TxtvRp4.setVisibility(GONE);
         }
-        else if(!TxtvCart1Topping4.getText().equals("null  ")){
+        else{
             //Topping 4
             TxtvCart1Topping4.setVisibility(VISIBLE);
             TxtvCart1ToppingPrice4.setVisibility(VISIBLE);
             TxtvRp4.setVisibility(VISIBLE);
         }
-        else if(TxtvCart1Topping5.getText().equals("null  ")){
+
+        if(TxtvCart1Topping5.getText().equals("none")){
             TxtvCart1Topping5.setVisibility(GONE);
             TxtvCart1ToppingPrice5.setVisibility(GONE);
             TxtvRp5.setVisibility(GONE);
         }
-        else if(!TxtvCart1Topping5.getText().equals("null  ")){
+        else{
             //Topping 5
             TxtvCart1Topping5.setVisibility(VISIBLE);
             TxtvCart1ToppingPrice5.setVisibility(VISIBLE);
             TxtvRp5.setVisibility(VISIBLE);
         }
-        else if(TxtvCart1Topping6.getText().equals("null  ")){
+
+        if(TxtvCart1Topping6.getText().equals("none")){
             TxtvCart1Topping6.setVisibility(GONE);
             TxtvCart1ToppingPrice6.setVisibility(GONE);
             TxtvRp6.setVisibility(GONE);
         }
-        else if(!TxtvCart1Topping6.getText().equals("null  ")){
+        else{
             //Topping 6
             TxtvCart1Topping6.setVisibility(VISIBLE);
             TxtvCart1ToppingPrice6.setVisibility(VISIBLE);
             TxtvRp6.setVisibility(VISIBLE);
         }
-        else if(TxtvCart1Topping7.getText().equals("null  ")){
+
+        if(TxtvCart1Topping7.getText().equals("none")){
             TxtvCart1Topping7.setVisibility(GONE);
             TxtvCart1ToppingPrice7.setVisibility(GONE);
             TxtvRp7.setVisibility(GONE);
         }
-        else if(!TxtvCart1Topping7.getText().equals("null  ")){
+        else{
             //Topping 7
             TxtvCart1Topping7.setVisibility(VISIBLE);
             TxtvCart1ToppingPrice7.setVisibility(VISIBLE);
             TxtvRp7.setVisibility(VISIBLE);
         }
-        else if(TxtvCart1Topping8.getText().equals("null  ")){
+
+        if(TxtvCart1Topping8.getText().equals("none")){
             TxtvCart1Topping8.setVisibility(GONE);
             TxtvCart1ToppingPrice8.setVisibility(GONE);
             TxtvRp8.setVisibility(GONE);
         }
-        else if(!TxtvCart1Topping8.getText().equals("null  ")){
+        else{
             //Topping 8
             TxtvCart1Topping8.setVisibility(VISIBLE);
             TxtvCart1ToppingPrice8.setVisibility(VISIBLE);
             TxtvRp8.setVisibility(VISIBLE);
         }
-        else if(TxtvCart1Topping9.getText().equals("null  ")){
+
+        if(TxtvCart1Topping9.getText().equals("none")){
             TxtvCart1Topping9.setVisibility(GONE);
             TxtvCart1ToppingPrice9.setVisibility(GONE);
             TxtvRp9.setVisibility(GONE);
         }
-        else if(!TxtvCart1Topping9.getText().equals("null  ")){
+        else{
             //Topping 9
             TxtvCart1Topping9.setVisibility(VISIBLE);
             TxtvCart1ToppingPrice9.setVisibility(VISIBLE);
             TxtvRp9.setVisibility(VISIBLE);
         }
-        else if(TxtvCart1Topping10.getText().equals("null  ")){
+        if(TxtvCart1Topping10.getText().equals("none")){
             TxtvCart1Topping10.setVisibility(GONE);
             TxtvCart1ToppingPrice10.setVisibility(GONE);
             TxtvRp10.setVisibility(GONE);
         }
-        else if(!TxtvCart1Topping10.getText().equals("null  ")){
+        else{
             //Topping 10
             TxtvCart1Topping10.setVisibility(VISIBLE);
             TxtvCart1ToppingPrice10.setVisibility(VISIBLE);
             TxtvRp10.setVisibility(VISIBLE);
-        }
-        else {
         }
 
     }
@@ -424,7 +431,7 @@ public class CartFragment extends Fragment {
         Order1 order1 = sharedPrefmanager.getInstance(getActivity()).GetOrder1();
         CartStatus CheckCartStats = sharedPrefmanager.getInstance(getActivity()).GetCartStatus();
         if (order1.getFoodName() == "null"){
-            LinearLayoutCartOrder1.setVisibility(VISIBLE);
+            LinearLayoutCartOrder1.setVisibility(GONE);
         }
         else {
             if (CheckCartStats.getCart1Status() == "Full"){
