@@ -7,431 +7,266 @@
 		
 		switch($_GET['apicall']){
 			
-			case 'signup':
-				if(isTheseParametersAvailable(array('name','email','password'))){
-					$name = $_POST['name']; 
-					$email = $_POST['email']; 
-					$password = ($_POST['password']);
-					
-					$stmt = $conn->prepare("SELECT id FROM user WHERE email = ?");
-					$stmt->bind_param("s", $email);
-					$stmt->execute();
-					$stmt->store_result();
-					
-					if($stmt->num_rows > 0){
-						$response['error'] = true;
-						$response['message'] = 'User already registered';
-						$stmt->close();
-					}else{
+			case 'loginguest' :
+				if(isTheseParametersAvailable(array('tablecode','notable','guestname'))){
+					$tablecode = $_POST['tablecode']; 
+					$notable = $_POST['notable']; 
+					$guestname = $_POST['guestname']; 
 
-						"INSERT INTO User(name,email,password) VALUES(?,?,?);
-						INSERT INTO Saldo(id_user, saldo) VALUES(LAST_INSERT_ID(),'0') ;";
-						//INSERT INTO user (name, email, password) VALUES (?, ?, ?)
-						$stmt = $conn->prepare("INSERT INTO user (name, email, password) VALUES (?, ?, ?)");
-						$stmt->bind_param("sss", $name, $email, $password);
-						if($stmt->execute()){
-							$stmt = $conn->prepare("INSERT INTO saldo(id_user, saldo) VALUES(LAST_INSERT_ID(),'0')");
-							$stmt->execute();
-							$stmt = $conn->prepare("SELECT id, id, name, email FROM user WHERE email = ?"); 
-							$stmt->bind_param("s",$email);
-							$stmt->execute();
-							$stmt->bind_result($userid, $id, $name, $email);
-							$stmt->fetch();
-							
-							$user = array(
-								'id'=>$id, 
-								'name'=>$name, 
-								'email'=>$email
-							);
-							
-							$stmt->close();
-							
-							$response['error'] = false; 
-							$response['message'] = 'User registered successfully'; 
-							$response['user'] = $user; 
+					$stmt = $conn->prepare("INSERT INTO Guest(Kode_meja,No_meja,Nama_guest) VALUES(?,?,?)");
+						$stmt->bind_param("sss", $tablecode, $notable, $guestname);
+						$stmt->execute();
+
+						$stmt = $conn->prepare("SELECT Kode_meja FROM Guest WHERE Kode_meja = ?");
+						$stmt->bind_param("s", $tablecode);
+						$stmt->execute();
+						$stmt->store_result();
+						
+						if($stmt->num_rows > 0){
+							$response['error'] = true;
+							$response['message'] = 'Duplicate Table Code';
 						}
-					}
-					
+						else {
+							$response['error'] = false;
+							$response['message'] = 'Guest Saved Succesfully';
+						}
+								
 				}else{
 					$response['error'] = true; 
 					$response['message'] = 'required parameters are not available'; 
 				}
-				
-			break; 
+			break;			
 			
-			case 'login':
-				
-				if(isTheseParametersAvailable(array('email','password'))){
+			case 'order' :
+				if(isTheseParametersAvailable(array('notable','tablecode','ordercode','productcode','productqty',
+					'toppingcode1','toppingcode2','toppingcode3',
+					'toppingcode4','toppingcode5','toppingcode6',
+					'toppingcode7','toppingcode8','toppingcode9',
+					'toppingcode10'))){
+					//Order Code
+					$ordercode = $_POST['ordercode'];
+					//Guest Declaration
+					$notable = $_POST['notable']; 
+					$tablecode = $_POST['tablecode']; 
+					//Product Declaration
+					$productcode = $_POST['productcode'];
+					$productqty = $_POST['productqty'];
+					//Topping Declaration
+					$toppingcode1 = $_POST['toppingcode1'];
+					$toppingcode2 = $_POST['toppingcode2'];
+					$toppingcode3 = $_POST['toppingcode3'];
+					$toppingcode4 = $_POST['toppingcode4'];
+					$toppingcode5 = $_POST['toppingcode5'];
+					$toppingcode6 = $_POST['toppingcode6'];
+					$toppingcode7 = $_POST['toppingcode7'];
+					$toppingcode8 = $_POST['toppingcode8'];
+					$toppingcode9 = $_POST['toppingcode9'];
+					$toppingcode10 = $_POST['toppingcode10'];
 					
-					$email = $_POST['email'];
-					$password = ($_POST['password']); 
-					
-					$stmt = $conn->prepare("SELECT u.id, u.name, u.email, s.saldo FROM user u JOIN saldo s ON u.id = s.id_user WHERE email = ? AND password = ?");
-					$stmt->bind_param("ss",$email, $password);
-					
+					//Guest Query (Insert Guest Query)
+					$stmt = $conn->prepare("INSERT INTO Guest_Order(Kode_Order,Kode_Meja) VALUES(?,?)");
+					$stmt->bind_param("ss",$ordercode,$notable);
 					$stmt->execute();
-					
+
+					//Product Query (Insert Product Order)
+					$stmt = $conn->prepare("INSERT INTO Product_Order(Kode_Produk,Kode_Order,Jumlah_Produk_PO) VALUES(?,?,?)");
+					$stmt->bind_param("sss",$productcode,$ordercode,$productqty);
+					$stmt->execute();
+
+					//Product Query (Select Product Order and store)
+					$stmt = $conn->prepare("SELECT Kode_produk_order FROM Product_Order WHERE Kode_Order = ? ");
+					$stmt->bind_param("s",$ordercode);
+					$stmt->execute();
 					$stmt->store_result();
-					
+
 					if($stmt->num_rows > 0){
-						
-						$stmt->bind_result($id, $name, $email, $saldo);
-						$stmt->fetch();
-						
-						$user = array(
-							'id'=>$id, 
-							'name'=>$name, 
-							'email'=>$email,
-							'saldo'=>$saldo
-						);
-						
-						$response['error'] = false; 
-						$response['message'] = 'Login successfull'; 
-						$response['user'] = $user; 
-					}else{
-						$response['error'] = false; 
-						$response['message'] = 'Invalid email or password';
+						$stmt->bind_result($productordercode);
+						$ProductOrderCode = $productordercode;
+
+						$response['error'] = false;
+						$response['message'] = 'Succesfully declared Product as local variable';
 					}
-				}
-			break; 
+					else{
+						$response['error'] = true;
+						$response['message'] = 'Failed declared Product as local variable';
+					}
 
-			case 'topup':
-				
-				if(isTheseParametersAvailable(array('code', 'id'))){
+					//Query Topping (Insert Topping Order)
+						//Topping 1
+					if($toppingcode1 == "none"){
+
+					}
+					else {
+						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt->bind_param("ss",$ProductOrderCode,$toppingcode1);
+						$stmt->execute();
+					}
+						//Topping 2
+					if($toppingcode2 == "none"){
+
+					}
+					else {
+						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt->bind_param("ss",$ProductOrderCode,$toppingcode2);
+						$stmt->execute();
+					}
+						//Topping 3
+					if($toppingcode3 == "none"){
+
+					}
+					else {
+						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt->bind_param("ss",$ProductOrderCode,$toppingcode3);
+						$stmt->execute();
+					}
+						//Topping 4
+					if($toppingcode4 == "none"){
+
+					}
+					else {
+						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt->bind_param("ss",$ProductOrderCode,$toppingcode4);
+						$stmt->execute();
+					}
+						//Topping 5
+					if($toppingcode5 == "none"){
+
+					}
+					else {
+						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt->bind_param("ss",$ProductOrderCode,$toppingcode5);
+						$stmt->execute();
+					}
+						//Topping 6
+					if($toppingcode6 == "none"){
+
+					}
+					else {
+						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt->bind_param("ss",$ProductOrderCode,$toppingcode6);
+						$stmt->execute();
+					}
+						//Topping 7
+					if($toppingcode7 == "none"){
+
+					}
+					else {
+						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt->bind_param("ss",$ProductOrderCode,$toppingcode7);
+						$stmt->execute();
+					}
+						//Topping 8
+					if($toppingcode8 == "none"){
+
+					}
+					else {
+						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt->bind_param("ss",$ProductOrderCode,$toppingcode8);
+						$stmt->execute();
+					}
+						//Topping 9
+					if($toppingcode9 == "none"){
+
+					}
+					else {
+						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt->bind_param("ss",$ProductOrderCode,$toppingcode9);
+						$stmt->execute();
+					}
+						//Topping 10
+					if($toppingcode10 == "none"){
+
+					}
+					else {
+						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt->bind_param("ss",$ProductOrderCode,$toppingcode10);
+						$stmt->execute();
+					}
 					
-					$code = ($_POST['code']); 
-					$user_id = ($_POST['id']); 
-					
-					$stmt = $conn->prepare("SELECT id, amount, code FROM voucher WHERE code = ?");
-					$stmt->bind_param("s",$code);
-					
+					//Guest Query (Set Guest Code to Local Variable)
+					$stmt = $conn->prepare("SELECT Kode_Guest_Order FROM Guest_Order WHERE Kode_Order = ? ");
+					$stmt->bind_param("s",$ordercode);
 					$stmt->execute();
-					
 					$stmt->store_result();
-					
+
 					if($stmt->num_rows > 0){
-						
-						$stmt->bind_result($id, $amount, $code);
-						$stmt->fetch();
-						
-						$voucher = array(
-							'id'=>$id, 
-							'amount'=>$amount, 
-							'code'=>$code,
-						);
-						$response['error'] = false; 
-						$response['message'] = 'Code Matched';
-						
+						$stmt->bind_result($guestcodeorder);
+						$GuestCodeOrder = $guestcodeorder;
 
-						// $stmt = $conn->prepare("SELECT * FROM saldo WHERE id_user = ?");
-						// $stmt->bind_param("s",$user_id);
-						// $stmt->execute();
-						// $stmt->store_result();
-						// $stmt->bind_result($id,$id_user,$saldo);
-						// $stmt->fetch();
+						$response['error'] = false;
+						$response['message'] = 'Succesfully declared Guest as local variable';
+					}
+					else{
+						$response['error'] = true;
+						$response['message'] = 'Failed declared Guest as local variable';
+					}
+					/////////////////////////////////////////////////////
+						//ORDER QUERY HERE//
+					////////////////////////////////////////////////////
 
-						// $viewSaldo = array(
-						// 	'id' =>$id,
-						// 	'id_user' =>$id_user,
-						// 	'saldo' =>$saldo,
-						// );
-						 
 
-						//check voucher code here
-						if($code == 'a'){
-							$stmt = $conn->prepare("UPDATE saldo SET saldo = saldo + '1000' WHERE id_user = ?");
-							$stmt->bind_param("s",$user_id);
-							$stmt->execute();
-							$response['error'] = false;
-							$response['message'] = 'Saldo added Rp 1000';
-						}
-						else if($code == '8ba6ee30a5'){
-							$stmt = $conn->prepare("UPDATE saldo SET saldo = saldo + '10000' WHERE id_user = ?");
-							$stmt->bind_param("s",$user_id);
-							$stmt->execute();
-							$response['error'] = false;
-							$response['message'] = 'Saldo added Rp 10.000';
-						}
-						else if ($code == 'c2ac15f919'){
-							$stmt = $conn->prepare("UPDATE saldo SET saldo = saldo + '20000' WHERE id_user = ?");
-							$stmt->bind_param("s",$user_id);
-							$stmt->execute();
-							$response['error'] = false;
-							$response['message'] = 'Saldo added Rp 20.000';
-							
-						}
-						else if ($code == 'a80ed0fd0d'){
-							$stmt = $conn->prepare("UPDATE saldo SET saldo = saldo + '50000' WHERE id_user = ?");
-							$stmt->bind_param("s",$user_id);
-							$stmt->execute();
-							$response['error'] = false;
-							$response['message'] = 'Saldo added Rp 50.000';
-						}
-						else if ($code == '54a24cbf5f'){
-							$stmt = $conn->prepare("UPDATE saldo SET saldo = saldo + '100000' WHERE id_user = ?");
-							$stmt->bind_param("s",$user_id);
-							$stmt->execute();
-							$response['error'] = false;
-							$response['message'] = 'Saldo added Rp 100.000';
-						}
-						else if ($code == 'debc8d1486'){
-							$stmt = $conn->prepare("UPDATE saldo SET saldo = saldo + '200000' WHERE id_user = ?");
-							$stmt->bind_param("s",$user_id);
-							$stmt->execute();
-							$response['error'] = false;
-							$response['message'] = 'Saldo added Rp 200.000';
-						}
-						else if ($code == '66d9228218'){
-							$stmt = $conn->prepare("UPDATE saldo SET saldo = saldo + '300000' WHERE id_user = ?");
-							$stmt->bind_param("s",$user_id);
-							$stmt->execute();
-							$response['error'] = false;
-							$response['message'] = 'Saldo added Rp 300.000';
-						}
-						else if ($code == '2386bb23c5'){
-							$stmt = $conn->prepare("UPDATE saldo SET saldo = saldo + '400000' WHERE id_user = ?");
-							$stmt->bind_param("s",$user_id);
-							$stmt->execute();
-							$response['error'] = false;
-							$response['message'] = 'Saldo added Rp 400.000';
-						}
-						else if ($code == '7b3f6bf1e5'){
-							$stmt = $conn->prepare("UPDATE saldo SET saldo = saldo + '500000' WHERE id_user = ?");
-							$stmt->bind_param("s",$user_id);
-							$stmt->execute();
-							$response['error'] = false;
-							$response['message'] = 'Saldo added Rp 500.000';
-						}
-						
-						//Show saldo amount of current user
-						$stmt = $conn->prepare("SELECT id_user, saldo FROM saldo WHERE id_user = ?");
-							$stmt->bind_param("s",$user_id);
-							$stmt->execute();
 
-							$stmt->bind_result($id_user, $saldo);
-							$stmt->fetch();
-							
-							$viewsaldo = array(
-								'id_user'=>$id_user, 
-								'saldo'=>$saldo, 
-							);
-							$response['saldo'] = $viewsaldo;
-					}else{
+					$stmt = $conn->prepare("SELECT * FROM saldo WHERE id_user = ?");
+					$stmt->bind_param("s", $id_user);
+					$stmt->execute();
+					$stmt->store_result();
+					$stmt->bind_result($idSaldo, $id_userSaldo, $saldoSaldo);
+					$stmt->fetch();
+
+					if($saldoSaldo < $total_price) {
 						$response['error'] = true; 
-						$response['message'] = 'Invalid Voucher Code';
+						$response['message'] = 'Saldo tidak cukup';
 					}
-				}
-			break; 
+					else {
+						$stmt = $conn->prepare("INSERT INTO foodorder(id_product,
+						id_user,quantity,place,seat_number,total_price,status) VALUES(?,?,?,?,?,?,'Menunggu')");
+						$stmt->bind_param("ssssss", $id_product, $id_user, $quantity, $place, $seat_number, $total_price);
+						$stmt->execute();
 
-			case 'product=mieayam':
-
-					//mieayam
-					$stmt = $conn->prepare("SELECT * FROM product WHERE id = 1 ");
-					$stmt->execute();
-					$stmt->store_result();
-					if($stmt->num_rows > 0){
-						
-						$stmt->bind_result($id, $id_shop, $name, $price, $category, $stock, $total_sold);
-						$stmt->fetch();
-						
-							$mieayam = array(
-								'id'=>$id, 
-								'id_shop'=>$id_shop, 
-								'name'=>$name,
-								'price'=>$price,
-								'category'=>$category,
-								'stock'=>$stock,
-								'total_sold'=>$total_sold,
-							);
-
-						
-
-						$response['error'] = false; 
-						$response['message'] = 'Product Sync Success';
-						$response['mieayam'] = $mieayam; 
-					}else{
-						$response['error'] = false; 
-						$response['message'] = 'Invalid Voucher Code';
-					}
-			break; 
-
-			case 'product=bakso' :
-					//bakso
-					$stmt = $conn->prepare("SELECT * FROM product WHERE id = 2 ");
-					$stmt->execute();
-					$stmt->store_result();
-					if($stmt->num_rows > 0){
-						
-						$stmt->bind_result($id, $id_shop, $name, $price, $category, $stock, $total_sold);
-						$stmt->fetch();
-						
-							$bakso = array(
-								'id'=>$id, 
-								'id_shop'=>$id_shop, 
-								'name'=>$name,
-								'price'=>$price,
-								'category'=>$category,
-								'stock'=>$stock,
-								'total_sold'=>$total_sold,
-							);
-
-						
-
-						$response['error'] = false; 
-						$response['message'] = 'Product Sync Success';
-						$response['bakso'] = $bakso; 
-					}else{
-						$response['error'] = false; 
-						$response['message'] = 'Invalid Product';
-					}
-				break;
-
-				case 'product=magelangan' :
-						//magelangan
-						$stmt = $conn->prepare("SELECT * FROM product WHERE id = 3 ");
+						$stmt = $conn->prepare("SELECT * FROM foodorder");
 						$stmt->execute();
 						$stmt->store_result();
 						if($stmt->num_rows > 0){
-							
-							$stmt->bind_result($id, $id_shop, $name, $price, $category, $stock, $total_sold);
-							$stmt->fetch();
-							
-								$magelangan = array(
-									'id'=>$id, 
-									'id_shop'=>$id_shop, 
-									'name'=>$name,
-									'price'=>$price,
-									'category'=>$category,
-									'stock'=>$stock,
-									'total_sold'=>$total_sold,
-								);
 
-							
+							$stmt = $conn->prepare("UPDATE saldo SET saldo = saldo - ? WHERE id_user = ?");
+							$stmt->bind_param("ss", $total_price, $id_user);
+							$stmt->execute();
 
-							$response['error'] = false; 
-							$response['message'] = 'Product Sync Success';
-							$response['magelangan'] = $magelangan; 
-						}else{
-							$response['error'] = false; 
-							$response['message'] = 'Invalid Product';
-						}
-					break;
-
-
-					case 'order' :
-						if(isTheseParametersAvailable(array('id_product','id_user',
-						'quantity','place','seat_number','total_price'))){
-							$id_product = $_POST['id_product']; 
-							$id_user = $_POST['id_user']; 
-							$quantity = $_POST['quantity']; 
-							$place = $_POST['place']; 
-							$seat_number = $_POST['seat_number']; 
-							$total_price = $_POST['total_price']; 
-
-							$stmt = $conn->prepare("SELECT * FROM saldo WHERE id_user = ?");
-							$stmt->bind_param("s", $id_user);
+							$stmt = $conn->prepare("UPDATE product SET stock = stock - ?, total_sold = total_sold + 1 WHERE id = ?");
+							$stmt->bind_param("ss", $quantity, $id_product);
+							$stmt->execute();
+							$stmt = $conn->prepare("SELECT * FROM foodorder");
 							$stmt->execute();
 							$stmt->store_result();
-							$stmt->bind_result($idSaldo, $id_userSaldo, $saldoSaldo);
+							
+							$stmt->bind_result($id,$id_product, $id_user, $quantity, $place, $seat_number, $total_price, $status);
 							$stmt->fetch();
-
-							if($saldoSaldo < $total_price) {
-								$response['error'] = true; 
-								$response['message'] = 'Saldo tidak cukup';
-							}
-							else {
-								$stmt = $conn->prepare("INSERT INTO foodorder(id_product,
-								id_user,quantity,place,seat_number,total_price,status) VALUES(?,?,?,?,?,?,'Menunggu')");
-								$stmt->bind_param("ssssss", $id_product, $id_user, $quantity, $place, $seat_number, $total_price);
-								$stmt->execute();
-
-								$stmt = $conn->prepare("SELECT * FROM foodorder");
-								$stmt->execute();
-								$stmt->store_result();
-								if($stmt->num_rows > 0){
-
-									$stmt = $conn->prepare("UPDATE saldo SET saldo = saldo - ? WHERE id_user = ?");
-									$stmt->bind_param("ss", $total_price, $id_user);
-									$stmt->execute();
-
-									$stmt = $conn->prepare("UPDATE product SET stock = stock - ?, total_sold = total_sold + 1 WHERE id = ?");
-									$stmt->bind_param("ss", $quantity, $id_product);
-									$stmt->execute();
-									$stmt = $conn->prepare("SELECT * FROM foodorder");
-									$stmt->execute();
-									$stmt->store_result();
-									
-									$stmt->bind_result($id,$id_product, $id_user, $quantity, $place, $seat_number, $total_price, $status);
-									$stmt->fetch();
-									
-										$statusOrder = array(
-											'id'=>$id, 
-											'id_product'=>$id_product, 
-											'id_user'=>$id_user,
-											'quantity'=>$quantity,
-											'place'=>$place,
-											'seat_number'=>$seat_number,
-											'total_price'=>$total_price,
-											'status'=>$status,
-										);
-									$response['error'] = false; 
-									$response['message'] = 'Order Success';
-									$response['statusOrder'] = $statusOrder;
-								}else{
-									$response['error'] = true; 
-									$response['message'] = 'Order Failed';
-									$response['statusOrder'] = $statusOrder;
-								}			
-
-							}
+							
+								$statusOrder = array(
+									'id'=>$id, 
+									'id_product'=>$id_product, 
+									'id_user'=>$id_user,
+									'quantity'=>$quantity,
+									'place'=>$place,
+									'seat_number'=>$seat_number,
+									'total_price'=>$total_price,
+									'status'=>$status,
+								);
+							$response['error'] = false; 
+							$response['message'] = 'Order Success';
+							$response['statusOrder'] = $statusOrder;
 						}else{
 							$response['error'] = true; 
-							$response['message'] = 'required parameters are not available'; 
-						}
-					break;
+							$response['message'] = 'Order Failed';
+							$response['statusOrder'] = $statusOrder;
+						}			
 
-					case 'order=notification' :
-						if(isTheseParametersAvailable(array('id_user'))){
-							$id_user = $_POST['id_user']; 
-
-							// "SELECT f.id,u.name as Costumer_name, p.name as Food_name, f.quantity as Quantity, f.total_price as Price, f.status as Food_status 
-							// from foodorder f JOIN product p ON f.id_product = p.id JOIN user u ON f.id_user = u.id where f.id_user = ? ";
-							
-							$stmt = $conn->prepare("SELECT f.id,u.name as name_user , p.name as name_product, f.place, f.seat_number,f.quantity, f.total_price , f.status  
-							from foodorder f JOIN product p ON f.id_product = p.id JOIN user u ON f.id_user = u.id where f.id_user = ? ");
-							$stmt->bind_param("s",$id_user);
-							
-							$stmt->execute();
-							
-							$stmt->store_result();
-							
-							if($stmt->num_rows > 0){
-								
-								$stmt->bind_result($id, $name_user, $name_product, $place, $seat_number, $quantity, $total_price, $status);
-								$stmt->fetch();
-								
-									$orderNotification = array(
-										'id'=>$id, 
-										'name_user'=>$name_user, 
-										'name_product'=>$name_product,
-										'place'=>$place,
-										'seat_number'=>$seat_number,
-										'quantity'=>$quantity,
-										'total_price'=>$total_price,
-										'status'=>$status,
-									);
-								
-								$response['error'] = false; 
-								$response['message'] = 'Notification sync'; 
-								$response['orderNotification'] = $orderNotification; 
-							}else{
-								$response['error'] = true; 
-								$response['message'] = 'Data Null';
-							}
-						}
-					break;
-
-			
+					}
+				}else{
+					$response['error'] = true; 
+					$response['message'] = 'required parameters are not available'; 
+				}
+			break;
 			default: 
 				$response['error'] = true; 
 				$response['message'] = 'Invalid Operation Called';
