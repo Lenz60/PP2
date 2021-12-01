@@ -1,0 +1,95 @@
+
+CREATE TABLE Guest (
+	Kode_meja VARCHAR(6) PRIMARY KEY,
+	No_meja INT,
+	Nama_guest VARCHAR(255)
+);
+
+
+
+CREATE TABLE Product (
+	Kode_produk VARCHAR(6) PRIMARY KEY,
+	Kategori_produk Enum("Goreng", "Kuah", "Pedas", "Manis", "Urat", "Halus", "Campur"),
+	Tipe_produk VARCHAR(30),
+	Nama_produk VARCHAR(255),
+	Harga_produk INT
+
+);
+
+
+
+
+CREATE TABLE Product_Stock (
+	Kode_stok INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	Kode_Produk VARCHAR(6) ,
+    FOREIGN KEY (Kode_Produk) REFERENCES Product(Kode_produk),
+	Stok_makanan INT
+);
+
+CREATE TABLE Topping_seq (
+    Kode_topping INT AUTO_INCREMENT NOT NULL PRIMARY KEY
+
+);
+
+CREATE TABLE Topping (
+	Kode_topping INT AUTO_INCREMENT PRIMARY KEY,
+	Nama_topping VARCHAR(255),
+	Tipe_topping Enum("Mie Ayam", "Bakso", "Bakso Bakar", "Soto"),
+	Harga_topping INT
+);
+
+DELIMITER $$
+CREATE TRIGGER tg_topping_insert
+BEFORE INSERT ON Topping
+FOR EACH ROW
+BEGIN
+  INSERT INTO Topping_seq VALUES (NULL);
+  SET NEW.Kode_topping = CONCAT('TOP', LPAD(LAST_INSERT_ID(), 3, '0'));
+END$$
+DELIMITER ;
+
+#INSERT INTO Topping (Nama_topping, Tipe_topping, Harga_topping) VALUES ('Tetelan Sapi', 'Soto', 3000);
+#SELECT * FROM Topping;
+
+CREATE TABLE Orders (
+	Kode_order VARCHAR(6) PRIMARY KEY
+);
+
+
+
+ALTER TABLE Orders
+	ADD Kode_Guest_Order INT FOREIGN KEY (Kode_Guest_Order) REFERENCES Guest_Order(Kode_guest_order);
+ALTER TABLE Orders
+	ADD Kode_Produk_Order INT FOREIGN KEY (Kode_Produk_Order) REFERENCES Product_Order(Kode_produk_order);
+ALTER TABLE Orders
+	ADD Status_order VARCHAR(50);
+
+
+
+CREATE TABLE Guest_Order (
+	Kode_guest_order INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	Kode_Order VARCHAR(6) ,
+    FOREIGN KEY (Kode_Order) REFERENCES Orders(Kode_order),
+	Kode_Meja VARCHAR(6) ,
+    FOREIGN KEY (Kode_Meja) REFERENCES Guest(Kode_meja)
+);
+
+
+
+
+CREATE TABLE Product_Order (
+	Kode_produk_order INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	Kode_Produk VARCHAR(6) ,
+    FOREIGN KEY (Kode_Produk) REFERENCES Product(Kode_produk),
+	Kode_Order VARCHAR(6) ,
+    FOREIGN KEY (Kode_Order) REFERENCES Orders(Kode_order),
+	Jumlah_Produk_PO INT
+);
+
+CREATE TABLE Topping_Order (
+	Kode_topping_order INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	Kode_Produk_Order INT ,
+    FOREIGN KEY (Kode_Produk_Order) REFERENCES Product_Order(Kode_produk_order),
+	Kode_Topping INT ,
+    FOREIGN KEY (Kode_Topping) REFERENCES Topping(Kode_topping)
+)

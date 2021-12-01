@@ -204,65 +204,11 @@
 						//ORDER QUERY HERE//
 					////////////////////////////////////////////////////
 
-
-
-					$stmt = $conn->prepare("SELECT * FROM saldo WHERE id_user = ?");
-					$stmt->bind_param("s", $id_user);
+					$stmt = $conn->prepare("INSERT INTO Orders(Kode_order,Kode_Guest_Order,Kode_Produk_Order,Status_order) VALUES(?,?,?,'Disiapkan')");
+					$stmt->bind_param("sss",$ordercode,$GuestCodeOrder,$ProductOrderCode);
 					$stmt->execute();
-					$stmt->store_result();
-					$stmt->bind_result($idSaldo, $id_userSaldo, $saldoSaldo);
-					$stmt->fetch();
-
-					if($saldoSaldo < $total_price) {
-						$response['error'] = true; 
-						$response['message'] = 'Saldo tidak cukup';
-					}
-					else {
-						$stmt = $conn->prepare("INSERT INTO foodorder(id_product,
-						id_user,quantity,place,seat_number,total_price,status) VALUES(?,?,?,?,?,?,'Menunggu')");
-						$stmt->bind_param("ssssss", $id_product, $id_user, $quantity, $place, $seat_number, $total_price);
-						$stmt->execute();
-
-						$stmt = $conn->prepare("SELECT * FROM foodorder");
-						$stmt->execute();
-						$stmt->store_result();
-						if($stmt->num_rows > 0){
-
-							$stmt = $conn->prepare("UPDATE saldo SET saldo = saldo - ? WHERE id_user = ?");
-							$stmt->bind_param("ss", $total_price, $id_user);
-							$stmt->execute();
-
-							$stmt = $conn->prepare("UPDATE product SET stock = stock - ?, total_sold = total_sold + 1 WHERE id = ?");
-							$stmt->bind_param("ss", $quantity, $id_product);
-							$stmt->execute();
-							$stmt = $conn->prepare("SELECT * FROM foodorder");
-							$stmt->execute();
-							$stmt->store_result();
-							
-							$stmt->bind_result($id,$id_product, $id_user, $quantity, $place, $seat_number, $total_price, $status);
-							$stmt->fetch();
-							
-								$statusOrder = array(
-									'id'=>$id, 
-									'id_product'=>$id_product, 
-									'id_user'=>$id_user,
-									'quantity'=>$quantity,
-									'place'=>$place,
-									'seat_number'=>$seat_number,
-									'total_price'=>$total_price,
-									'status'=>$status,
-								);
-							$response['error'] = false; 
-							$response['message'] = 'Order Success';
-							$response['statusOrder'] = $statusOrder;
-						}else{
-							$response['error'] = true; 
-							$response['message'] = 'Order Failed';
-							$response['statusOrder'] = $statusOrder;
-						}			
-
-					}
-				}else{
+				}
+				else{
 					$response['error'] = true; 
 					$response['message'] = 'required parameters are not available'; 
 				}
