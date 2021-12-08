@@ -24,11 +24,11 @@
 						
 						if($stmt->num_rows > 0){
 							$response['error'] = true;
-							$response['message'] = 'Duplicate Table Code';
+							$response['message'] = 'Guest Saved Succesfully';
 						}
 						else {
 							$response['error'] = false;
-							$response['message'] = 'Guest Saved Succesfully';
+							$response['message'] = 'Duplicate Table Code';
 						}
 								
 				}else{
