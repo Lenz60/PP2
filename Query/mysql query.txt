@@ -9,8 +9,8 @@ CREATE TABLE Guest (
 
 CREATE TABLE Product (
 	Kode_produk VARCHAR(6) PRIMARY KEY,
-	Kategori_produk Enum("Goreng", "Kuah", "Pedas", "Manis", "Urat", "Halus", "Campur"),
-	Tipe_produk VARCHAR(30),
+	Kategori_produk Enum("Makanan","Minuman","Jajanan","Promo"),
+	Tipe_produk Enum("Goreng", "Kuah", "Pedas", "Manis", "Urat", "Halus", "Campur","Es","Hot","Soto","Jajanan"),
 	Nama_produk VARCHAR(255),
 	Harga_produk INT
 
@@ -90,6 +90,6 @@ CREATE TABLE Topping_Order (
 	Kode_topping_order INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 	Kode_Produk_Order INT ,
     FOREIGN KEY (Kode_Produk_Order) REFERENCES Product_Order(Kode_produk_order),
-	Kode_Topping INT ,
+	Kode_Topping VARCHAR(30),
     FOREIGN KEY (Kode_Topping) REFERENCES Topping(Kode_topping)
 )
