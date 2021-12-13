@@ -3,6 +3,13 @@ package com.example.pesanpalgading20.Model.OrderSetterGetter;
 public class Order1 {
     private String FoodCode, FoodName, FoodCount
                         ,FoodTotalPrice,FoodType;
+
+    //Topping Code
+    private String ToppingCode1, ToppingCode2, ToppingCode3,
+            ToppingCode4, ToppingCode5, ToppingCode6,
+            ToppingCode7, ToppingCode8, ToppingCode9,
+            ToppingCode10;
+
     //Topping Name
     private String ToppingName1,ToppingName2,ToppingName3
                         ,ToppingName4,ToppingName5,ToppingName6
@@ -16,22 +23,22 @@ public class Order1 {
     //Total Price
     private String TotalPrice;
 
-    //Constructor
-    public Order1(String foodCode, String foodName, String foodCount, String foodTotalPrice,
-                  String foodType, String toppingName1, String toppingName2, String toppingName3,
-                  String toppingName4, String toppingName5, String toppingName6,
-                  String toppingName7, String toppingName8, String toppingName9,
-                  String toppingName10,
-                  String toppingPrice1, String toppingPrice2, String toppingPrice3,
-                  String toppingPrice4, String toppingPrice5, String toppingPrice6,
-                  String toppingPrice7, String toppingPrice8, String toppingPrice9,
-                  String toppingPrice10,
-                  String totalPrice) {
+    public Order1(String foodCode, String foodName, String foodCount, String foodTotalPrice, String foodType, String toppingCode1, String toppingCode2, String toppingCode3, String toppingCode4, String toppingCode5, String toppingCode6, String toppingCode7, String toppingCode8, String toppingCode9, String toppingCode10, String toppingName1, String toppingName2, String toppingName3, String toppingName4, String toppingName5, String toppingName6, String toppingName7, String toppingName8, String toppingName9, String toppingName10, String toppingPrice1, String toppingPrice2, String toppingPrice3, String toppingPrice4, String toppingPrice5, String toppingPrice6, String toppingPrice7, String toppingPrice8, String toppingPrice9, String toppingPrice10, String totalPrice) {
         FoodCode = foodCode;
         FoodName = foodName;
         FoodCount = foodCount;
         FoodTotalPrice = foodTotalPrice;
         FoodType = foodType;
+        ToppingCode1 = toppingCode1;
+        ToppingCode2 = toppingCode2;
+        ToppingCode3 = toppingCode3;
+        ToppingCode4 = toppingCode4;
+        ToppingCode5 = toppingCode5;
+        ToppingCode6 = toppingCode6;
+        ToppingCode7 = toppingCode7;
+        ToppingCode8 = toppingCode8;
+        ToppingCode9 = toppingCode9;
+        ToppingCode10 = toppingCode10;
         ToppingName1 = toppingName1;
         ToppingName2 = toppingName2;
         ToppingName3 = toppingName3;
@@ -55,112 +62,6 @@ public class Order1 {
         TotalPrice = totalPrice;
     }
 
-//    //Setter
-//    public void setFoodCode(String foodCode) {
-//        FoodCode = foodCode;
-//    }
-//
-//    public void setFoodName(String foodName) {
-//        FoodName = foodName;
-//    }
-//
-//    public void setFoodCount(String foodCount) {
-//        FoodCount = foodCount;
-//    }
-//
-//    public void setFoodTotalPrice(String foodTotalPrice) {
-//        FoodTotalPrice = foodTotalPrice;
-//    }
-//
-//    public void setFoodType(String foodType) {
-//        FoodType = foodType;
-//    }
-//
-//    public void setToppingName1(String toppingName1) {
-//        ToppingName1 = toppingName1;
-//    }
-//
-//    public void setToppingName2(String toppingName2) {
-//        ToppingName2 = toppingName2;
-//    }
-//
-//    public void setToppingName3(String toppingName3) {
-//        ToppingName3 = toppingName3;
-//    }
-//
-//    public void setToppingName4(String toppingName4) {
-//        ToppingName4 = toppingName4;
-//    }
-//
-//    public void setToppingName5(String toppingName5) {
-//        ToppingName5 = toppingName5;
-//    }
-//
-//    public void setToppingName6(String toppingName6) {
-//        ToppingName6 = toppingName6;
-//    }
-//
-//    public void setToppingName7(String toppingName7) {
-//        ToppingName7 = toppingName7;
-//    }
-//
-//    public void setToppingName8(String toppingName8) {
-//        ToppingName8 = toppingName8;
-//    }
-//
-//    public void setToppingName9(String toppingName9) {
-//        ToppingName9 = toppingName9;
-//    }
-//
-//    public void setToppingName10(String toppingName10) {
-//        ToppingName10 = toppingName10;
-//    }
-//
-//    public void setToppingPrice1(String toppingPrice1) {
-//        ToppingPrice1 = toppingPrice1;
-//    }
-//
-//    public void setToppingPrice2(String toppingPrice2) {
-//        ToppingPrice2 = toppingPrice2;
-//    }
-//
-//    public void setToppingPrice3(String toppingPrice3) {
-//        ToppingPrice3 = toppingPrice3;
-//    }
-//
-//    public void setToppingPrice4(String toppingPrice4) {
-//        ToppingPrice4 = toppingPrice4;
-//    }
-//
-//    public void setToppingPrice5(String toppingPrice5) {
-//        ToppingPrice5 = toppingPrice5;
-//    }
-//
-//    public void setToppingPrice6(String toppingPrice6) {
-//        ToppingPrice6 = toppingPrice6;
-//    }
-//
-//    public void setToppingPrice7(String toppingPrice7) {
-//        ToppingPrice7 = toppingPrice7;
-//    }
-//
-//    public void setToppingPrice8(String toppingPrice8) {
-//        ToppingPrice8 = toppingPrice8;
-//    }
-//
-//    public void setToppingPrice9(String toppingPrice9) {
-//        ToppingPrice9 = toppingPrice9;
-//    }
-//
-//    public void setToppingPrice10(String toppingPrice10) {
-//        ToppingPrice10 = toppingPrice10;
-//    }
-//
-//    public void setTotalPrice(String totalPrice) {
-//        TotalPrice = totalPrice;
-//    }
-
-    //Getter
     public String getFoodCode() {
         return FoodCode;
     }
@@ -179,6 +80,46 @@ public class Order1 {
 
     public String getFoodType() {
         return FoodType;
+    }
+
+    public String getToppingCode1() {
+        return ToppingCode1;
+    }
+
+    public String getToppingCode2() {
+        return ToppingCode2;
+    }
+
+    public String getToppingCode3() {
+        return ToppingCode3;
+    }
+
+    public String getToppingCode4() {
+        return ToppingCode4;
+    }
+
+    public String getToppingCode5() {
+        return ToppingCode5;
+    }
+
+    public String getToppingCode6() {
+        return ToppingCode6;
+    }
+
+    public String getToppingCode7() {
+        return ToppingCode7;
+    }
+
+    public String getToppingCode8() {
+        return ToppingCode8;
+    }
+
+    public String getToppingCode9() {
+        return ToppingCode9;
+    }
+
+    public String getToppingCode10() {
+        return ToppingCode10;
     }
 
     public String getToppingName1() {

@@ -116,6 +116,13 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvSelectedToppPrice7,TxtvSelectedToppPrice8,TxtvSelectedToppPrice9,
             TxtvSelectedToppPrice10;
 
+    String ToppCode1, ToppCode2, ToppCode3,
+            ToppCode4, ToppCode5, ToppCode6,
+            ToppCode7, ToppCode8, ToppCode9,
+            ToppCode10;
+
+    String FoodCode;
+
     TextView TxtvRp1,TxtvRp2,TxtvRp3,
             TxtvRp4,TxtvRp5,TxtvRp6,
             TxtvRp7,TxtvRp8,TxtvRp9,
@@ -436,6 +443,10 @@ public class FragmentOrdertoCart extends Fragment {
 
                         if(CheckCartStats.getCart1Status() == "Available"){
                             Order1 storeOrder1 = new Order1(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,StringRbSelectedChoice,
+                                    ToppCode1,ToppCode2,ToppCode3,
+                                    ToppCode4,ToppCode5,ToppCode6,
+                                    ToppCode7,ToppCode8,ToppCode9,
+                                    ToppCode10,
                                     StringSelectedName1,StringSelectedName2,StringSelectedName3,
                                     StringSelectedName4,StringSelectedName5,StringSelectedName6,
                                     StringSelectedName7,StringSelectedName8,StringSelectedName9,StringSelectedName10,
@@ -531,6 +542,17 @@ public class FragmentOrdertoCart extends Fragment {
                     StringFoodName = Name;
                     //Declare Food Count
                     StringSelectedFoodCount = TxtvSelectedFoodCount.getText().toString();
+                    //Declare Topping Code
+                    ToppCode1 = "none";
+                    ToppCode2 = "none";
+                    ToppCode3 = "none";
+                    ToppCode4 = "none";
+                    ToppCode5 = "none";
+                    ToppCode6 = "none";
+                    ToppCode7 = "none";
+                    ToppCode8 = "none";
+                    ToppCode9 = "none";
+                    ToppCode10 = "none";
                     //Declare Name of Selected Topping Name
                     StringSelectedName1 = TxtvSelectedToppName1.getText().toString();
                     StringSelectedName2 = TxtvSelectedToppName2.getText().toString();
@@ -570,6 +592,10 @@ public class FragmentOrdertoCart extends Fragment {
 
                     if(CheckCartStats.getCart1Status() == "Available"){
                         Order1 storeOrder1 = new Order1(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,StringRbSelectedChoice,
+                                ToppCode1,ToppCode2,ToppCode3,
+                                ToppCode4,ToppCode5,ToppCode6,
+                                ToppCode7,ToppCode8,ToppCode9,
+                                ToppCode10,
                                 StringSelectedName1,StringSelectedName2,StringSelectedName3,
                                 StringSelectedName4,StringSelectedName5,StringSelectedName6,
                                 StringSelectedName7,StringSelectedName8,StringSelectedName9,StringSelectedName10,
@@ -608,7 +634,7 @@ public class FragmentOrdertoCart extends Fragment {
 //
 //                        Cart1Status = "Full";
 //                    }
-                    else if (CheckCartStats.getCart1Status() == "Full" && CheckCartStats.getCart2Status() == "Full") {
+                    else {
                         //Toast Error
                         Toast CartFull = Toast.makeText(getActivity(), "Cart penuh, silahkan kosongkan terlebih dahulu", Toast.LENGTH_SHORT);
                         CartFull.show();
@@ -815,6 +841,9 @@ public class FragmentOrdertoCart extends Fragment {
             RbChoice1.setText("Kuah");
             RbChoice2.setText("Goreng");
 
+            //set Food Code
+            FoodCode = Code;
+
             //hide remaining tipe
             RbChoice3.setVisibility(GONE);
 
@@ -901,6 +930,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice1.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName1.setText(CBTopping1.getText().toString());
                         TxtvSelectedToppPrice1.setText(String.valueOf(FinalPrice1));
+                        ToppCode1 = "MATOP1";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -911,6 +941,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice1.setVisibility(GONE);
                         TxtvSelectedToppName1.setText("none");
                         TxtvSelectedToppPrice1.setText("0");
+                        ToppCode1 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
@@ -927,6 +958,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice2.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName2.setText(CBTopping2.getText());
                         TxtvSelectedToppPrice2.setText(String.valueOf(FinalPrice2));
+                        ToppCode2 = "MATOP2";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -937,6 +969,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice2.setVisibility(GONE);
                         TxtvSelectedToppName2.setText("none");
                         TxtvSelectedToppPrice2.setText("0");
+                        ToppCode2 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
@@ -953,6 +986,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice3.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName3.setText(CBTopping3.getText());
                         TxtvSelectedToppPrice3.setText(String.valueOf(FinalPrice3));
+                        ToppCode3 = "MATOP3";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -963,6 +997,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice3.setVisibility(GONE);
                         TxtvSelectedToppName3.setText("none");
                         TxtvSelectedToppPrice3.setText("0");
+                        ToppCode3 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
@@ -979,6 +1014,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice4.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName4.setText(CBTopping2.getText());
                         TxtvSelectedToppPrice4.setText(String.valueOf(FinalPrice4));
+                        ToppCode4 = "MATOP4";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -989,6 +1025,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice4.setVisibility(GONE);
                         TxtvSelectedToppName4.setText("none");
                         TxtvSelectedToppPrice4.setText("0");
+                        ToppCode4 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
@@ -1005,6 +1042,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice5.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName5.setText(CBTopping5.getText());
                         TxtvSelectedToppPrice5.setText(String.valueOf(FinalPrice5));
+                        ToppCode5 = "MATOP5";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -1015,6 +1053,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice5.setVisibility(GONE);
                         TxtvSelectedToppName5.setText("none");
                         TxtvSelectedToppPrice5.setText("0");
+                        ToppCode5 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
@@ -1031,6 +1070,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice6.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName6.setText(CBTopping6.getText());
                         TxtvSelectedToppPrice6.setText(String.valueOf(FinalPrice6));
+                        ToppCode6 = "MATOP6";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -1041,6 +1081,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice6.setVisibility(GONE);
                         TxtvSelectedToppName6.setText("none");
                         TxtvSelectedToppPrice6.setText("0");
+                        ToppCode6 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
@@ -1057,6 +1098,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice7.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName7.setText(CBTopping7.getText());
                         TxtvSelectedToppPrice7.setText(String.valueOf(FinalPrice7));
+                        ToppCode7 = "MATOP7";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -1067,6 +1109,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice7.setVisibility(GONE);
                         TxtvSelectedToppName7.setText("none");
                         TxtvSelectedToppPrice7.setText("0");
+                        ToppCode7 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
@@ -1083,6 +1126,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice8.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName8.setText(CBTopping8.getText());
                         TxtvSelectedToppPrice8.setText(String.valueOf(FinalPrice8));
+                        ToppCode8 = "MATOP8";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -1093,6 +1137,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice8.setVisibility(GONE);
                         TxtvSelectedToppName8.setText("none");
                         TxtvSelectedToppPrice8.setText("0");
+                        ToppCode8 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
@@ -1109,6 +1154,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice9.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName9.setText(CBTopping2.getText());
                         TxtvSelectedToppPrice9.setText(String.valueOf(FinalPrice9));
+                        ToppCode9 = "MATOP9";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -1119,10 +1165,13 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice9.setVisibility(GONE);
                         TxtvSelectedToppName9.setText("none");
                         TxtvSelectedToppPrice9.setText("0");
+                        ToppCode9 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
             });
+            //Set the Unavailable Topping for Mie Ayam
+            ToppCode10 = "none";
 
 
 
@@ -1159,6 +1208,9 @@ public class FragmentOrdertoCart extends Fragment {
                 RbChoice2.setText("Halus");
                 RbChoice3.setText("Campur");
             }
+
+            //set Food Code
+            FoodCode = Code;
 
             //hide remaining topping CB
             CBTopping6.setVisibility(GONE);
@@ -1247,6 +1299,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice1.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName1.setText(CBTopping1.getText().toString());
                         TxtvSelectedToppPrice1.setText(String.valueOf(FinalPrice1));
+                        ToppCode1 = "BATOP1";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -1257,6 +1310,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice1.setVisibility(GONE);
                         TxtvSelectedToppName1.setText("none");
                         TxtvSelectedToppPrice1.setText("0");
+                        ToppCode1 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
@@ -1273,6 +1327,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice2.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName2.setText(CBTopping2.getText());
                         TxtvSelectedToppPrice2.setText(String.valueOf(FinalPrice2));
+                        ToppCode2 = "BATOP2";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -1283,6 +1338,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice2.setVisibility(GONE);
                         TxtvSelectedToppName2.setText("none");
                         TxtvSelectedToppPrice2.setText("0");
+                        ToppCode2 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
@@ -1299,6 +1355,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice3.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName3.setText(CBTopping3.getText());
                         TxtvSelectedToppPrice3.setText(String.valueOf(FinalPrice3));
+                        ToppCode3 = "BATOP3";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -1309,6 +1366,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice3.setVisibility(GONE);
                         TxtvSelectedToppName3.setText("none");
                         TxtvSelectedToppPrice3.setText("0");
+                        ToppCode3 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
@@ -1325,6 +1383,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice4.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName4.setText(CBTopping2.getText());
                         TxtvSelectedToppPrice4.setText(String.valueOf(FinalPrice4));
+                        ToppCode4 = "BATOP4";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -1335,6 +1394,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice4.setVisibility(GONE);
                         TxtvSelectedToppName4.setText("none");
                         TxtvSelectedToppPrice4.setText("0");
+                        ToppCode4 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
@@ -1351,6 +1411,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice5.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName5.setText(CBTopping5.getText());
                         TxtvSelectedToppPrice5.setText(String.valueOf(FinalPrice5));
+                        ToppCode5 = "BATOP5";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -1361,10 +1422,18 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice5.setVisibility(GONE);
                         TxtvSelectedToppName5.setText("none");
                         TxtvSelectedToppPrice5.setText("0");
+                        ToppCode5 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
             });
+            //Set none the unavailable Topping for Bakso
+            ToppCode6 = "none";
+            ToppCode7 = "none";
+            ToppCode8 = "none";
+            ToppCode9 = "none";
+            ToppCode10 = "none";
+
         }
         else if (Code.toUpperCase().matches((inBaksoBakar.toUpperCase()))){
             //set text topping
@@ -1386,6 +1455,9 @@ public class FragmentOrdertoCart extends Fragment {
             RbChoice2.setText("Manis");
             //hide remaining tipe
             RbChoice3.setVisibility(GONE);
+
+            //set Food Code
+            FoodCode = Code;
 
             //set price to variable
             Price1 = 2000;
@@ -1466,6 +1538,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice1.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName1.setText(CBTopping1.getText().toString());
                         TxtvSelectedToppPrice1.setText(String.valueOf(FinalPrice1));
+                        ToppCode1 = "BBTOP1";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -1476,6 +1549,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice1.setVisibility(GONE);
                         TxtvSelectedToppName1.setText("none");
                         TxtvSelectedToppPrice1.setText("0");
+                        ToppCode1 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
@@ -1492,6 +1566,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice2.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName2.setText(CBTopping2.getText());
                         TxtvSelectedToppPrice2.setText(String.valueOf(FinalPrice2));
+                        ToppCode2 = "BBTOP2";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -1502,6 +1577,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice2.setVisibility(GONE);
                         TxtvSelectedToppName2.setText("none");
                         TxtvSelectedToppPrice2.setText("0");
+                        ToppCode2 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
@@ -1518,6 +1594,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice3.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName3.setText(CBTopping3.getText());
                         TxtvSelectedToppPrice3.setText(String.valueOf(FinalPrice3));
+                        ToppCode3 = "BBTOP3";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -1528,10 +1605,20 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice3.setVisibility(GONE);
                         TxtvSelectedToppName3.setText("none");
                         TxtvSelectedToppPrice3.setText("0");
+                        ToppCode3 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
             });
+
+            //Set none the unavailable Topping for Bakso Bakar
+            ToppCode4 = "none";
+            ToppCode5 = "none";
+            ToppCode6 = "none";
+            ToppCode7 = "none";
+            ToppCode8 = "none";
+            ToppCode9 = "none";
+            ToppCode10 = "none";
         }
         else if (Code.toUpperCase().matches((inSoto.toUpperCase()))){
             //set text topping
@@ -1554,6 +1641,9 @@ public class FragmentOrdertoCart extends Fragment {
             RbChoice1.setVisibility(GONE);
             RbChoice2.setVisibility(GONE);
             RbChoice3.setVisibility(GONE);
+
+            //set Food Code
+            FoodCode = Code;
 
             //set price to variable
             Price1 = 7000;
@@ -1643,6 +1733,7 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice1.setVisibility(View.VISIBLE);
                         TxtvSelectedToppName1.setText(CBTopping1.getText().toString());
                         TxtvSelectedToppPrice1.setText(String.valueOf(FinalPrice1));
+                        ToppCode1 = "STTOP1";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                     else {
@@ -1653,10 +1744,21 @@ public class FragmentOrdertoCart extends Fragment {
                         TxtvSelectedToppPrice1.setVisibility(GONE);
                         TxtvSelectedToppName1.setText("none");
                         TxtvSelectedToppPrice1.setText("0");
+                        ToppCode1 = "none";
                         BtnConfirmationPayment.setVisibility(VISIBLE);
                     }
                 }
             });
+            //Set none the unavailable Topping for Bakso Bakar
+            ToppCode2 = "none";
+            ToppCode3 = "none";
+            ToppCode4 = "none";
+            ToppCode5 = "none";
+            ToppCode6 = "none";
+            ToppCode7 = "none";
+            ToppCode8 = "none";
+            ToppCode9 = "none";
+            ToppCode10 = "none";
         }
         else {
 
@@ -1671,6 +1773,17 @@ public class FragmentOrdertoCart extends Fragment {
             CBTopping8.setVisibility(GONE);
             CBTopping9.setVisibility(GONE);
             CBTopping10.setVisibility(GONE);
+
+            ToppCode1 = "none";
+            ToppCode2 = "none";
+            ToppCode3 = "none";
+            ToppCode4 = "none";
+            ToppCode5 = "none";
+            ToppCode6 = "none";
+            ToppCode7 = "none";
+            ToppCode8 = "none";
+            ToppCode9 = "none";
+            ToppCode10 = "none";
 
             //hide remaining Topping
             //hide all selected topping
@@ -1716,6 +1829,9 @@ public class FragmentOrdertoCart extends Fragment {
 
             RgTipeFood.setVisibility(GONE);
 
+            //set Food Code
+            FoodCode = Code;
+
             //set price to variable
             Price1 = 0;
             Price2 = 0;
@@ -1742,6 +1858,8 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvToppingPrice10.setVisibility(GONE);
 
             TxtvTotalHarga.setText(String.valueOf(Price));
+
+
         }
 
 

@@ -40,6 +40,8 @@ public class CartFragment extends Fragment {
                 TxtvCart2FoodCount, TxtvCart2FoodName, TxtvCart2FoodPrice, TxtvCart2FoodType;
 
     //Topping
+    //Topping Text
+    TextView TxtvToppingTextView;
     //Topping Name
     //Cart1
     TextView TxtvCart1Topping1,TxtvCart1Topping2,TxtvCart1Topping3,
@@ -184,6 +186,8 @@ public class CartFragment extends Fragment {
         TxtvCart2FoodPrice = viewRoot.findViewById(R.id.TxtvCart2FoodPrice);
         TxtvCart2FoodType =  viewRoot.findViewById(R.id.TxtvCart2FoodType);
         //Topping Cart1
+        //Topping Text View
+        TxtvToppingTextView = viewRoot.findViewById(R.id.TxtvToppingTextView);
         //Topping Name
         TxtvCart1Topping1 = viewRoot.findViewById(R.id.TxtvCart1Topping1);
         TxtvCart1Topping2 = viewRoot.findViewById(R.id.TxtvCart1Topping2);
@@ -479,6 +483,7 @@ public class CartFragment extends Fragment {
 
                     TxtvCart1FoodType.setText(FoodType);
                     TxtvCart1FoodType.setVisibility(GONE);
+                    TxtvToppingTextView.setVisibility(GONE);
 
                     TxtvCart1Topping1.setText(ToppingName1);
                     TxtvCart1Topping2.setText(ToppingName2);
@@ -538,6 +543,31 @@ public class CartFragment extends Fragment {
 
 
                 }
+                //EXPERIMENTAL
+                // Place the Topping Code in CART 2
+                LinearLayoutCartOrder2.setVisibility(View.VISIBLE);
+                //Topping Code
+                ToppingName1C2 = order1.getToppingCode1();
+                ToppingName2C2 = order1.getToppingCode2();
+                ToppingName3C2 = order1.getToppingCode3();
+                ToppingName4C2 = order1.getToppingCode4();
+                ToppingName5C2 = order1.getToppingCode5();
+                ToppingName6C2 = order1.getToppingCode6();
+                ToppingName7C2 = order1.getToppingCode7();
+                ToppingName8C2 = order1.getToppingCode8();
+                ToppingName9C2 = order1.getToppingCode9();
+                ToppingName10C2 = order1.getToppingCode10();
+                //set the code
+                TxtvCart2Topping1.setText(ToppingName1C2);
+                TxtvCart2Topping2.setText(ToppingName2C2);
+                TxtvCart2Topping3.setText(ToppingName3C2);
+                TxtvCart2Topping4.setText(ToppingName4C2);
+                TxtvCart2Topping5.setText(ToppingName5C2);
+                TxtvCart2Topping6.setText(ToppingName6C2);
+                TxtvCart2Topping7.setText(ToppingName7C2);
+                TxtvCart2Topping8.setText(ToppingName8C2);
+                TxtvCart2Topping9.setText(ToppingName9C2);
+                TxtvCart2Topping10.setText(ToppingName10C2);
             }
             //Cart 2 is Commented because of Error and Bug
 //            else if (CheckCartStats.getCart2Status() == "Available"){

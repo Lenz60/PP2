@@ -2,7 +2,6 @@ package com.example.pesanpalgading20.Model.SharedPrefManager;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.opengl.Visibility;
 
 import com.example.pesanpalgading20.Model.OrderSetterGetter.CartStatus;
 import com.example.pesanpalgading20.Model.OrderSetterGetter.Order1;
@@ -39,6 +38,18 @@ public class SharedPrefmanager {
     private static final String KEY_ToppingPrice10 = "keytoppingprice10";
     //Total Price
     private static final String KEY_TotalPrice = "keytotalprice";
+
+    //Code
+    private static final String KEY_ToppingCode1 = "keytoppingcode1";
+    private static final String KEY_ToppingCode2 = "keytoppingcode2";
+    private static final String KEY_ToppingCode3 = "keytoppingcode3";
+    private static final String KEY_ToppingCode4 = "keytoppingcode4";
+    private static final String KEY_ToppingCode5 = "keytoppingcode5";
+    private static final String KEY_ToppingCode6 = "keytoppingcode6";
+    private static final String KEY_ToppingCode7 = "keytoppingcode7";
+    private static final String KEY_ToppingCode8 = "keytoppingcode8";
+    private static final String KEY_ToppingCode9 = "keytoppingcode9";
+    private static final String KEY_ToppingCode10 = "keytoppingcode10";
 
     //order2
     private static final String KEY2_FoodCode = "key2foodcode";
@@ -112,6 +123,17 @@ public class SharedPrefmanager {
         editor.putString(KEY_FoodCount,order1.getFoodCount());
         editor.putString(KEY_FoodTotalPrice,order1.getFoodTotalPrice());
         editor.putString(KEY_FoodType, order1.getFoodType());
+        //topping code
+        editor.putString(KEY_ToppingCode1, order1.getToppingCode1());
+        editor.putString(KEY_ToppingCode2, order1.getToppingCode2());
+        editor.putString(KEY_ToppingCode3, order1.getToppingCode3());
+        editor.putString(KEY_ToppingCode4, order1.getToppingCode4());
+        editor.putString(KEY_ToppingCode5, order1.getToppingCode5());
+        editor.putString(KEY_ToppingCode6, order1.getToppingCode6());
+        editor.putString(KEY_ToppingCode7, order1.getToppingCode7());
+        editor.putString(KEY_ToppingCode8, order1.getToppingCode8());
+        editor.putString(KEY_ToppingCode9, order1.getToppingCode9());
+        editor.putString(KEY_ToppingCode10, order1.getToppingCode10());
         //topping name
         editor.putString(KEY_ToppingName1,order1.getToppingName1());
         editor.putString(KEY_ToppingName2,order1.getToppingName2());
@@ -138,6 +160,7 @@ public class SharedPrefmanager {
         editor.putString(KEY_TotalPrice,order1.getTotalPrice());
         editor.apply();
     }
+
 
     public void Order2 (Order2 order2) {
         SharedPreferences sharedPreferences = mcontext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -183,6 +206,17 @@ public class SharedPrefmanager {
                 sharedPreferences.getString(KEY_FoodCount, null),
                 sharedPreferences.getString(KEY_FoodTotalPrice, null),
                 sharedPreferences.getString(KEY_FoodType, "null"),
+                //topping code
+                sharedPreferences.getString(KEY_ToppingCode1, "none"),
+                sharedPreferences.getString(KEY_ToppingCode2, "none"),
+                sharedPreferences.getString(KEY_ToppingCode3, "none"),
+                sharedPreferences.getString(KEY_ToppingCode4, "none"),
+                sharedPreferences.getString(KEY_ToppingCode5, "none"),
+                sharedPreferences.getString(KEY_ToppingCode6, "none"),
+                sharedPreferences.getString(KEY_ToppingCode7, "none"),
+                sharedPreferences.getString(KEY_ToppingCode8, "none"),
+                sharedPreferences.getString(KEY_ToppingCode9, "none"),
+                sharedPreferences.getString(KEY_ToppingCode10, "none"),
                 //topping name
                 sharedPreferences.getString(KEY_ToppingName1, "none"),
                 sharedPreferences.getString(KEY_ToppingName2,"none"),
