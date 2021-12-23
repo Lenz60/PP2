@@ -1,0 +1,17 @@
+SELECT o.Kode_order,g.Nama_guest, p.Nama_produk, p.Tipe_produk, t.Nama_topping FROM guest g JOIN guest_order gord ON g.Kode_meja = gord.Kode_Meja JOIN orders o 
+ON o.Kode_Guest_Order = gord.Kode_Order JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order JOIN product p ON po.Kode_Produk = p.Kode_produk
+JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_topping_order JOIN topping t ON t.Kode_topping = tord.Kode_Topping WHERE o.Kode_order = "ssdb5a"
+
+
+
+
+
+SELECT o.Kode_order,gu.Nama_guest FROM orders o JOIN guest_order g ON o.Kode_Guest_Order = g.Kode_guest_order JOIN guest gu ON gu.Kode_meja = g.Kode_Meja WHERE o.Kode_order = '1s34f4'
+
+
+
+SELECT o.Kode_order,gu.Nama_guest,p.Nama_produk FROM orders o JOIN guest_order g ON o.Kode_Guest_Order = g.Kode_guest_order JOIN guest gu ON gu.Kode_meja = g.Kode_Meja JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order JOIN product p ON p.Kode_produk = po.Kode_Produk  WHERE o.Kode_order = '1s34f4'
+
+
+//Kode_order Nama_guest Nama_produk Tipe_produk Nama_Topping
+SELECT o.Kode_order,gu.Nama_guest,p.Nama_produk,p.Tipe_produk, t.Nama_topping FROM orders o JOIN guest_order g ON o.Kode_Guest_Order = g.Kode_guest_order JOIN guest gu ON gu.Kode_meja = g.Kode_Meja JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order JOIN product p ON p.Kode_produk = po.Kode_Produk JOIN topping_order tord ON tord.Kode_Produk_Order = po.Kode_produk_order JOIN topping t ON tord.Kode_Topping = t.Kode_topping WHERE o.Kode_order = '1s34f4'
