@@ -13,8 +13,21 @@ body {
 }
 
 td a {
-    display:block;
+    display:flex;
     width:100%;
+    height: 100%;
     text-decoration: none; 
     background-color: none;
+}
+
+.sizetables1 {
+    width: 100px;
+    height: 70px;
+    font-size: 30px;
+}
+
+.sizetables2 {
+    width: 100px;
+    height: 150px;
+    font-size: 30px;
 }
