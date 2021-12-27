@@ -1,0 +1,42 @@
+//| Query 1 All of the column is suitable for the Admin execpt for the Nama Topping, in the PHP,  Make separate query to display the selected Nama Topping 
+SELECT g.No_meja, o.Kode_order,p.Nama_produk,p.Tipe_produk, t.Nama_topping, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(t.Harga_topping) AS 'Total Bayar', o.Status_order 
+FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order JOIN guest g ON gord.Kode_Meja = g.Kode_meja
+                                                 JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order
+                                                 JOIN product p ON po.Kode_Produk = p.Kode_produk
+                                                 JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
+                                                 JOIN topping t ON tord.Kode_Topping = t.Kode_topping
+WHERE g.No_meja = "2" ORDER BY o.Kode_order;
+
+//|Query 2 Contain of Selected Nama Topping based on Kode Order to fill Topping row in PHP
+SELECT t.Nama_topping FROM orders o JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order 
+									JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
+                                    JOIN topping t ON tord.Kode_Topping = t.Kode_topping
+WHERE o.Kode_order = "1s34f4"
+
+//| Query 3 Contain Incoming Order 
+SELECT g.No_meja, o.Kode_order,p.Nama_produk,p.Tipe_produk, t.Nama_topping, o.Status_order 
+FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order JOIN guest g ON gord.Kode_Meja = g.Kode_meja
+                                                 JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order
+                                                 JOIN product p ON po.Kode_Produk = p.Kode_produk
+                                                 JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
+                                                 JOIN topping t ON tord.Kode_Topping = t.Kode_topping
+WHERE o.Status_order = "Disiapkan" GROUP BY o.Kode_order;
+//! For display the Name Topping
+SELECT t.Nama_topping FROM orders o JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order 
+									JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
+                                    JOIN topping t ON tord.Kode_Topping = t.Kode_topping
+WHERE o.Status_order = "Disiapkan"
+
+
+                                
+//| Query 4, Backup Query, Total_bayar has the same value that SUM the calculation                                
+SELECT g.No_meja, o.Kode_order,p.Nama_produk,p.Tipe_produk, t.Nama_topping, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(SUM(t.Harga_topping)) OVER () Total_bayar, o.Status_order 
+FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order JOIN guest g ON gord.Kode_Meja = g.Kode_meja 
+JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order 
+JOIN product p ON po.Kode_Produk = p.Kode_produk 
+JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order 
+JOIN topping t ON tord.Kode_Topping = t.Kode_topping WHERE o.Kode_order = "1s34f4" 
+GROUP BY t.Nama_topping
+
+//| Query 5 Backup Query,
+SELECT tord.Kode_topping_order, t.Nama_topping, SUM(SUM(t.Harga_topping)) OVER () Total_Topping FROM topping_order tord JOIN topping t ON tord.Kode_Topping = t.Kode_topping WHERE tord.Kode_Produk_Order = 39 GROUP BY t.Nama_topping                                                                                               
