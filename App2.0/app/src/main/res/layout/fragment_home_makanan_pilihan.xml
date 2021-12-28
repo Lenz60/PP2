@@ -60,13 +60,13 @@
                     android:id="@+id/ImageViewPilihanMenuMieayam"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_launcher_background"/>
+                    android:src="@drawable/mieayam"/>
                 <ImageView
                     android:id="@+id/ImageViewPilihanMenuBaksoKuah"
                     android:layout_marginLeft="100dp"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_launcher_background"/>
+                    android:src="@drawable/bakso"/>
             </LinearLayout>
 
             <LinearLayout
@@ -77,13 +77,13 @@
                     android:id="@+id/ImageViewPilihanMenuBaksoBakar"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_launcher_background"/>
+                    android:src="@drawable/baksobakar"/>
                 <ImageView
                     android:id="@+id/ImageViewPilihanMenuNasiSoto"
                     android:layout_marginLeft="100dp"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_launcher_background"/>
+                    android:src="@drawable/soto"/>
             </LinearLayout>
         </LinearLayout>
 
