@@ -83,13 +83,13 @@ public class HomeMakananBaksoFragment extends Fragment {
         ContainerContentBakso = viewRoot.findViewById(R.id.ContainerContentBakso);
 
         ArrayList<Bakso> bakso = new ArrayList<Bakso>();
-        bakso.add (new Bakso("Bakso Hore", 12000 ,R.drawable.ic_launcher_background));
-        bakso.add (new Bakso("Bakso Yummie", 15000 ,R.drawable.ic_launcher_background));
-        bakso.add (new Bakso("Bakso Happy", 18000 ,R.drawable.ic_launcher_background));
-        bakso.add (new Bakso("Bakso Judez (Jumbo Pedezz)", 17000 ,R.drawable.ic_launcher_background));
-        bakso.add (new Bakso("Bakso Jumbo Tidak Pedas", 17000 ,R.drawable.ic_launcher_background));
-        bakso.add (new Bakso("Bakso Jumbo Isian Tetelan", 20000 ,R.drawable.ic_launcher_background));
-        bakso.add (new Bakso("Bakso Bagong", 35000 ,R.drawable.ic_launcher_background));
+        bakso.add (new Bakso("Bakso Hore", 12000 ,R.drawable.bakso));
+        bakso.add (new Bakso("Bakso Yummie", 15000 ,R.drawable.bakso));
+        bakso.add (new Bakso("Bakso Happy", 18000 ,R.drawable.bakso));
+        bakso.add (new Bakso("Bakso Judez (Jumbo Pedezz)", 17000 ,R.drawable.bakso));
+        bakso.add (new Bakso("Bakso Jumbo Tidak Pedas", 17000 ,R.drawable.bakso));
+        bakso.add (new Bakso("Bakso Jumbo Isian Tetelan", 20000 ,R.drawable.bakso));
+        bakso.add (new Bakso("Bakso Bagong", 35000 ,R.drawable.bakso));
 
         BaksoAdapter baksoAdapter = new BaksoAdapter(getActivity(), bakso);
 

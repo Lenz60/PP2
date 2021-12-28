@@ -85,9 +85,9 @@ public class HomeMakananMieayamFragment extends Fragment {
         ContainerContentMieAyam = viewRoot.findViewById(R.id.ContainerContentMieAyam);
 
         final ArrayList<MieAyam> mieAyam = new ArrayList<MieAyam>();
-        mieAyam.add (new MieAyam("Mie Ayam Original", 10000 ,R.drawable.ic_launcher_background));
-        mieAyam.add (new MieAyam("Mie Ayam Jumbo", 16000 ,R.drawable.ic_launcher_background));
-        mieAyam.add (new MieAyam("Mie Ayam Super Jumbo Komplit", 16000 ,R.drawable.ic_launcher_background));
+        mieAyam.add (new MieAyam("Mie Ayam Original", 10000 ,R.drawable.mieayam));
+        mieAyam.add (new MieAyam("Mie Ayam Jumbo", 16000 ,R.drawable.mieayam));
+        mieAyam.add (new MieAyam("Mie Ayam Super Jumbo Komplit", 16000 ,R.drawable.mieayam));
 
         MieAyamAdapter mieAyamAdapter = new MieAyamAdapter(getActivity(), mieAyam);
 

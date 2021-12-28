@@ -82,8 +82,8 @@ public class HomeMakananBaksoBakarFragment extends Fragment {
         ContainerContentBaksoBakar = viewRoot.findViewById(R.id.ContainerContentBaksoBakar);
 
         ArrayList<BaksoBakar> baksoBakar = new ArrayList<BaksoBakar>();
-        baksoBakar.add (new BaksoBakar("Bakso Bakar Hore", 14000 ,R.drawable.ic_launcher_background));
-        baksoBakar.add (new BaksoBakar("Bakso Bakar Yummie", 17000 ,R.drawable.ic_launcher_background));
+        baksoBakar.add (new BaksoBakar("Bakso Bakar Hore", 14000 ,R.drawable.bakso));
+        baksoBakar.add (new BaksoBakar("Bakso Bakar Yummie", 17000 ,R.drawable.bakso));
 
         BaksoBakarAdapter baksoBakarAdapter = new BaksoBakarAdapter(getActivity(), baksoBakar);
 

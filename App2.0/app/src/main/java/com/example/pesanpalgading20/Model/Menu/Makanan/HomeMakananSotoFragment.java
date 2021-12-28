@@ -83,10 +83,10 @@ public class HomeMakananSotoFragment extends Fragment {
         ContainerContentSoto = viewRoot.findViewById(R.id.ContainerContentSoto);
 
         ArrayList<Soto> soto = new ArrayList<Soto>();
-        soto.add (new Soto("Nasi Soto Daging Sapi", 10000 ,R.drawable.ic_launcher_background));
-        soto.add (new Soto("Soto Daging Sapi (Tanpa Nasi)", 10000 ,R.drawable.ic_launcher_background));
-        soto.add (new Soto("Nasi Soto Ayam", 8000 ,R.drawable.ic_launcher_background));
-        soto.add (new Soto("Nasi Soto (Tanpa Nasi)", 8000 ,R.drawable.ic_launcher_background));
+        soto.add (new Soto("Nasi Soto Daging Sapi", 10000 ,R.drawable.bakso));
+        soto.add (new Soto("Soto Daging Sapi (Tanpa Nasi)", 10000 ,R.drawable.bakso));
+        soto.add (new Soto("Nasi Soto Ayam", 8000 ,R.drawable.bakso));
+        soto.add (new Soto("Nasi Soto (Tanpa Nasi)", 8000 ,R.drawable.bakso));
 
         SotoAdapter sotoAdapter = new SotoAdapter(getActivity(), soto);
 
