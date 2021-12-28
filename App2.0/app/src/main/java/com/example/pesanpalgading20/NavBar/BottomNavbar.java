@@ -58,9 +58,9 @@ public class BottomNavbar extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment = null;
             switch (item.getItemId()){
-                case R.id.navigation_Cart:
-                    fragment = new CartFragment();
-                    break;
+//                case R.id.navigation_Cart:
+//                    fragment = new CartFragment();
+//                    break;
 
                 case R.id.navigation_Home:
                     fragment = new HomeFragment();
