@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -50,6 +51,7 @@ public class FragmentOrdertoCart extends Fragment {
     TextView TxtvOrdertoCartCode,TxtvOrdertoCartName,TxtvOrdertoCartPrice;
     Toolbar toolbarOrdertoCart;
     LinearLayout ContainerContentOrdertoCart;
+    ImageView ImgOrdertoCartFood;
     String inMieAyam;
     String inBakso;
     String inBaksoBakar;
@@ -213,10 +215,12 @@ public class FragmentOrdertoCart extends Fragment {
                              Bundle savedInstanceState) {
         final View viewRoot = inflater.inflate(R.layout.fragment_orderto_cart, container, false);
 
+        ImgOrdertoCartFood = viewRoot.findViewById(R.id.ImgOrdertoCartFood);
         TxtvOrdertoCartCode = viewRoot.findViewById(R.id.TxtvOrdertoCartCode);
         TxtvOrdertoCartName = viewRoot.findViewById(R.id.TxtvOrdertoCartName);
         TxtvOrdertoCartPrice = viewRoot.findViewById(R.id.TxtvOrdertoCartPrice);
         ContainerContentOrdertoCart = viewRoot.findViewById(R.id.ContainerContentOrdertoCart);
+
 
         //Topping
         CBTopping1 = viewRoot.findViewById(R.id.CheckboxTopping1);
@@ -437,40 +441,19 @@ public class FragmentOrdertoCart extends Fragment {
                         //Selected Choice of Tipe Food
                         StringRbSelectedChoice = TxtvSelectedFoodType.getText().toString();
 
-                        Order1 order1 = sharedPrefmanager.getInstance(getActivity()).GetOrder1();
+                        //Make Order API here
+                        //One Order One Checkout
 
-                        CartStatus CheckCartStats = sharedPrefmanager.getInstance(getActivity()).GetCartStatus();
-
-                        if(CheckCartStats.getCart1Status() == "Available"){
-                            Order1 storeOrder1 = new Order1(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,StringRbSelectedChoice,
-                                    ToppCode1,ToppCode2,ToppCode3,
-                                    ToppCode4,ToppCode5,ToppCode6,
-                                    ToppCode7,ToppCode8,ToppCode9,
-                                    ToppCode10,
-                                    StringSelectedName1,StringSelectedName2,StringSelectedName3,
-                                    StringSelectedName4,StringSelectedName5,StringSelectedName6,
-                                    StringSelectedName7,StringSelectedName8,StringSelectedName9,StringSelectedName10,
-                                    StringSelectedPrice1,StringSelectedPrice2,StringSelectedPrice3,
-                                    StringSelectedPrice4,StringSelectedPrice5,StringSelectedPrice6,
-                                    StringSelectedPrice7,StringSelectedPrice8,StringSelectedPrice9,
-                                    StringSelectedPrice10,
-                                    StringTotalPrice);
-                            sharedPrefmanager.getInstance(getContext()).Order1(storeOrder1);
-
-                            CartStatus CartStats = new CartStatus("Full","Available");
-                            sharedPrefmanager.getInstance(getContext()).CartStatus(CartStats);
-
-                            Fragment fragmentCart = new CartFragment();
-                            FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
-                            transaction1.replace(R.id.ContainerOrdertoCart, fragmentCart);
-//                        fragmentCart.setArguments(PasstoCartBundle);
-                            transaction1.addToBackStack(null);
-                            transaction1.commit();
-                        }
-                        //Commented because of Bug and error
-
-//                        else if (CheckCartStats.getCart2Status() == "Available") {
-//                            Order2 storeOrder2 = new Order2(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,StringRbSelectedChoice,
+//                        Order1 order1 = sharedPrefmanager.getInstance(getActivity()).GetOrder1();
+//
+//                        CartStatus CheckCartStats = sharedPrefmanager.getInstance(getActivity()).GetCartStatus();
+//
+//                        if(CheckCartStats.getCart1Status() == "Available"){
+//                            Order1 storeOrder1 = new Order1(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,StringRbSelectedChoice,
+//                                    ToppCode1,ToppCode2,ToppCode3,
+//                                    ToppCode4,ToppCode5,ToppCode6,
+//                                    ToppCode7,ToppCode8,ToppCode9,
+//                                    ToppCode10,
 //                                    StringSelectedName1,StringSelectedName2,StringSelectedName3,
 //                                    StringSelectedName4,StringSelectedName5,StringSelectedName6,
 //                                    StringSelectedName7,StringSelectedName8,StringSelectedName9,StringSelectedName10,
@@ -479,12 +462,10 @@ public class FragmentOrdertoCart extends Fragment {
 //                                    StringSelectedPrice7,StringSelectedPrice8,StringSelectedPrice9,
 //                                    StringSelectedPrice10,
 //                                    StringTotalPrice);
+//                            sharedPrefmanager.getInstance(getContext()).Order1(storeOrder1);
 //
-//                            sharedPrefmanager.getInstance(getContext()).Order2(storeOrder2);
-//
-//                            CartStatus CartStats = new CartStatus("Full","Full");
+//                            CartStatus CartStats = new CartStatus("Full","Available");
 //                            sharedPrefmanager.getInstance(getContext()).CartStatus(CartStats);
-//
 //
 //                            Fragment fragmentCart = new CartFragment();
 //                            FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
@@ -493,11 +474,37 @@ public class FragmentOrdertoCart extends Fragment {
 //                            transaction1.addToBackStack(null);
 //                            transaction1.commit();
 //                        }
-                        else {
-                            //Toast Error
-                            Toast CartFull = Toast.makeText(getActivity(), "Cart penuh, silahkan kosongkan terlebih dahulu", Toast.LENGTH_SHORT);
-                            CartFull.show();
-                        }
+//                        //Commented because of Bug and error
+//
+////                        else if (CheckCartStats.getCart2Status() == "Available") {
+////                            Order2 storeOrder2 = new Order2(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,StringRbSelectedChoice,
+////                                    StringSelectedName1,StringSelectedName2,StringSelectedName3,
+////                                    StringSelectedName4,StringSelectedName5,StringSelectedName6,
+////                                    StringSelectedName7,StringSelectedName8,StringSelectedName9,StringSelectedName10,
+////                                    StringSelectedPrice1,StringSelectedPrice2,StringSelectedPrice3,
+////                                    StringSelectedPrice4,StringSelectedPrice5,StringSelectedPrice6,
+////                                    StringSelectedPrice7,StringSelectedPrice8,StringSelectedPrice9,
+////                                    StringSelectedPrice10,
+////                                    StringTotalPrice);
+////
+////                            sharedPrefmanager.getInstance(getContext()).Order2(storeOrder2);
+////
+////                            CartStatus CartStats = new CartStatus("Full","Full");
+////                            sharedPrefmanager.getInstance(getContext()).CartStatus(CartStats);
+////
+////
+////                            Fragment fragmentCart = new CartFragment();
+////                            FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
+////                            transaction1.replace(R.id.ContainerOrdertoCart, fragmentCart);
+//////                        fragmentCart.setArguments(PasstoCartBundle);
+////                            transaction1.addToBackStack(null);
+////                            transaction1.commit();
+////                        }
+//                        else {
+//                            //Toast Error
+//                            Toast CartFull = Toast.makeText(getActivity(), "Cart penuh, silahkan kosongkan terlebih dahulu", Toast.LENGTH_SHORT);
+//                            CartFull.show();
+//                        }
 //                        //Pass the variables using Bundle
                         // Cant Pass with bundle
 //                        Bundle PasstoCartBundle = new Bundle();
@@ -1862,6 +1869,22 @@ public class FragmentOrdertoCart extends Fragment {
 
         }
 
+
+    }
+
+    public void SetFoodImage(){
+        if (Code.toUpperCase().matches(inMieAyam.toUpperCase())){
+            ImgOrdertoCartFood.setImageResource(R.drawable.mieayam);
+        }
+        else if (Code.toUpperCase().matches(inBakso.toUpperCase())){
+            ImgOrdertoCartFood.setImageResource(R.drawable.bakso);
+        }
+        else if (Code.toUpperCase().matches(inBaksoBakar.toUpperCase())){
+            ImgOrdertoCartFood.setImageResource(R.drawable.baksobakar);
+        }
+        else if (Code.toUpperCase().matches(inSoto.toUpperCase())){
+            ImgOrdertoCartFood.setImageResource(R.drawable.soto);
+        }
 
     }
 
