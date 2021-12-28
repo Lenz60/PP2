@@ -48,11 +48,11 @@ public class LoginForm extends AppCompatActivity {
     EditText EdKodeMeja,EdNama;
     LinearLayout ContainerContentLogin;
     TextView TvLokasiMeja,TvNama;
-    double lat1,lat2,lat3,lat4, lat5,
-            long1, long2, long3, long4, long5,long6;
-    Boolean poslat1, poslat2, poslat3, poslat4, poslat5,
-            poslong1, poslong2, poslong3, poslong4, poslong5,poslong6;
-    Boolean posk1confirm, posk2confirm, posk10confirm,
+    double lat0,lat1,lat2,lat3,lat4, lat5,
+            long0,long1, long2, long3, long4, long5,long6;
+    Boolean poslat0,poslat1, poslat2, poslat3, poslat4, poslat5,
+            poslong0,poslong1, poslong2, poslong3, poslong4, poslong5,poslong6;
+    Boolean posk13confirm,posk1confirm, posk2confirm, posk10confirm,
             posk3confirm, posk6confirm, posk9confirm, posk11confirm,
             posk4confirm, posk7confirm,posk12confirm;
     String unavailable;
@@ -60,7 +60,7 @@ public class LoginForm extends AppCompatActivity {
     String Nama, NoMejaAuto, KodeMeja, NoMejaFinal;
 
     Spinner SpinnerMeja;
-    String[] NomorMeja = {"1","2","3","4","5/6","7","8/9","10","11","12"};
+    String[] NomorMeja = {"1","2","3","4","5/6","7","8/9","10","11","12","13"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -237,10 +237,11 @@ public class LoginForm extends AppCompatActivity {
         long3 = 110.4109416; //9420
         long4 = 110.4109444;
         long5 = 110.4109471;
+        long6 = 110.4109526;
         //////// long kursi 1 ////////////
         /// long kursi a = total long ///
         // yaitu long 5 /////////////////
-        long6 = 110.4109471;
+
 
 
         BtnRefreshMeja.setVisibility(GONE);
@@ -299,6 +300,7 @@ public class LoginForm extends AppCompatActivity {
                             posk10confirm = false;
                             posk11confirm = false;
                             posk12confirm = false;
+                            posk13confirm = false;
                             ///kursi 1 //
 
                             //// kursi 1 masih belom bisa kedeteksi ///
@@ -399,6 +401,13 @@ public class LoginForm extends AppCompatActivity {
                                 }
                                 poslong5 = true;
                             }
+                            // Kursi 13 //
+                            else if (longitude > long5 && longitude < long6){
+                                if (latitude > lat4 && latitude < lat5){
+                                    posk13confirm = true;
+                                    poslat5 = true;
+                                }
+                            }
                             /// kursi 1//
                             /*
                             else if (longitude > long2 && longitude < long4){
@@ -436,6 +445,7 @@ public class LoginForm extends AppCompatActivity {
                                 posk10confirm = false;
                                 posk11confirm = false;
                                 posk12confirm = false;
+                                posk13confirm = false;
                             }
 
                             if (posk1confirm)
@@ -477,6 +487,9 @@ public class LoginForm extends AppCompatActivity {
                             else if (posk12confirm)
                             {
                                 TvLokasiMeja.setText("12");
+                            }
+                            else if (posk13confirm){
+                                TvLokasiMeja.setText("13");
                             }
                             else
                             {
