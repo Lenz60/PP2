@@ -1,6 +1,7 @@
 package com.example.pesanpalgading20;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 
@@ -18,6 +19,8 @@ import android.widget.Toast;
 import com.example.pesanpalgading20.Model.Menu.Jajanan.HomeJajananFragment;
 import com.example.pesanpalgading20.Model.PilihanMenu.HomeMakananPilihanFragment;
 import com.example.pesanpalgading20.Model.PilihanMenu.HomeMinumanPilihanFragment;
+import com.example.pesanpalgading20.Model.PilihanMenu.HomePromoPilihan;
+import com.example.pesanpalgading20.NavBar.BottomNavbar;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
@@ -94,9 +97,9 @@ public class HomeFragment extends Fragment {
         ContainerContentHome = viewRoot.findViewById(R.id.ContainerContentHome);
         context = getContext();
         ///////// replace with intent /////////
-        myToast1= "gambar1";
-        myToast2= "gambar2";
-        myToast3= "gambar3";
+        myToast1= "promo1";
+        myToast2= "promo2";
+        myToast3= "promo3";
         duration = Toast.LENGTH_LONG;
         toast1 = Toast.makeText(context,myToast1,duration);
         toast2 = Toast.makeText(context,myToast2,duration);
@@ -187,7 +190,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 ContainerContentHome.setVisibility(View.GONE);
                 // Create new fragment and transaction
-                Fragment FragmentHomePromo = new HomePromoFragment();
+                Fragment FragmentHomePromo = new HomePromoPilihan();
                 // consider using Java coding conventions (upper first char class names!!!)
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
@@ -215,13 +218,47 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onClick(View v){
                     if (position == 0){
-                        toast1.show(); //intent this
+                        ContainerContentHome.setVisibility(View.GONE);
+                        // Create new fragment and transaction
+                        Fragment FragmentHomePromo = new HomePromoPilihan();
+                        // consider using Java coding conventions (upper first char class names!!!)
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                        // Replace whatever is in the fragment_container view with this fragment,
+                        // and add the transaction to the back stack
+                        transaction.replace(R.id.ContainerHome, FragmentHomePromo);
+                        transaction.addToBackStack(null);
+                        // Commit the transaction
+                        transaction.commit();
+
                     }
                     else if (position == 1) {
-                        toast2.show(); //intent this
+                        ContainerContentHome.setVisibility(View.GONE);
+                        // Create new fragment and transaction
+                        Fragment FragmentHomePromo = new HomePromoPilihan();
+                        // consider using Java coding conventions (upper first char class names!!!)
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                        // Replace whatever is in the fragment_container view with this fragment,
+                        // and add the transaction to the back stack
+                        transaction.replace(R.id.ContainerHome, FragmentHomePromo);
+                        transaction.addToBackStack(null);
+                        // Commit the transaction
+                        transaction.commit();
                     }
                     else if (position == 2 ){
-                        toast3.show(); //intent this
+                        ContainerContentHome.setVisibility(View.GONE);
+                        // Create new fragment and transaction
+                        Fragment FragmentHomePromo = new HomePromoPilihan();
+                        // consider using Java coding conventions (upper first char class names!!!)
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                        // Replace whatever is in the fragment_container view with this fragment,
+                        // and add the transaction to the back stack
+                        transaction.replace(R.id.ContainerHome, FragmentHomePromo);
+                        transaction.addToBackStack(null);
+                        // Commit the transaction
+                        transaction.commit();
                     }
                 }
             });
