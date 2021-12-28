@@ -12,12 +12,12 @@
         android:id="@+id/navigation_Menu"
         android:icon="@drawable/menuicon"
         android:title="Menu"/>
-
+    <!--
     <item
         android:id="@+id/navigation_Cart"
         android:icon="@drawable/carticon"
         android:title="Keranjang"/>
-
+    -->
     <item
         android:id="@+id/navigation_Status"
         android:icon="@drawable/statusicon"
