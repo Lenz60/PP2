@@ -1,7 +1,7 @@
 telnet localhost 5554
 auth 6xV8ngrTAWgnf4AK
 
-geo fix 110.4109462 -7.7283155
+geo fix 110.4109488 -7.7283099
 
 ====== Latitude ============
 double tipe data selalu membulat kan 3 angka terakhir ,,
