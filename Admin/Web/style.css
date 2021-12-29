@@ -13,9 +13,10 @@ body {
 }
 
 td a {
-    display:flex;
-    width:100%;
-    height: 100%;
+    display:block;
+    width:auto;
+    height: auto;
+    text-align: center;
     text-decoration: none; 
     background-color: none;
 }
@@ -31,3 +32,32 @@ td a {
     height: 150px;
     font-size: 30px;
 }
+
+.sizetables3 {
+    width: 130px;
+    height: 130px;
+    font-size: 25px;
+    background-color: green;
+}
+
+.hiddenform {
+    display: inline;
+  }
+  
+  .link-button {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: serif;
+  }
+  .link-button:focus {
+    outline: none;
+  }
+  .link-button:active {
+    color:red;
+  }
