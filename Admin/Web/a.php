@@ -12,11 +12,67 @@
 </head>
 
 <body>
+    <table border="1" style="float:top;text-align: center;">
+        <?php 
+        include("connect.php");
+        
+        ?>
+        <tr>
+            <?php 
+                
+                $stmt = $conn->prepare ("SELECT COUNT(Status_order) FROM orders WHERE Status_order= 'Disiapkan'");
+                $stmt->execute();
+                $stmt->store_result();
+                if($stmt->num_rows > 0){
+                    $stmt->bind_result($colspan);
+                    $stmt->fetch();
+                    ?> <th  colspan=<?php print $colspan ?>>Pesanan Baru</th>
+                    <?php
+                }
+
+            ?>
+            
+        </tr>
+        <tr>
+            <?php
+                $stmt = $conn->prepare ("SELECT g.No_meja, p.Kategori_produk FROM orders o 
+                                                                JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order 
+                                                                JOIN guest g ON gord.Kode_Meja = g.Kode_meja 
+                                                                JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order 
+                                                                JOIN product p ON po.Kode_Produk = p.Kode_produk 
+                                                                JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order 
+                                                                JOIN topping t ON tord.Kode_Topping = t.Kode_topping 
+                                        WHERE o.Status_order = 'Disiapkan' GROUP BY o.Kode_order");
+                $stmt->execute();
+                $resultIncomingOrder = $stmt->get_result();
+                while ($rowIncoming = $resultIncomingOrder -> fetch_array(MYSQLI_ASSOC)){
+                    ?>
+                    <td class="sizetables3">
+                        <form method="POST" action="a.php" class="hiddenform">
+                            <input type="hidden" name="notable" value=<?php print $rowIncoming["No_meja"] ?>>
+                            <button type="submit" name="notable" value=<?php print $rowIncoming["No_meja"] ?> class="link-button">
+                                <?php print $rowIncoming["No_meja"] ?> 
+                                <br> 
+                                <?php print $rowIncoming["Kategori_produk"] ?>
+                            </button>
+                        </form>
+                        
+                    </td>
+                <?php }
+                ?>
+            
+                
+            
+            
+        
+        </tr>
+
+    </table>
     <table border="1" style="float:left; text-align:center;">
         <!--  //| Lokasi Meja  -->
         <!-- //* If Nomor Meja is clicked then show the Select Order on the next Table -->
         <tr>
-            <th colspan="4" scope="colgroup">Lokasi Meja</th>
+            <th colspan="5" scope="colgroup">Lokasi Meja</th>
         </tr>
         <tr>
             <?php 
@@ -106,26 +162,85 @@
             
             ?>
             <tr>
-                <td colspan="4" style="height: 50px; font-size:30px;" bgcolor="<?php echo $table1Status ?>" ><a href="#">1</a></td>
+                <td></td>
+                <td colspan="4" style="height: 50px; font-size:30px;" bgcolor="<?php echo $table1Status ?>" >
+                    <form method="POST" action="a.php" class="hiddenform">
+                        <input type="hidden" name="notable" value="1">
+                        <button type="submit" name="notable" value="1" class="link-button">1</button>
+                    </form>
+                </td>
             </tr>
 
             <tr>
-                <td class="sizetables1" bgcolor="<?php echo $table10Status ?>"><a href="#">10</a></td>
-                <td class="sizetables2" rowspan="2" bgcolor="<?php echo $table9Status ?>"><a href="#">9</a></td>
-                <td class="sizetables2" rowspan="2" bgcolor="<?php echo $table6Status ?>"><a href="#">6</a></td>
-                <td class="sizetables1" bgcolor="<?php echo $table2Status ?>"><a href="#">2</a></td>
-            </tr>
-
-            <tr class="sizetables1">
-                <td bgcolor="<?php echo $table11Status ?>"><a href="#">11</a></td>
-                <td bgcolor="<?php echo $table3Status ?>"><a href="#">3</a></td>
-            </tr>
-
-            <tr class="sizetables1">
-                <td bgcolor="<?php echo $table12Status ?>"><a href="#">12</a></td>
                 <td></td>
-                <td bgcolor="<?php echo $table7Status ?>"><a href="#">7</a></td>
-                <td bgcolor="<?php echo $table4Status ?>"><a href="#">4</a></td>
+                <td class="sizetables1" bgcolor="<?php echo $table10Status ?>">
+                    <form method="POST" action="a.php" class="hiddenform">
+                        <input type="hidden" name="notable" value="10">
+                        <button type="submit" name="notable" value="10" class="link-button">10</button>
+                    </form>
+                </td>
+                <td class="sizetables2" rowspan="2" bgcolor="<?php echo $table9Status ?>">
+                    <form method="POST" action="a.php" class="hiddenform">
+                        <input type="hidden" name="notable" value="9">
+                        <button type="submit" name="notable" value="9" class="link-button">9</button>
+                    </form>
+                </td>
+                <td class="sizetables2" rowspan="2" bgcolor="<?php echo $table6Status ?>">
+                    <form method="POST" action="a.php" class="hiddenform">
+                        <input type="hidden" name="notable" value="6">
+                        <button type="submit" name="notable" value="6" class="link-button">6</button>
+                    </form>
+                </td>
+                <td class="sizetables1" bgcolor="<?php echo $table2Status ?>">
+                    <form method="POST" action="a.php" class="hiddenform">
+                        <input type="hidden" name="notable" value="2">
+                        <button type="submit" name="notable" value="2" class="link-button">2</button>
+                    </form>
+                </td>
+            
+            <tr class="sizetables1">
+                <td bgcolor="<?php echo $table3Status ?>" rowspan="2" class="sizetables2">
+                    <form method="POST" action="a.php" class="hiddenform">
+                        <input type="hidden" name="notable" value="13">
+                        <button type="submit" name="notable" value="13" class="link-button">13</button>
+                    </form>
+                </td>
+                <td bgcolor="<?php echo $table11Status ?>">
+                    <form method="POST" action="a.php" class="hiddenform">
+                        <input type="hidden" name="notable" value="11">
+                        <button type="submit" name="notable" value="11" class="link-button">11</button>
+                    </form>
+                </td>
+                <td bgcolor="<?php echo $table3Status ?>">
+                    <form method="POST" action="a.php" class="hiddenform">
+                        <input type="hidden" name="notable" value="3">
+                        <button type="submit" name="notable" value="3" class="link-button">3</button>
+                    </form>
+                </td>
+                
+                
+            </tr>
+
+            <tr class="sizetables1">
+                <td bgcolor="<?php echo $table12Status ?>">
+                    <form method="POST" action="a.php" class="hiddenform">
+                        <input type="hidden" name="notable" value="12">
+                        <button type="submit" name="notable" value="12" class="link-button">12</button>
+                    </form>
+                </td>
+                <td></td>
+                <td bgcolor="<?php echo $table7Status ?>">
+                    <form method="POST" action="a.php" class="hiddenform">
+                        <input type="hidden" name="notable" value="7">
+                        <button type="submit" name="notable" value="7" class="link-button">7</button>
+                    </form>
+                </td>
+                <td bgcolor="<?php echo $table4Status ?>">
+                    <form method="POST" action="a.php" class="hiddenform">
+                        <input type="hidden" name="notable" value="4">
+                        <button type="submit" name="notable" value="4" class="link-button">4</button>
+                    </form>
+                </td>
             </tr>
         </tr>
     </table>
@@ -148,6 +263,10 @@
             ?>
             
             <tr>
+                <?php
+                    include("connect.php")
+
+                ?>
                 <th colspan="7">Status Order</th>
                 <tr>
                     <th>Pesanan</th>
@@ -159,38 +278,78 @@
                     <th>Konfirmasi Pesanan</th>
                 </tr>
 
-                <tr>
-                    <td rowspan="<?php echo $a ?>">Meja 1</td> <!-- //? Fill with Order Data// -->
-                </tr>
+               
 
                 <tr>
-                     <!-- //? Fill with OrderCode Data// -->
-                    <!-- //! Use Query 1 and use Passed No Table from Href POST-->
-                    <td rowspan="<?php echo $a ?>">Nama Makanan</td>
-                    <!-- //? Fill with OrderCode Data// -->
-                    <!-- //! Use Query 1 and use Passed No Table from Href POST-->
-                    <td rowspan="<?php echo $a ?>">Tipe Makanan</td> 
-                    <!-- //? Fill with Topping Data// -->
-                    <!-- //! Use Query 2 and use the stored Kode order to use the WHERE Clause// -->
-                    <td>Topping1</td> 
-                    <td rowspan="<?php echo $a ?>">Total Bayar</td>
-                    <td rowspan="<?php echo $a ?>">Status</td>
                     <?php 
-                        if ($status == true) {
-                            //!Set Status to Selesai if this Clicked
-                            //!Static Query Here
-                            //!USE HREF POST
-                            ?><td ><a href="google.com">Selesai</a></td>
+                        
+
+                        if ($_POST['notable'] == null){
+                            ?>
+                            <tr>
+                                <td rowspan="<?php echo $a ?>">Meja 1</td> <!-- //? Fill with Order Data// -->
+                            </tr>
+                            <!-- //? Fill with OrderCode Data// -->
+                                <!-- //! Use Query 1 and use Passed No Table from Href POST-->
+                                <td rowspan="<?php echo $a ?>">Nama Makanan</td>
+                                <!-- //? Fill with OrderCode Data// -->
+                                <!-- //! Use Query 1 and use Passed No Table from Href POST-->
+                                <td rowspan="<?php echo $a ?>">Tipe Makanan</td> 
+                                <!-- //? Fill with Topping Data// -->
+                                <!-- //! Use Query 2 and use the stored Kode order to use the WHERE Clause// -->
+                                <td>Topping1</td> 
+                                <td rowspan="<?php echo $a ?>">Total Bayar</td>
+                                <td rowspan="<?php echo $a ?>">Status</td>
+                                <?php 
+                                    if ($status == true) {
+                                        //!Set Status to Selesai if this Clicked
+                                        //!Static Query Here
+                                        //!USE HREF POST
+                                        ?><td ><a href="google.com">Selesai</a></td>
+                                        <?php
+                                    }
+                                    else {
+                                        //!Set Status to Dibuat if this Clicked
+                                        //!Static Query Here
+                                        //!USE HREF POST
+                                        ?><td><a href="google.com">Dibuat</a></td>
+                                        <?php
+                                    }
+                                ?>
                             <?php
                         }
                         else {
-                            //!Set Status to Dibuat if this Clicked
-                            //!Static Query Here
-                            //!USE HREF POST
-                            ?><td><a href="google.com">Dibuat</a></td>
-                            <?php
+                            $stmt = $conn->prepare("SELECT g.No_meja, o.Kode_order,p.Nama_produk,p.Tipe_produk, t.Nama_topping, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(t.Harga_topping) AS 'Total Bayar', o.Status_order 
+                            FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order JOIN guest g ON gord.Kode_Meja = g.Kode_meja
+                                                                             JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order
+                                                                             JOIN product p ON po.Kode_Produk = p.Kode_produk
+                                                                             JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
+                                                                             JOIN topping t ON tord.Kode_Topping = t.Kode_topping
+                            WHERE g.No_meja = '".$_POST['notable']."' GROUP BY o.Kode_order;");
+                            $stmt->execute();
+                            
+                            $resultStatsOrder = $stmt->get_result();
+                            while ($rowStats = $resultStatsOrder -> fetch_array(MYSQLI_ASSOC)){
+
+                                //! Topping Fetch Array Here
+                                ?>
+                                    <tr>
+                                        <td>Meja <?php print $rowStats["No_meja"] ?></td> <!-- //? Fill with Order Data// -->
+                                        <td><?php print $rowStats["Nama_produk"] ?></td>
+                                        <td><?php print $rowStats["Tipe_produk"] ?></td>
+                                        <td>Topping</td> 
+                                        <td>Rp <?php print $rowStats["Total Bayar"] ?></td>
+                                        
+                                        <?php $status = false; ?>
+                                    </tr>
+                                </td>
+                            <?php }
+
                         }
-                    ?>
+                        
+                        print "Notable = ".$_POST['notable']."\n";?>
+                
+                     
                 </tr>
             </tr>
     </table>
