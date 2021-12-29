@@ -5,7 +5,7 @@ FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_orde
                                                  JOIN product p ON po.Kode_Produk = p.Kode_produk
                                                  JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
                                                  JOIN topping t ON tord.Kode_Topping = t.Kode_topping
-WHERE g.No_meja = "2" ORDER BY o.Kode_order;
+WHERE g.No_meja = "2" GROUP BY o.Kode_order;
 
 //|Query 2 Contain of Selected Nama Topping based on Kode Order to fill Topping row in PHP
 SELECT t.Nama_topping FROM orders o JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order 
