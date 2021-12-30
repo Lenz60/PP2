@@ -61,3 +61,15 @@ td a {
   .link-button:active {
     color:red;
   }
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+
+}
