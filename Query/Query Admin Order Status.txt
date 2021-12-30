@@ -27,6 +27,9 @@ SELECT t.Nama_topping FROM orders o JOIN product_order po ON o.Kode_Produk_Order
                                     JOIN topping t ON tord.Kode_Topping = t.Kode_topping
 WHERE o.Status_order = "Disiapkan"
 
+//| Query 4 Count Topping Name 
+
+
 
                                 
 //| Query 4, Backup Query, Total_bayar has the same value that SUM the calculation                                
