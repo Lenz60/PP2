@@ -395,7 +395,7 @@
                 <!-- Table Status Order -->
                 <div class="column">
                     <table border="1">
-                        <th colspan="3">Status Order</th>
+                        <th colspan="4">Status Order</th>
                         <tr>
                             <th>Total Bayar</th>
                             <th>Status</th>
@@ -453,18 +453,10 @@
                                         <form>
                                             <form method="POST" action="a.php" class="hiddenform">
                                                 <input type="hidden" name="Status" value="Selesai">
-                                                <button type="submit" name="Status" value="Selesai" class="statusorderbutton">Selesai</button>
+                                                <button type="submit" onclick= "Status()"name="Status" value="Selesai" class="statusorderbutton">Selesai</button>
                                             </form>
                                         </form>
-                                        <?php
-                                        
-                                        if(isset($_POST['Status'])){
-                                            $stmt = $conn->prepare("UPDATE orders
-                                                                SET Status_order = 'Selesai'
-                                                                WHERE Kode_order = '".$rowStats['Kode_order']."'");
-                                            $stmt->execute();
-                                        }
-                                        ?>  
+                                    
                                     </td>
                                     <?php for($n = 0; $n < $rowspanStats+1; $n++){
                                                 ?>
@@ -475,7 +467,9 @@
                                 ?>
                                 </tr>
                                 <?php
+                                
                                 }
+                                
                             }
                             
                             ?>
