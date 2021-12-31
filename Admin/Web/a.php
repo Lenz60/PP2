@@ -44,11 +44,12 @@
                 <form  action="a2.php" class="hiddenform">
                     <input type="hidden" name="StopRefresh" value="Resume">
                     <button type="submit" name="StopRefresh" value="Resume" class="<?php echo $classS ?>">Stop</button>
-                    <meta http-equiv="refresh" content="10">
+                    
                 </form>
                 <?php
                 }
              ?>
+             
     </fieldset>
     
     
@@ -456,6 +457,25 @@
                                                 <button type="submit" onclick= "Status()"name="Status" value="Selesai" class="statusorderbutton">Selesai</button>
                                             </form>
                                         </form>
+                                        <!-- <script language = "javascript">
+
+                                            <?php 
+                                            //  $stmt = $conn->prepare("UPDATE orders
+                                            //                         SET Status_order = 'Selesai'
+                                            //                         WHERE Kode_order = '".$rowStats['Kode_order']."'");
+                                            // $stmt->execute();
+
+                                            ?>
+
+                                            setTimeout(function(){
+                                                        <?php 
+                                                            // $rowStats['Kode_order'] = 0 ?>
+                                            window.location.reload(1);
+                                            }, 5000);
+
+
+                                        </script> -->
+                                        
                                     
                                     </td>
                                     <?php for($n = 0; $n < $rowspanStats+1; $n++){
@@ -477,6 +497,7 @@
                 </div> 
         </div>     
     </div>
+
     
 
     
