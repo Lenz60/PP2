@@ -11,6 +11,12 @@ body {
     display: table-cell;
     vertical-align: middle;
 }
+.hidden {
+  visibility: hidden;
+}
+.show {
+  visibility: visible;
+}
 
 td a {
     display:block;
@@ -54,6 +60,24 @@ td a {
     cursor: pointer;
     font-size: 1em;
     font-family: serif;
+  }
+  .statusorderbutton {
+    display: block;
+    height: 100%;
+    width: 100%;
+    color: blue;
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: serif;
+  }
+  .statusorderbutton .link-button:focus{
+    outline: none;
+  }
+  .statusorderbutton .link-button:active{
+    color:red;
   }
   .link-button:focus {
     outline: none;
