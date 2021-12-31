@@ -5,7 +5,7 @@ FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_orde
                                                  JOIN product p ON po.Kode_Produk = p.Kode_produk
                                                  JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
                                                  JOIN topping t ON tord.Kode_Topping = t.Kode_topping
-WHERE g.No_meja = "2" GROUP BY o.Kode_order;
+WHERE g.No_meja = "2" AND o.Status_order = 'Disiapkan' GROUP BY o.Kode_order ;
 
 //|Query 2 Contain of Selected Nama Topping based on Kode Order to fill Topping row in PHP
 SELECT t.Nama_topping FROM orders o JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order 
@@ -20,16 +20,28 @@ FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_orde
                                                  JOIN product p ON po.Kode_Produk = p.Kode_produk
                                                  JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
                                                  JOIN topping t ON tord.Kode_Topping = t.Kode_topping
-WHERE o.Status_order = "Disiapkan" GROUP BY o.Kode_order;
+WHERE o.Status_order = "Disiapkan" GROUP BY o.Kode_order ORDER BY gord.Kode_Guest_Order;
 //! For display the Name Topping
 SELECT t.Nama_topping FROM orders o JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order 
 									JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
                                     JOIN topping t ON tord.Kode_Topping = t.Kode_topping
 WHERE o.Status_order = "Disiapkan"
 
+
+
 //| Query 4 Count Topping Name 
 
 
+
+
+//| Query 5 For Table Location Color
+SELECT g.No_meja 
+FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order JOIN guest g ON gord.Kode_Meja = g.Kode_meja
+                                                 JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order
+                                                 JOIN product p ON po.Kode_Produk = p.Kode_produk
+                                                 JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
+                                                 JOIN topping t ON tord.Kode_Topping = t.Kode_topping
+WHERE o.Status_order = "Disiapkan" AND g.No_meja = "2" GROUP BY o.Kode_order;
 
                                 
 //| Query 4, Backup Query, Total_bayar has the same value that SUM the calculation                                
