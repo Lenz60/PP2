@@ -43,6 +43,11 @@ FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_orde
                                                  JOIN topping t ON tord.Kode_Topping = t.Kode_topping
 WHERE o.Status_order = "Disiapkan" AND g.No_meja = "2" GROUP BY o.Kode_order;
 
+//| Query 6 For Changing Status Order to Selesai 
+UPDATE orders 
+SET Status_order = 'Selesai'
+WHERE Kode_order = ' '
+
                                 
 //| Query 4, Backup Query, Total_bayar has the same value that SUM the calculation                                
 SELECT g.No_meja, o.Kode_order,p.Nama_produk,p.Tipe_produk, t.Nama_topping, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(SUM(t.Harga_topping)) OVER () Total_bayar, o.Status_order 
