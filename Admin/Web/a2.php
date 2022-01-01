@@ -81,11 +81,6 @@
                         </td>
                     <?php }
                     ?>
-                
-                    
-                
-                
-            
             </tr>
         </table>
     </div>
@@ -247,11 +242,6 @@
                 </tr>
             </tr>
         </table>
-
-
-        <div class="column">
-            
-        </div>
         
     </div>
     <!-- End of Table Meja -->
@@ -423,11 +413,10 @@
                                     
                                     <td <?php print $rowspanStats+2?>><?php print $rowStats["Status_order"] ?></td>
                                     <td <?php print $rowspanStats+2?>>
-                                        <form>
-                                            <form method="POST" action="a.php" class="hiddenform">
+                                        <form method="POST" action="dibuat2.php" class="hiddenform">
                                                 <input type="hidden" name="Status" value="Selesai">
-                                                <button type="submit" onclick="Status()" name="Status" value="Selesai" class="statusorderbutton">Selesai</button>
-                                            </form>
+                                                <input type="hidden" name="KodeOrder" value="<?php print $rowStats['Kode_order'] ?>">
+                                                <button type="submit" onclick= "Status()"name="Button" value="Selesai" class="statusorderbutton">Selesai</button>
                                         </form>
                                     
                                     </td>
@@ -447,9 +436,6 @@
                 </div> 
         </div>     
     </div>
-    
-
-
 </body>
 
 

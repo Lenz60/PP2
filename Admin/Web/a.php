@@ -22,6 +22,7 @@
 
             $classR = 'show';
             $classS = 'show';
+            
 
 
             if (isset($_POST['StopRefresh'])){   
@@ -451,62 +452,32 @@
                                     
                                     <td <?php print $rowspanStats+2?>><?php print $rowStats["Status_order"] ?></td>
                                     <td <?php print $rowspanStats+2?>>
-                                        <form>
-                                            <form method="POST" action="a.php" class="hiddenform">
-                                                <input type="hidden" name="Status" value="Selesai">
-                                                <button type="submit" onclick= "Status()"name="Status" value="Selesai" class="statusorderbutton">Selesai</button>
-                                            </form>
+                                        <form method="POST" action="dibuat.php" class="hiddenform">
+                                            <input type="hidden" name="Status" value="Selesai">
+                                            <input type="hidden" name="KodeOrder" value="<?php print $rowStats['Kode_order'] ?>">
+                                            <button type="submit" onclick= "Status()"name="Button" value="Selesai" class="statusorderbutton">Selesai</button>
                                         </form>
-                                        <!-- <script language = "javascript">
-
-                                            <?php 
-                                            //  $stmt = $conn->prepare("UPDATE orders
-                                            //                         SET Status_order = 'Selesai'
-                                            //                         WHERE Kode_order = '".$rowStats['Kode_order']."'");
-                                            // $stmt->execute();
-
-                                            ?>
-
-                                            setTimeout(function(){
-                                                        <?php 
-                                                            // $rowStats['Kode_order'] = 0 ?>
-                                            window.location.reload(1);
-                                            }, 5000);
-
-
-                                        </script> -->
-                                        
-                                    
                                     </td>
                                     <?php for($n = 0; $n < $rowspanStats+1; $n++){
                                                 ?>
                                                 <tr><td style="border: none;">&NonBreakingSpace;</td></tr>
                                                 <?php
                                         }?>
-                                <?php 
-                                ?>
                                 </tr>
-                                <?php
-                                
-                                }
-                                
+                                <?php    
+                                }   
                             }
-                            
                             ?>
                     </table>
                 </div> 
         </div>     
-    </div>
-
-    
-
-    
-
-
-    
-    
+    </div>   
 </body>
-
+<script language = "javascript">
+    setTimeout(function(){
+        window.location.reload(1);
+    }, 5000);
+</script>
 
 
 
