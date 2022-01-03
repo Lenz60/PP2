@@ -23,37 +23,27 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
             </legend>
 
             <?php 
-
             $classR = 'show';
             $classS = 'show';
-            
-
-
-            if (isset($_POST['StopRefresh'])){   
-                ?>
-                <form method="POST" action="a.php" class="hiddenform">
-                    <input type="hidden" name="ResumeRefresh" value="Stop">
-                    <button type="submit" name="ResumeRefresh" value="Stop" class="<?php echo $classR ?>">Resume</button>
-                </form>
-                <?php
-                if (isset($_POST['ResumeRefresh'])){
-                    $classR = 'hidden';
-                }
-                else {
-                    $classS = 'show';
-                }
-            }
-            else{
-                $classR = 'hidden';
                 ?>
                 <form  action="a2.php" class="hiddenform">
                     <input type="hidden" name="StopRefresh" value="Resume">
                     <button type="submit" name="StopRefresh" value="Resume" class="<?php echo $classS ?>">Stop</button>
-                    
+                </form>
+                <form action="a.php" method="POST">
+                    <input type="hidden" name="Logout" value="Logout">
+                    <button type="submit" name="LogoutBtn">Logout</button>
                 </form>
                 <?php
+                if(isset($_POST['Logout'])){
+                    session_unset();
+                    session_destroy();
+                    header("Location: login.php");
                 }
-             ?>
+                else{
+                    
+                }
+                ?>
              
         </fieldset>
     

@@ -15,25 +15,26 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
     <body>
         <fieldset>
             <legend>Stop Auto Refresh</legend>
-            <?php 
-            if (isset($_POST['StopRefresh'])){
-                
-                ?>
-                <form method="POST" action="a.php" class="hiddenform">
+                <form action="a.php" class="hiddenform">
                     <input type="hidden" name="ResumeRefresh" value="Stop">
                     <button type="submit" name="ResumeRefresh" value="Stop" >Resume</button>
                 </form>
-                <?php
-            }
-            else{
-                ?>
-                <form method="POST" action="a.php" class="hiddenform">
-                    <input type="hidden" name="ResumeRefresh" value="Stop">
-                    <button type="submit" name="ResumeRefresh" value="Stop" >Resume</button>
+
+                <form action="a.php" method="POST">
+                    <input type="hidden" name="Logout" value="Logout">
+                    <button type="submit" name="LogoutBtn">Logout</button>
                 </form>
                 <?php
-            }
-            ?>
+                if(isset($_POST['Logout'])){
+                    session_unset();
+                    session_destroy();
+                    header("Location: login.php");
+                }
+                else{
+                    
+                }
+                ?>
+
         </fieldset>
     <!-- Incoming Table -->
         <div >
