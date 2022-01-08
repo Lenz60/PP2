@@ -29,15 +29,33 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.pesanpalgading20.Model.Volley.URLs;
+import com.example.pesanpalgading20.Model.Volley.VolleySingleton;
 import com.example.pesanpalgading20.NavBar.BottomNavbar;
+import com.example.pesanpalgading20.SSLSecurity.HttpsTrustManager;
+import com.example.pesanpalgading20.SSLSecurity.MySSLSocketFactory;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.params.HttpParams;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.security.KeyStore;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import static android.view.View.GONE;
+import static java.net.Proxy.Type.HTTP;
 
 public class LoginForm extends AppCompatActivity {
 
@@ -58,6 +76,7 @@ public class LoginForm extends AppCompatActivity {
     String unavailable;
     String ProgressBarVisible;
     String Nama, NoMejaAuto, KodeMeja, NoMejaFinal;
+    String KodeMejaGuest, NoMejaGuest, NameGuest;
 
     Spinner SpinnerMeja;
     String[] NomorMeja = {"1","2","3","4","5/6","7","8/9","10","11","12","13"};
@@ -82,6 +101,8 @@ public class LoginForm extends AppCompatActivity {
 
 
         locationManager=(LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+
 
         SpinnerMeja.setVisibility(GONE);
         SpinnerMeja.setEnabled(false);
@@ -121,6 +142,26 @@ public class LoginForm extends AppCompatActivity {
 
             }
         });
+    BtnMasuk.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(EdNama.getText().toString().isEmpty()){
+                EdNama.setError("Mohon masukkan nama terlebih dahulu");
+                EdNama.requestFocus();
+            }
+            else {
+                if(TvLokasiMeja.getText().toString() == "Deteksi Gagal"){
+                    Toast errorToast = Toast.makeText(LoginForm.this, "Deteksi meja gagal, silahkan refresh ulang atau edit secara manual", Toast.LENGTH_SHORT);
+                    errorToast.show();
+                }
+                else {
+                    RegisterGuest();
+                }
+
+            }
+        }
+    });
+        
 
     }
 
@@ -303,7 +344,7 @@ public class LoginForm extends AppCompatActivity {
                             posk13confirm = false;
                             ///kursi 1 //
 
-                            //// kursi 1 masih belom bisa kedeteksi ///
+
                             ///// kursi 1 2 3 4  ////
                             if (longitude > long1 && longitude < long2){
                                 if (latitude > lat1 && latitude < lat2){
@@ -330,7 +371,7 @@ public class LoginForm extends AppCompatActivity {
                                     poslat4 = false;
                                     poslat5 = false;
                                 }
-                                //poslong2 = true;
+                                poslong2 = true;
                             }
                             ///// kursi 1 6 7 ////
                             else if (longitude > long2 && longitude < long3)  {
@@ -525,6 +566,66 @@ public class LoginForm extends AppCompatActivity {
                 }, Looper.getMainLooper());
     }
 
+    public void RegisterGuest(){
+
+        if (TvLokasiMeja.getText().toString().equals(" ")){
+            NoMejaFinal = SpinnerMeja.getSelectedItem().toString();
+        }
+        else {
+            NoMejaFinal = NoMejaAuto;
+        }
+
+        KodeMejaGuest = EdKodeMeja.getText().toString();
+        NoMejaGuest = NoMejaFinal;
+        NameGuest = EdNama.getText().toString();
+
+        HttpsTrustManager.allowAllSSL();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.GUEST_LOGIN,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            //convert response to json
+                            JSONObject obj = new JSONObject(response);
+
+                            //if no error
+                            if (!obj.getBoolean("error")) {
+                                Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(getApplicationContext(), BottomNavbar.class);
+                                intent.putExtra("nama", NameGuest);
+                                intent.putExtra("noMejaFinal", NoMejaGuest);
+                                intent.putExtra("kodeMeja", KodeMejaGuest);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            protected Map<String, String> getParams() throws AuthFailureError{
+                Map<String, String> params = new HashMap<>();
+                params.put("tablecode",KodeMejaGuest);
+                params.put("notable",NoMejaGuest);
+                params.put("guestname",NameGuest);
+                return params;
+
+            }
+        };
+        VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+
+    }
+
     public static String getRandomString(int i){
         final String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
         StringBuilder result = new StringBuilder();
@@ -554,8 +655,7 @@ public class LoginForm extends AppCompatActivity {
 
 
 
-
-    public void masuk(View view) {
+    public void masuk() {
 
         //Check is Nama is empty
         if(EdNama.getText().toString().isEmpty()){
@@ -568,10 +668,9 @@ public class LoginForm extends AppCompatActivity {
                 errorToast.show();
             }
             else {
-                Intent intent = new Intent(this, BottomNavbar.class);
-                 Nama = EdNama.getText().toString();
-                 NoMejaAuto = TvLokasiMeja.getText().toString();
-                 KodeMeja = EdKodeMeja.getText().toString();
+                Nama = EdNama.getText().toString();
+                NoMejaAuto = TvLokasiMeja.getText().toString();
+                KodeMeja = EdKodeMeja.getText().toString();
 
                 if (NoMejaAuto.equals(" ")){
                     NoMejaFinal = SpinnerMeja.getSelectedItem().toString();
@@ -580,15 +679,53 @@ public class LoginForm extends AppCompatActivity {
                     NoMejaFinal = NoMejaAuto;
                 }
 
-//                User user = new User(
-//                        (Nama),
-//                        (KodeMeja),
-//                        (NoMejaFinal)
-//                );
-                intent.putExtra("nama", Nama);
-                intent.putExtra("noMejaFinal", NoMejaFinal);
-                intent.putExtra("kodeMeja", KodeMeja);
-                startActivity(intent);
+
+                KodeMejaGuest = EdKodeMeja.getText().toString();
+                NoMejaGuest = NoMejaFinal;
+                NameGuest = EdNama.getText().toString();
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.GUEST_LOGIN,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    //convert response to json
+                                    JSONObject obj = new JSONObject(response);
+
+                                    //if no error
+                                    if (!obj.getBoolean("error")) {
+                                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+
+                                        Intent intent = new Intent(getApplicationContext(), BottomNavbar.class);
+                                        intent.putExtra("nama", Nama);
+                                        intent.putExtra("noMejaFinal", NoMejaFinal);
+                                        intent.putExtra("kodeMeja", KodeMeja);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }) {
+                    protected Map<String, String> getParams() throws AuthFailureError{
+                        Map<String, String> params = new HashMap<>();
+                        params.put("tablecode",KodeMejaGuest);
+                        params.put("notable",NoMejaGuest);
+                        params.put("guestname",NameGuest);
+                        return params;
+
+                    }
+                };
+
             }
         }
     }

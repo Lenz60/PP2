@@ -187,7 +187,6 @@
                 android:layout_height="60dp"
                 android:background="@drawable/selectorloginbutton"
                 android:textColor="@drawable/selectortextcolorbutton"
-                android:onClick="masuk"
                 android:text="@string/masuk" />
 
             <Button

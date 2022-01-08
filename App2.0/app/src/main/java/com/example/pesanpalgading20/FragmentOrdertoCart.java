@@ -39,6 +39,8 @@ import com.example.pesanpalgading20.Model.OrderSetterGetter.Order1;
 import com.example.pesanpalgading20.Model.OrderSetterGetter.Order2;
 import com.example.pesanpalgading20.Model.SharedPrefManager.SharedPrefmanager;
 
+import java.util.Random;
+
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
@@ -63,7 +65,7 @@ public class FragmentOrdertoCart extends Fragment {
     //Jajanan
     String inJajanan;
     //
-    String Code,Name,Price;
+    String Code,Name,Price,OrderCode;
     //Topping
     CheckBox CBTopping1,CBTopping2,CBTopping3,
             CBTopping4,CBTopping5,CBTopping6,
@@ -130,11 +132,7 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvRp7,TxtvRp8,TxtvRp9,
             TxtvRp10;
 
-
-    //SetterGetter
-    Order1 morder1;
-    Order2 morder2;
-
+    TextView TxtvOrdertoCartOrderCode;
     //SharedPrefManager
     SharedPrefmanager sharedPrefmanager;
 
@@ -219,6 +217,7 @@ public class FragmentOrdertoCart extends Fragment {
         TxtvOrdertoCartCode = viewRoot.findViewById(R.id.TxtvOrdertoCartCode);
         TxtvOrdertoCartName = viewRoot.findViewById(R.id.TxtvOrdertoCartName);
         TxtvOrdertoCartPrice = viewRoot.findViewById(R.id.TxtvOrdertoCartPrice);
+        TxtvOrdertoCartOrderCode = viewRoot.findViewById(R.id.TxtvOrdertoCartOrderCode);
         ContainerContentOrdertoCart = viewRoot.findViewById(R.id.ContainerContentOrdertoCart);
 
 
@@ -314,10 +313,12 @@ public class FragmentOrdertoCart extends Fragment {
         Code = bundle.getString("FoodCode");
         Name = bundle.getString("FoodName");
         Price = bundle.getString("FoodPrice");
+        OrderCode = getRandomString(6);
 
         TxtvOrdertoCartCode.setText(Code);
         TxtvOrdertoCartName.setText(Name);
         TxtvOrdertoCartPrice.setText(Price);
+        TxtvOrdertoCartOrderCode.setText(OrderCode);
 
 
 
@@ -389,6 +390,7 @@ public class FragmentOrdertoCart extends Fragment {
         TxtvSelectedFoodCount.setText("1");
         CalculateFoodCount();
         AddtoCart();
+
         // Inflate the layout for this fragment
         return viewRoot;
     }
@@ -441,8 +443,11 @@ public class FragmentOrdertoCart extends Fragment {
                         //Selected Choice of Tipe Food
                         StringRbSelectedChoice = TxtvSelectedFoodType.getText().toString();
 
+
+
                         //Make Order API here
                         //One Order One Checkout
+                        //
 
 //                        Order1 order1 = sharedPrefmanager.getInstance(getActivity()).GetOrder1();
 //
@@ -1870,6 +1875,16 @@ public class FragmentOrdertoCart extends Fragment {
         }
 
 
+    }
+    public static String getRandomString(int i){
+        final String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
+        StringBuilder result = new StringBuilder();
+        while (i > 0) {
+            Random rand = new Random();
+            result.append(characters.charAt(rand.nextInt(characters.length())));
+            i--;
+        }
+        return result.toString();
     }
 
     public void SetFoodImage(){
