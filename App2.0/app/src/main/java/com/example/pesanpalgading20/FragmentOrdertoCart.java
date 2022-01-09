@@ -18,14 +18,21 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.pesanpalgading20.Model.Menu.Jajanan.HomeJajananFragment;
 import com.example.pesanpalgading20.Model.Menu.Makanan.HomeMakananBaksoBakarFragment;
 import com.example.pesanpalgading20.Model.Menu.Makanan.HomeMakananBaksoFragment;
@@ -38,7 +45,14 @@ import com.example.pesanpalgading20.Model.OrderSetterGetter.CartStatus;
 import com.example.pesanpalgading20.Model.OrderSetterGetter.Order1;
 import com.example.pesanpalgading20.Model.OrderSetterGetter.Order2;
 import com.example.pesanpalgading20.Model.SharedPrefManager.SharedPrefmanager;
+import com.example.pesanpalgading20.Model.Volley.URLs;
+import com.example.pesanpalgading20.Model.Volley.VolleySingleton;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import static android.view.View.GONE;
@@ -64,6 +78,8 @@ public class FragmentOrdertoCart extends Fragment {
     String inEsJus;
     //Jajanan
     String inJajanan;
+    //Promo
+    String inPromo;
     //
     String Code,Name,Price,OrderCode;
     //Topping
@@ -162,9 +178,17 @@ public class FragmentOrdertoCart extends Fragment {
     TextView TxtvTotalHarga;
     //String
     String Cart1Status;
+    String NameGuest, NotableGuest, TableCodeGuest;
+    String ValueEdFoodCount;
 
     //Tipe Food
     TextView TxtvSelectedFoodType;
+
+    //Content Frame Layout
+    FrameLayout ContainerOrdertoCart;
+
+    //scroll view
+    ScrollView ScrollViewOrdertoCart;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -219,6 +243,8 @@ public class FragmentOrdertoCart extends Fragment {
         TxtvOrdertoCartPrice = viewRoot.findViewById(R.id.TxtvOrdertoCartPrice);
         TxtvOrdertoCartOrderCode = viewRoot.findViewById(R.id.TxtvOrdertoCartOrderCode);
         ContainerContentOrdertoCart = viewRoot.findViewById(R.id.ContainerContentOrdertoCart);
+        ContainerOrdertoCart = viewRoot.findViewById(R.id.ContainerOrdertoCart);
+        ScrollViewOrdertoCart = viewRoot.findViewById(R.id.ScrollViewOrdertoCart);
 
 
         //Topping
@@ -314,6 +340,9 @@ public class FragmentOrdertoCart extends Fragment {
         Name = bundle.getString("FoodName");
         Price = bundle.getString("FoodPrice");
         OrderCode = getRandomString(6);
+        NameGuest = getActivity().getIntent().getExtras().getString("nama").toString();
+        NotableGuest = getActivity().getIntent().getExtras().getString("noMejaFinal").toString();
+        TableCodeGuest = getActivity().getIntent().getExtras().getString("kodeMeja").toString();
 
         TxtvOrdertoCartCode.setText(Code);
         TxtvOrdertoCartName.setText(Name);
@@ -335,6 +364,9 @@ public class FragmentOrdertoCart extends Fragment {
 
         //Jajanan
         inJajanan = "JJ.*";
+
+        //Promo
+        inPromo = "PROMO.*";
 
 
         //Back based where the position is
@@ -366,6 +398,18 @@ public class FragmentOrdertoCart extends Fragment {
         FinalPrice9 = 0;
         FinalPrice10 = 0;
 
+        //Declare Topping Code
+        ToppCode1 = "none";
+        ToppCode2 = "none";
+        ToppCode3 = "none";
+        ToppCode4 = "none";
+        ToppCode5 = "none";
+        ToppCode6 = "none";
+        ToppCode7 = "none";
+        ToppCode8 = "none";
+        ToppCode9 = "none";
+        ToppCode10 = "none";
+
         RgTipeFood.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -390,6 +434,7 @@ public class FragmentOrdertoCart extends Fragment {
         TxtvSelectedFoodCount.setText("1");
         CalculateFoodCount();
         AddtoCart();
+        SetFoodImage();
 
         // Inflate the layout for this fragment
         return viewRoot;
@@ -442,6 +487,69 @@ public class FragmentOrdertoCart extends Fragment {
 
                         //Selected Choice of Tipe Food
                         StringRbSelectedChoice = TxtvSelectedFoodType.getText().toString();
+
+                        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.ORDER,
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        try {
+                                            //convert response to json object
+                                            JSONObject obj = new JSONObject(response);
+                                            if (!obj.getBoolean("error")) {
+                                                Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+
+                                                Fragment fragmentNotif = new StatusFragment();
+                                                FragmentTransaction transaction0 = getFragmentManager().beginTransaction();
+                                                transaction0.replace(R.id.ContainerOrdertoCart, fragmentNotif);
+                                                transaction0.addToBackStack(null);
+                                                transaction0.commit();
+
+                                            } else {
+                                                Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+
+                                            }
+                                            Fragment fragmentNotif = new StatusFragment();
+                                            FragmentTransaction transaction0 = getFragmentManager().beginTransaction();
+                                            transaction0.replace(R.id.ContainerOrdertoCart, fragmentNotif);
+                                            transaction0.addToBackStack(null);
+                                            transaction0.commit();
+
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Toast.makeText(getContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
+                                    }
+                                }) {
+                            protected Map<String, String> getParams() throws AuthFailureError {
+                                Map<String,String> params = new HashMap<>();
+                                params.put("notable",NotableGuest.toString());
+                                params.put("tablecode",TableCodeGuest.toString());
+                                params.put("ordercode",OrderCode.toString());
+                                params.put("productcode",FoodCode.toString());
+                                params.put("productqty",TxtvSelectedFoodCount.getText().toString());
+                                params.put("toppingcode1",ToppCode1.toString());
+                                params.put("toppingcode2",ToppCode2.toString());
+                                params.put("toppingcode3",ToppCode3.toString());
+                                params.put("toppingcode4",ToppCode4.toString());
+                                params.put("toppingcode5",ToppCode5.toString());
+                                params.put("toppingcode6",ToppCode6.toString());
+                                params.put("toppingcode7",ToppCode7.toString());
+                                params.put("toppingcode8",ToppCode8.toString());
+                                params.put("toppingcode9",ToppCode9.toString());
+                                params.put("toppingcode10",ToppCode10.toString());
+                                return params;
+                            }
+                        };
+                        VolleySingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
+
+
+
+
 
 
 
@@ -554,17 +662,7 @@ public class FragmentOrdertoCart extends Fragment {
                     StringFoodName = Name;
                     //Declare Food Count
                     StringSelectedFoodCount = TxtvSelectedFoodCount.getText().toString();
-                    //Declare Topping Code
-                    ToppCode1 = "none";
-                    ToppCode2 = "none";
-                    ToppCode3 = "none";
-                    ToppCode4 = "none";
-                    ToppCode5 = "none";
-                    ToppCode6 = "none";
-                    ToppCode7 = "none";
-                    ToppCode8 = "none";
-                    ToppCode9 = "none";
-                    ToppCode10 = "none";
+
                     //Declare Name of Selected Topping Name
                     StringSelectedName1 = TxtvSelectedToppName1.getText().toString();
                     StringSelectedName2 = TxtvSelectedToppName2.getText().toString();
@@ -602,89 +700,57 @@ public class FragmentOrdertoCart extends Fragment {
 
                     CartStatus CheckCartStats = sharedPrefmanager.getInstance(getActivity()).GetCartStatus();
 
-                    if(CheckCartStats.getCart1Status() == "Available"){
-                        Order1 storeOrder1 = new Order1(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,StringRbSelectedChoice,
-                                ToppCode1,ToppCode2,ToppCode3,
-                                ToppCode4,ToppCode5,ToppCode6,
-                                ToppCode7,ToppCode8,ToppCode9,
-                                ToppCode10,
-                                StringSelectedName1,StringSelectedName2,StringSelectedName3,
-                                StringSelectedName4,StringSelectedName5,StringSelectedName6,
-                                StringSelectedName7,StringSelectedName8,StringSelectedName9,StringSelectedName10,
-                                StringSelectedPrice1,StringSelectedPrice2,StringSelectedPrice3,
-                                StringSelectedPrice4,StringSelectedPrice5,StringSelectedPrice6,
-                                StringSelectedPrice7,StringSelectedPrice8,StringSelectedPrice9,
-                                StringSelectedPrice10,
-                                StringTotalPrice);
-                        sharedPrefmanager.getInstance(getContext()).Order1(storeOrder1);
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.ORDER,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    try {
+                                        //convert response to json object
+                                        JSONObject obj = new JSONObject(response);
+                                        if (!obj.getBoolean("error")) {
+                                            Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                                            Fragment fragmentNotif = new StatusFragment();
+                                            FragmentTransaction transaction0 = getFragmentManager().beginTransaction();
+                                            transaction0.replace(R.id.ContainerOrdertoCart, fragmentNotif);
+                                            transaction0.addToBackStack(null);
+                                            transaction0.commit();
+                                        } else {
+                                            Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                                        }
 
-                        CartStatus CartStats = new CartStatus("Full","Available");
-                        sharedPrefmanager.getInstance(getContext()).CartStatus(CartStats);
 
-                        // Go To Cart
-                        Fragment fragmentCart = new CartFragment();
-                        FragmentTransaction transaction1 = getFragmentManager().beginTransaction();
-                        transaction1.replace(R.id.ContainerOrdertoCart, fragmentCart);
-//                    fragmentCart.setArguments(PasstoCartBundle);
-                        transaction1.addToBackStack(null);
-                        transaction1.commit();
-                    }
-                    //Commented because error and bug
-//                    else if (CheckCartStats.getCart2Status() == "Available"){
-//                        Order2 storeOrder2 = new Order2(StringFoodCode,StringFoodName,StringSelectedFoodCount,ValueTotalSelectedFoodPrice,StringRbSelectedChoice,
-//                                StringSelectedName1,StringSelectedName2,StringSelectedName3,
-//                                StringSelectedName4,StringSelectedName5,StringSelectedName6,
-//                                StringSelectedName7,StringSelectedName8,StringSelectedName9,StringSelectedName10,
-//                                StringSelectedPrice1,StringSelectedPrice2,StringSelectedPrice3,
-//                                StringSelectedPrice4,StringSelectedPrice5,StringSelectedPrice6,
-//                                StringSelectedPrice7,StringSelectedPrice8,StringSelectedPrice9,
-//                                StringSelectedPrice10,
-//                                StringTotalPrice);
-//                        sharedPrefmanager.getInstance(getContext()).Order2(storeOrder2);
-//                        CartStatus CartStats = new CartStatus("Full","Full");
-//                        sharedPrefmanager.getInstance(getContext()).CartStatus(CartStats);
-//
-//                        Cart1Status = "Full";
-//                    }
-                    else {
-                        //Toast Error
-                        Toast CartFull = Toast.makeText(getActivity(), "Cart penuh, silahkan kosongkan terlebih dahulu", Toast.LENGTH_SHORT);
-                        CartFull.show();
-                    }
-//                    //Pass the variables using Bundle
-                    //CANT  PASS THE VARIABLES WITH BUNDLES
-//                    Bundle PasstoCartBundle = new Bundle();
-//                    //Food
-//                    PasstoCartBundle.putString("CartFoodCode", StringFoodCode);
-//                    PasstoCartBundle.putString("CartFoodName", StringFoodName);
-//                    PasstoCartBundle.putString("CartFoodCount", StringSelectedFoodCount);
-//                    PasstoCartBundle.putString("CartFoodTotalPrice", ValueTotalSelectedFoodPrice);
-//                    //Topping Name
-//                    PasstoCartBundle.putString("CartToppingName1", StringSelectedName1);
-//                    PasstoCartBundle.putString("CartToppingName2", StringSelectedName2);
-//                    PasstoCartBundle.putString("CartToppingName3", StringSelectedName3);
-//                    PasstoCartBundle.putString("CartToppingName4", StringSelectedName4);
-//                    PasstoCartBundle.putString("CartToppingName5", StringSelectedName5);
-//                    PasstoCartBundle.putString("CartToppingName6", StringSelectedName6);
-//                    PasstoCartBundle.putString("CartToppingName7", StringSelectedName7);
-//                    PasstoCartBundle.putString("CartToppingName8", StringSelectedName8);
-//                    PasstoCartBundle.putString("CartToppingName9", StringSelectedName9);
-//                    PasstoCartBundle.putString("CartToppingName10", StringSelectedName10);
-//                    //Topping Price
-//                    PasstoCartBundle.putString("CartToppingPrice1", StringSelectedPrice1);
-//                    PasstoCartBundle.putString("CartToppingPrice2", StringSelectedPrice2);
-//                    PasstoCartBundle.putString("CartToppingPrice3", StringSelectedPrice3);
-//                    PasstoCartBundle.putString("CartToppingPrice4", StringSelectedPrice4);
-//                    PasstoCartBundle.putString("CartToppingPrice5", StringSelectedPrice5);
-//                    PasstoCartBundle.putString("CartToppingPrice6", StringSelectedPrice6);
-//                    PasstoCartBundle.putString("CartToppingPrice7", StringSelectedPrice7);
-//                    PasstoCartBundle.putString("CartToppingPrice8", StringSelectedPrice8);
-//                    PasstoCartBundle.putString("CartToppingPrice9", StringSelectedPrice9);
-//                    PasstoCartBundle.putString("CartToppingPrice10", StringSelectedPrice10);
-//                    //Total
-//                    PasstoCartBundle.putString("CartTotalPrice", StringTotalPrice);
-//
-
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(getContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
+                                }
+                            }) {
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String,String> params = new HashMap<>();
+                            params.put("notable",NotableGuest.toString());
+                            params.put("tablecode",TableCodeGuest.toString());
+                            params.put("ordercode",OrderCode.toString());
+                            params.put("productcode",FoodCode.toString());
+                            params.put("productqty",TxtvSelectedFoodCount.getText().toString());
+                            params.put("toppingcode1",ToppCode1.toString());
+                            params.put("toppingcode2",ToppCode2.toString());
+                            params.put("toppingcode3",ToppCode3.toString());
+                            params.put("toppingcode4",ToppCode4.toString());
+                            params.put("toppingcode5",ToppCode5.toString());
+                            params.put("toppingcode6",ToppCode6.toString());
+                            params.put("toppingcode7",ToppCode7.toString());
+                            params.put("toppingcode8",ToppCode8.toString());
+                            params.put("toppingcode9",ToppCode9.toString());
+                            params.put("toppingcode10",ToppCode10.toString());
+                            return params;
+                        }
+                    };
+                    VolleySingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
                 }
             }
         });
@@ -704,7 +770,7 @@ public class FragmentOrdertoCart extends Fragment {
                 }
 
                 EdFoodCount.setText(new Integer(b).toString());
-                String ValueEdFoodCount = EdFoodCount.getText().toString();
+                ValueEdFoodCount = EdFoodCount.getText().toString();
                 TotalFoodCount = Integer.valueOf(Integer.valueOf(ValueEdFoodCount) * Integer.valueOf(Price));
                 TxtvOrdertoCartPrice.setText(String.valueOf(TotalFoodCount));
                 TxtvSelectedFoodCount.setText(ValueEdFoodCount);
@@ -724,7 +790,7 @@ public class FragmentOrdertoCart extends Fragment {
                 }
 
                 EdFoodCount.setText(new Integer(b).toString());
-                String ValueEdFoodCount = EdFoodCount.getText().toString();
+                ValueEdFoodCount = EdFoodCount.getText().toString();
                 TotalFoodCount = Integer.valueOf(Integer.valueOf(ValueEdFoodCount) * Integer.valueOf(Price));
                 TxtvOrdertoCartPrice.setText(String.valueOf(TotalFoodCount));
                 TxtvSelectedFoodCount.setText(ValueEdFoodCount);
@@ -849,6 +915,9 @@ public class FragmentOrdertoCart extends Fragment {
             CBTopping8.setText("Extra Sawi");
             CBTopping9.setText("Extra Acar");
 
+            //Default RB Choice 1 checked
+            RbChoice1.isChecked();
+
             //set text tipe
             RbChoice1.setText("Kuah");
             RbChoice2.setText("Goreng");
@@ -929,6 +998,24 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvSelectedToppName10.setVisibility(GONE);
             TxtvRp10.setVisibility(GONE);
             TxtvSelectedToppPrice10.setVisibility(GONE);
+
+            RbChoice1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        FoodCode = Code + "K";
+                    }
+                }
+            });
+
+            RbChoice2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        FoodCode = Code + "G";
+                    }
+                }
+            });
 
 
             CBTopping1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -1201,14 +1288,39 @@ public class FragmentOrdertoCart extends Fragment {
             CBTopping4.setText("Tetelan Sapi");
             CBTopping5.setText("Kuah Bakso, Mie Kuning & Mie Soon");
 
-            if (Code == "BK5"){
+            //set Food Code
+            FoodCode = Code;
+
+            RbChoice1.isChecked();
+
+            if (Code.equals("BK5")){
                 //set text tipe
                 RbChoice1.setText("Urat");
                 RbChoice2.setText("Halus");
                 //hide remaining tipe
                 RbChoice3.setVisibility(GONE);
+
+                RbChoice1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if(isChecked){
+                            FoodCode = Code + "U";
+                        }
+                    }
+                });
+
+                RbChoice2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            FoodCode = Code + "H";
+                        }
+                    }
+                });
+
             }
-            else if (Code == "BK4"&&Code == "BK6"&&Code == "BK7"){
+            else if (Code.toString().equals("BK4") || Code.toString().equals("BK6") || Code.toString().equals("BK7")){
+                FoodCode = Code;
                 //hide remaining tipe
                 RbChoice1.setVisibility(GONE);
                 RbChoice2.setVisibility(GONE);
@@ -1219,10 +1331,34 @@ public class FragmentOrdertoCart extends Fragment {
                 RbChoice1.setText("Urat");
                 RbChoice2.setText("Halus");
                 RbChoice3.setText("Campur");
+
+                RbChoice1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked){
+                            FoodCode = Code + "U";
+                        }
+                    }
+                });
+                RbChoice2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked){
+                            FoodCode = Code + "H";
+                        }
+                    }
+                });
+                RbChoice3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            FoodCode = Code + "C";
+                        }
+                    }
+                });
             }
 
-            //set Food Code
-            FoodCode = Code;
+
 
             //hide remaining topping CB
             CBTopping6.setVisibility(GONE);
@@ -1297,6 +1433,7 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvSelectedToppName10.setVisibility(GONE);
             TxtvRp10.setVisibility(GONE);
             TxtvSelectedToppPrice10.setVisibility(GONE);
+
 
 
 
@@ -1462,9 +1599,13 @@ public class FragmentOrdertoCart extends Fragment {
             CBTopping9.setVisibility(GONE);
             CBTopping10.setVisibility(GONE);
 
+            //Default Checked RB
+            RbChoice1.isChecked();
+
             //set text tipe
             RbChoice1.setText("Pedas");
             RbChoice2.setText("Manis");
+
             //hide remaining tipe
             RbChoice3.setVisibility(GONE);
 
@@ -1537,6 +1678,24 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvSelectedToppName10.setVisibility(GONE);
             TxtvRp10.setVisibility(GONE);
             TxtvSelectedToppPrice10.setVisibility(GONE);
+
+            RbChoice1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        FoodCode = Code + "P";
+                    }
+                }
+            });
+
+            RbChoice2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        FoodCode = Code + "M";
+                    }
+                }
+            });
 
 
             CBTopping1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -1772,8 +1931,10 @@ public class FragmentOrdertoCart extends Fragment {
             ToppCode9 = "none";
             ToppCode10 = "none";
         }
-        else {
+        else if (Code.toUpperCase().matches((inEsOri.toUpperCase()))){
 
+            //set Food Code
+            FoodCode = Code;
             //hide remaining topping CB
             CBTopping1.setVisibility(GONE);
             CBTopping2.setVisibility(GONE);
@@ -1787,6 +1948,139 @@ public class FragmentOrdertoCart extends Fragment {
             CBTopping10.setVisibility(GONE);
 
             ToppCode1 = "none";
+            ToppCode2 = "none";
+            ToppCode3 = "none";
+            ToppCode4 = "none";
+            ToppCode5 = "none";
+            ToppCode6 = "none";
+            ToppCode7 = "none";
+            ToppCode8 = "none";
+            ToppCode9 = "none";
+            ToppCode10 = "none";
+
+            RbChoice1.setVisibility(VISIBLE);
+            RbChoice2.setVisibility(VISIBLE);
+            RbChoice3.setVisibility(GONE);
+
+            //Default Checked RB
+            RbChoice1.isChecked();
+
+            if (Code.toString().equals("EO10") || Code.toString().equals("EO11") || Code.toString().equals("EO12") || Code.toString().equals("EO13") ||
+                    Code.toString().equals("EO14")){
+                //set text tipe
+                RbChoice1.setText("Es");
+                RbChoice2.setText("Hot");
+
+                RbChoice1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if(isChecked){
+                            FoodCode = Code + "E";
+                            ToppCode1 = "ES";
+                        }
+                        else {
+                            FoodCode = Code + "H";
+                            ToppCode1 = "HOT";
+                        }
+                    }
+                });
+
+            }
+            else {
+                FoodCode = Code;
+                ToppCode1 = "ES";
+                RbChoice1.setText("Es");
+                RbChoice2.setVisibility(GONE);
+            }
+
+            //hide remaining Topping
+            //hide all selected topping
+            TxtvSelectedToppName1.setVisibility(GONE);
+            TxtvRp1.setVisibility(GONE);
+            TxtvSelectedToppPrice1.setVisibility(GONE);
+
+            TxtvSelectedToppName2.setVisibility(GONE);
+            TxtvRp2.setVisibility(GONE);
+            TxtvSelectedToppPrice2.setVisibility(GONE);
+
+            TxtvSelectedToppName3.setVisibility(GONE);
+            TxtvRp3.setVisibility(GONE);
+            TxtvSelectedToppPrice3.setVisibility(GONE);
+
+            TxtvSelectedToppName4.setVisibility(GONE);
+            TxtvRp4.setVisibility(GONE);
+            TxtvSelectedToppPrice4.setVisibility(GONE);
+
+            TxtvSelectedToppName5.setVisibility(GONE);
+            TxtvRp5.setVisibility(GONE);
+            TxtvSelectedToppPrice5.setVisibility(GONE);
+
+            TxtvSelectedToppName6.setVisibility(GONE);
+            TxtvRp6.setVisibility(GONE);
+            TxtvSelectedToppPrice6.setVisibility(GONE);
+
+            TxtvSelectedToppName7.setVisibility(GONE);
+            TxtvRp7.setVisibility(GONE);
+            TxtvSelectedToppPrice7.setVisibility(GONE);
+
+            TxtvSelectedToppName8.setVisibility(GONE);
+            TxtvRp8.setVisibility(GONE);
+            TxtvSelectedToppPrice8.setVisibility(GONE);
+
+            TxtvSelectedToppName9.setVisibility(GONE);
+            TxtvRp9.setVisibility(GONE);
+            TxtvSelectedToppPrice9.setVisibility(GONE);
+
+            TxtvSelectedToppName10.setVisibility(GONE);
+            TxtvRp10.setVisibility(GONE);
+            TxtvSelectedToppPrice10.setVisibility(GONE);
+
+            //set price to variable
+            Price1 = 0;
+            Price2 = 0;
+            Price3 = 0;
+            Price4 = 0;
+            Price5 = 0;
+            Price6 = 0;
+            Price7 = 0;
+            Price8 = 0;
+            Price9 = 0;
+            Price10 = 0;
+
+
+            //hide remaining topping price Txtv
+            TxtvToppingPrice1.setVisibility(GONE);
+            TxtvToppingPrice2.setVisibility(GONE);
+            TxtvToppingPrice3.setVisibility(GONE);
+            TxtvToppingPrice4.setVisibility(GONE);
+            TxtvToppingPrice5.setVisibility(GONE);
+            TxtvToppingPrice6.setVisibility(GONE);
+            TxtvToppingPrice7.setVisibility(GONE);
+            TxtvToppingPrice8.setVisibility(GONE);
+            TxtvToppingPrice9.setVisibility(GONE);
+            TxtvToppingPrice10.setVisibility(GONE);
+
+            TxtvTotalHarga.setText(String.valueOf(Price));
+
+
+        }
+        else if(Code.toUpperCase().matches((inJajanan.toUpperCase()))){
+
+            ToppCode1 = "JJTOP";
+
+            //hide remaining topping CB
+            CBTopping1.setVisibility(GONE);
+            CBTopping2.setVisibility(GONE);
+            CBTopping3.setVisibility(GONE);
+            CBTopping4.setVisibility(GONE);
+            CBTopping5.setVisibility(GONE);
+            CBTopping6.setVisibility(GONE);
+            CBTopping7.setVisibility(GONE);
+            CBTopping8.setVisibility(GONE);
+            CBTopping9.setVisibility(GONE);
+            CBTopping10.setVisibility(GONE);
+
+
             ToppCode2 = "none";
             ToppCode3 = "none";
             ToppCode4 = "none";
@@ -1840,6 +2134,211 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvSelectedToppPrice10.setVisibility(GONE);
 
             RgTipeFood.setVisibility(GONE);
+
+            //set Food Code
+            FoodCode = Code;
+
+            //set price to variable
+            Price1 = 0;
+            Price2 = 0;
+            Price3 = 0;
+            Price4 = 0;
+            Price5 = 0;
+            Price6 = 0;
+            Price7 = 0;
+            Price8 = 0;
+            Price9 = 0;
+            Price10 = 0;
+
+
+            //hide remaining topping price Txtv
+            TxtvToppingPrice1.setVisibility(GONE);
+            TxtvToppingPrice2.setVisibility(GONE);
+            TxtvToppingPrice3.setVisibility(GONE);
+            TxtvToppingPrice4.setVisibility(GONE);
+            TxtvToppingPrice5.setVisibility(GONE);
+            TxtvToppingPrice6.setVisibility(GONE);
+            TxtvToppingPrice7.setVisibility(GONE);
+            TxtvToppingPrice8.setVisibility(GONE);
+            TxtvToppingPrice9.setVisibility(GONE);
+            TxtvToppingPrice10.setVisibility(GONE);
+
+            TxtvTotalHarga.setText(String.valueOf(Price));
+
+        } else if(Code.toString().equals(inPromo)){
+            ToppCode1 = "PROMO";
+
+            //hide remaining topping CB
+            CBTopping1.setVisibility(GONE);
+            CBTopping2.setVisibility(GONE);
+            CBTopping3.setVisibility(GONE);
+            CBTopping4.setVisibility(GONE);
+            CBTopping5.setVisibility(GONE);
+            CBTopping6.setVisibility(GONE);
+            CBTopping7.setVisibility(GONE);
+            CBTopping8.setVisibility(GONE);
+            CBTopping9.setVisibility(GONE);
+            CBTopping10.setVisibility(GONE);
+
+
+            ToppCode2 = "none";
+            ToppCode3 = "none";
+            ToppCode4 = "none";
+            ToppCode5 = "none";
+            ToppCode6 = "none";
+            ToppCode7 = "none";
+            ToppCode8 = "none";
+            ToppCode9 = "none";
+            ToppCode10 = "none";
+
+            //hide remaining Topping
+            //hide all selected topping
+            TxtvSelectedToppName1.setVisibility(GONE);
+            TxtvRp1.setVisibility(GONE);
+            TxtvSelectedToppPrice1.setVisibility(GONE);
+
+            TxtvSelectedToppName2.setVisibility(GONE);
+            TxtvRp2.setVisibility(GONE);
+            TxtvSelectedToppPrice2.setVisibility(GONE);
+
+            TxtvSelectedToppName3.setVisibility(GONE);
+            TxtvRp3.setVisibility(GONE);
+            TxtvSelectedToppPrice3.setVisibility(GONE);
+
+            TxtvSelectedToppName4.setVisibility(GONE);
+            TxtvRp4.setVisibility(GONE);
+            TxtvSelectedToppPrice4.setVisibility(GONE);
+
+            TxtvSelectedToppName5.setVisibility(GONE);
+            TxtvRp5.setVisibility(GONE);
+            TxtvSelectedToppPrice5.setVisibility(GONE);
+
+            TxtvSelectedToppName6.setVisibility(GONE);
+            TxtvRp6.setVisibility(GONE);
+            TxtvSelectedToppPrice6.setVisibility(GONE);
+
+            TxtvSelectedToppName7.setVisibility(GONE);
+            TxtvRp7.setVisibility(GONE);
+            TxtvSelectedToppPrice7.setVisibility(GONE);
+
+            TxtvSelectedToppName8.setVisibility(GONE);
+            TxtvRp8.setVisibility(GONE);
+            TxtvSelectedToppPrice8.setVisibility(GONE);
+
+            TxtvSelectedToppName9.setVisibility(GONE);
+            TxtvRp9.setVisibility(GONE);
+            TxtvSelectedToppPrice9.setVisibility(GONE);
+
+            TxtvSelectedToppName10.setVisibility(GONE);
+            TxtvRp10.setVisibility(GONE);
+            TxtvSelectedToppPrice10.setVisibility(GONE);
+
+            RgTipeFood.setVisibility(GONE);
+
+            //set Food Code
+            FoodCode = Code;
+
+            //set price to variable
+            Price1 = 0;
+            Price2 = 0;
+            Price3 = 0;
+            Price4 = 0;
+            Price5 = 0;
+            Price6 = 0;
+            Price7 = 0;
+            Price8 = 0;
+            Price9 = 0;
+            Price10 = 0;
+
+
+            //hide remaining topping price Txtv
+            TxtvToppingPrice1.setVisibility(GONE);
+            TxtvToppingPrice2.setVisibility(GONE);
+            TxtvToppingPrice3.setVisibility(GONE);
+            TxtvToppingPrice4.setVisibility(GONE);
+            TxtvToppingPrice5.setVisibility(GONE);
+            TxtvToppingPrice6.setVisibility(GONE);
+            TxtvToppingPrice7.setVisibility(GONE);
+            TxtvToppingPrice8.setVisibility(GONE);
+            TxtvToppingPrice9.setVisibility(GONE);
+            TxtvToppingPrice10.setVisibility(GONE);
+
+            TxtvTotalHarga.setText(String.valueOf(Price));
+        }
+        else {
+            RgTipeFood.setVisibility(VISIBLE);
+
+            RbChoice1.setText("Es");
+            ToppCode1 = "ES";
+
+            RbChoice2.setVisibility(GONE);
+            RbChoice3.setVisibility(GONE);
+            //hide remaining topping CB
+            CBTopping1.setVisibility(GONE);
+            CBTopping2.setVisibility(GONE);
+            CBTopping3.setVisibility(GONE);
+            CBTopping4.setVisibility(GONE);
+            CBTopping5.setVisibility(GONE);
+            CBTopping6.setVisibility(GONE);
+            CBTopping7.setVisibility(GONE);
+            CBTopping8.setVisibility(GONE);
+            CBTopping9.setVisibility(GONE);
+            CBTopping10.setVisibility(GONE);
+
+
+            ToppCode2 = "none";
+            ToppCode3 = "none";
+            ToppCode4 = "none";
+            ToppCode5 = "none";
+            ToppCode6 = "none";
+            ToppCode7 = "none";
+            ToppCode8 = "none";
+            ToppCode9 = "none";
+            ToppCode10 = "none";
+
+            //hide remaining Topping
+            //hide all selected topping
+            TxtvSelectedToppName1.setVisibility(GONE);
+            TxtvRp1.setVisibility(GONE);
+            TxtvSelectedToppPrice1.setVisibility(GONE);
+
+            TxtvSelectedToppName2.setVisibility(GONE);
+            TxtvRp2.setVisibility(GONE);
+            TxtvSelectedToppPrice2.setVisibility(GONE);
+
+            TxtvSelectedToppName3.setVisibility(GONE);
+            TxtvRp3.setVisibility(GONE);
+            TxtvSelectedToppPrice3.setVisibility(GONE);
+
+            TxtvSelectedToppName4.setVisibility(GONE);
+            TxtvRp4.setVisibility(GONE);
+            TxtvSelectedToppPrice4.setVisibility(GONE);
+
+            TxtvSelectedToppName5.setVisibility(GONE);
+            TxtvRp5.setVisibility(GONE);
+            TxtvSelectedToppPrice5.setVisibility(GONE);
+
+            TxtvSelectedToppName6.setVisibility(GONE);
+            TxtvRp6.setVisibility(GONE);
+            TxtvSelectedToppPrice6.setVisibility(GONE);
+
+            TxtvSelectedToppName7.setVisibility(GONE);
+            TxtvRp7.setVisibility(GONE);
+            TxtvSelectedToppPrice7.setVisibility(GONE);
+
+            TxtvSelectedToppName8.setVisibility(GONE);
+            TxtvRp8.setVisibility(GONE);
+            TxtvSelectedToppPrice8.setVisibility(GONE);
+
+            TxtvSelectedToppName9.setVisibility(GONE);
+            TxtvRp9.setVisibility(GONE);
+            TxtvSelectedToppPrice9.setVisibility(GONE);
+
+            TxtvSelectedToppName10.setVisibility(GONE);
+            TxtvRp10.setVisibility(GONE);
+            TxtvSelectedToppPrice10.setVisibility(GONE);
+
+
 
             //set Food Code
             FoodCode = Code;
