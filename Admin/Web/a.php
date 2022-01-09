@@ -13,7 +13,9 @@
 </head>
 
 <?php 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
     ?>  
     <body>
@@ -150,11 +152,17 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                             else if ($RowTable['No_meja'] == "4"){
                                 $table4Status = "green";
                             }
+                            else if ($RowTable['No_meja'] == "5"){
+                                $table6Status = "green";
+                            }
                             else if ($RowTable['No_meja'] == "6"){
                                 $table6Status = "green";
                             }
                             else if ($RowTable['No_meja'] == "7"){
                                 $table7Status = "green";
+                            }
+                            else if ($RowTable['No_meja'] == "8"){
+                                $table9Status = "green";
                             }
                             else if ($RowTable['No_meja'] == "9"){
                                 $table9Status = "green";
@@ -197,13 +205,13 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                         <td class="sizetables2" rowspan="2" bgcolor="<?php echo $table9Status ?>">
                             <form method="POST" action="a.php" class="hiddenform">
                                 <input type="hidden" name="notable" value="9">
-                                <button type="submit" name="notable" value="9" class="link-button">9</button>
+                                <button type="submit" name="notable" value="9" class="link-button">8/9</button>
                             </form>
                         </td>
                         <td class="sizetables2" rowspan="2" bgcolor="<?php echo $table6Status ?>">
                             <form method="POST" action="a.php" class="hiddenform">
                                 <input type="hidden" name="notable" value="6">
-                                <button type="submit" name="notable" value="6" class="link-button">6</button>
+                                <button type="submit" name="notable" value="6" class="link-button">5/6</button>
                             </form>
                         </td>
                         <td class="sizetables1" bgcolor="<?php echo $table2Status ?>">
@@ -273,114 +281,93 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                     <!-- Table Detail Order -->
                     <div class="column">
                         <table border="1" style="text-align: center;">
-                                <?php 
-                                //! Query 1 HERE and Store to $OrderData
-                                //! Use Passed No Table from HREF POST
-
-                                    //* Determine Colspan for how many topping of certain order
-                                    $a = 3; //* Topping
-                                    $a1 = $a+1;
-                                    //* Check Status
-                                    //! Get Status Value in  $OrderData
-                                    //* if (echo $OrderData['status'] == "Disiapkan"){
-                                    //*   $status = false; //HREF Dibuat Available
-                                    //* }
-                                    //* else {
-                                    //*    $status = true; //HREF Selesai Available
-                                    //* }
-                                    $status = false; 
+                            <tr>
+                                <?php
+                                    include("connect.php");
                                 ?>
-                                
+                                <th colspan="7">Detail Order</th>
                                 <tr>
-                                    <?php
-                                        include("connect.php")
-
-                                    ?>
-                                    <th colspan="7">Detail Order</th>
-                                    <tr>
-                                        <th>Pesanan</th>
-                                        <th>Nama Makanan</th>
-                                        <th>Tipe Makanan</th>
-                                        <th>Topping</th>
-                                    </tr>
-                                    <tr>
-                                        <?php 
-                                            if (isset ($_POST['notable']) == null ){
-                                                ?>
-                                                <tr>
-                                                    <td rowspan="<?php echo $a ?>">Meja </td> <!-- //? Fill with Order Data// -->
-                                                </tr>
+                                    <th>Pesanan</th>
+                                    <th>Nama Makanan</th>
+                                    <th>Tipe Makanan</th>
+                                    <th>Topping</th>
+                                </tr>
+                                <tr>
+                                    <?php 
+                                        if (isset ($_POST['notable']) == null ){
+                                            ?>
+                                            <tr>
+                                                <td rowspan="<?php echo $a ?>">  </td> <!-- //? Fill with Order Data// -->
+                                            </tr>
+                                            <!-- //? Fill with OrderCode Data// -->
+                                                <!-- //! Use Query 1 and use Passed No Table from Href POST-->
+                                                <td rowspan="<?php echo $a ?>"> </td>
                                                 <!-- //? Fill with OrderCode Data// -->
-                                                    <!-- //! Use Query 1 and use Passed No Table from Href POST-->
-                                                    <td rowspan="<?php echo $a ?>">Nama Makanan</td>
-                                                    <!-- //? Fill with OrderCode Data// -->
-                                                    <!-- //! Use Query 1 and use Passed No Table from Href POST-->
-                                                    <td rowspan="<?php echo $a ?>">Tipe Makanan</td> 
-                                                    <!-- //? Fill with Topping Data// -->
-                                                    <!-- //! Use Query 2 and use the stored Kode order to use the WHERE Clause// -->
-                                                    <td>Topping1</td> 
-                                                    
+                                                <!-- //! Use Query 1 and use Passed No Table from Href POST-->
+                                                <td rowspan="<?php echo $a ?>"> </td> 
+                                                <!-- //? Fill with Topping Data// -->
+                                                <!-- //! Use Query 2 and use the stored Kode order to use the WHERE Clause// -->
+                                                <td> </td> 
+                                                
+                                            <?php
+                                        }
+                                        else {
+                                            $stmt = $conn->prepare("SELECT g.No_meja, o.Kode_order,p.Nama_produk,p.Tipe_produk, t.Nama_topping, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(t.Harga_topping) AS 'Total Bayar', o.Status_order 
+                                                                    FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order JOIN guest g ON gord.Kode_Meja = g.Kode_meja
+                                                                                            JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order
+                                                                                            JOIN product p ON po.Kode_Produk = p.Kode_produk
+                                                                                            JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
+                                                                                            JOIN topping t ON tord.Kode_Topping = t.Kode_topping
+                                                                    WHERE g.No_meja = '".$_POST['notable']."' AND o.Status_order = 'Disiapkan' GROUP BY o.Kode_order;");
+                                            $stmt->execute();
+                                            
+                                            $resultDetailOrder = $stmt->get_result();
+                                            while ($rowDetail = $resultDetailOrder -> fetch_array(MYSQLI_ASSOC)){
+                                                ?>
+                                                <tbody>
                                                 <?php
-                                            }
-                                            else {
-                                                $stmt = $conn->prepare("SELECT g.No_meja, o.Kode_order,p.Nama_produk,p.Tipe_produk, t.Nama_topping, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(t.Harga_topping) AS 'Total Bayar', o.Status_order 
-                                                                        FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order JOIN guest g ON gord.Kode_Meja = g.Kode_meja
-                                                                                                JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order
-                                                                                                JOIN product p ON po.Kode_Produk = p.Kode_produk
+                                                    //* Count the Topping name for span
+                                                    $stmt = $conn->prepare ("SELECT COUNT(t.Nama_topping) FROM orders o 
+                                                                                                            JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order 
+                                                                                                            JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order 
+                                                                                                            JOIN topping t ON tord.Kode_Topping = t.Kode_topping WHERE o.Kode_order = '".$rowDetail['Kode_order']."'");
+                                                    $stmt->execute();
+                                                    $stmt->store_result();
+                                                    if($stmt->num_rows > 0){
+                                                        $stmt->bind_result($rowspanStats);
+                                                        $stmt->fetch();
+                                                    }
+                                                ?>
+                                                <?php
+                                                $stmt = $conn->prepare("SELECT t.Nama_topping FROM orders o JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order 
                                                                                                 JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
                                                                                                 JOIN topping t ON tord.Kode_Topping = t.Kode_topping
-                                                                        WHERE g.No_meja = '".$_POST['notable']."' AND o.Status_order = 'Disiapkan' GROUP BY o.Kode_order;");
+                                                                        WHERE o.Kode_order = '".$rowDetail["Kode_order"]."' AND o.Status_order = 'Disiapkan'");
                                                 $stmt->execute();
-                                                
-                                                $resultDetailOrder = $stmt->get_result();
-                                                while ($rowDetail = $resultDetailOrder -> fetch_array(MYSQLI_ASSOC)){
-                                                    ?>
-                                                    <tbody>
+                                                ?>
+                                                    <tr>
+                                                        <td rowspan="<?php print $rowspanStats+1?>">Meja <?php print $rowDetail["No_meja"] ?></td> <!-- //? Fill with Order Data// -->
+                                                        <td rowspan="<?php print $rowspanStats+1?>"><?php print $rowDetail["Nama_produk"] ?></td>
+                                                        <td rowspan="<?php print $rowspanStats+1?>"><?php print $rowDetail["Tipe_produk"] ?></td>    
                                                     <?php
-                                                        //* Count the Topping name for span
-                                                        $stmt = $conn->prepare ("SELECT COUNT(t.Nama_topping) FROM orders o 
-                                                                                                                JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order 
-                                                                                                                JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order 
-                                                                                                                JOIN topping t ON tord.Kode_Topping = t.Kode_topping WHERE o.Kode_order = '".$rowDetail['Kode_order']."'");
-                                                        $stmt->execute();
-                                                        $stmt->store_result();
-                                                        if($stmt->num_rows > 0){
-                                                            $stmt->bind_result($rowspanStats);
-                                                            $stmt->fetch();
-                                                        }
-                                                    ?>
-                                                    <?php
-                                                    $stmt = $conn->prepare("SELECT t.Nama_topping FROM orders o JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order 
-                                                                                                    JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
-                                                                                                    JOIN topping t ON tord.Kode_Topping = t.Kode_topping
-                                                                            WHERE o.Kode_order = '".$rowDetail["Kode_order"]."' AND o.Status_order = 'Disiapkan'");
-                                                    $stmt->execute();
-
-                                                    ?>
-                                                        <tr>
-                                                            <td rowspan="<?php print $rowspanStats+1?>">Meja <?php print $rowDetail["No_meja"] ?></td> <!-- //? Fill with Order Data// -->
-                                                            <td rowspan="<?php print $rowspanStats+1?>"><?php print $rowDetail["Nama_produk"] ?></td>
-                                                            <td rowspan="<?php print $rowspanStats+1?>"><?php print $rowDetail["Tipe_produk"] ?></td>    
-                                                        <?php
-                                                        $resultTopping = $stmt->get_result();
-                                                        while ($rowTopping = $resultTopping -> fetch_array(MYSQLI_ASSOC)){
-                                                            
-                                                            ?>
-                                                            <tr>
-                                                                <td><?php print $rowTopping["Nama_topping"] ?></td>
-                                                            </tr>
-                                                            <?php
-                                                        }
+                                                    $resultTopping = $stmt->get_result();
+                                                    while ($rowTopping = $resultTopping -> fetch_array(MYSQLI_ASSOC)){
+                                                        
                                                         ?>
+                                                        <tr>
+                                                            <td><?php print $rowTopping["Nama_topping"] ?></td>
                                                         </tr>
-                                                    </tbody>
-                                                <?php }
-                                                // $lastSelectedTable = $_POST['notable'];
-
-                                            }
-                                            ?>
-                                    </tr>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    </tr>
+                                                </tbody>
+                                            <?php }
+                                            // $lastSelectedTable = $_POST['notable'];
+                                        }
+                                        ?>
                                 </tr>
+                            </tr>
                         </table>
                     </div>
                     <!-- Table Status Order -->
@@ -395,30 +382,9 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                 <?php
                                 if (isset($_POST['notable']) == null){
                                     ?><tr>
-                                        <td>Rp</td>
-                                        <td>Status</td>
-                                        <?php 
-                                            if ($status == true) {
-                                                //!Set Status to Selesai if this Clicked
-                                                //!Static Query Here
-                                                //!USE HREF POST
-                                                ?><td><a href="google.com">Selesai</a></td>
-                                                <?php
-                                            }
-                                            else {
-                                                //!Set Status to Dibuat if this Clicked
-                                                //!Static Query Here
-                                                //!USE HREF POST
-                                                ?><td>
-                                                    <form method="POST" action="d2.php" class="hiddenform">
-                                                        <input type="hidden" name="as" value="as">
-                                                        <button type="submit" name="as" value="as" class="statusorderbutton">Dibuat</button>
-                                                    </form>
-                                                </td>
-                                                <?php
-                                                $status == true;
-                                            }
-                                        ?>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td></td>
                                     </tr>
                                     <?php
 

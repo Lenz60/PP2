@@ -9,7 +9,9 @@
 </head>
 
 <?php 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
     ?>
     <body>
@@ -256,23 +258,6 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                     <!-- Table Detail Order -->
                     <div class="column">
                         <table border="1" style="text-align: center;">
-                                <?php 
-                                //! Query 1 HERE and Store to $OrderData
-                                //! Use Passed No Table from HREF POST
-
-                                    //* Determine Colspan for how many topping of certain order
-                                    $a = 3; //* Topping
-                                    $a1 = $a+1;
-                                    //* Check Status
-                                    //! Get Status Value in  $OrderData
-                                    //* if (echo $OrderData['status'] == "Disiapkan"){
-                                    //*   $status = false; //HREF Dibuat Available
-                                    //* }
-                                    //* else {
-                                    //*    $status = true; //HREF Selesai Available
-                                    //* }
-                                    $status = false; 
-                                ?>
                                 
                                 <tr>
                                     <?php
@@ -291,17 +276,17 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                             if (isset ($_POST['notable']) == null ){
                                                 ?>
                                                 <tr>
-                                                    <td rowspan="<?php echo $a ?>">Meja </td> <!-- //? Fill with Order Data// -->
+                                                    <td rowspan="<?php echo $a ?>">  </td> <!-- //? Fill with Order Data// -->
                                                 </tr>
                                                 <!-- //? Fill with OrderCode Data// -->
                                                     <!-- //! Use Query 1 and use Passed No Table from Href POST-->
-                                                    <td rowspan="<?php echo $a ?>">Nama Makanan</td>
+                                                    <td rowspan="<?php echo $a ?>"> </td>
                                                     <!-- //? Fill with OrderCode Data// -->
                                                     <!-- //! Use Query 1 and use Passed No Table from Href POST-->
-                                                    <td rowspan="<?php echo $a ?>">Tipe Makanan</td> 
+                                                    <td rowspan="<?php echo $a ?>"> </td> 
                                                     <!-- //? Fill with Topping Data// -->
                                                     <!-- //! Use Query 2 and use the stored Kode order to use the WHERE Clause// -->
-                                                    <td>Topping1</td> 
+                                                    <td> </td> 
                                                     
                                                 <?php
                                             }
@@ -378,24 +363,9 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                 <?php
                                 if (isset($_POST['notable']) == null){
                                     ?><tr>
-                                        <td>Rp</td>
-                                        <td>Status</td>
-                                        <?php 
-                                            if ($status == true) {
-                                                //!Set Status to Selesai if this Clicked
-                                                //!Static Query Here
-                                                //!USE HREF POST
-                                                ?><td><a href="google.com">Selesai</a></td>
-                                                <?php
-                                            }
-                                            else {
-                                                //!Set Status to Dibuat if this Clicked
-                                                //!Static Query Here
-                                                //!USE HREF POST
-                                                ?><td><a href="google.com">Dibuat</a></td>
-                                                <?php
-                                            }
-                                        ?>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td></td>
                                     </tr>
                                     <?php
 

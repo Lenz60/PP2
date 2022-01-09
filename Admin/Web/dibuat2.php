@@ -1,6 +1,9 @@
 <?php 
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+include("connect.php");
 if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
     $KodeOrder =  $_POST['KodeOrder'];
     $stmt = $conn->prepare("UPDATE orders
@@ -15,7 +18,7 @@ else {
     header("Location: login.php");
 }
 
-include("connect.php");
+
 
 
 
