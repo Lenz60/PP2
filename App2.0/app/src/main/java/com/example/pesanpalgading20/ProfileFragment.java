@@ -75,7 +75,16 @@ public class ProfileFragment extends Fragment {
         // set the TextView Nama with Passed variable //
         TxtvNama.setText(Nama);
         TxtvKodeMeja.setText(KodeMeja);
-        TxtvNomorMeja.setText(NoMeja);
+        if(NoMeja.equals("6")){
+            TxtvNomorMeja.setText("5/6");
+        }
+        else if (NoMeja.equals("9")){
+            TxtvNomorMeja.setText("8/9");
+        }
+        else {
+            TxtvNomorMeja.setText(NoMeja);
+        }
+
         // Inflate the layout for this fragment
         return viewRoot;
     }
