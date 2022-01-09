@@ -24,7 +24,7 @@
 						
 						if($stmt->num_rows > 0){
 							$response['error'] = true;
-							$response['message'] = 'Guest Saved Succesfully';
+							$response['message'] = 'Selamat Datang '.$guestname;
 						}
 						else {
 							$response['error'] = false;
@@ -240,6 +240,9 @@
 											WHERE Kode_order = ?");
 					$stmt->bind_param("sss",$guestcodeorder,$productordercode,$ordercode);
 					$stmt->execute();
+
+					$response['error'] = false;
+					$response['message'] = 'Pesanan Dibuat';
 				}
 				else{
 					$response['error'] = true; 
