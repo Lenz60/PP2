@@ -38,7 +38,6 @@ import com.example.pesanpalgading20.Model.Volley.URLs;
 import com.example.pesanpalgading20.Model.Volley.VolleySingleton;
 import com.example.pesanpalgading20.NavBar.BottomNavbar;
 import com.example.pesanpalgading20.SSLSecurity.HttpsTrustManager;
-import com.example.pesanpalgading20.SSLSecurity.MySSLSocketFactory;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
