@@ -42,7 +42,7 @@ public class BottomNavbar extends AppCompatActivity {
 
     }
 
-    private boolean  loadFragment(Fragment fragment) {
+    public boolean  loadFragment(Fragment fragment) {
         //load fragment
         if (fragment != null) {
             getSupportFragmentManager().beginTransaction()
