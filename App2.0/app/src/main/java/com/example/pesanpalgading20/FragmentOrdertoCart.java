@@ -47,6 +47,8 @@ import com.example.pesanpalgading20.Model.OrderSetterGetter.Order2;
 import com.example.pesanpalgading20.Model.SharedPrefManager.SharedPrefmanager;
 import com.example.pesanpalgading20.Model.Volley.URLs;
 import com.example.pesanpalgading20.Model.Volley.VolleySingleton;
+import com.example.pesanpalgading20.NavBar.BottomNavbar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -191,6 +193,7 @@ public class FragmentOrdertoCart extends Fragment {
     ScrollView ScrollViewOrdertoCart;
 
 
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -245,6 +248,7 @@ public class FragmentOrdertoCart extends Fragment {
         ContainerContentOrdertoCart = viewRoot.findViewById(R.id.ContainerContentOrdertoCart);
         ContainerOrdertoCart = viewRoot.findViewById(R.id.ContainerOrdertoCart);
         ScrollViewOrdertoCart = viewRoot.findViewById(R.id.ScrollViewOrdertoCart);
+
 
 
         //Topping
@@ -488,6 +492,8 @@ public class FragmentOrdertoCart extends Fragment {
                         //Selected Choice of Tipe Food
                         StringRbSelectedChoice = TxtvSelectedFoodType.getText().toString();
 
+
+
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.ORDER,
                                 new Response.Listener<String>() {
                                     @Override
@@ -499,21 +505,17 @@ public class FragmentOrdertoCart extends Fragment {
                                                 Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
 
                                                 Fragment fragmentNotif = new StatusFragment();
+                                                Fragment fragmentHome = new HomeFragment();
                                                 FragmentTransaction transaction0 = getFragmentManager().beginTransaction();
                                                 transaction0.replace(R.id.ContainerOrdertoCart, fragmentNotif);
                                                 transaction0.addToBackStack(null);
+                                                transaction0.remove(fragmentHome);
                                                 transaction0.commit();
 
                                             } else {
                                                 Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
 
                                             }
-                                            Fragment fragmentNotif = new StatusFragment();
-                                            FragmentTransaction transaction0 = getFragmentManager().beginTransaction();
-                                            transaction0.replace(R.id.ContainerOrdertoCart, fragmentNotif);
-                                            transaction0.addToBackStack(null);
-                                            transaction0.commit();
-
                                         } catch (JSONException e) {
                                             e.printStackTrace();
                                         }
@@ -709,10 +711,13 @@ public class FragmentOrdertoCart extends Fragment {
                                         JSONObject obj = new JSONObject(response);
                                         if (!obj.getBoolean("error")) {
                                             Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+
                                             Fragment fragmentNotif = new StatusFragment();
+                                            Fragment fragmentHome = new HomeFragment();
                                             FragmentTransaction transaction0 = getFragmentManager().beginTransaction();
                                             transaction0.replace(R.id.ContainerOrdertoCart, fragmentNotif);
                                             transaction0.addToBackStack(null);
+                                            transaction0.remove(fragmentHome);
                                             transaction0.commit();
                                         } else {
                                             Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
