@@ -83,13 +83,13 @@ public class HomeMinumanEsDurianFragment extends Fragment {
 
 
         ArrayList<EsDurian> esDurian = new ArrayList<EsDurian>();
-        esDurian.add (new EsDurian("Es Teller Durian", 14000 ,R.drawable.ic_launcher_background));
-        esDurian.add (new EsDurian("Es Campur Gula Jawa Durian", 14000 ,R.drawable.ic_launcher_background));
-        esDurian.add (new EsDurian("Es Pelangi Durian", 14000 ,R.drawable.ic_launcher_background));
-        esDurian.add (new EsDurian("Es Degan Durian", 14000 ,R.drawable.ic_launcher_background));
-        esDurian.add (new EsDurian("Es Alpukat Durian", 14000 ,R.drawable.ic_launcher_background));
-        esDurian.add (new EsDurian("Es Alpukat Degan Durian", 14000 ,R.drawable.ic_launcher_background));
-        esDurian.add (new EsDurian("Es Cincau Hitam Durian", 14000 ,R.drawable.ic_launcher_background));
+        esDurian.add (new EsDurian("Es Teller Durian", 14000 ,R.drawable.minuman));
+        esDurian.add (new EsDurian("Es Campur Gula Jawa Durian", 14000 ,R.drawable.minuman));
+        esDurian.add (new EsDurian("Es Pelangi Durian", 14000 ,R.drawable.minuman));
+        esDurian.add (new EsDurian("Es Degan Durian", 14000 ,R.drawable.minuman));
+        esDurian.add (new EsDurian("Es Alpukat Durian", 14000 ,R.drawable.minuman));
+        esDurian.add (new EsDurian("Es Alpukat Degan Durian", 14000 ,R.drawable.minuman));
+        esDurian.add (new EsDurian("Es Cincau Hitam Durian", 14000 ,R.drawable.minuman));
 
         EsDurianAdapter esDurianAdapter = new EsDurianAdapter(getActivity(), esDurian);
 

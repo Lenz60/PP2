@@ -82,9 +82,9 @@ public class HomeJajananFragment extends Fragment {
         ContainerContentJajanan = viewRoot.findViewById(R.id.ContainerContentJajanan);
 
         ArrayList<Jajanan> jajanan = new ArrayList<Jajanan>();
-        jajanan.add (new Jajanan("French Fries (Kentang Goreng)", 10000 ,R.drawable.ic_launcher_background));
-        jajanan.add (new Jajanan("Tela-Telo", 10000 ,R.drawable.ic_launcher_background));
-        jajanan.add (new Jajanan("Batagor", 10000 ,R.drawable.ic_launcher_background));
+        jajanan.add (new Jajanan("French Fries (Kentang Goreng)", 10000 ,R.drawable.jajanan));
+        jajanan.add (new Jajanan("Tela-Telo", 10000 ,R.drawable.jajanan));
+        jajanan.add (new Jajanan("Batagor", 10000 ,R.drawable.jajanan));
 
         JajananAdapter jajananAdapter = new JajananAdapter(getActivity(), jajanan);
 
