@@ -150,6 +150,7 @@
                             android:id="@+id/EdOrdertoCartFoodCount"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
+                            android:text="1"
                             android:textColor="@color/white"
                             android:backgroundTint="@color/white"
                             android:textColorHighlight="@color/white"
