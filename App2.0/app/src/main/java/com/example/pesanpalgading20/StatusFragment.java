@@ -14,6 +14,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class StatusFragment extends Fragment {
+    String TableCode;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +62,14 @@ public class StatusFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View viewRoot = inflater.inflate(R.layout.fragment_status, container, false);
+
+        TableCode = getActivity().getIntent().getExtras().getString("kodeMeja").toString();
+
+
         // Inflate the layout for this fragment
         return viewRoot;
     }
+
+
+    public void StringRequest() {}
 }
