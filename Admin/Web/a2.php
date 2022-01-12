@@ -384,7 +384,7 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                     while ($rowStats = $resultStatsOrder -> fetch_array(MYSQLI_ASSOC)){
                                         
                                     ?><tr>
-                                        <td rowspan="<?php print $rowspanStats+2?>">Rp <?php print $rowStats["Total Bayar"] ?></td>
+                                        <td>Rp <?php print $rowStats["Total Bayar"] ?></td>
                                         
                                         <td <?php print $rowspanStats+2?>><?php print $rowStats["Status_order"] ?></td>
                                         <td <?php print $rowspanStats+2?>>
@@ -395,11 +395,11 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                             </form>
                                         
                                         </td>
-                                        <?php for($n = 0; $n < $rowspanStats+1; $n++){
+                                        <!-- <?php for($n = 0; $n < $rowspanStats+1; $n++){
                                                     ?>
                                                     <tr><td style="border: none;">&NonBreakingSpace;</td></tr>
                                                     <?php
-                                            }?>
+                                            }?> -->
                                     <?php 
                                     ?>
                                     </tr>
