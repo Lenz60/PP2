@@ -229,6 +229,15 @@
 						$stmt->bind_param("ss",$productordercode,$toppingcode10);
 						$stmt->execute();
 					}
+					if($toppingcode1 == "none" || $toppingcode2 == "none" || $toppingcode3 == "none" ||
+					$toppingcode4 == "none" || $toppingcode5 == "none" || $toppingcode6 == "none" || 
+					$toppingcode7 == "none" || $toppingcode8 == "none" || $toppingcode9 == "none" ||
+					$toppingcode10 == "none"){
+						$toppingnone = 'none';
+						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt->bind_param("ss",$productordercode,$toppingnone);
+						$stmt->execute();
+					}
 					
 					
 					// ///////////////////////////////////////////////////
@@ -253,13 +262,13 @@
 				if(isTheseParametersAvailable(array('tablecode'))){
 					$tablecode = $_POST['tablecode'];
 
-					$stmt = $conn->prepare("SELECT o.Kode_order,g.Nama_guest, p.Nama_produk,p.Tipe_produk, g.No_meja, o.Status_order, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(t.Harga_topping) AS 'Total Harga'
+					$stmt = $conn->prepare("SELECT o.Kode_order,g.Nama_guest,po.Jumlah_Produk_PO, p.Nama_produk,p.Tipe_produk, g.No_meja, o.Status_order, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(t.Harga_topping) AS 'Total Harga'
 					FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order JOIN guest g ON gord.Kode_Meja = g.Kode_meja
 																	 JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order
 																	 JOIN product p ON po.Kode_Produk = p.Kode_produk
 																	 JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
 																	 JOIN topping t ON tord.Kode_Topping = t.Kode_topping
-					WHERE g.Kode_meja = ? GROUP BY o.Kode_order ;");
+					WHERE g.Kode_meja = ? GROUP BY o.Kode_order ORDER BY gord.Kode_Guest_Order DESC ;");
 					$stmt->bind_param("s",$tablecode);
 					$stmt->execute();
 					$ResultStats = $stmt->get_result();
@@ -269,6 +278,7 @@
 							$status[] = array(
 								'OrderCode' => $RowResult['Kode_order'],
 								'GuestName' => $RowResult['Nama_guest'],
+								'FoodCount' => $RowResult['Jumlah_Produk_PO'],
 								'ProductName' => $RowResult['Nama_produk'],
 								'ProductType' => $RowResult['Tipe_produk'],
 								'NoTable' => $RowResult['No_meja'],
@@ -276,6 +286,7 @@
 								'TotalPrice' => $RowResult['Total Harga']
 							);
 						}
+						header('Content-Type: application/json');
 						$response['error'] = false; 
 						$response['message'] = 'Status Fetched'; 
 						$response['status'] = $status;
@@ -283,9 +294,50 @@
 				
 				}
 				else{
-					
+					$response['error'] = true; 
+					$response['message'] = 'Status not Fetched'; 
 				}
 
+			break;
+			case 'totalpricestatus' :
+				if(isTheseParametersAvailable(array('tablecode'))){
+					$tablecode = $_POST['tablecode'];
+
+					$stmt = $conn->prepare("SELECT o.Kode_order,g.Nama_guest,po.Jumlah_Produk_PO, p.Nama_produk,p.Tipe_produk, g.No_meja, o.Status_order, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(t.Harga_topping) AS 'Total Harga'
+					FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order JOIN guest g ON gord.Kode_Meja = g.Kode_meja
+																	JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order
+																	JOIN product p ON po.Kode_Produk = p.Kode_produk
+																	JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
+																	JOIN topping t ON tord.Kode_Topping = t.Kode_topping
+					WHERE g.Kode_meja = ? GROUP BY o.Kode_order ORDER BY gord.Kode_Guest_Order DESC ;");
+					$stmt->bind_param("s",$tablecode);
+					$stmt->execute();
+					$ResultStats = $stmt->get_result();
+
+						while($RowResult = $ResultStats ->fetch_array(MYSQLI_ASSOC)){
+
+							$status[] = array(
+								'OrderCode' => $RowResult['Kode_order'],
+								'GuestName' => $RowResult['Nama_guest'],
+								'FoodCount' => $RowResult['Jumlah_Produk_PO'],
+								'ProductName' => $RowResult['Nama_produk'],
+								'ProductType' => $RowResult['Tipe_produk'],
+								'NoTable' => $RowResult['No_meja'],
+								'Status' => $RowResult['Status_order'],
+								'TotalPrice' => $RowResult['Total Harga']
+							);
+						}
+						header('Content-Type: application/json');
+						$response['error'] = false; 
+						$response['message'] = 'Status Fetched'; 
+						$response['status'] = $status;
+					
+				
+				}
+				else{
+					$response['error'] = true; 
+					$response['message'] = 'Status not Fetched'; 
+				}
 			break;
 			default: 
 				$response['error'] = true; 
