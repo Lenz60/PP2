@@ -529,21 +529,21 @@ public class FragmentOrdertoCart extends Fragment {
                                 }) {
                             protected Map<String, String> getParams() throws AuthFailureError {
                                 Map<String,String> params = new HashMap<>();
-                                params.put("notable",NotableGuest.toString());
-                                params.put("tablecode",TableCodeGuest.toString());
-                                params.put("ordercode",OrderCode.toString());
-                                params.put("productcode",FoodCode.toString());
+                                params.put("notable",NotableGuest);
+                                params.put("tablecode",TableCodeGuest);
+                                params.put("ordercode",OrderCode);
+                                params.put("productcode",FoodCode);
                                 params.put("productqty",TxtvSelectedFoodCount.getText().toString());
-                                params.put("toppingcode1",ToppCode1.toString());
-                                params.put("toppingcode2",ToppCode2.toString());
-                                params.put("toppingcode3",ToppCode3.toString());
-                                params.put("toppingcode4",ToppCode4.toString());
-                                params.put("toppingcode5",ToppCode5.toString());
-                                params.put("toppingcode6",ToppCode6.toString());
-                                params.put("toppingcode7",ToppCode7.toString());
-                                params.put("toppingcode8",ToppCode8.toString());
-                                params.put("toppingcode9",ToppCode9.toString());
-                                params.put("toppingcode10",ToppCode10.toString());
+                                params.put("toppingcode1",ToppCode1);
+                                params.put("toppingcode2",ToppCode2);
+                                params.put("toppingcode3",ToppCode3);
+                                params.put("toppingcode4",ToppCode4);
+                                params.put("toppingcode5",ToppCode5);
+                                params.put("toppingcode6",ToppCode6);
+                                params.put("toppingcode7",ToppCode7);
+                                params.put("toppingcode8",ToppCode8);
+                                params.put("toppingcode9",ToppCode9);
+                                params.put("toppingcode10",ToppCode10);
                                 return params;
                             }
                         };
@@ -737,21 +737,21 @@ public class FragmentOrdertoCart extends Fragment {
                             }) {
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String,String> params = new HashMap<>();
-                            params.put("notable",NotableGuest.toString());
-                            params.put("tablecode",TableCodeGuest.toString());
-                            params.put("ordercode",OrderCode.toString());
-                            params.put("productcode",FoodCode.toString());
+                            params.put("notable",NotableGuest);
+                            params.put("tablecode",TableCodeGuest);
+                            params.put("ordercode",OrderCode);
+                            params.put("productcode",FoodCode);
                             params.put("productqty",TxtvSelectedFoodCount.getText().toString());
-                            params.put("toppingcode1",ToppCode1.toString());
-                            params.put("toppingcode2",ToppCode2.toString());
-                            params.put("toppingcode3",ToppCode3.toString());
-                            params.put("toppingcode4",ToppCode4.toString());
-                            params.put("toppingcode5",ToppCode5.toString());
-                            params.put("toppingcode6",ToppCode6.toString());
-                            params.put("toppingcode7",ToppCode7.toString());
-                            params.put("toppingcode8",ToppCode8.toString());
-                            params.put("toppingcode9",ToppCode9.toString());
-                            params.put("toppingcode10",ToppCode10.toString());
+                            params.put("toppingcode1",ToppCode1);
+                            params.put("toppingcode2",ToppCode2);
+                            params.put("toppingcode3",ToppCode3);
+                            params.put("toppingcode4",ToppCode4);
+                            params.put("toppingcode5",ToppCode5);
+                            params.put("toppingcode6",ToppCode6);
+                            params.put("toppingcode7",ToppCode7);
+                            params.put("toppingcode8",ToppCode8);
+                            params.put("toppingcode9",ToppCode9);
+                            params.put("toppingcode10",ToppCode10);
                             return params;
                         }
                     };
@@ -2403,6 +2403,18 @@ public class FragmentOrdertoCart extends Fragment {
         }
         else if (Code.toUpperCase().matches(inSoto.toUpperCase())){
             ImgOrdertoCartFood.setImageResource(R.drawable.soto);
+        }
+        else if (Code.toUpperCase().matches(inEsDurian.toUpperCase())){
+            ImgOrdertoCartFood.setImageResource(R.drawable.minuman);
+        }
+        else if (Code.toUpperCase().matches(inEsJus.toUpperCase())){
+            ImgOrdertoCartFood.setImageResource(R.drawable.minuman);
+        }
+        else if (Code.toUpperCase().matches(inEsOri.toUpperCase())){
+            ImgOrdertoCartFood.setImageResource(R.drawable.minuman);
+        }
+        else if (Code.toUpperCase().matches(inJajanan.toUpperCase())){
+            ImgOrdertoCartFood.setImageResource(R.drawable.jajanan);
         }
 
     }
