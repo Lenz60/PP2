@@ -7,6 +7,30 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.pesanpalgading20.Adapter.StatusAdapter;
+import com.example.pesanpalgading20.Getter.Status.Status;
+import com.example.pesanpalgading20.Getter.Status.TotalFinalPrice;
+import com.example.pesanpalgading20.Model.Volley.URLs;
+import com.example.pesanpalgading20.Model.Volley.VolleySingleton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +39,10 @@ import android.view.ViewGroup;
  */
 public class StatusFragment extends Fragment {
     String TableCode;
+    ListView StatusListView;
+    StatusAdapter statusAdapter;
+    ArrayList<Status> statusList = new ArrayList<Status>();
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -63,13 +91,73 @@ public class StatusFragment extends Fragment {
 
         View viewRoot = inflater.inflate(R.layout.fragment_status, container, false);
 
+        StatusListView = viewRoot.findViewById(R.id.ListViewStatus);
+        StringRequest();
+
+
         TableCode = getActivity().getIntent().getExtras().getString("kodeMeja").toString();
 
 
-        // Inflate the layout for this fragment
+
+
+
         return viewRoot;
     }
 
 
-    public void StringRequest() {}
+    public void StringRequest() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.STATUS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            //if no error in response
+                            if (!obj.getBoolean("error")) {
+                                Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+
+                                //getting Status from response
+                                JSONArray statusJson = obj.getJSONArray("status");
+
+                                for (int i = 0; i < statusJson.length(); i++) {
+                                    Status status = new Status(
+                                            statusJson.getJSONObject(i).getString("OrderCode"),
+                                            statusJson.getJSONObject(i).getString("GuestName"),
+                                            statusJson.getJSONObject(i).getString("FoodCount"),
+                                            statusJson.getJSONObject(i).getString("ProductName"),
+                                            statusJson.getJSONObject(i).getString("ProductType"),
+                                            statusJson.getJSONObject(i).getString("NoTable"),
+                                            statusJson.getJSONObject(i).getString("Status"),
+                                            statusJson.getJSONObject(i).getString("TotalPrice")
+                                    );
+
+                                    statusList.add(status);
+                                }
+                                statusAdapter = new StatusAdapter(getActivity(),statusList);
+                                StatusListView.setAdapter(statusAdapter);
+                            } else {
+                                Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("tablecode",TableCode);
+                return params;
+            }
+        };
+
+        VolleySingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
+    }
 }

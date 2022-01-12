@@ -3,16 +3,16 @@ package com.example.pesanpalgading20.Getter.Status;
 import java.util.ArrayList;
 
 public class Status {
-    private String OrderCode,Name,FoodName,TypeFood,NoTable,Status;
-    private int TotalPrice;
+    private String OrderCode,Name,FoodCount,FoodName,TypeFood,NoTable,Status,TotalPrice;
 
     public Status(){
 
     }
 
-    public Status(String orderCode, String name, String foodName, String typeFood, String noTable, String status, int totalPrice) {
+    public Status(String orderCode, String name, String foodCount, String foodName, String typeFood, String noTable, String status, String totalPrice) {
         OrderCode = orderCode;
         Name = name;
+        FoodCount = foodCount;
         FoodName = foodName;
         TypeFood = typeFood;
         NoTable = noTable;
@@ -34,6 +34,14 @@ public class Status {
 
     public void setName(String name) {
         Name = name;
+    }
+
+    public String getFoodCount() {
+        return FoodCount;
+    }
+
+    public void setFoodCount(String foodCount) {
+        FoodCount = foodCount;
     }
 
     public String getFoodName() {
@@ -68,11 +76,11 @@ public class Status {
         Status = status;
     }
 
-    public int getTotalPrice() {
+    public String getTotalPrice() {
         return TotalPrice;
     }
 
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(String totalPrice) {
         TotalPrice = totalPrice;
     }
 }

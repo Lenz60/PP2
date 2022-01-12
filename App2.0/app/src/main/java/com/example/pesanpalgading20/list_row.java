@@ -13,7 +13,6 @@ public class list_row extends AppCompatActivity {
             NoTable,
             StatusStatuses,TotalPrices;
 
-    TextView StatusDisiapkan, StatusSelesai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,20 +27,22 @@ public class list_row extends AppCompatActivity {
         StatusStatuses = findViewById(R.id.TxtvStatusStatuses);
         TotalPrices = findViewById(R.id.TxtvStatusTotalPrice);
 
-        StatusDisiapkan = findViewById(R.id.TxtvStatusDisiapkan);
-        StatusSelesai = findViewById(R.id.TxtvStatusSelesai);
+        if(FoodType.getText().toString().equals("Jajanan") || FoodType.getText().toString().equals("Es") || FoodType.getText().toString().equals("Hot")){
+            FoodType.setVisibility(View.GONE);
+        }
+        else {
+            FoodType.setVisibility(View.VISIBLE);
+        }
 
-        DisplayStatus();
-    }
-
-    public void DisplayStatus() {
         if(StatusStatuses.getText().toString().equals("Disiapkan")){
-            StatusDisiapkan.setVisibility(View.VISIBLE);
-            StatusSelesai.setVisibility(View.INVISIBLE);
+            StatusStatuses.setTextColor(getResources().getColor(R.color.Yellow));
         }
         else{
-            StatusDisiapkan.setVisibility(View.INVISIBLE);
-            StatusSelesai.setVisibility(View.VISIBLE);
+            StatusStatuses.setTextColor(getResources().getColor(R.color.Green));
         }
+
+
+
     }
+
 }
