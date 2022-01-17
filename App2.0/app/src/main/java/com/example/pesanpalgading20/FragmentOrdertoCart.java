@@ -370,7 +370,7 @@ public class FragmentOrdertoCart extends Fragment {
         inJajanan = "JJ.*";
 
         //Promo
-        inPromo = "PROMO.*";
+        inPromo = "PR.*";
 
 
         //Back based where the position is
@@ -2171,7 +2171,7 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvTotalHarga.setText(String.valueOf(Price));
 
         } else if(Code.toString().equals(inPromo)){
-            ToppCode1 = "PROMO";
+            ToppCode1 = "none";
 
             //hide remaining topping CB
             CBTopping1.setVisibility(GONE);
