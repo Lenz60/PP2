@@ -52,7 +52,7 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
     
         <!-- Incoming Table -->
         <div >
-            <table border="1" style="width: 100%;">
+            <table border="1" style="max-width:50px;">
                 <?php 
                 include("connect.php");
                 $notable = 0;
@@ -285,12 +285,16 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                 <?php
                                     include("connect.php");
                                 ?>
-                                <th colspan="7">Detail Order</th>
+                                <th colspan="10">Detail Order</th>
                                 <tr>
-                                    <th>Pesanan</th>
+                                    <th>Lokasi</th>
+                                    <th>Jumlah Pesanan</th>
                                     <th>Nama Makanan</th>
                                     <th>Tipe Makanan</th>
                                     <th>Topping</th>
+                                    <th>Total Bayar</th>
+                                    <th>Status</th>
+                                    <th>Konfirmasi Pesanan</th>
                                 </tr>
                                 <tr>
                                     <?php 
@@ -312,13 +316,13 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                             <?php
                                         }
                                         else {
-                                            $stmt = $conn->prepare("SELECT g.No_meja, o.Kode_order,p.Nama_produk,p.Tipe_produk, t.Nama_topping, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(t.Harga_topping) AS 'Total Bayar', o.Status_order 
+                                            $stmt = $conn->prepare("SELECT g.No_meja,po.Jumlah_Produk_PO, o.Kode_order,p.Nama_produk,p.Tipe_produk, t.Nama_topping, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(t.Harga_topping) AS 'Total Bayar', o.Status_order 
                                                                     FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order JOIN guest g ON gord.Kode_Meja = g.Kode_meja
                                                                                             JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order
                                                                                             JOIN product p ON po.Kode_Produk = p.Kode_produk
                                                                                             JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
                                                                                             JOIN topping t ON tord.Kode_Topping = t.Kode_topping
-                                                                    WHERE g.No_meja = '".$_POST['notable']."' AND o.Status_order = 'Disiapkan' GROUP BY o.Kode_order;");
+                                                                    WHERE g.No_meja = '".$_POST['notable']."' AND o.Status_order = 'Disiapkan' GROUP BY o.Kode_order ORDER BY gord.Kode_guest_order DESC;");
                                             $stmt->execute();
                                             
                                             $resultDetailOrder = $stmt->get_result();
@@ -337,29 +341,59 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                                         $stmt->bind_result($rowspanStats);
                                                         $stmt->fetch();
                                                     }
-                                                ?>
-                                                <?php
-                                                $stmt = $conn->prepare("SELECT t.Nama_topping FROM orders o JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order 
-                                                                                                JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
-                                                                                                JOIN topping t ON tord.Kode_Topping = t.Kode_topping
-                                                                        WHERE o.Kode_order = '".$rowDetail["Kode_order"]."' AND o.Status_order = 'Disiapkan'");
-                                                $stmt->execute();
-                                                ?>
-                                                    <tr>
-                                                        <td rowspan="<?php print $rowspanStats+1?>">Meja <?php print $rowDetail["No_meja"] ?></td> <!-- //? Fill with Order Data// -->
-                                                        <td rowspan="<?php print $rowspanStats+1?>"><?php print $rowDetail["Nama_produk"] ?></td>
-                                                        <td rowspan="<?php print $rowspanStats+1?>"><?php print $rowDetail["Tipe_produk"] ?></td>    
-                                                    <?php
-                                                    $resultTopping = $stmt->get_result();
-                                                    while ($rowTopping = $resultTopping -> fetch_array(MYSQLI_ASSOC)){
-                                                        
-                                                        ?>
-                                                        <tr>
-                                                            <td><?php print $rowTopping["Nama_topping"] ?></td>
-                                                        </tr>
-                                                        <?php
-                                                    }
                                                     ?>
+                                                    <?php
+                                                    $stmt = $conn->prepare("SELECT t.Nama_topping FROM orders o JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order 
+                                                                                                    JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
+                                                                                                    JOIN topping t ON tord.Kode_Topping = t.Kode_topping
+                                                                            WHERE o.Kode_order = '".$rowDetail["Kode_order"]."' AND o.Status_order = 'Disiapkan'");
+                                                    $stmt->execute();
+                                                    ?>
+                                                    <tr>
+                                                        <td rowspan="<?php print $rowspanStats?>">Meja <?php print $rowDetail["No_meja"] ?></td> <!-- //? Fill with Order Data// -->
+                                                        <td rowspan="<?php print $rowspanStats?>"><?php print $rowDetail["Jumlah_Produk_PO"] ?></td> <!-- //? Fill with Order Data// -->
+                                                        <td rowspan="<?php print $rowspanStats?>"><?php print $rowDetail["Nama_produk"] ?></td>
+                                                        <td rowspan="<?php print $rowspanStats?>"><?php print $rowDetail["Tipe_produk"] ?></td>    
+                                                        <?php
+                                                        $resultTopping = $stmt->get_result();
+                                                        ?>
+                                                        <td rowspan="<?php print $rowspanStats?>">
+                                                            <table style="text-align: center;">
+                                                                <?php          
+                                                                while ($rowTopping = $resultTopping -> fetch_array(MYSQLI_ASSOC)){
+                                                                    ?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <?php print $rowTopping["Nama_topping"] ?>
+                                                                        </td> 
+                                                                    </tr>                                                                                                                                       
+                                                                <?php
+                                                                }
+                                                                ?>                                                               
+                                                            </table>
+                                                        </td>
+                                                        <?php
+                                                        $stmt = $conn->prepare("SELECT g.No_meja, o.Kode_order,p.Nama_produk,p.Tipe_produk, t.Nama_topping, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(t.Harga_topping) AS 'Total Bayar', o.Status_order 
+                                                            FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order JOIN guest g ON gord.Kode_Meja = g.Kode_meja
+                                                                            JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order
+                                                                            JOIN product p ON po.Kode_Produk = p.Kode_produk
+                                                                            JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
+                                                                            JOIN topping t ON tord.Kode_Topping = t.Kode_topping
+                                                            WHERE g.No_meja = '".$_POST['notable']."' AND o.Status_order = 'Disiapkan' GROUP BY o.Kode_order;");
+                                                        $stmt->execute();
+                                                        $resultStatsOrder = $stmt->get_result();
+                                                        $rowStats = $resultStatsOrder -> fetch_array(MYSQLI_ASSOC);
+                                                        ?>
+                                                        <td rowspan="<?php print $rowspanStats?>">Rp <?php print $rowStats["Total Bayar"] ?></td>
+                                        
+                                                        <td rowspan="<?php print $rowspanStats?>"><?php print $rowStats["Status_order"] ?></td>
+                                                        <td rowspan="<?php print $rowspanStats?>">
+                                                            <form method="POST" action="dibuat.php" class="hiddenform">
+                                                                <input type="hidden" name="Status" value="Selesai">
+                                                                <input type="hidden" name="KodeOrder" value="<?php print $rowStats['Kode_order'] ?>">
+                                                                <button type="submit" name="Button" value="Selesai" class="statusorderbutton">Selesai</button>
+                                                            </form>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             <?php }
@@ -370,8 +404,11 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                             </tr>
                         </table>
                     </div>
+                    
                     <!-- Table Status Order -->
-                    <div class="column">
+                    
+                    <!-- //! Comment HTML Start
+                     <div class="column"> 
                         <table border="1">
                             <th colspan="4">Status Order</th>
                             <tr>
@@ -379,15 +416,17 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                 <th>Status</th>
                                 <th>Konfirmasi Pesanan</th>
                             </tr>
+                            
                                 <?php
-                                if (isset($_POST['notable']) == null){
+                                //! Comment PHP Start
+                                 /* if (isset($_POST['notable']) == null){ 
                                     ?><tr>
                                         <td> </td>
                                         <td> </td>
                                         <td></td>
                                     </tr>
                                     <?php
-
+                            
                                 }
                                 else {
                                     $stmt = $conn->prepare("SELECT g.No_meja, o.Kode_order,p.Nama_produk,p.Tipe_produk, t.Nama_topping, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(t.Harga_topping) AS 'Total Bayar', o.Status_order 
@@ -422,9 +461,11 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                     <?php    
                                     }   
                                 }
-                                ?>
+                                */?> //! Comment PHP End
                         </table>
-                    </div> 
+                    </div>  
+                //! Comment HTML End
+                --> 
             </div>     
         </div>   
     </body>

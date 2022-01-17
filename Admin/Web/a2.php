@@ -270,6 +270,9 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                         <th>Nama Makanan</th>
                                         <th>Tipe Makanan</th>
                                         <th>Topping</th>
+                                        <th>Total Bayar</th>
+                                        <th>Status</th>
+                                        <th>Konfirmasi Pesanan</th>
                                     </tr>
                                     <tr>
                                         <?php 
@@ -331,19 +334,47 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                                             <td rowspan="<?php print $rowspanStats+1?>"><?php print $rowDetail["Tipe_produk"] ?></td>    
                                                         <?php
                                                         $resultTopping = $stmt->get_result();
-                                                        while ($rowTopping = $resultTopping -> fetch_array(MYSQLI_ASSOC)){
-                                                            
-                                                            ?>
-                                                            <tr>
-                                                                <td><?php print $rowTopping["Nama_topping"] ?></td>
-                                                            </tr>
-                                                            <?php
-                                                        }
                                                         ?>
+                                                        <td rowspan="<?php print $rowspanStats?>">
+                                                            <table style="text-align: center;">
+                                                            <?php
+                                                                while ($rowTopping = $resultTopping -> fetch_array(MYSQLI_ASSOC)){
+                                                                    
+                                                                    ?>
+                                                                    <tr>
+                                                                        <td><?php print $rowTopping["Nama_topping"] ?></td>
+                                                                    </tr>
+                                                                    <?php
+                                                                }
+                                                            ?>
+                                                            </table>
+                                                        </td>
+                                                        
+                                                        <?php
+                                                        $stmt = $conn->prepare("SELECT g.No_meja, o.Kode_order,p.Nama_produk,p.Tipe_produk, t.Nama_topping, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(t.Harga_topping) AS 'Total Bayar', o.Status_order 
+                                                        FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order JOIN guest g ON gord.Kode_Meja = g.Kode_meja
+                                                                        JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order
+                                                                        JOIN product p ON po.Kode_Produk = p.Kode_produk
+                                                                        JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
+                                                                        JOIN topping t ON tord.Kode_Topping = t.Kode_topping
+                                                        WHERE g.No_meja = '".$_POST['notable']."' AND o.Status_order = 'Disiapkan' GROUP BY o.Kode_order;");
+                                                        $stmt->execute();
+                                                        $resultStatsOrder = $stmt->get_result();
+                                                        $rowStats = $resultStatsOrder -> fetch_array(MYSQLI_ASSOC);
+                                                        ?>
+                                                        <td rowspan="<?php print $rowspanStats?>">Rp <?php print $rowStats["Total Bayar"] ?></td>
+                                        
+                                                        <td rowspan="<?php print $rowspanStats?>"><?php print $rowStats["Status_order"] ?></td>
+                                                        <td rowspan="<?php print $rowspanStats?>">
+                                                            <form method="POST" action="dibuat2.php" class="hiddenform">
+                                                                <input type="hidden" name="Status" value="Selesai">
+                                                                <input type="hidden" name="KodeOrder" value="<?php print $rowStats['Kode_order'] ?>">
+                                                                <button type="submit" name="Button" value="Selesai" class="statusorderbutton">Selesai</button>
+                                                            </form>
+                                                        </td>
                                                         </tr>
                                                     </tbody>
                                                 <?php }
-                                                $lastSelectedTable = $_POST['notable'];
 
                                             }
                                             ?>
@@ -352,7 +383,8 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                         </table>
                     </div>
                     <!-- Table Status Order -->
-                    <div class="column">
+                    <!-- //! Start Of Comment HTML 
+                        <div class="column">
                         <table border="1">
                             <th colspan="4">Status Order</th>
                             <tr>
@@ -361,6 +393,7 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                 <th>Konfirmasi Pesanan</th>
                             </tr>
                                 <?php
+                                /* //! Start of Comment PHP
                                 if (isset($_POST['notable']) == null){
                                     ?><tr>
                                         <td> </td>
@@ -406,9 +439,13 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                     <?php 
                                     }
                                 }   
-                                ?>
+                                */
+                               //! End of Comment PHP
+                               ?>
                         </table>
-                    </div> 
+                    </div>  
+                //! End Of Comment of HTMl
+                -->
             </div>     
         </div>
     </body>
