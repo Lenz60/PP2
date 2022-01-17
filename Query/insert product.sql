@@ -91,3 +91,8 @@ INSERT INTO product VALUES ('EJ8','Minuman','Es','Juice Jeruk',8000);
 INSERT INTO product VALUES ('JJ1','Jajanan','Jajanan','French Fries(Kentang Goreng)',10000);
 INSERT INTO product VALUES ('JJ2','Jajanan','Jajanan','Tela-Telo',10000);
 INSERT INTO product VALUES ('JJ3','Jajanan','Jajanan','Batagor',10000);
+
+--Promo
+INSERT INTO product VALUES ('PROMO1','Promo','Promo','Promo 1 (Mie Ayam + Esteh)',12000);
+INSERT INTO product VALUES ('PROMO2','Promo','Promo','Promo 2 (Bakso + Esteh)',15000);
+INSERT INTO product VALUES ('PROMO3','Promo','Promo','Promo 3 (Soto Ayam + Esteh)',11000);
