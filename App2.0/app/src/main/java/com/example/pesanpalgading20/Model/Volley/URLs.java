@@ -7,4 +7,5 @@ public class URLs {
     public static final String GUEST_LOGIN = ROOT_URL + "loginguest";
     public static final String ORDER = ROOT_URL + "order";
     public static final String STATUS = ROOT_URL + "status";
+    public static final String PRICE = ROOT_URL + "totalpricestatus";
 }
