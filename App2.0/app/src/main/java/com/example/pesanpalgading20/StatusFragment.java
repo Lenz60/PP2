@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -41,6 +42,7 @@ public class StatusFragment extends Fragment {
     String TableCode;
     ListView StatusListView;
     StatusAdapter statusAdapter;
+    TextView TxtvFinalPrice;
     ArrayList<Status> statusList = new ArrayList<Status>();
 
 
@@ -91,8 +93,10 @@ public class StatusFragment extends Fragment {
 
         View viewRoot = inflater.inflate(R.layout.fragment_status, container, false);
 
+        TxtvFinalPrice = viewRoot.findViewById(R.id.TxtvStatusTotalFinalPrice);
         StatusListView = viewRoot.findViewById(R.id.ListViewStatus);
         StringRequest();
+        GetTotalPrice();
 
 
         TableCode = getActivity().getIntent().getExtras().getString("kodeMeja").toString();
@@ -115,7 +119,7 @@ public class StatusFragment extends Fragment {
                             JSONObject obj = new JSONObject(response);
                             //if no error in response
                             if (!obj.getBoolean("error")) {
-                                Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
 
                                 //getting Status from response
                                 JSONArray statusJson = obj.getJSONArray("status");
@@ -160,4 +164,44 @@ public class StatusFragment extends Fragment {
 
         VolleySingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
     }
+
+    public void GetTotalPrice(){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.PRICE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            //if no error in response
+                            if (!obj.getBoolean("error")) {
+//                                Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+
+                                TxtvFinalPrice.setText(obj.getString("totalprice"));
+
+
+                            } else {
+                                Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("tablecode",TableCode);
+                return params;
+            }
+        };
+        VolleySingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
+    }
+
+
 }
