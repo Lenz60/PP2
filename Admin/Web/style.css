@@ -1,4 +1,4 @@
-html, body {
+/* html, body {
     height: 100%;
 }
 
@@ -10,7 +10,7 @@ html {
 body {
     display: table-cell;
     vertical-align: middle;
-}
+} */
 .hidden {
   visibility: hidden;
 }
@@ -90,10 +90,25 @@ td a {
   box-sizing: border-box;
 }
 
-.row {
+.rowCustom {
   display: flex;
 }
+.row .marginTable{
+  margin-left: 10px;
+  margin-top: 20px;
+  text-align: center;
+}
 
-.column {
+
+.IncomingOrder{
+  margin-top: 20px;
+  text-align: center;
+  margin-left: 10px;
+  max-width: 50px;
+}
+
+
+.columnCustom {
 
 }
+
