@@ -33,17 +33,17 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                         </li>
                         <li class="nav-item">
                             <a href="a.php" class="nav-link align-middle px-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stop-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                            <path d="M5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3z"/>
-                            </svg> <span class="ms-1 d-none d-sm-inline">Resume Refresh</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+                            <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+                            </svg>
+                            <span class="ms-1 d-none d-sm-inline">Resume Refresh</span>
                             </a>
                         </li>
                     </ul>
                     <hr>
                         <div class="dropdown pb-4">
                             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="user.svg" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                                <img src="./Resources/user.svg" alt="hugenerd" width="30" height="30" class="rounded-circle">
                                 <span class="d-none d-sm-inline mx-1"><?php print $_SESSION['Nama'] ?></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
@@ -86,7 +86,7 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                                         $check = $_SESSION['lastcount'] = $colspan;
                                         ?>
                                         <iframe src="notification.mp3" allow="autoplay" style="display:none" id="iframeAudio"></iframe> 
-                                        <audio id="player" autoplay loop><source src="notification.mp3" type="audio/mp3"></audio>
+                                        <audio id="player" autoplay loop><source src="./Resources/notification.mp3" type="audio/mp3"></audio>
                                     
                                         <?php
                                     }
