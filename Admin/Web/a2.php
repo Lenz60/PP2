@@ -32,6 +32,11 @@ if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
                             <span id="clock"></span>
                         </li>
                         <li class="nav-item">
+                            <br>
+                            <p style="font-family: sans-serif;">Auto Refresh Terhenti</p>
+                            <p style="font-family: sans-serif; color:red;">Perhatian!, Pesanan Baru Mungkin tidak akan terdeteksi sebelum merefresh halaman!</p>
+                        </li>
+                        <li class="nav-item">
                             <a href="a.php" class="nav-link align-middle px-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
                             <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
