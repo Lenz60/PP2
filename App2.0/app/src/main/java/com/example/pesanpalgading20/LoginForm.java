@@ -450,21 +450,6 @@ public class LoginForm extends AppCompatActivity {
                                     poslat5 = true;
                                 }
                             }
-                            /// kursi 1//
-                            /*
-                            else if (longitude > long2 && longitude < long4){
-                                //
-                                if (latitude > lat1 && latitude < lat2){
-                                    posk1confirm = true;
-                                    poslat1 = true;
-                                }
-                                else{
-                                    posk1confirm = false;
-                                    poslat1 = false;
-                                }
-                                poslong4 = true;
-                            }
-                            */
                             else {
                                 poslong1 = false;
                                 poslong2 = false;
