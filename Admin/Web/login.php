@@ -1,4 +1,8 @@
-<html>
+<?php
+ob_start();
+@session_start();
+?>
+    <html>
     <head>
         <link rel="stylesheet" href="style.css">
         <!-- Bootstrap -->
@@ -12,13 +16,10 @@
         <title>Login Admin Pesan Palgading</title>
     </head>
     <body class="d-flex justify-content-center bgLogin" >
-
         <?php
-        session_start();
-        include("connect.php");
+        require("connect.php");
         if(isset($_SESSION['Id']) && isset($_SESSION['Nama'])){
-            header("Location: a.php");
-        
+            header("Location: index.php");
         }
         else {
             ?> 
@@ -40,8 +41,6 @@
                         <br>
                         <button type="submit" class="btn btn-outline-primary d-grid gap-2 col-6 mx-auto" name="loginBtn">Login</button>
                     </form>
-                    
-
                     <?php 
                     if(isset($_POST['Username'])== null){
                     }
@@ -56,7 +55,10 @@
                                 $_SESSION['Id'] = $Id;
                                 $_SESSION['Username'] = $Username;
                                 $_SESSION['Nama'] = $Nama;
-                                header("Location:a.php");
+                                ob_start();
+                                header("Location: index.php");
+                                ob_end_flush();
+                                exit;
                             }
                             else{
                             } 
@@ -67,10 +69,8 @@
                     ?>
                 </fieldset>
             </div>
-            
         <?php 
         }
         ?>
-        
-    </body>
-</html>
+        </body>
+    </html>
