@@ -309,7 +309,7 @@
 																	JOIN product p ON po.Kode_Produk = p.Kode_produk
 																	JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
 																	JOIN topping t ON tord.Kode_Topping = t.Kode_topping
-					WHERE g.Kode_meja = ?  AND o.Status_order = 'Disiapkan' GROUP BY o.Kode_order ORDER BY gord.Kode_Guest_Order DESC ;");
+					WHERE g.Kode_meja = ?  AND NOT o.Status_order = 'Selesai' GROUP BY o.Kode_order ORDER BY gord.Kode_Guest_Order DESC ;");
 					$stmt->bind_param("s",$tablecode);
 					$stmt->execute();
 					$sum = 0;
