@@ -70,7 +70,6 @@ if (session_status() === PHP_SESSION_NONE) {
                                         ?>
                                         <tr>
                                             <?php 
-                                                
                                                 $stmt = $conn->prepare ("SELECT COUNT(Status_order) FROM orders WHERE Status_order= 'Disiapkan'");
                                                 $stmt->execute();
                                                 $stmt->store_result();
@@ -155,55 +154,120 @@ if (session_status() === PHP_SESSION_NONE) {
                                                 $table13Status = "white";
                                                 
                                                 // Display Ordered Table as green
-                                                $stmt = $conn->prepare ("SELECT g.No_meja 
+                                                $stmt = $conn->prepare ("SELECT g.No_meja, o.Status_order
                                                                         FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order JOIN guest g ON gord.Kode_Meja = g.Kode_meja
                                                                                         JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order
                                                                                         JOIN product p ON po.Kode_Produk = p.Kode_produk
                                                                                         JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
                                                                                         JOIN topping t ON tord.Kode_Topping = t.Kode_topping
-                                                                        WHERE o.Status_order = 'Disiapkan' GROUP BY o.Kode_order ORDER BY gord.Kode_Guest_Order DESC;");
+                                                                        WHERE NOT o.Status_order = 'Selesai' GROUP BY o.Kode_order ORDER BY gord.Kode_Guest_Order DESC;");
                                                 $stmt->execute();
                                                 $resultTableColor = $stmt -> get_result();
                                                 while ($RowTable = $resultTableColor -> fetch_array(MYSQLI_ASSOC)){
                                                     
                                                     if ($RowTable['No_meja'] == "1"){
-                                                        $table1Status = "green";
+                                                        if($RowTable['Status_order'] == "Belum Dibayar"){
+                                                            $table1Status = "yellow";
+                                                        }
+                                                        else {
+                                                            $table1Status = "green";
+                                                        } 
                                                     }
                                                     else if($RowTable['No_meja'] == "2"){
-                                                        $table2Status = "green";
+                                                        if($RowTable['Status_order'] == "Belum Dibayar"){
+                                                            $table2Status = "yellow";
+                                                        }
+                                                        else {
+                                                            $table2Status = "green";
+                                                        } 
                                                     }
                                                     else if ($RowTable['No_meja'] == "3"){
-                                                        $table3Status = "green";
+                                                        if($RowTable['Status_order'] == "Belum Dibayar"){
+                                                            $table3Status = "yellow";
+                                                        }
+                                                        else {
+                                                            $table3Status = "green";
+                                                        } 
                                                     }
                                                     else if ($RowTable['No_meja'] == "4"){
-                                                        $table4Status = "green";
+                                                        if($RowTable['Status_order'] == "Belum Dibayar"){
+                                                            $table4Status = "yellow";
+                                                        }
+                                                        else {
+                                                            $table4Status = "green";
+                                                        } 
                                                     }
                                                     else if ($RowTable['No_meja'] == "5"){
-                                                        $table6Status = "green";
+                                                        if($RowTable['Status_order'] == "Belum Dibayar"){
+                                                            $table5Status = "yellow";
+                                                        }
+                                                        else {
+                                                            $table5Status = "green";
+                                                        } 
                                                     }
                                                     else if ($RowTable['No_meja'] == "6"){
-                                                        $table6Status = "green";
+                                                        if($RowTable['Status_order'] == "Belum Dibayar"){
+                                                            $table6Status = "yellow";
+                                                        }
+                                                        else {
+                                                            $table6Status = "green";
+                                                        } 
                                                     }
                                                     else if ($RowTable['No_meja'] == "7"){
-                                                        $table7Status = "green";
+                                                        if($RowTable['Status_order'] == "Belum Dibayar"){
+                                                            $table7Status = "yellow";
+                                                        }
+                                                        else {
+                                                            $table7Status = "green";
+                                                        } 
                                                     }
                                                     else if ($RowTable['No_meja'] == "8"){
-                                                        $table9Status = "green";
+                                                        if($RowTable['Status_order'] == "Belum Dibayar"){
+                                                            $table8Status = "yellow";
+                                                        }
+                                                        else {
+                                                            $table8Status = "green";
+                                                        } 
                                                     }
                                                     else if ($RowTable['No_meja'] == "9"){
-                                                        $table9Status = "green";
+                                                        if($RowTable['Status_order'] == "Belum Dibayar"){
+                                                            $table9Status = "yellow";
+                                                        }
+                                                        else {
+                                                            $table9Status = "green";
+                                                        } 
                                                     }
                                                     else if ($RowTable['No_meja'] == "10"){
-                                                        $table10Status = "green";
+                                                        if($RowTable['Status_order'] == "Belum Dibayar"){
+                                                            $table10Status = "yellow";
+                                                        }
+                                                        else {
+                                                            $table10Status = "green";
+                                                        } 
                                                     }
                                                     else if ($RowTable['No_meja'] == "11"){
-                                                        $table11Status = "green";
+                                                        if($RowTable['Status_order'] == "Belum Dibayar"){
+                                                            $table11Status = "yellow";
+                                                        }
+                                                        else {
+                                                            $table11Status = "green";
+                                                        } 
                                                     }
                                                     else if ($RowTable['No_meja'] == "12"){
-                                                        $table12Status = "green";
+                                                        if($RowTable['Status_order'] == "Belum Dibayar"){
+                                                            $table12Status = "yellow";
+                                                        }
+                                                        else {
+                                                            $table12Status = "green";
+                                                        } 
                                                     }
                                                     else if ($RowTable['No_meja'] == "13"){
-                                                        $table13Status = "green";
+                                                        if($RowTable['Status_order'] == "Belum Dibayar"){
+                                                            $table13Status = "yellow";
+                                                        }
+                                                        else {
+                                                            $table13Status = "green";
+                                                        } 
                                                     }
                                                     else {
                                                         
@@ -327,7 +391,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                                                                                             JOIN product p ON po.Kode_Produk = p.Kode_produk
                                                                                                             JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
                                                                                                             JOIN topping t ON tord.Kode_Topping = t.Kode_topping
-                                                                                    WHERE g.No_meja = '".$_POST['notable']."' AND o.Status_order = 'Disiapkan' GROUP BY o.Kode_order ORDER BY gord.Kode_guest_order DESC;");
+                                                                                    WHERE g.No_meja = '".$_POST['notable']."' AND NOT o.Status_order = 'Selesai' GROUP BY o.Kode_order;");
                                                             $stmt->execute();
                                                             
                                                             $resultDetailOrder = $stmt->get_result();
@@ -351,19 +415,20 @@ if (session_status() === PHP_SESSION_NONE) {
                                                                     $stmt = $conn->prepare("SELECT t.Nama_topping FROM orders o JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order 
                                                                                                                     JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
                                                                                                                     JOIN topping t ON tord.Kode_Topping = t.Kode_topping
-                                                                                            WHERE o.Kode_order = '".$rowDetail["Kode_order"]."' AND o.Status_order = 'Disiapkan'");
+                                                                                            WHERE o.Kode_order = '".$rowDetail["Kode_order"]."'");
                                                                     $stmt->execute();
+                                                                    $resultTopping = $stmt->get_result();
                                                                     ?>
                                                                     <tr>
-                                                                        <td rowspan="<?php print $rowspanStats?>">Meja <?php print $rowDetail["No_meja"] ?></td> <!-- //? Fill with Order Data// -->
-                                                                        <td rowspan="<?php print $rowspanStats?>"><?php print $rowDetail["Jumlah_Produk_PO"] ?></td> <!-- //? Fill with Order Data// -->
-                                                                        <td rowspan="<?php print $rowspanStats?>"><?php print $rowDetail["Nama_produk"] ?></td>
-                                                                        <td rowspan="<?php print $rowspanStats?>"><?php print $rowDetail["Tipe_produk"] ?></td>    
-                                                                        <?php
-                                                                        $resultTopping = $stmt->get_result();
-                                                                        ?>
-                                                                        <td rowspan="<?php print $rowspanStats?>">
-                                                                            <table class="text-center">
+                                                                        <?php 
+                                                                        if($rowDetail["Status_order"] == "Disiapkan"){
+                                                                            ?>
+                                                                            <td rowspan="<?php print $rowspanStats?>">Meja <?php print $rowDetail["No_meja"] ?></td> <!-- //? Fill with Order Data// -->
+                                                                            <td rowspan="<?php print $rowspanStats?>"><?php print $rowDetail["Jumlah_Produk_PO"] ?></td> <!-- //? Fill with Order Data// -->
+                                                                            <td rowspan="<?php print $rowspanStats?>"><?php print $rowDetail["Nama_produk"] ?></td>
+                                                                            <td rowspan="<?php print $rowspanStats?>"><?php print $rowDetail["Tipe_produk"] ?></td>
+                                                                            <td rowspan="<?php print $rowspanStats?>">
+                                                                            <table class="text-center"> <!-- //? Topping -->
                                                                                 <?php          
                                                                                 while ($rowTopping = $resultTopping -> fetch_array(MYSQLI_ASSOC)){
                                                                                     ?>
@@ -376,29 +441,51 @@ if (session_status() === PHP_SESSION_NONE) {
                                                                                 }
                                                                                 ?>                                                               
                                                                             </table>
-                                                                        </td>
-                                                                        <?php
-                                                                        $stmt = $conn->prepare("SELECT g.No_meja, o.Kode_order,p.Nama_produk,p.Tipe_produk, t.Nama_topping, (p.Harga_produk*po.Jumlah_Produk_PO) + SUM(t.Harga_topping) AS 'Total Bayar', o.Status_order 
-                                                                            FROM orders o JOIN guest_order gord ON o.Kode_Guest_Order = gord.Kode_guest_order JOIN guest g ON gord.Kode_Meja = g.Kode_meja
-                                                                                            JOIN product_order po ON o.Kode_Produk_Order = po.Kode_produk_order
-                                                                                            JOIN product p ON po.Kode_Produk = p.Kode_produk
-                                                                                            JOIN topping_order tord ON po.Kode_produk_order = tord.Kode_Produk_Order
-                                                                                            JOIN topping t ON tord.Kode_Topping = t.Kode_topping
-                                                                            WHERE g.No_meja = '".$_POST['notable']."' AND o.Status_order = 'Disiapkan' GROUP BY o.Kode_order;");
-                                                                        $stmt->execute();
-                                                                        $resultStatsOrder = $stmt->get_result();
-                                                                        $rowStats = $resultStatsOrder -> fetch_array(MYSQLI_ASSOC);
+                                                                            </td>
+                                                                            <td >Rp <?php print $rowDetail["Total Bayar"] ?></td>
+                                                                            <td ><?php print $rowDetail["Status_order"] ?></td>
+                                                                                    <td>
+                                                                                        <form method="POST" action="konfirmasi.php" class="hiddenform">
+                                                                                            <input type="hidden" name="Status" value="Konfirmasi">
+                                                                                            <input type="hidden" name="KodeOrder" value="<?php print $rowDetail['Kode_order'] ?>">
+                                                                                            <button type="submit" name="Button" value="Konfirmasi" class="statusorderbutton">Konfirmasi</button>
+                                                                                        </form>
+                                                                            </td>
+                                                                            <?php
+                                                                        }
+                                                                        else {
+                                                                            ?>
+                                                                            <td style="background-color: yellow;" rowspan="<?php print $rowspanStats?>">Meja <?php print $rowDetail["No_meja"] ?></td> <!-- //? Fill with Order Data// -->
+                                                                            <td style="background-color: yellow;" rowspan="<?php print $rowspanStats?>"><?php print $rowDetail["Jumlah_Produk_PO"] ?></td> <!-- //? Fill with Order Data// -->
+                                                                            <td style="background-color: yellow;" rowspan="<?php print $rowspanStats?>"><?php print $rowDetail["Nama_produk"] ?></td>
+                                                                            <td style="background-color: yellow;" rowspan="<?php print $rowspanStats?>"><?php print $rowDetail["Tipe_produk"] ?></td>
+                                                                            <td style="background-color: yellow;" rowspan="<?php print $rowspanStats?>">
+                                                                            <table class="text-center"> <!-- //? Topping -->
+                                                                                <?php          
+                                                                                while ($rowTopping = $resultTopping -> fetch_array(MYSQLI_ASSOC)){
+                                                                                    ?>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <?php print $rowTopping["Nama_topping"] ?>
+                                                                                        </td> 
+                                                                                    </tr>                                                                                                                                       
+                                                                                <?php
+                                                                                }
+                                                                                ?>                                                               
+                                                                            </table>
+                                                                            </td>
+                                                                            <td style="background-color: yellow;" >Rp <?php print $rowDetail["Total Bayar"] ?></td>
+                                                                            <td style="background-color: yellow;"><?php print $rowDetail["Status_order"] ?></td>
+                                                                                <td style="background-color: yellow;">
+                                                                                    <form method="POST" action="konfirmasi.php" class="hiddenform">
+                                                                                            <input type="hidden" name="Status" value="Selesai">
+                                                                                            <input type="hidden" name="KodeOrder" value="<?php print $rowDetail['Kode_order'] ?>">
+                                                                                            <button type="submit" name="Button" value="Selesai" class="statusorderbutton">Selesai</button>
+                                                                                    </form>
+                                                                                </td>
+                                                                            <?php
+                                                                        }
                                                                         ?>
-                                                                        <td rowspan="<?php print $rowspanStats?>">Rp <?php print $rowStats["Total Bayar"] ?></td>
-                                                        
-                                                                        <td rowspan="<?php print $rowspanStats?>"><?php print $rowStats["Status_order"] ?></td>
-                                                                        <td rowspan="<?php print $rowspanStats?>">
-                                                                            <form method="POST" action="dibuat.php" class="hiddenform">
-                                                                                <input type="hidden" name="Status" value="Selesai">
-                                                                                <input type="hidden" name="KodeOrder" value="<?php print $rowStats['Kode_order'] ?>">
-                                                                                <button type="submit" name="Button" value="Selesai" class="statusorderbutton">Selesai</button>
-                                                                            </form>
-                                                                        </td>
                                                                     </tr>
                                                                 </tbody>
                                                             <?php }
