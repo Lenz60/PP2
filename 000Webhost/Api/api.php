@@ -22,9 +22,10 @@
 						$stmt->execute();
 						$stmt->store_result();
 						
+						
 						if($stmt->num_rows > 0){
 							$response['error'] = true;
-							$response['message'] = 'Selamat Datang '.$guestname;
+							$response['message'] = 'Selamat Datang ';print $guestname;
 						}
 						else {
 							$response['error'] = false;
