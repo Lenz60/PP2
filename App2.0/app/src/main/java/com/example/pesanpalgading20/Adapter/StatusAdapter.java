@@ -96,6 +96,9 @@ public class StatusAdapter extends BaseAdapter {
         if(Status.getText().toString().equals("Disiapkan")){
             Status.setTextColor(this.activity.getResources().getColor(R.color.Yellow));
         }
+        else if(Status.getText().toString().equals("Belum Dibayar")){
+            Status.setTextColor(this.activity.getResources().getColor(R.color.LightYellow));
+        }
         else {
             Status.setTextColor(this.activity.getResources().getColor(R.color.Green));
         }
