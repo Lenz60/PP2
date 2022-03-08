@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ public class StatusFragment extends Fragment {
     ListView StatusListView;
     StatusAdapter statusAdapter;
     TextView TxtvFinalPrice;
+    ProgressBar ProgressBarStatus;
     ArrayList<Status> statusList = new ArrayList<Status>();
 
 
@@ -95,8 +97,12 @@ public class StatusFragment extends Fragment {
 
         TxtvFinalPrice = viewRoot.findViewById(R.id.TxtvStatusTotalFinalPrice);
         StatusListView = viewRoot.findViewById(R.id.ListViewStatus);
+
+
         StringRequest();
         GetTotalPrice();
+
+
 
 
         TableCode = getActivity().getIntent().getExtras().getString("kodeMeja").toString();
@@ -201,6 +207,7 @@ public class StatusFragment extends Fragment {
             }
         };
         VolleySingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
+
     }
 
 
