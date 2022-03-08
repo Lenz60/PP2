@@ -1,5 +1,6 @@
 package com.example.pesanpalgading20;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -11,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.renderscript.Sampler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
@@ -44,6 +47,7 @@ import com.example.pesanpalgading20.Model.Menu.Minuman.HomeMinumanEsOriFragment;
 import com.example.pesanpalgading20.Model.OrderSetterGetter.CartStatus;
 import com.example.pesanpalgading20.Model.OrderSetterGetter.Order1;
 import com.example.pesanpalgading20.Model.OrderSetterGetter.Order2;
+import com.example.pesanpalgading20.Model.PilihanMenu.HomePromoPilihan;
 import com.example.pesanpalgading20.Model.SharedPrefManager.SharedPrefmanager;
 import com.example.pesanpalgading20.Model.Volley.URLs;
 import com.example.pesanpalgading20.Model.Volley.VolleySingleton;
@@ -150,6 +154,8 @@ public class FragmentOrdertoCart extends Fragment {
             TxtvRp7,TxtvRp8,TxtvRp9,
             TxtvRp10;
 
+
+
     TextView TxtvOrdertoCartOrderCode;
     //SharedPrefManager
     SharedPrefmanager sharedPrefmanager;
@@ -166,6 +172,8 @@ public class FragmentOrdertoCart extends Fragment {
 
     String ValueTotalSelectedFoodPrice;
     String StringTotalPrice;
+
+    ProgressDialog dialog;
 
     //String Food
     String StringFoodCode, StringFoodName;
@@ -336,6 +344,11 @@ public class FragmentOrdertoCart extends Fragment {
         RbChoice2 = viewRoot.findViewById(R.id.RbChoice2);
         RbChoice3 = viewRoot.findViewById(R.id.RbChoice3);
 
+        //ProgressBar
+
+
+
+
         //Sharedpreference
 
 
@@ -445,6 +458,7 @@ public class FragmentOrdertoCart extends Fragment {
     }
 
     private void AddtoCart() {
+
         BtnAddtoCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -456,6 +470,7 @@ public class FragmentOrdertoCart extends Fragment {
                         errorTipeFood.show();
                     }
                     else {
+                        dialog = ProgressDialog.show(getActivity(),"","Mohon Tunggu Sebentar", true);
                         //Pass to cart function here
                         //Declare Code Food and Food Name
                         StringFoodCode = Code;
@@ -499,6 +514,7 @@ public class FragmentOrdertoCart extends Fragment {
                                     @Override
                                     public void onResponse(String response) {
                                         try {
+                                            Log.i("tagconvertstr", "["+response+"]");
                                             //convert response to json object
                                             JSONObject obj = new JSONObject(response);
                                             if (!obj.getBoolean("error")) {
@@ -548,12 +564,6 @@ public class FragmentOrdertoCart extends Fragment {
                             }
                         };
                         VolleySingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
-
-
-
-
-
-
 
                         //Make Order API here
                         //One Order One Checkout
@@ -655,9 +665,11 @@ public class FragmentOrdertoCart extends Fragment {
 //                        PasstoCartBundle.putString("CartTotalPrice", StringTotalPrice);
 //
                     }
+                    dialog.dismiss();
                 }
                 //if doesn't have Tipe Food
                 else {
+                    dialog = ProgressDialog.show(getActivity(),"","Mohon Tunggu Sebentar", true);
                     //Pass to Cart function here
                     //Declare Code Food and Food Name
                     StringFoodCode = Code;
@@ -702,11 +714,14 @@ public class FragmentOrdertoCart extends Fragment {
 
                     CartStatus CheckCartStats = sharedPrefmanager.getInstance(getActivity()).GetCartStatus();
 
+
+
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.ORDER,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
                                     try {
+                                        Log.i("ErrorLogOrdertoCart", "["+response+"]");
                                         //convert response to json object
                                         JSONObject obj = new JSONObject(response);
                                         if (!obj.getBoolean("error")) {
@@ -756,7 +771,9 @@ public class FragmentOrdertoCart extends Fragment {
                         }
                     };
                     VolleySingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
+
                 }
+                dialog.dismiss();
             }
         });
     }
@@ -901,6 +918,7 @@ public class FragmentOrdertoCart extends Fragment {
                     BtnConfirmationPayment.setVisibility(GONE);
                     BtnAddtoCart.setVisibility(View.VISIBLE);
                 }
+
             }
         });
     }
@@ -2170,7 +2188,7 @@ public class FragmentOrdertoCart extends Fragment {
 
             TxtvTotalHarga.setText(String.valueOf(Price));
 
-        } else if(Code.toString().equals(inPromo)){
+        } else if(Code.toUpperCase().matches((inPromo.toUpperCase()))){
             ToppCode1 = "none";
 
             //hide remaining topping CB
@@ -2416,6 +2434,9 @@ public class FragmentOrdertoCart extends Fragment {
         else if (Code.toUpperCase().matches(inJajanan.toUpperCase())){
             ImgOrdertoCartFood.setImageResource(R.drawable.jajanan);
         }
+        else if (Code.toUpperCase().matches(inPromo.toUpperCase())){
+            ImgOrdertoCartFood.setImageResource(R.drawable.mieayam);
+        }
 
     }
 
@@ -2513,6 +2534,18 @@ public class FragmentOrdertoCart extends Fragment {
             // Replace whatever is in the fragment_container view with this fragment,
             // and add the transaction to the back stack
             transaction.replace(R.id.ContainerOrdertoCart, FragmentJajanan);
+            transaction.addToBackStack(null);
+            // Commit the transaction
+            transaction.commit();
+        }
+        else if (Code.toUpperCase().matches(inPromo.toUpperCase())){
+            // Create new fragment and transaction
+            Fragment FragmentPromo = new HomePromoPilihan();
+            // consider using Java coding conventions (upper first char class names!!!)
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            // Replace whatever is in the fragment_container view with this fragment,
+            // and add the transaction to the back stack
+            transaction.replace(R.id.ContainerOrdertoCart, FragmentPromo);
             transaction.addToBackStack(null);
             // Commit the transaction
             transaction.commit();
