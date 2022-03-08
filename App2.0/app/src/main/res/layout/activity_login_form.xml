@@ -10,6 +10,7 @@
     android:id="@+id/ContainerLogin"
     android:background="@color/black">
 
+
     <LinearLayout
         android:id="@+id/ContainerContentLogin"
         android:layout_width="match_parent"
@@ -32,7 +33,8 @@
                 android:layout_gravity="center"
                 android:text="@string/login"
                 android:textColor="@color/white"
-                android:textSize="35sp" />
+                android:textSize="35sp"
+                android:visibility="gone"/>
 
             <ImageView
                 android:id="@+id/LogoLogin"
@@ -41,9 +43,8 @@
                 android:layout_gravity="center"
                 android:paddingBottom="-50dp"
                 android:src="@drawable/logowhite" />
-
-
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -179,9 +180,8 @@
 
             <ProgressBar
                 android:id="@+id/ProgressBarMasuk"
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="120dp"
                 android:visibility="gone" />
 
             <Button
@@ -190,7 +190,9 @@
                 android:layout_height="60dp"
                 android:background="@drawable/selectorloginbutton"
                 android:text="@string/masuk"
+                android:visibility="visible"
                 android:textColor="@drawable/selectortextcolorbutton" />
+
 
             <Button
                 android:id="@+id/BtnLihatMenu"
