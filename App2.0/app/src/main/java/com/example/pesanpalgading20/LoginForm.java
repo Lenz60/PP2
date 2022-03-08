@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,6 +26,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,6 +79,8 @@ public class LoginForm extends AppCompatActivity {
     String Nama, NoMejaAuto, KodeMeja, NoMejaFinal;
     String KodeMejaGuest, NoMejaGuest, NameGuest;
 
+    android.widget.ProgressBar ProgressBarMasuk;
+
     Spinner SpinnerMeja;
     String[] NomorMeja = {"1","2","3","4","5/6","7","8/9","10","11","12","13"};
 
@@ -95,6 +99,7 @@ public class LoginForm extends AppCompatActivity {
         ProgressBar1 = findViewById(R.id.ProgressBarMasuk);
         BtnMasuk = findViewById(R.id.BtnMasuk);
         BtnMenu = findViewById(R.id.BtnLihatMenu);
+
 
         ContainerContentLogin = findViewById(R.id.ContainerContentLogin);
 
@@ -146,20 +151,31 @@ public class LoginForm extends AppCompatActivity {
     BtnMasuk.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            ProgressBar1.setVisibility(View.VISIBLE);
+            BtnMasuk.setVisibility(GONE);
+            BtnMasuk.setEnabled(false);
             if(EdNama.getText().toString().isEmpty()){
                 EdNama.setError("Mohon masukkan nama terlebih dahulu");
                 EdNama.requestFocus();
+                BtnMasuk.setVisibility(View.VISIBLE);
+                BtnMasuk.setEnabled(true);
+                ProgressBar1.setVisibility(GONE);
             }
             else {
                 if(TvLokasiMeja.getText().toString() == "Deteksi Gagal"){
                     Toast errorToast = Toast.makeText(LoginForm.this, "Deteksi meja gagal, silahkan refresh ulang atau edit secara manual", Toast.LENGTH_SHORT);
                     errorToast.show();
+                    BtnMasuk.setVisibility(View.VISIBLE);
+                    BtnMasuk.setEnabled(true);
+                    ProgressBar1.setVisibility(GONE);
                 }
                 else {
                     RegisterGuest();
+
                 }
 
             }
+
         }
     });
         
@@ -554,6 +570,7 @@ public class LoginForm extends AppCompatActivity {
 
     public void RegisterGuest(){
 
+
         if (TvLokasiMeja.getText().toString().equals(" ")){
             if (SpinnerMeja.getSelectedItem().toString().equals("5/6") || SpinnerMeja.getSelectedItem().toString().equals("5")){
                 NoMejaFinal = "6";
@@ -583,6 +600,8 @@ public class LoginForm extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
+
+                            Log.i("tagconvertstr", "["+response+"]");
                             //convert response to json
                             JSONObject obj = new JSONObject(response);
 
@@ -590,17 +609,19 @@ public class LoginForm extends AppCompatActivity {
                             if (!obj.getBoolean("error")) {
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                                 finish();
-
                             } else {
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                                ProgressBar1.setVisibility(GONE);
                             }
                             Intent intent1 = new Intent(getApplicationContext(), BottomNavbar.class);
                             intent1.putExtra("nama", NameGuest);
                             intent1.putExtra("noMejaFinal", NoMejaGuest);
                             intent1.putExtra("kodeMeja", KodeMejaGuest);
                             startActivity(intent1);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            ProgressBar1.setVisibility(GONE);
                         }
                     }
                 },
@@ -608,6 +629,9 @@ public class LoginForm extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        ProgressBar1.setVisibility(GONE);
+                        BtnMasuk.setVisibility(View.VISIBLE);
+                        BtnMasuk.setEnabled(true);
                     }
                 }) {
             protected Map<String, String> getParams() throws AuthFailureError{
@@ -620,7 +644,6 @@ public class LoginForm extends AppCompatActivity {
             }
         };
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
-
     }
 
     public static String getRandomString(int i){
