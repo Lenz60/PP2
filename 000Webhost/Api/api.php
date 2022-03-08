@@ -1,4 +1,5 @@
 <?php 
+header('Content-Type: application/json');
 	require_once 'dbconnectapi.php';
 	
 	$response = array();
@@ -13,11 +14,11 @@
 					$notable = $_POST['notable']; 
 					$guestname = $_POST['guestname']; 
 
-						$stmt = $conn->prepare("INSERT INTO Guest(Kode_meja,No_meja,Nama_guest) VALUES(?,?,?)");
+						$stmt = $conn->prepare("INSERT INTO guest(Kode_meja,No_meja,Nama_guest) VALUES(?,?,?)");
 						$stmt->bind_param("sss", $tablecode, $notable, $guestname);
 						$stmt->execute();
 
-						$stmt = $conn->prepare("SELECT Kode_meja FROM Guest WHERE Kode_meja = ?");
+						$stmt = $conn->prepare("SELECT Kode_meja FROM guest WHERE Kode_meja = ?");
 						$stmt->bind_param("s", $tablecode);
 						$stmt->execute();
 						$stmt->store_result();
@@ -25,7 +26,7 @@
 						
 						if($stmt->num_rows > 0){
 							$response['error'] = true;
-							$response['message'] = 'Selamat Datang ';print $guestname;
+							$response['message'] = 'Selamat Datang '.$guestname;
 						}
 						else {
 							$response['error'] = false;
@@ -82,12 +83,12 @@
 					// }
 
 					//Order Query (All Null excetp Code Order)
-					$stmt = $conn->prepare("INSERT INTO Orders(Kode_order,Status_order) VALUES(?,'Disiapkan')");
+					$stmt = $conn->prepare("INSERT INTO orders(Kode_order,Status_order) VALUES(?,'Disiapkan')");
 					$stmt->bind_param("s", $ordercode);
 					$stmt->execute();
 					
 					//Guest Query (Insert Guest Query)
-					$stmt = $conn->prepare("INSERT INTO Guest_Order(Kode_Order,Kode_Meja) VALUES(?,?)");
+					$stmt = $conn->prepare("INSERT INTO guest_order(Kode_Order,Kode_Meja) VALUES(?,?)");
 					$stmt->bind_param("ss", $ordercode, $tablecode);
 					$stmt->execute();
 
@@ -114,12 +115,12 @@
 
 
 					//Product Query (Insert Product Order)
-					$stmt = $conn->prepare("INSERT INTO Product_Order(Kode_Produk,Kode_Order,Jumlah_Produk_PO) VALUES(?,?,?)");
+					$stmt = $conn->prepare("INSERT INTO product_order(Kode_Produk,Kode_Order,Jumlah_Produk_PO) VALUES(?,?,?)");
 					$stmt->bind_param("sss",$productcode,$ordercode,$productqty);
 					$stmt->execute();
 
 					//Product Query (Select Product Order and store)
-					$stmt = $conn->prepare("SELECT Kode_produk_order FROM Product_Order WHERE Kode_Order = ? ");
+					$stmt = $conn->prepare("SELECT Kode_produk_order FROM product_order WHERE Kode_Order = ? ");
 					$stmt->bind_param("s",$ordercode);
 					$stmt->execute();
 					$stmt->store_result();
@@ -145,7 +146,7 @@
 
 					}
 					else {
-						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt = $conn->prepare("INSERT INTO topping_order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
 						$stmt->bind_param("ss",$productordercode,$toppingcode1);
 						$stmt->execute();
 					}
@@ -154,7 +155,7 @@
 
 					}
 					else {
-						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt = $conn->prepare("INSERT INTO topping_order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
 						$stmt->bind_param("ss",$productordercode,$toppingcode2);
 						$stmt->execute();
 					}
@@ -163,7 +164,7 @@
 
 					}
 					else {
-						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt = $conn->prepare("INSERT INTO topping_order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
 						$stmt->bind_param("ss",$productordercode,$toppingcode3);
 						$stmt->execute();
 					}
@@ -172,7 +173,7 @@
 
 					}
 					else {
-						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt = $conn->prepare("INSERT INTO topping_order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
 						$stmt->bind_param("ss",$productordercode,$toppingcode4);
 						$stmt->execute();
 					}
@@ -181,7 +182,7 @@
 
 					}
 					else {
-						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt = $conn->prepare("INSERT INTO topping_order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
 						$stmt->bind_param("ss",$productordercode,$toppingcode5);
 						$stmt->execute();
 					}
@@ -190,7 +191,7 @@
 
 					}
 					else {
-						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt = $conn->prepare("INSERT INTO topping_order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
 						$stmt->bind_param("ss",$productordercode,$toppingcode6);
 						$stmt->execute();
 					}
@@ -199,7 +200,7 @@
 
 					}
 					else {
-						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt = $conn->prepare("INSERT INTO topping_order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
 						$stmt->bind_param("ss",$productordercode,$toppingcode7);
 						$stmt->execute();
 					}
@@ -208,7 +209,7 @@
 
 					}
 					else {
-						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt = $conn->prepare("INSERT INTO topping_order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
 						$stmt->bind_param("ss",$productordercode,$toppingcode8);
 						$stmt->execute();
 					}
@@ -217,7 +218,7 @@
 
 					}
 					else {
-						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt = $conn->prepare("INSERT INTO topping_order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
 						$stmt->bind_param("ss",$productordercode,$toppingcode9);
 						$stmt->execute();
 					}
@@ -226,7 +227,7 @@
 
 					}
 					else {
-						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt = $conn->prepare("INSERT INTO topping_order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
 						$stmt->bind_param("ss",$productordercode,$toppingcode10);
 						$stmt->execute();
 					}
@@ -235,7 +236,7 @@
 					$toppingcode7 == "none" || $toppingcode8 == "none" || $toppingcode9 == "none" ||
 					$toppingcode10 == "none"){
 						$toppingnone = 'none';
-						$stmt = $conn->prepare("INSERT INTO Topping_Order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
+						$stmt = $conn->prepare("INSERT INTO topping_order(Kode_Produk_Order,Kode_Topping) VALUES(?,?)");
 						$stmt->bind_param("ss",$productordercode,$toppingnone);
 						$stmt->execute();
 					}
@@ -245,7 +246,7 @@
 					// 	// ORDER QUERY HERE//
 					// //////////////////////////////////////////////////
 
-					$stmt = $conn->prepare("UPDATE Orders
+					$stmt = $conn->prepare("UPDATE orders
 											SET Kode_Guest_Order = ? ,Kode_Produk_Order = ?
 											WHERE Kode_order = ?");
 					$stmt->bind_param("sss",$guestcodeorder,$productordercode,$ordercode);
