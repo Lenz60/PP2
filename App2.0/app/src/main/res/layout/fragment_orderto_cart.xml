@@ -58,7 +58,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Kode Makanan"
-                        android:visibility="visible"
+                        android:visibility="invisible"
                         android:textColor="@color/white"
                         android:textSize="30sp"/>
                     <LinearLayout
@@ -89,7 +89,7 @@
                         android:layout_height="wrap_content"
                         android:text="Kode Order"
                         android:textSize="20sp"
-                        android:visibility="visible"
+                        android:visibility="invisible"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
