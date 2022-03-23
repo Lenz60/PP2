@@ -34,15 +34,15 @@ if (session_status() === PHP_SESSION_NONE) {
                                     </li>
                                     <li class="nav-item">
                                         <br>
-                                        <p style="font-family: sans-serif;">Auto Refresh Berjalan</p>
-                                        <p style= "font-family: sans-serif; color:green;">Halaman akan refresh otomatis setiap 10 detik</p>
+                                        <p style="font-family: sans-serif;">Auto Refresh Terhenti</p>
+                                        <p style="font-family: sans-serif; color:red;">Perhatian!, Pesanan Baru Mungkin tidak akan terdeteksi sebelum merefresh halaman!</p>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="index1.php" class="nav-link align-middle px-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-stop" viewBox="0 0 16 16">
-                                        <path d="M3.5 5A1.5 1.5 0 0 1 5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5zM5 4.5a.5.5 0 0 0-.5.5v6a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 .5-.5V5a.5.5 0 0 0-.5-.5H5z"/>
-                                        </svg> 
-                                        <span class="ms-1 d-none d-sm-inline">Stop Refresh</span>
+                                        <a href="index.php" class="nav-link align-middle px-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+                                        <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+                                        </svg>
+                                        <span class="ms-1 d-none d-sm-inline">Resume Refresh</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -518,11 +518,6 @@ if (session_status() === PHP_SESSION_NONE) {
             }
 
             setInterval(clock, 10);
-        </script>
-        <script language = "javascript">
-            setTimeout(function(){
-                window.location.reload(1);
-            }, 5000);
         </script>
         </html>
     <?php
