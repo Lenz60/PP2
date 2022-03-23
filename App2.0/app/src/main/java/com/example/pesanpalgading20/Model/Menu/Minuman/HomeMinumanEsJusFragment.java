@@ -83,14 +83,14 @@ public class HomeMinumanEsJusFragment extends Fragment {
         ContainerContentEsJus = viewRoot.findViewById(R.id.ContainerContentEsJus);
 
         ArrayList<EsJus> esJus = new ArrayList<EsJus>();
-        esJus.add (new EsJus("Juice Melon", 8000 ,R.drawable.ic_launcher_background));
-        esJus.add (new EsJus("Juice Mangga", 8000 ,R.drawable.ic_launcher_background));
-        esJus.add (new EsJus("Juice Alpukat", 10000 ,R.drawable.ic_launcher_background));
-        esJus.add (new EsJus("Juice Semangka", 18000 ,R.drawable.ic_launcher_background));
-        esJus.add (new EsJus("Juice Jambu Merah", 8000 ,R.drawable.ic_launcher_background));
-        esJus.add (new EsJus("Juice Sirsat", 8000 ,R.drawable.ic_launcher_background));
-        esJus.add (new EsJus("Juice Durian", 10000 ,R.drawable.ic_launcher_background));
-        esJus.add (new EsJus("Juice Jeruk", 8000 ,R.drawable.ic_launcher_background));
+        esJus.add (new EsJus("Juice Melon", 8000 ,R.drawable.minuman));
+        esJus.add (new EsJus("Juice Mangga", 8000 ,R.drawable.minuman));
+        esJus.add (new EsJus("Juice Alpukat", 10000 ,R.drawable.minuman));
+        esJus.add (new EsJus("Juice Semangka", 18000 ,R.drawable.minuman));
+        esJus.add (new EsJus("Juice Jambu Merah", 8000 ,R.drawable.minuman));
+        esJus.add (new EsJus("Juice Sirsat", 8000 ,R.drawable.minuman));
+        esJus.add (new EsJus("Juice Durian", 10000 ,R.drawable.minuman));
+        esJus.add (new EsJus("Juice Jeruk", 8000 ,R.drawable.minuman));
 
         EsJusAdapter esJusAdapter = new EsJusAdapter(getActivity(), esJus);
 

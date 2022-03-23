@@ -83,24 +83,24 @@ public class HomeMinumanEsOriFragment extends Fragment {
         ContainerContentEsOri = viewRoot.findViewById(R.id.ContainerContentEsOri);
 
         ArrayList<EsOri> esOri = new ArrayList<EsOri>();
-        esOri.add (new EsOri("Es Teller Palgading", 10000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es Campur Gula Jawa", 10000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es Pelangi", 10000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es Manado", 10000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es Cendol Pelangi", 10000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es Cincau Hitam", 8000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es Capcin (Capucino Cincau)", 8000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es Es Micin (Milo Cincau)", 8000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es Milkshake Oreo", 10000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es / Hot Milo", 6000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es / Hot Capucino", 6000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es / Hot Chocolate", 6000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es / Hot Teh", 4000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es / Hot Jeruk", 5000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es Sirup", 5000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es Saparela", 12000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Es Soda Gembira", 12000 ,R.drawable.ic_launcher_background));
-        esOri.add (new EsOri("Kopi Hitam", 5000 ,R.drawable.ic_launcher_background));
+        esOri.add (new EsOri("Es Teller Palgading", 10000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es Campur Gula Jawa", 10000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es Pelangi", 10000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es Manado", 10000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es Cendol Pelangi", 10000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es Cincau Hitam", 8000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es Capcin (Capucino Cincau)", 8000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es Es Micin (Milo Cincau)", 8000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es Milkshake Oreo", 10000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es / Hot Milo", 6000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es / Hot Capucino", 6000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es / Hot Chocolate", 6000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es / Hot Teh", 4000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es / Hot Jeruk", 5000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es Sirup", 5000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es Saparela", 12000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Es Soda Gembira", 12000 ,R.drawable.minuman));
+        esOri.add (new EsOri("Kopi Hitam", 5000 ,R.drawable.minuman));
 
         EsOriAdapter esOriAdapter = new EsOriAdapter(getActivity(), esOri);
 
