@@ -200,6 +200,9 @@ public class FragmentOrdertoCart extends Fragment {
     //scroll view
     ScrollView ScrollViewOrdertoCart;
 
+    //Linear Layout ProgressBar
+    LinearLayout LinearLayoutProgressBar;
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -344,8 +347,8 @@ public class FragmentOrdertoCart extends Fragment {
         RbChoice2 = viewRoot.findViewById(R.id.RbChoice2);
         RbChoice3 = viewRoot.findViewById(R.id.RbChoice3);
 
-        //ProgressBar
-
+        //Linear Layout ProgressBar
+        LinearLayoutProgressBar = viewRoot.findViewById(R.id.LinearLayoutProgressBarOrdertoCart);
 
 
 
@@ -470,6 +473,8 @@ public class FragmentOrdertoCart extends Fragment {
                         errorTipeFood.show();
                     }
                     else {
+                        BtnAddtoCart.setVisibility(GONE);
+                        LinearLayoutProgressBar.setVisibility(VISIBLE);
                         dialog = ProgressDialog.show(getActivity(),"","Mohon Tunggu Sebentar", true);
                         //Pass to cart function here
                         //Declare Code Food and Food Name
@@ -669,6 +674,8 @@ public class FragmentOrdertoCart extends Fragment {
                 }
                 //if doesn't have Tipe Food
                 else {
+                    BtnAddtoCart.setVisibility(GONE);
+                    LinearLayoutProgressBar.setVisibility(VISIBLE);
                     dialog = ProgressDialog.show(getActivity(),"","Mohon Tunggu Sebentar", true);
                     //Pass to Cart function here
                     //Declare Code Food and Food Name
