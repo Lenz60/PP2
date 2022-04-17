@@ -570,8 +570,9 @@ public class LoginForm extends AppCompatActivity {
 
     public void RegisterGuest(){
 
+        NoMejaAuto = TvLokasiMeja.getText().toString();
 
-        if (TvLokasiMeja.getText().toString().equals(" ")){
+        if (NoMejaAuto.equals(" ")){
             if (SpinnerMeja.getSelectedItem().toString().equals("5/6") || SpinnerMeja.getSelectedItem().toString().equals("5")){
                 NoMejaFinal = "6";
             }
