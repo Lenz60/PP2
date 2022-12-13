@@ -1,0 +1,108 @@
+USE db_palgading;
+
+CREATE TABLE Customer(
+    id_customer INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    nama_customer VARCHAR(15)
+);
+
+CREATE TABLE C_tables (
+    kode_meja CHAR(6) PRIMARY KEY NOT NULL,
+    no_meja CHAR(2)
+);
+
+CREATE TABLE Customer_Table(
+    id_CusTab INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    kode_meja CHAR(6), 
+    FOREIGN KEY (kode_meja) REFERENCES C_tables(kode_meja),
+    id_customer INT,
+    FOREIGN KEY (id_customer) REFERENCES Customer(id_customer)
+    );
+    
+CREATE TABLE Category(
+    id_kategori INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    jenis ENUM('Makanan','Minuman','Jajanan')
+    );
+
+
+CREATE TABLE Menu(
+    id_menu INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    nama_item VARCHAR(50),
+    id_kategori INT,
+    FOREIGN KEY (id_kategori) REFERENCES Category(id_kategori),
+    deskripsi_item VARCHAR(100),
+    harga INT(10),
+    stok INT(2) NOT NULL,
+    total_sold INT(10) DEFAULT 0
+    )
+
+
+
+CREATE TABLE Topping(
+    id_topping INT  AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    nama_topping VARCHAR(50),
+    item_topping VARCHAR(50),
+    harga_topping INT(10)
+);
+
+INSERT INTO `topping`(nama_topping,item_topping,harga_topping,stok)
+VALUES 
+('Extra Ayam','Mie Ayam',3000,10),
+('Extra Tetelan Sapi','Mie Ayam',7000,10),
+('Cakar 2 pcs','Mie Ayam',4000,10),
+('Kepala/pcs','Mie Ayam',4000,10),
+('Bakso Asli Sapi/pcs','Mie Ayam',3000,10),
+('Telur Mata Sapi','Mie Ayam',4000,10),
+('Balungan Rica Ayam','Mie Ayam',4000,10),
+('Extra Sawi','Mie Ayam',1000,10),
+('Extra Acar','Mie Ayam',1000,10)
+    
+INSERT INTO `topping`(nama_topping,item_topping,harga_topping,stok)
+VALUES 
+('Extra Kuah, Mie & Soon','Bakso Bakar',2000,10),
+('Extra Pangsit Goreng, Mie & Soon','Bakso Bakar',1500,10),
+('Extra Tahu Bakso, Mie & Soon','Bakso Bakar',1500,10)
+
+INSERT INTO `topping`(nama_topping,item_topping,harga_topping,stok)
+VALUES 
+('1 Pentol Bakso Urat','Bakso Kuah',3000,10),
+('1 Pentol Bakso Halus','Bakso Kuah',3000,10),
+('1 Pangsit Goreng /pcs','Bakso Kuah',1500,10),
+('1 Pangsit Kukus /pcs','Bakso Kuah',1500,10),
+('1 Tahu Bakso','Bakso Kuah',1500,10),
+('Tetelan Sapi','Bakso Kuah',7000,10),
+('Kuah Bakso, Mie Kuning & Mie Soon','Bakso Kuah',2000,10)
+
+
+INSERT INTO `topping`(nama_topping,item_topping,harga_topping,stok)
+VALUES 
+('Tambahan Varian Kuah Pedas','Bakso Kuah Jumbo',5000,10),
+('Extra Tetelan Sapi','Bakso Kuah Jumbo',7000,10),
+('Extra Pangsit /pcs','Bakso Kuah Jumbo',1500,10),
+('Extra Tahu Bakso /pcs','Bakso Kuah Jumbo',1500,10)
+
+
+
+
+
+CREATE TABLE `Order`(
+    id_order INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	id_CusTab INT,
+    FOREIGN KEY(id_CusTab) REFERENCES customer_table(id_CusTab),
+    id_menu INT,
+    FOREIGN KEY(id_menu) REFERENCES menu(id_menu),
+    id_topping INT,
+    FOREIGN KEY(id_topping) REFERENCES Topping(id_topping),
+    jumlah_topping INT(2),
+    jumlah_item INT(2),
+    status ENUM('Keranjang','Menunggu konfirmasi','Dibuat','Diantar','Menunggu konfirmasi pembayaran')
+);
+
+CREATE TABLE Admin(
+    id_admin INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(15),
+    username VARCHAR(10),
+    password VARCHAR(10)
+)
+
+
+=========================================    

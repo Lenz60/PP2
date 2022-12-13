@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment"
+    android:id="@+id/ContainerHome"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/ContainerContentHome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/pal3c4">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:background="@color/black">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@color/black"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/TxtvSapaan1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Halo "
+                            android:fontFamily="@font/kghappysolid"
+                            android:textColor="@color/pal4c1"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:id="@+id/TxtvNamaHome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Nama"
+                            android:fontFamily="@font/kghappysolid"
+                            android:textColor="@color/pal4c1"
+                            android:textSize="25sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/TxtvSapaan2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Mau makan apa nih ?"
+                            android:fontFamily="@font/kghappysolid"
+                            android:textColor="@color/pal4c1"
+                            android:textSize="25sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="205dp"
+                android:layout_marginTop="-40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/shapeorange1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="25sp"
+                    android:textColor="@color/pal4c1"
+                    android:fontFamily="@font/baske1"
+                    android:text="Rekomendasi kami :"/>
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/carouselView"
+                    android:layout_width="300dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:maxWidth="40dp"
+                    android:maxHeight="40dp"
+                    app:fillColor="@color/pal4c2"
+                    app:pageColor="@color/pal4c5"
+                    app:radius="5dp"
+                    app:slideInterval="3000"
+                    app:strokeColor="#FF777777"
+                    app:strokeWidth="1dp">
+                </com.synnapps.carouselview.CarouselView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/shapeorange1"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:id="@+id/ImageViewMakanan"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/makanan" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_gravity="center"
+                                android:text="Makanan"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="50dp"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:id="@+id/ImageViewMinuman"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:maxWidth="5dp"
+                                android:maxHeight="5dp"
+                                android:src="@drawable/minuman" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_gravity="center"
+                                android:text="Minuman"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/ImageViewJajanan"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/jajanan" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_gravity="center"
+                                android:text="Jajanan"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="50dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/ImageViewPromo"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/promo" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_gravity="center"
+                                android:text="Menu Promo"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!--Filler-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"/>
+            <!--Filler-->
+        </LinearLayout>
+    </ScrollView>
+    <!-- TODO: Update blank fragment layout -->
+
+</FrameLayout>

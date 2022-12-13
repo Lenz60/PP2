@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="BlueButton">#0D8CE1</color>
+    <color name="Gray">#888888</color>
+    <color name="BlackGrey">#191919</color>
+    <color name="Green">#269500</color>
+    <color name="Green2">#2DAF01</color>
+    <color name="Yellow">#ACAA04</color>
+    <color name="LightYellow">#FFFC00</color>
+    <color name="transparent">#00FFFFFF</color>
+
+
+
+    <color name="my_spinner_text_color">#FFFFFF</color>
+
+    <color name="shapeblack">#1B1B1B</color>
+    <color name="shapestroke">#3A4151</color>
+
+
+
+    <!--- Pallete 1 -->
+    <color name="pal1c1">#f9f7f7</color>
+    <color name="pal1c2">#dbe2ef</color>
+    <color name="pal1c3">#3f72af</color>
+    <color name="pal1c4">#112d4e</color>
+    <!--- Pallete 1 -->
+
+    <!--- Pallete 2 -->
+    <color name="pal2c1">#ba135d</color>
+    <color name="pal2c2">#f4cca4</color>
+    <color name="pal2c3">#d99879</color>
+    <color name="pal2c4">#3C3C3C</color>
+    <!--- Pallete 2 -->
+
+    <!--- Pallete 3 -->
+    <color name="pal3c1">#ffc93c</color>
+    <color name="pal3c2">#ff9a3c</color>
+    <color name="pal3c3">#ff6f3c</color>
+    <color name="pal3c4">#155263</color>
+    <!--- Pallete 3 -->
+
+    <!--- Pallete 4 Home -->
+    <color name="pal4c1">#efc8a0</color>
+    <color name="pal4c2">#c4282b</color>
+    <color name="pal4c3">#bf6e49</color>
+    <color name="pal4c4">#d99d5d</color>
+    <color name="pal4c5">#432524</color>
+    <!--- Pallete 4 -->
+
+    <!--- Pallete Profile -->
+    <color name="palprofil">#432524</color>
+    <color name="paltextprofil">#504C4B</color>
+
+    <!--- Menu Pallete -->
+    <color name="palmenu1">#453933</color>
+
+
+</resources>

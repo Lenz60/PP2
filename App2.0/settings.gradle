@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "PesanPalgading 2.0"

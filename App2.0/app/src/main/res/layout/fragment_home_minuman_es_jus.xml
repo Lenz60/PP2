@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Model.Menu.Minuman.HomeMinumanEsJusFragment"
+    android:id="@+id/ContainerEsJus">
+
+    <LinearLayout
+        android:id="@+id/ContainerContentEsJus"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.widget.Toolbar
+            android:id="@+id/ToolbarEsJus"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/pal4c3"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:text="Menu Aneka Es Jus"/>
+        </android.widget.Toolbar>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:background="@color/black">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp">
+                    <TextView
+                        android:id="@+id/TxtvMakananHomeEsJus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:textSize="30sp"
+                        android:textColor="@color/white"
+                        android:text="Menu Aneka Es Jus" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ListView
+                        android:id="@+id/ListViewMenuEsJus"
+                        android:layout_width="match_parent"
+                        android:layout_height="700dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp" />
+                </LinearLayout>
+                <!--Filler-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp" />
+                <!--Filler-->
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</FrameLayout>
