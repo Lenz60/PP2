@@ -1,6 +1,6 @@
 ########################################################################################
-## TRELLO
-[TRELLO](https://trello.com/b/4OsVTEvS/pesanpalgading-android-app)
+## Pesan Palgading
+Food ordering application with geolocation based on table on restaurant
 
 ########################################################################################
 ## APK RELEASE
